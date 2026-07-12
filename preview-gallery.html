@@ -20,10 +20,10 @@ header{margin-bottom:20px}
 .seg{display:flex;background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .seg button{background:none;border:0;color:var(--muted);padding:10px 14px;font-size:13px;cursor:pointer;font-weight:600}
 .seg button.active{background:var(--grad);color:#0a0b14}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
-.chip{background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:12.5px;color:var(--muted);cursor:pointer}
-.chip:hover{border-color:var(--cyan);color:var(--txt)}
-.chip.active{background:var(--grad);color:#0a0b14;border-color:transparent;font-weight:700}
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin-top:11px;align-items:center}
+.filters label{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.filters select{background:var(--panel);border:1px solid var(--border);border-radius:10px;color:var(--txt);padding:8px 30px 8px 12px;font-size:13px;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238b90a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 8px center;background-size:14px;min-width:140px;cursor:pointer}
+.filters select:focus{border-color:var(--cyan)}
 .ctxbar{display:flex;justify-content:space-between;align-items:center;margin:16px 2px 12px;flex-wrap:wrap;gap:8px}
 .ctxbar .lbl{color:var(--muted);font-size:13px}.ctxbar .lbl b{color:var(--txt)}
 .clear{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer}
@@ -79,8 +79,10 @@ footer{margin-top:40px;text-align:center;color:var(--faint);font-size:12px}
 <div class="topbar">
 <div class="seg" id="kindSeg"></div>
 </div>
-<div class="chips" id="fwChips"></div>
-<div class="chips" id="themeChips" style="margin-top:8px"></div>
+<div class="filters">
+  <label>框架：<select id="fwSel"></select></label>
+  <label>主题：<select id="themeSel"></select></label>
+</div>
 </div>
 <div class="ctxbar"><div class="lbl" id="ctxLbl"></div><button class="clear" id="clearBtn" style="display:none">✕ 清除筛选</button></div>
 <div id="view"></div>
@@ -4878,6 +4880,23 @@ function kinds(){const s=new Set();ITEMS.forEach(i=>s.add(i.kind||'item'));retur
 function fwList(){const s=new Set();ITEMS.forEach(i=>(i.fw||[]).forEach(f=>s.add(f)));return [...s];}
 function themeList(){const s=new Set();ITEMS.forEach(i=>{if(i.theme)s.add(i.theme);});return [...s].sort();}
 
+function fwGroup(f){
+  const map={'React':'前端框架','Vue':'前端框架','Angular':'前端框架','Svelte':'前端框架','Solid':'前端框架','Qwik':'前端框架','Web Components':'组件技术','CSS':'样式方案','Multi':'多框架'};
+  return map[f]||'其他';
+}
+function themeGroup(t){
+  if(/3D|WebGL/.test(t))return '3D / WebGL';
+  if(/Tailwind/.test(t))return 'Tailwind';
+  if(/Bootstrap/.test(t))return 'Bootstrap';
+  if(/Material/.test(t))return 'Material';
+  if(/企业|行业|IBM|Carbon|华为|政府|公共|金融|医疗|教育|交通|SAP|Oracle|Adobe|Salesforce|Workday|Zendesk|Atlassian|HubSpot|Vercel|BBC|Uber|汽车|房产|品牌|通信|营销|后台|客服|HR|数据/.test(t))return '企业 / 行业';
+  if(/Headless|无样式|a11y|表单|可访问|可定制|跨框架/.test(t))return '无样式 / Headless';
+  if(/原子化|CSS|Utility|编译器|令牌|变量|样式方案|栅格|Flexbox|语义化/.test(t))return 'CSS / 原子化';
+  if(/作品集|落地页|机构|创意|广告|品牌|时尚|音乐|工作室|建站|模板|营销|互动|体验/.test(t))return '作品集 / 创意';
+  if(/移动端|H5|跨端|原生|滴滴|混合应用|iOS|Android/.test(t))return '移动端';
+  return '其他';
+}
+
 // kind 段：全部 / 组件库 / 获奖项目（用中文显示）
 const KIND_LABEL={item:'组件库',proj:'获奖项目'};
 function renderKindSeg(){
@@ -4888,18 +4907,32 @@ function renderKindSeg(){
   wrap.querySelectorAll('button').forEach(b=>b.onclick=()=>{state.kind=b.dataset.kind;renderKindSeg();render();});
 }
 function renderFw(){
-  const w=$('#fwChips');
-  let h='<div class="chip '+(!state.fw?'active':'')+'" data-fw="">框架：全部 <span style="opacity:.6;font-size:11px">'+ITEMS.length+'</span></div>';
-  fwList().forEach(f=>{const c=ITEMS.filter(i=>(i.fw||[]).includes(f)).length;h+='<div class="chip '+(state.fw===f?'active':'')+'" data-fw="'+f+'">'+f+' <span style="opacity:.6;font-size:11px">'+c+'</span></div>';});
-  w.innerHTML=h;
-  w.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{state.fw=c.dataset.fw||null;renderFw();render();});
+  const list=fwList();
+  const groups={};
+  list.forEach(f=>{const g=fwGroup(f);if(!groups[g])groups[g]=[];groups[g].push(f);});
+  const order=['前端框架','组件技术','样式方案','多框架','其他'];
+  let h='<option value="">框架：全部</option>';
+  order.forEach(g=>{
+    if(!groups[g])return;
+    h+='<optgroup label="'+g+'">';
+    groups[g].forEach(f=>{const c=ITEMS.filter(i=>(i.fw||[]).includes(f)).length;h+='<option value="'+f+'"'+(state.fw===f?' selected':'')+'>'+f+' ('+c+')</option>';});
+    h+='</optgroup>';
+  });
+  const sel=$('#fwSel');sel.innerHTML=h;sel.onchange=e=>{state.fw=e.target.value||null;render();};
 }
 function renderThemes(){
-  const w=$('#themeChips');
-  let h='<div class="chip '+(!state.theme?'active':'')+'" data-th="">主题：全部 <span style="opacity:.6;font-size:11px">'+ITEMS.length+'</span></div>';
-  themeList().forEach(t=>{const c=ITEMS.filter(i=>i.theme===t).length;h+='<div class="chip '+(state.theme===t?'active':'')+'" data-th="'+t+'">'+t+' <span style="opacity:.6;font-size:11px">'+c+'</span></div>';});
-  w.innerHTML=h;
-  w.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{state.theme=c.dataset.th||null;renderThemes();render();});
+  const list=themeList();
+  const groups={};
+  list.forEach(t=>{const g=themeGroup(t);if(!groups[g])groups[g]=[];groups[g].push(t);});
+  const order=['3D / WebGL','Tailwind','Bootstrap','Material','企业 / 行业','无样式 / Headless','CSS / 原子化','作品集 / 创意','移动端','其他'];
+  let h='<option value="">主题：全部</option>';
+  order.forEach(g=>{
+    if(!groups[g])return;
+    h+='<optgroup label="'+g+'">';
+    groups[g].forEach(t=>{const c=ITEMS.filter(i=>i.theme===t).length;h+='<option value="'+t+'"'+(state.theme===t?' selected':'')+'>'+t+' ('+c+')</option>';});
+    h+='</optgroup>';
+  });
+  const sel=$('#themeSel');sel.innerHTML=h;sel.onchange=e=>{state.theme=e.target.value||null;render();};
 }
 function filtered(){
   return ITEMS.filter(i=>{
@@ -4973,7 +5006,7 @@ function cardHtml(i){
      '<a class="open" href="'+i.link+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">↗ 打开</a>'+
    '</div>';
 }
-$('#clearBtn').onclick=()=>{state.fw=null;state.theme=null;state.kind='all';state.onlySel=false;renderKindSeg();renderFw();renderThemes();render();};
+$('#clearBtn').onclick=()=>{state.fw=null;state.theme=null;state.kind='all';state.onlySel=false;$('#fwSel').value='';$('#themeSel').value='';renderKindSeg();renderFw();renderThemes();render();};
 $('#onlySel').onclick=()=>{state.onlySel=!state.onlySel;render();};
 $('#clearSel').onclick=()=>{sel.clear();save();renderBar();render();};
 $('#copySel').onclick=async()=>{const rows=ITEMS.filter(i=>sel.has(i.id)).map(i=>i.name+' — '+i.link);try{await navigator.clipboard.writeText(rows.join('\n'));$('#copySel').textContent='✓ 已复制';setTimeout(()=>$('#copySel').textContent='📋 复制已选',1500);}catch(e){alert(rows.join('\n'));}};

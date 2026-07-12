@@ -67,12 +67,12 @@ const path = require('path');
   const afterReload = await page.$$eval('.item.sel', els => els.length);
   console.log('6) 刷新后选中数 (应=3) =', afterReload);
 
-  // 7) framework filter -> React
-  await page.$eval('#fwChips .chip[data-fw="React"]', e => e.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+  // 7) framework filter -> React (via select dropdown)
+  await page.selectOption('#fwSel', 'React');
   await page.waitForTimeout(300);
   const reactN = await page.$$eval('.item', els => els.length);
   console.log('7) 框架筛选 React -> 显示', reactN, '张');
-  await page.$eval('#fwChips .chip[data-fw=""]', e => e.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+  await page.selectOption('#fwSel', '');
   await page.waitForTimeout(200);
 
   // 8) kind filter -> 获奖项目
@@ -83,18 +83,22 @@ const path = require('path');
   await page.$eval('#kindSeg button[data-kind="all"]', e => e.dispatchEvent(new MouseEvent('click', { bubbles: true })));
   await page.waitForTimeout(200);
 
-  // 9) search removed per user request (browse-only) — verify no #q exists
-  const hasSearch = await page.$('#q');
-  console.log('9) 搜索框已移除（应为 null）=', hasSearch === null ? 'null ✅' : '仍存在 ⚠️');
+  // 9) verify dropdowns exist and have optgroups
+  const hasOptgroups = await page.evaluate(() => {
+    const fw = document.querySelectorAll('#fwSel optgroup').length;
+    const th = document.querySelectorAll('#themeSel optgroup').length;
+    return { fwOptgroups: fw, themeOptgroups: th };
+  });
+  console.log('9) 下拉框分组: 框架', hasOptgroups.fwOptgroups, '个, 主题', hasOptgroups.themeOptgroups, '个');
 
-  // 10) theme filter
-  const themeName = await page.$$eval('#themeChips .chip[data-th]:not([data-th=""])', els => els[0] ? els[0].getAttribute('data-th') : null);
+  // 10) theme filter (via select dropdown)
+  const themeName = await page.$eval('#themeSel', sel => sel.options[1] ? sel.options[1].value : null);
   if (themeName) {
-    await page.$eval(`#themeChips .chip[data-th="${themeName}"]`, e => e.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    await page.selectOption('#themeSel', themeName);
     await page.waitForTimeout(300);
     const themeN = await page.$$eval('.item', els => els.length);
     console.log('10) 主题筛选 "' + themeName + '" -> 显示', themeN, '张');
-    await page.$eval('#themeChips .chip[data-th=""]', e => e.dispatchEvent(new MouseEvent('click', { bubbles: true })));
+    await page.selectOption('#themeSel', '');
     await page.waitForTimeout(200);
   }
 
