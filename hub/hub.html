@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AwardCode Hub · 获奖源码库</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%23ff3d6e'/><text x='8' y='12' font-size='10' text-anchor='middle' fill='white' font-family='sans-serif'>A</text></svg>" />
+<style>
+  :root{--bg:#0c0c12;--card:#15151f;--ink:#f4f4fa;--sub:#9a9ab0;--line:#262633;
+    --link:#7aa2ff;--accent:#ff3d6e;--ok:#34d399}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;font-size:14.5px}
+  .wrap{max-width:1240px;margin:0 auto;padding:30px 22px 60px}
+  header h1{font-size:25px;margin:0 0 4px}
+  header p{color:var(--sub);margin:0;max-width:880px}
+  .bar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:20px 0 10px}
+  .bar input{flex:1;min-width:220px;background:#101019;border:1px solid var(--line);color:var(--ink);
+    padding:10px 14px;border-radius:10px;font-size:14px;outline:none}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 18px}
+  .chip{padding:6px 13px;border-radius:999px;border:1px solid var(--line);background:#101019;color:var(--sub);cursor:pointer;font-size:13px;user-select:none}
+  .chip.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+  .c{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column}
+  .c h3{margin:0 0 2px;font-size:17px}
+  .c .meta{color:var(--sub);font-size:12.5px;margin-bottom:8px}
+  .c .badges{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+  .b{font-size:11px;padding:2px 9px;border-radius:999px;background:rgba(122,162,255,.14);color:var(--link);font-weight:600}
+  .b.y{background:rgba(255,61,110,.16);color:#ff7d9c}
+  .b.g{background:rgba(52,211,153,.14);color:var(--ok)}
+  .c .desc{color:#c7c7d6;font-size:13px;flex:1;margin-bottom:12px}
+  .c .acts{display:flex;gap:8px;flex-wrap:wrap}
+  .c button{background:#1d1d2b;border:1px solid var(--line);color:var(--ink);padding:8px 12px;border-radius:9px;cursor:pointer;font-size:12.5px}
+  .c button:hover{border-color:var(--accent)}
+  .c button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .c .size{font-size:11px;color:var(--sub);align-self:flex-end;margin-top:6px}
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;z-index:100;padding:24px}
+  .modal.on{display:flex}
+  .box{background:var(--bg);border:1px solid var(--line);border-radius:14px;width:100%;max-width:1100px;margin:auto;display:flex;flex-direction:column;height:88vh;overflow:hidden}
+  .box .top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+  .box .top b{font-size:15px}
+  .box .top .x{cursor:pointer;color:var(--sub);font-size:22px;line-height:1}
+  .box iframe{flex:1;width:100%;border:0;background:#fff}
+  /* source view */
+  .src{display:flex;flex:1;min-height:0}
+  .tree{width:280px;border-right:1px solid var(--line);overflow:auto;padding:10px;font-size:13px}
+  .tree .crumb{color:var(--sub);font-size:12px;margin-bottom:8px;word-break:break-all}
+  .tree .node{padding:5px 8px;border-radius:7px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .tree .node:hover{background:#1d1d2b}
+  .tree .node.dir{color:var(--link)}
+  .code{flex:1;display:flex;flex-direction:column;min-width:0}
+  .code .chead{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-bottom:1px solid var(--line);font-size:12px;color:var(--sub)}
+  .code pre{flex:1;margin:0;overflow:auto;padding:14px;font-size:12.5px;line-height:1.5;
+    font-family:ui-monospace,Menlo,Consolas,monospace;color:#d8e0ff;background:#07070d;white-space:pre}
+  .code .copy{padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:#1d1d2b;color:var(--ink);cursor:pointer}
+  .hint{color:var(--sub);font-size:12px;padding:20px}
+  footer{margin-top:36px;color:var(--sub);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>AwardCode Hub · 获奖源码库</h1>
+    <p>自动扫描 <code>source/</code> 中克隆的获奖源码，按主题分类。预览与「查看源码」均直接读取原始文件——<b>与获奖代码逐字节一致</b>，不做任何改写。</p>
+  </header>
+
+  <div class="bar">
+    <input id="search" placeholder="搜索作品 / 工作室 / 技术…" />
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+
+  <footer>源码来自 source/ 及官方开源仓库（MIT/各自许可证）· 商用前请确认原作品授权</footer>
+</div>
+
+<!-- preview modal -->
+<div class="modal" id="previewModal"><div class="box">
+  <div class="top"><b id="pvTitle">预览</b><span class="x" onclick="closeModal('previewModal')">×</span></div>
+  <iframe id="pvFrame" src="about:blank"></iframe>
+</div></div>
+
+<!-- source modal -->
+<div class="modal" id="sourceModal"><div class="box">
+  <div class="top"><b id="srcTitle">源码</b><span class="x" onclick="closeModal('sourceModal')">×</span></div>
+  <div class="src">
+    <div class="tree"><div class="crumb" id="srcCrumb"></div><div id="srcTree"></div></div>
+    <div class="code">
+      <div class="chead"><span id="srcFile">选择左侧文件查看</span><button class="copy" onclick="copyCode()">复制</button></div>
+      <pre id="srcCode">// 点击左侧文件查看原始源码
+// 内容来自 source/ 中的真实文件，未做任何修改</pre>
+    </div>
+  </div>
+</div></div>
+
+<script>
+let PROJECTS = [], ACTIVE_THEME = 'all', curSrc = { id:null, path:'' }, curRaw = '';
+
+async function load(){
+  const r = await fetch('/api/projects');
+  PROJECTS = await r.json();
+  buildChips();
+  render();
+}
+function allThemes(){
+  const s = new Set();
+  PROJECTS.forEach(p => p.themes.forEach(t => s.add(t)));
+  return [...s];
+}
+function buildChips(){
+  const themes = allThemes();
+  const el = document.getElementById('chips');
+  el.innerHTML = '';
+  const mk = (label, val) => {
+    const c = document.createElement('div');
+    c.className = 'chip' + (ACTIVE_THEME===val?' on':'');
+    c.textContent = label;
+    c.onclick = () => { ACTIVE_THEME = val; buildChips(); render(); };
+    el.appendChild(c);
+  };
+  mk('全部', 'all');
+  themes.forEach(t => mk(t, t));
+}
+function render(){
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  const list = PROJECTS.filter(p => {
+    const themeOk = ACTIVE_THEME==='all' || p.themes.includes(ACTIVE_THEME);
+    const qOk = !q || (p.name+' '+p.studio+' '+p.award+' '+p.deps.join(' ')+' '+p.themes.join(' ')).toLowerCase().includes(q);
+    return themeOk && qOk;
+  });
+  if(!list.length){ grid.innerHTML = '<div class="hint">没有匹配的项目。</div>'; return; }
+  list.forEach(p => {
+    const c = document.createElement('div');
+    c.className = 'c';
+    const themes = p.themes.map(t=>`<span class="b">${t}</span>`).join('');
+    const srcBadge = p.local ? `<span class="b g">本地源码</span>` : `<span class="b y">官方开源</span>`;
+    const live = p.live ? `<a class="b" href="${p.live}" target="_blank" style="text-decoration:none">原站↗</a>` : '';
+    const github = p.github ? `<a class="b" href="${p.github}" target="_blank" style="text-decoration:none">GitHub↗</a>` : '';
+    c.innerHTML = `
+      <h3>${p.name}</h3>
+      <div class="meta">${p.year} · ${p.award} · ${p.studio}${p.sizeMB?(' · '+p.sizeMB+'MB'):''}</div>
+      <div class="badges">${srcBadge}${themes}${live}${github}</div>
+      <div class="desc">${p.desc||''}</div>
+      <div class="acts">
+        <button class="primary" onclick="openPreview('${p.id}')">▶ 预览真实代码</button>
+        <button onclick="openSource('${p.id}')">⟨⟩ 查看源码</button>
+        <button onclick="copyCmd(\`${p.runCmd}\`)">⧉ 复制运行命令</button>
+      </div>`;
+    grid.appendChild(c);
+  });
+}
+document.getElementById('search').addEventListener('input', render);
+
+function openPreview(id){
+  const p = PROJECTS.find(x=>x.id===id);
+  document.getElementById('pvTitle').textContent = '预览：' + p.name;
+  document.getElementById('pvFrame').src = '/p/' + id + '/';
+  document.getElementById('previewModal').classList.add('on');
+}
+function openSource(id){
+  const p = PROJECTS.find(x=>x.id===id);
+  curSrc = { id, path:'' };
+  document.getElementById('srcTitle').textContent = '源码：' + p.name + (p.local?'（本地原始文件）':'（官方开源链接）');
+  document.getElementById('srcCode').textContent = '// 点击左侧文件查看原始源码\n// 内容来自 source/ 中的真实文件，未做任何修改';
+  document.getElementById('srcFile').textContent = '选择左侧文件查看';
+  loadTree();
+  document.getElementById('sourceModal').classList.add('on');
+}
+async function loadTree(){
+  if(!curSrc.id) return;
+  const r = await fetch('/api/projects/'+encodeURIComponent(curSrc.id)+'/tree?path='+encodeURIComponent(curSrc.path));
+  const entries = await r.json();
+  document.getElementById('srcCrumb').textContent = curSrc.id + (curSrc.path ? '/'+curSrc.path : '');
+  const tree = document.getElementById('srcTree');
+  tree.innerHTML = '';
+  entries.forEach(e => {
+    const n = document.createElement('div');
+    n.className = 'node' + (e.dir?' dir':'');
+    n.textContent = (e.dir?'📁 ':'📄 ') + e.name;
+    n.onclick = () => {
+      if(e.dir){
+        curSrc.path = (curSrc.path ? curSrc.path+'/' : '') + e.name;
+        loadTree();
+      } else {
+        loadFile(curSrc.path ? curSrc.path+'/'+e.name : e.name);
+      }
+    };
+    tree.appendChild(n);
+  });
+}
+async function loadFile(rel){
+  const r = await fetch('/api/projects/'+encodeURIComponent(curSrc.id)+'/raw?path='+encodeURIComponent(rel));
+  const txt = await r.text();
+  curRaw = txt;
+  document.getElementById('srcFile').textContent = rel;
+  document.getElementById('srcCode').textContent = txt;
+}
+async function copyCode(){
+  if(!curRaw){ alert('请先选择一个文件'); return; }
+  await navigator.clipboard.writeText(curRaw);
+  alert('已复制当前文件源码（与获奖代码一致）');
+}
+async function copyCmd(cmd){
+  await navigator.clipboard.writeText(cmd);
+  alert('已复制运行命令：\n'+cmd);
+}
+function closeModal(id){ document.getElementById(id).classList.remove('on'); if(id==='previewModal') document.getElementById('pvFrame').src='about:blank'; }
+document.querySelectorAll('.modal').forEach(m => m.addEventListener('click', e => { if(e.target===m) closeModal(m.id); }));
+
+load();
+</script>
+</body>
+</html>

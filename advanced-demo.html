@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AURORA — Award-tier Interactive Studio</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='%23ff3d6e'/></svg>" />
+<style>
+  :root{
+    --bg:#07070c; --fg:#f4f4fa; --muted:#9a9ab0; --accent:#ff3d6e; --accent2:#39e6ff;
+    --font: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto !important}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  /* custom cursor */
+  .cursor{position:fixed;top:0;left:0;width:18px;height:18px;border-radius:50%;background:var(--fg);
+    mix-blend-mode:difference;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);
+    transition:width .25s,height .25s;will-change:transform}
+  .cursor.big{width:64px;height:64px;background:var(--accent2)}
+  @media(hover:none){.cursor{display:none}}
+  /* webgl bg */
+  #bg{position:fixed;inset:0;z-index:-2;display:block}
+  .bg-fallback{position:fixed;inset:0;z-index:-3;background:
+    radial-gradient(60% 60% at 20% 20%, #2a0f3a 0%, transparent 60%),
+    radial-gradient(60% 60% at 80% 30%, #0f2a3a 0%, transparent 60%),
+    radial-gradient(70% 70% at 50% 90%, #1a0f2a 0%, transparent 60%), #07070c;}
+  /* loader */
+  .loader{position:fixed;inset:0;background:var(--bg);z-index:10000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;transition:opacity .8s ease}
+  .loader.done{opacity:0;pointer-events:none}
+  .loader .count{font-size:64px;font-weight:700;letter-spacing:-2px}
+  .loader .bar{width:220px;height:2px;background:#222;overflow:hidden}
+  .loader .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .3s}
+  /* nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:22px 40px;mix-blend-mode:difference}
+  nav .logo{font-weight:800;letter-spacing:2px;font-size:18px}
+  nav .links{display:flex;gap:28px}
+  nav .links a{color:var(--fg);text-decoration:none;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+  nav .links a:hover{opacity:.6}
+  /* hero */
+  .hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 20px;position:relative}
+  .hero .kicker{font-size:13px;letter-spacing:6px;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
+  .hero h1{font-size:clamp(48px,11vw,150px);line-height:.92;font-weight:800;letter-spacing:-3px}
+  .hero h1 .line{display:block;overflow:hidden}
+  .hero h1 .line span{display:inline-block;transform:translateY(110%)}
+  .hero p{max-width:520px;margin-top:26px;color:var(--muted);font-size:16px;line-height:1.6}
+  .scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:3px;color:var(--muted);text-transform:uppercase}
+  /* sections */
+  section{padding:120px 40px;max-width:1200px;margin:0 auto}
+  .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--accent2);margin-bottom:18px}
+  h2{font-size:clamp(32px,5vw,64px);line-height:1.05;font-weight:800;letter-spacing:-1.5px;max-width:14ch}
+  .lead{margin-top:24px;color:var(--muted);font-size:18px;max-width:60ch;line-height:1.7}
+  .reveal{opacity:0;transform:translateY(40px)}
+  /* marquee */
+  .marquee{overflow:hidden;white-space:nowrap;padding:60px 0;border-top:1px solid #1c1c28;border-bottom:1px solid #1c1c28;margin:40px 0}
+  .marquee .track{display:inline-block;animation:scroll 22s linear infinite;will-change:transform}
+  .marquee span{font-size:clamp(40px,8vw,110px);font-weight:800;letter-spacing:-2px;padding:0 30px;color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  /* works grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:50px}
+  .card-item{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;border:1px solid #1c1c28;background:#0d0d16;cursor:pointer}
+  .card-item .num{position:absolute;top:16px;left:18px;font-size:12px;color:var(--muted);letter-spacing:2px;z-index:2}
+  .card-item .ttl{position:absolute;bottom:18px;left:18px;font-size:20px;font-weight:700;z-index:2}
+  .card-item canvas{position:absolute;inset:0;width:100%;height:100%}
+  .card-item:hover .ttl{color:var(--accent)}
+  /* magnetic cta */
+  .cta-wrap{display:flex;justify-content:center;padding:80px 20px 140px}
+  .magnetic{display:inline-flex;align-items:center;gap:14px;padding:22px 40px;border-radius:999px;background:var(--fg);color:#07070c;font-weight:700;font-size:16px;letter-spacing:.5px;text-decoration:none;will-change:transform}
+  .magnetic .dot{width:9px;height:9px;border-radius:50%;background:var(--accent)}
+  footer{padding:50px 40px;border-top:1px solid #1c1c28;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;max-width:1200px;margin:0 auto}
+  @media(max-width:640px){nav .links{display:none}section{padding:80px 22px}}
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "gsap": "https://unpkg.com/gsap@3.12.5/index.js",
+    "gsap/ScrollTrigger": "https://unpkg.com/gsap@3.12.5/ScrollTrigger.js",
+    "lenis": "https://esm.sh/lenis@1.1.14"
+  }
+}
+</script>
+</head>
+<body>
+  <div class="bg-fallback"></div>
+  <canvas id="bg"></canvas>
+  <div class="cursor" id="cursor"></div>
+
+  <div class="loader" id="loader">
+    <div class="count" id="count">0</div>
+    <div class="bar"><i id="bar"></i></div>
+  </div>
+
+  <nav>
+    <div class="logo">AURORA°</div>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#about">Studio</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="kicker">Creative Technology Studio</div>
+    <h1>
+      <span class="line"><span>WE BUILD</span></span>
+      <span class="line"><span>DIGITAL</span></span>
+      <span class="line"><span>DREAMS</span></span>
+    </h1>
+    <p>沉浸式 WebGL 体验、电影级滚动叙事与毫秒级交互。一家把像素变成杰作的工作室。</p>
+    <div class="scroll-hint">Scroll ↓</div>
+  </header>
+
+  <section id="about">
+    <div class="eyebrow reveal">01 — Philosophy</div>
+    <h2 class="reveal">设计是约束，<br>动画是自由。</h2>
+    <p class="lead reveal">我们用 Three.js 与自定义着色器构建会呼吸的界面，用 GSAP 编排每一帧节奏，用 Lenis 让滚动如丝般顺滑。每一个项目都在挑战浏览器能承载的想象边界。</p>
+  </section>
+
+  <div class="marquee">
+    <div class="track">
+      <span>WEBGL ·</span><span>SHADERS ·</span><span>SCROLL ·</span><span>MOTION ·</span><span>WEBGL ·</span><span>SHADERS ·</span><span>SCROLL ·</span><span>MOTION ·</span>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="eyebrow reveal">02 — Selected Work</div>
+    <h2 class="reveal">获奖级<br>互动案例</h2>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <div class="cta-wrap">
+    <a class="magnetic" id="cta" href="#contact"><span class="dot"></span>Start a project</a>
+  </div>
+
+  <footer>
+    <div>© 2026 AURORA STUDIO — Built with Three.js · GSAP · Lenis</div>
+    <div>Award-tier interactive demo</div>
+  </footer>
+
+<script type="module">
+import * as THREE from 'three';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
+
+gsap.registerPlugin(ScrollTrigger);
+
+/* ---------- 1. WebGL aurora background ---------- */
+function initBackground(){
+  const canvas = document.getElementById('bg');
+  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:false});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+  const geo = new THREE.PlaneGeometry(2, 2);
+
+  const uniforms = {
+    u_time: { value: 0 },
+    u_res: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+    u_mouse: { value: new THREE.Vector2(0.5, 0.5) }
+  };
+
+  const frag = `
+    precision highp float;
+    uniform float u_time; uniform vec2 u_res; uniform vec2 u_mouse;
+    varying vec2 v_uv;
+    vec2 hash22(vec2 p){ p=vec2(dot(p,vec2(127.1,311.7)),dot(p,vec2(269.5,183.3))); return fract(sin(p)*43758.5453); }
+    float noise(vec2 p){
+      vec2 i=floor(p), f=fract(p); vec2 u=f*f*(3.0-2.0*f);
+      float a=dot(hash22(i)-0.5,f), b=dot(hash22(i+vec2(1,0))-0.5,f-vec2(1,0));
+      float c=dot(hash22(i+vec2(0,1))-0.5,f-vec2(0,1)), d=dot(hash22(i+vec2(1,1))-0.5,f-vec2(1,1));
+      return mix(mix(a,b,u.x),mix(c,d,u.x),u.y)+0.5;
+    }
+    float fbm(vec2 p){ float v=0.0,a=0.5; for(int i=0;i<5;i++){ v+=a*noise(p); p*=2.0; a*=0.5; } return v; }
+    void main(){
+      vec2 uv=v_uv; vec2 p=uv*3.0; p.x*=u_res.x/u_res.y;
+      float t=u_time*0.06;
+      float n=fbm(p+vec2(t, t*0.5)+ (u_mouse-0.5)*0.6);
+      float n2=fbm(p*1.6 - vec2(t*0.7, t));
+      vec3 c1=vec3(0.04,0.05,0.16);
+      vec3 c2=vec3(0.95,0.22,0.52);
+      vec3 c3=vec3(0.20,0.85,0.98);
+      vec3 col=mix(c1,c2,smoothstep(0.15,0.85,n));
+      col=mix(col,c3,smoothstep(0.3,0.95,n2)*0.65);
+      float d=distance(uv,vec2(0.5));
+      col*=1.0-smoothstep(0.35,1.0,d)*0.55;
+      // subtle grain
+      float grain = hash22(uv*1000.0+u_time).x;
+      col += (grain-0.5)*0.03;
+      gl_FragColor=vec4(col,1.0);
+    }`;
+  const vert = `varying vec2 v_uv; void main(){ v_uv=uv; gl_Position=vec4(position,1.0); }`;
+
+  const mat = new THREE.ShaderMaterial({ uniforms, vertexShader: vert, fragmentShader: frag });
+  scene.add(new THREE.Mesh(geo, mat));
+
+  window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    uniforms.u_res.value.set(window.innerWidth, window.innerHeight);
+  });
+  window.addEventListener('mousemove', (e) => {
+    uniforms.u_mouse.value.set(e.clientX/window.innerWidth, 1.0 - e.clientY/window.innerHeight);
+  });
+
+  const clock = new THREE.Clock();
+  function loop(){
+    uniforms.u_time.value = clock.getElapsedTime();
+    renderer.render(scene, camera);
+    requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+/* ---------- 2. Smooth scroll (Lenis) ---------- */
+function initScroll(){
+  const lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+  return lenis;
+}
+
+/* ---------- 3. Custom cursor ---------- */
+function initCursor(){
+  const cur = document.getElementById('cursor');
+  let x=0, y=0, tx=0, ty=0;
+  window.addEventListener('mousemove', (e) => { tx=e.clientX; ty=e.clientY; });
+  function tick(){
+    x += (tx - x) * 0.18; y += (ty - y) * 0.18;
+    cur.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%)`;
+    requestAnimationFrame(tick);
+  }
+  tick();
+  document.querySelectorAll('a, .card-item, .magnetic').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('big'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+  });
+}
+
+/* ---------- 4. Magnetic button ---------- */
+function initMagnetic(){
+  const btn = document.getElementById('cta');
+  btn.addEventListener('mousemove', (e) => {
+    const r = btn.getBoundingClientRect();
+    const mx = e.clientX - r.left - r.width/2;
+    const my = e.clientY - r.top - r.height/2;
+    gsap.to(btn, { x: mx*0.4, y: my*0.4, duration: 0.4, ease: 'power3.out' });
+  });
+  btn.addEventListener('mouseleave', () => gsap.to(btn, { x:0, y:0, duration: 0.6, ease: 'elastic.out(1,0.3)' }));
+}
+
+/* ---------- 5. Hero intro animation ---------- */
+function initHero(){
+  gsap.to('.hero h1 .line span', { y: '0%', duration: 1.1, ease: 'power4.out', stagger: 0.12, delay: 0.2 });
+  gsap.from('.hero .kicker, .hero p, .scroll-hint', { opacity:0, y:20, duration:1, stagger:0.1, delay:0.9 });
+}
+
+/* ---------- 6. Scroll reveals ---------- */
+function initReveals(){
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.to(el, {
+      opacity:1, y:0, duration:1, ease:'power3.out',
+      scrollTrigger:{ trigger: el, start:'top 85%' }
+    });
+  });
+}
+
+/* ---------- 7. Works grid (mini WebGL thumbnails) ---------- */
+function initGrid(){
+  const data = [
+    { t:'NEBULA', c:'#ff3d6e' }, { t:'PRISM', c:'#39e6ff' },
+    { t:'FLUX', c:'#ffd23d' }, { t:'ORBIT', c:'#9b5cff' },
+    { t:'ECHO', c:'#3dffa0' }, { t:'VERGE', c:'#ff7a3d' }
+  ];
+  const grid = document.getElementById('grid');
+  data.forEach((d, i) => {
+    const item = document.createElement('div');
+    item.className = 'card-item reveal';
+    item.innerHTML = `<span class="num">0${i+1}</span><canvas></canvas><span class="ttl">${d.t}</span>`;
+    grid.appendChild(item);
+  });
+
+  // attach a small rotating distorted sphere to each card canvas
+  document.querySelectorAll('.card-item canvas').forEach((cv, idx) => {
+    try {
+      const r = new THREE.WebGLRenderer({ canvas: cv, antialias:true, alpha:true });
+      r.setSize(cv.clientWidth || 300, cv.clientHeight || 225, false);
+      const sc = new THREE.Scene();
+      const cam = new THREE.PerspectiveCamera(50, 4/3, 0.1, 10); cam.position.z = 2.4;
+      const col = new THREE.Color(data[idx % data.length].c);
+      const m = new THREE.Mesh(
+        new THREE.IcosahedronGeometry(1, 4),
+        new THREE.MeshStandardMaterial({ color: col, roughness:0.35, metalness:0.4, flatShading:true })
+      );
+      sc.add(m);
+      sc.add(new THREE.PointLight(0xffffff, 30).translateZ(3));
+      sc.add(new THREE.AmbientLight(0x404060, 2));
+      let raf;
+      const spin = () => { m.rotation.x += 0.004; m.rotation.y += 0.006; r.render(sc, cam); raf = requestAnimationFrame(spin); };
+      spin();
+      cv._stop = () => cancelAnimationFrame(raf);
+    } catch(e){ /* fallback: leave card background */ }
+  });
+}
+
+/* ---------- 8. Loader ---------- */
+function initLoader(){
+  const loader = document.getElementById('loader');
+  const count = document.getElementById('count');
+  const bar = document.getElementById('bar');
+  let p = 0;
+  const iv = setInterval(() => {
+    p = Math.min(100, p + Math.random()*18);
+    count.textContent = Math.floor(p);
+    bar.style.width = p + '%';
+    if (p >= 100){ clearInterval(iv); setTimeout(() => loader.classList.add('done'), 350); }
+  }, 130);
+}
+
+/* ---------- boot ---------- */
+try { initBackground(); } catch(e){ console.warn('WebGL bg disabled:', e); }
+try { initScroll(); } catch(e){ console.warn('Lenis disabled:', e); }
+try { initCursor(); } catch(e){ console.warn('cursor disabled:', e); }
+try { initMagnetic(); } catch(e){ console.warn('magnetic disabled:', e); }
+try { initHero(); } catch(e){ console.warn('hero anim disabled:', e); }
+try { initReveals(); } catch(e){ console.warn('reveals disabled:', e); }
+try { initGrid(); } catch(e){ console.warn('grid disabled:', e); }
+try { initLoader(); } catch(e){ console.warn('loader disabled:', e); }
+
+window.addEventListener('load', () => {
+  // recalc triggers after everything (incl. fonts) settled
+  setTimeout(() => ScrollTrigger.refresh(), 400);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,4981 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>预览选择画廊 · 全量版</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼️</text></svg>">
+<style>
+:root{--bg:#0a0b14;--panel:rgba(255,255,255,.04);--panel2:rgba(255,255,255,.06);--border:rgba(255,255,255,.10);--txt:#e8eaf2;--muted:#8b90a8;--faint:#5b607a;--cyan:#22d3ee;--grad:linear-gradient(135deg,#22d3ee,#a78bfa 55%,#f472b6)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:radial-gradient(1200px 800px at 12% -10%,#1a1d3a 0,transparent 55%),radial-gradient(1000px 700px at 100% 0,#2a1740 0,transparent 50%),var(--bg);color:var(--txt);min-height:100%}
+.wrap{max-width:1340px;margin:0 auto;padding:26px 22px 120px}
+header{margin-bottom:20px}
+.title{font-size:32px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:14px;max-width:860px;margin-top:6px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:9px 15px}
+.stat b{font-size:20px;display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:11px;color:var(--muted)}
+.controls{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 72%,transparent);padding:12px 0;backdrop-filter:blur(6px)}
+.topbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.seg{display:flex;background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.seg button{background:none;border:0;color:var(--muted);padding:10px 14px;font-size:13px;cursor:pointer;font-weight:600}
+.seg button.active{background:var(--grad);color:#0a0b14}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
+.chip{background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:7px 14px;font-size:12.5px;color:var(--muted);cursor:pointer}
+.chip:hover{border-color:var(--cyan);color:var(--txt)}
+.chip.active{background:var(--grad);color:#0a0b14;border-color:transparent;font-weight:700}
+.ctxbar{display:flex;justify-content:space-between;align-items:center;margin:16px 2px 12px;flex-wrap:wrap;gap:8px}
+.ctxbar .lbl{color:var(--muted);font-size:13px}.ctxbar .lbl b{color:var(--txt)}
+.clear{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:5px 12px;font-size:12px;cursor:pointer}
+.clear:hover{color:var(--txt);border-color:var(--cyan)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.item{position:relative;background:var(--panel);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:.16s}
+.item:hover{transform:translateY(-3px);border-color:rgba(167,139,250,.5);box-shadow:0 12px 40px -16px rgba(120,90,255,.5)}
+.item.sel{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(34,211,238,.5)}
+.item img{width:100%;height:170px;object-fit:cover;display:block;background:#0e1018}
+.item .body{padding:12px 14px}
+.item h3{font-size:15px;font-weight:700;line-height:1.25}
+.item .vendor{font-size:11.5px;color:var(--muted);margin-top:2px}
+.item .meta{font-size:11px;color:#aab;margin-top:4px}
+.item .award{display:inline-block;margin-top:6px;font-size:10.5px;font-weight:800;padding:2px 9px;border-radius:999px;background:rgba(52,211,153,.18);color:#6ee7b7}
+.chips2{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+.ctag{font-size:9.5px;font-weight:600;padding:2px 7px;border-radius:6px;background:#151823;border:1px solid #23283a;color:#aeb3c8}
+.fw{display:flex;gap:4px;flex-wrap:wrap;margin-top:8px}
+.ftag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px}
+.fw-react{background:rgba(97,218,251,.16);color:#7dd3fc}.fw-vue{background:rgba(66,184,131,.16);color:#86efac}
+.fw-angular{background:rgba(233,74,95,.18);color:#f7a3af}.fw-svelte{background:rgba(255,62,0,.18);color:#ff8a5c}
+.fw-solid{background:rgba(79,139,255,.16);color:#9ab8ff}.fw-wc{background:rgba(167,139,250,.16);color:#c4b5fd}
+.fw-css{background:rgba(251,191,36,.16);color:#fcd34d}.fw-multi{background:rgba(244,114,182,.16);color:#f9a8d4}
+.fw-qwik{background:rgba(172,127,244,.16);color:#c4b5fd}
+.kind{position:absolute;top:10px;left:10px;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:8px;background:rgba(10,11,20,.7);backdrop-filter:blur(4px);color:var(--txt)}
+.kind.proj{color:#6ee7b7}
+.pick{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:rgba(10,11,20,.6);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--muted)}
+.item.sel .pick{background:var(--cyan);color:#0a0b14;border-color:var(--cyan)}
+.open{display:block;text-align:center;font-size:12.5px;font-weight:600;padding:9px;margin:0 14px 14px;border-radius:9px;border:1px solid var(--border);background:var(--panel2);color:var(--txt)}
+.open:hover{border-color:var(--cyan);color:var(--cyan)}
+.empty{text-align:center;color:var(--muted);padding:60px 0}
+.sec{margin-top:34px}
+.sec:first-of-type{margin-top:4px}
+.sec-h{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 2px 16px;padding-bottom:13px;border-bottom:1px solid var(--border)}
+.sec-ic{font-size:23px;line-height:1}
+.sec-h h2{font-size:21px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.sec-n{font-size:14px;font-weight:900;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec-tip{font-size:12px;color:var(--faint);margin-left:auto;text-align:right;max-width:60%}
+@media(max-width:680px){.sec-tip{display:none}}
+.bar{position:fixed;right:16px;bottom:16px;display:none;align-items:center;gap:9px;background:rgba(20,22,36,.96);border:1px solid var(--border);border-radius:14px;padding:9px 13px;backdrop-filter:blur(8px);box-shadow:0 10px 40px -10px rgba(0,0,0,.6);z-index:40;max-width:calc(100vw - 32px)}
+.bar.on{display:flex}
+.bar .cnt{font-size:14px;font-weight:700}.bar .cnt b{color:var(--cyan)}
+.bar button{background:var(--grad);color:#0a0b14;border:0;border-radius:9px;padding:8px 14px;font-weight:700;font-size:13px;cursor:pointer}
+.bar .ghost{background:var(--panel2);color:var(--txt);border:1px solid var(--border)}
+footer{margin-top:40px;text-align:center;color:var(--faint);font-size:12px}
+</style></head>
+<body><div class="wrap">
+<header>
+<div class="title">🖼️ 预览选择画廊 · 全量版</div>
+<div class="sub">收录 <b style="color:var(--txt)">全部</b>主流 UI 组件库 / 设计系统 + 世界级获奖网站，每个都生成了预览图。点击卡片即可<b style="color:var(--txt)">选择</b>，点「打开」进入源码 / 文档。选择本地保存，可随时导出。离线可用，运行时零外部调用。</div>
+<div class="stats" id="stats"></div>
+</header>
+<div class="controls">
+<div class="topbar">
+<div class="seg" id="kindSeg"></div>
+</div>
+<div class="chips" id="fwChips"></div>
+<div class="chips" id="themeChips" style="margin-top:8px"></div>
+</div>
+<div class="ctxbar"><div class="lbl" id="ctxLbl"></div><button class="clear" id="clearBtn" style="display:none">✕ 清除筛选</button></div>
+<div id="view"></div>
+<footer>共 <b id="f-total">0</b> 个预览项。</footer>
+</div>
+<div class="bar" id="bar"><span class="cnt">已选 <b id="selN">0</b> 项</span><button id="copySel">📋 复制已选</button><button class="ghost" id="onlySel">仅看已选</button><button class="ghost" id="clearSel">清空</button></div>
+<script>
+const ITEMS = [
+ {
+  "id": "antd",
+  "name": "Ant Design",
+  "fw": [
+   "React"
+  ],
+  "theme": "企业级 / 数据密集",
+  "vendor": "蚂蚁集团 Ant Group",
+  "link": "https://ant.design",
+  "kind": "item",
+  "img": "previews/antd.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/ant-design/ant-design",
+  "desc": "最成熟的企业级 React 组件库，组件最全、中后台首选。"
+ },
+ {
+  "id": "mui",
+  "name": "Material UI (MUI)",
+  "fw": [
+   "React"
+  ],
+  "theme": "Material Design 3",
+  "vendor": "MUI / Google 规范",
+  "link": "https://mui.com",
+  "kind": "item",
+  "img": "previews/mui.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/mui/material-ui",
+  "desc": "Google Material Design 规范的标杆实现，高度可定制、暗黑模式一流。"
+ },
+ {
+  "id": "chakra",
+  "name": "Chakra UI",
+  "fw": [
+   "React"
+  ],
+  "theme": "简洁 / 组合式",
+  "vendor": "Chakra / Segun Adebayo",
+  "link": "https://chakra-ui.com",
+  "kind": "item",
+  "img": "previews/chakra.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Table"
+  ],
+  "repo": "https://github.com/chakra-ui/chakra-ui",
+  "desc": "组合式 API + Emotion，内置暗黑模式与 a11y，源码易读可二次封装。"
+ },
+ {
+  "id": "mantine",
+  "name": "Mantine",
+  "fw": [
+   "React"
+  ],
+  "theme": "现代 / 暗色原生",
+  "vendor": "Mantine",
+  "link": "https://mantine.dev",
+  "kind": "item",
+  "img": "previews/mantine.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/mantinedev/mantine",
+  "desc": "100+ 组件 + 大量 Hooks，TypeScript 友好，开箱暗色模式，开发体验极佳。"
+ },
+ {
+  "id": "shadcn",
+  "name": "shadcn/ui",
+  "fw": [
+   "React"
+  ],
+  "theme": "Radix + Tailwind 白盒",
+  "vendor": "shadcn",
+  "link": "https://ui.shadcn.com",
+  "kind": "item",
+  "img": "previews/shadcn.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Dialog"
+  ],
+  "repo": "https://github.com/shadcn-ui/ui",
+  "desc": "复制即用、100% 代码所有权。基于 Radix 原语 + Tailwind，年度最热仓库。"
+ },
+ {
+  "id": "radix",
+  "name": "Radix UI",
+  "fw": [
+   "React"
+  ],
+  "theme": "无样式原语 / a11y",
+  "vendor": "Radix / Modulz",
+  "link": "https://www.radix-ui.com",
+  "kind": "item",
+  "img": "previews/radix.png",
+  "chips": [
+   "Dialog",
+   "DropdownMenu",
+   "Select",
+   "Checkbox",
+   "RadioGroup",
+   "Switch",
+   "Tabs",
+   "Accordion",
+   "Tooltip"
+  ],
+  "repo": "https://github.com/radix-ui/primitives",
+  "desc": "WAI-ARIA 合规的无样式交互原语，shadcn 的底层内核，可完全掌控样式。"
+ },
+ {
+  "id": "headlessui",
+  "name": "Headless UI",
+  "fw": [
+   "React",
+   "Vue"
+  ],
+  "theme": "无样式 / a11y",
+  "vendor": "Tailwind Labs",
+  "link": "https://headlessui.com",
+  "kind": "item",
+  "img": "previews/headlessui.png",
+  "chips": [
+   "Dialog",
+   "Menu",
+   "Listbox",
+   "Combobox",
+   "Switch",
+   "RadioGroup",
+   "Tab",
+   "Disclosure",
+   "Popover"
+  ],
+  "repo": "https://github.com/tailwindlabs/headlessui",
+  "desc": "Tailwind 官方无样式组件，React/Vue 双版本，可访问性优先。"
+ },
+ {
+  "id": "nextui",
+  "name": "NextUI (HeroUI)",
+  "fw": [
+   "React"
+  ],
+  "theme": "现代 / SSR 友好",
+  "vendor": "NextUI",
+  "link": "https://nextui.org",
+  "kind": "item",
+  "img": "previews/nextui.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/nextui-org/nextui",
+  "desc": "基于 React Aria + Tailwind，强调高性能与 SSR，组件量 200+。"
+ },
+ {
+  "id": "semi",
+  "name": "Semi Design",
+  "fw": [
+   "React"
+  ],
+  "theme": "企业级 / 设计代币",
+  "vendor": "字节跳动 ByteDance",
+  "link": "https://semi.design",
+  "kind": "item",
+  "img": "previews/semi.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/DouyinFE/semi-design",
+  "desc": "Design Token 与 Figma 插件完善，支持多主题动态切换，含主题商店。"
+ },
+ {
+  "id": "blueprint",
+  "name": "Blueprint",
+  "fw": [
+   "React"
+  ],
+  "theme": "数据密集型",
+  "vendor": "Palantir",
+  "link": "https://blueprintjs.com",
+  "kind": "item",
+  "img": "previews/blueprint.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "FileUpload"
+  ],
+  "repo": "https://github.com/palantir/blueprint",
+  "desc": "面向数据密集应用（表格/图表/表单）的 React 组件套件。"
+ },
+ {
+  "id": "grommet",
+  "name": "Grommet",
+  "fw": [
+   "React"
+  ],
+  "theme": "企业级 / 响应式",
+  "vendor": "HPE",
+  "link": "https://v2.grommet.io",
+  "kind": "item",
+  "img": "previews/grommet.png",
+  "chips": [
+   "Button",
+   "TextInput",
+   "Select",
+   "CheckBox",
+   "RadioButton",
+   "RangeInput",
+   "Form",
+   "FileInput",
+   "DataTable"
+  ],
+  "repo": "https://github.com/grommet/grommet",
+  "desc": "HPE 出品的响应式 React 组件库，主题系统强大。"
+ },
+ {
+  "id": "evergreen",
+  "name": "Evergreen",
+  "fw": [
+   "React"
+  ],
+  "theme": "产品级",
+  "vendor": "Segment",
+  "link": "https://evergreen.segment.com",
+  "kind": "item",
+  "img": "previews/evergreen.png",
+  "chips": [
+   "Button",
+   "TextInput",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "FilePicker"
+  ],
+  "repo": "https://github.com/segmentio/evergreen",
+  "desc": "Segment 出品的产品级 React UI 套件，开箱即用。"
+ },
+ {
+  "id": "fluent",
+  "name": "Fluent UI (React)",
+  "fw": [
+   "React"
+  ],
+  "theme": "Microsoft / Fluent",
+  "vendor": "Microsoft",
+  "link": "https://react.fluentui.dev",
+  "kind": "item",
+  "img": "previews/fluent.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Dropdown",
+   "Form"
+  ],
+  "repo": "https://github.com/microsoft/fluentui",
+  "desc": "微软 Fluent Design 的 React 实现，Office/Windows 同款。"
+ },
+ {
+  "id": "polaris",
+  "name": "Polaris",
+  "fw": [
+   "React"
+  ],
+  "theme": "电商 / Shopify",
+  "vendor": "Shopify",
+  "link": "https://polaris.shopify.com",
+  "kind": "item",
+  "img": "previews/polaris.png",
+  "chips": [
+   "Button",
+   "TextField",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "DropZone"
+  ],
+  "repo": "https://github.com/Shopify/polaris",
+  "desc": "Shopify 管理后台设计系统，电商场景组件齐全。"
+ },
+ {
+  "id": "primer",
+  "name": "Primer",
+  "fw": [
+   "React"
+  ],
+  "theme": "GitHub / 开发者工具",
+  "vendor": "GitHub",
+  "link": "https://primer.style",
+  "kind": "item",
+  "img": "previews/primer.png",
+  "chips": [
+   "Button",
+   "TextInput",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Form",
+   "FileUpload",
+   "Table"
+  ],
+  "repo": "https://github.com/primer/react",
+  "desc": "GitHub 官方设计系统，开发者工具与文档站同款风格。"
+ },
+ {
+  "id": "baseweb",
+  "name": "Base Web",
+  "fw": [
+   "React"
+  ],
+  "theme": "产品级",
+  "vendor": "Uber",
+  "link": "https://baseweb.design",
+  "kind": "item",
+  "img": "previews/baseweb.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Slider",
+   "Form",
+   "FileUploader",
+   "Table"
+  ],
+  "repo": "https://github.com/uber/baseweb",
+  "desc": "Uber 基于 Styletron 的 React 组件库，主题可深度定制。"
+ },
+ {
+  "id": "gestalt",
+  "name": "Gestalt",
+  "fw": [
+   "React"
+  ],
+  "theme": "产品级",
+  "vendor": "Pinterest",
+  "link": "https://gestalt.pinterest.systems",
+  "kind": "item",
+  "img": "previews/gestalt.png",
+  "chips": [
+   "Button",
+   "TextField",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Form",
+   "FileUploader",
+   "Table"
+  ],
+  "repo": "https://github.com/pinterest/gestalt",
+  "desc": "Pinterest 设计系统，强调一致的产品体验。"
+ },
+ {
+  "id": "antd-mobile",
+  "name": "Ant Design Mobile",
+  "fw": [
+   "React"
+  ],
+  "theme": "移动端 / H5",
+  "vendor": "蚂蚁集团",
+  "link": "https://mobile.ant.design",
+  "kind": "item",
+  "img": "previews/antd-mobile.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "ImagePicker"
+  ],
+  "repo": "https://github.com/ant-design/ant-design-mobile",
+  "desc": "移动端 Ant Design，组件专为拇指操作设计，支持 PWA。"
+ },
+ {
+  "id": "react-bootstrap",
+  "name": "React Bootstrap",
+  "fw": [
+   "React"
+  ],
+  "theme": "Bootstrap 风格",
+  "vendor": "React Bootstrap",
+  "link": "https://react-bootstrap.github.io",
+  "kind": "item",
+  "img": "previews/react-bootstrap.png",
+  "chips": [
+   "Button",
+   "Form",
+   "InputGroup",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Table",
+   "ListGroup"
+  ],
+  "repo": "https://github.com/react-bootstrap/react-bootstrap",
+  "desc": "Bootstrap 5 的 React 重写，无 jQuery 依赖。"
+ },
+ {
+  "id": "ariakit",
+  "name": "Ariakit",
+  "fw": [
+   "React"
+  ],
+  "theme": "无样式 / a11y",
+  "vendor": "Ariakit",
+  "link": "https://ariakit.org",
+  "kind": "item",
+  "img": "previews/ariakit.png",
+  "chips": [
+   "Button",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Form",
+   "Select",
+   "Combobox",
+   "Dialog",
+   "Popover"
+  ],
+  "repo": "https://github.com/ariakit/ariakit",
+  "desc": "低层级无障碍 React 组件原语，键盘导航一流。"
+ },
+ {
+  "id": "react-aria",
+  "name": "React Aria Components",
+  "fw": [
+   "React"
+  ],
+  "theme": "无样式 / a11y",
+  "vendor": "Adobe",
+  "link": "https://react-spectrum.adobe.com/react-aria",
+  "kind": "item",
+  "img": "previews/react-aria.png",
+  "chips": [
+   "Button",
+   "ToggleButton",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "TextField",
+   "Select",
+   "ComboBox",
+   "DatePicker"
+  ],
+  "repo": "https://github.com/adobe/react-spectrum",
+  "desc": "Adobe 出品的组件原语，行为/无障碍开箱即用，样式自定。"
+ },
+ {
+  "id": "element-plus",
+  "name": "Element Plus",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "企业级 / 后台",
+  "vendor": "饿了么 / Element",
+  "link": "https://element-plus.org",
+  "kind": "item",
+  "img": "previews/element-plus.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/element-plus/element-plus",
+  "desc": "Vue 3 生态扛把子，国内使用率最高，后台 CRUD 首选。"
+ },
+ {
+  "id": "naive-ui",
+  "name": "Naive UI",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "现代 / TS 友好",
+  "vendor": "TuSan (尤雨溪推荐)",
+  "link": "https://www.naiveui.com",
+  "kind": "item",
+  "img": "previews/naive-ui.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/tusen-ai/naive-ui",
+  "desc": "全 TS + Composition API，零外部依赖，主题系统基于 CSS 变量。"
+ },
+ {
+  "id": "vuetify",
+  "name": "Vuetify",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "Material Design 3",
+  "vendor": "Vuetify",
+  "link": "https://vuetifyjs.com",
+  "kind": "item",
+  "img": "previews/vuetify.png",
+  "chips": [
+   "Button",
+   "TextField",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/vuetifyjs/vuetify",
+  "desc": "Vue 的 Material Design 标杆，生态最成熟，Material You 动态主题。"
+ },
+ {
+  "id": "quasar",
+  "name": "Quasar",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "跨端 / 全家桶",
+  "vendor": "Quasar",
+  "link": "https://quasar.dev",
+  "kind": "item",
+  "img": "previews/quasar.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/quasarframework/quasar",
+  "desc": "同一套代码编译 SPA/PWA/SSR/移动端/桌面，CLI 工程化完善。"
+ },
+ {
+  "id": "primevue",
+  "name": "PrimeVue",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "企业级 / 30+ 主题",
+  "vendor": "PrimeTek",
+  "link": "https://primevue.org",
+  "kind": "item",
+  "img": "previews/primevue.png",
+  "chips": [
+   "Button",
+   "InputText",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "ToggleSwitch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/primefaces/primevue",
+  "desc": "80+ 复杂组件，Styled/Unstyled 双模式，带可视化主题工厂。"
+ },
+ {
+  "id": "antdv",
+  "name": "Ant Design Vue",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "企业级 / 与 React 对齐",
+  "vendor": "阿里系",
+  "link": "https://antdv.com",
+  "kind": "item",
+  "img": "previews/antdv.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/vueComponent/ant-design-vue",
+  "desc": "与 React 版 API 对齐，支持 Vite / Nuxt，含 ProComponents。"
+ },
+ {
+  "id": "vant",
+  "name": "Vant",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "移动端 / H5",
+  "vendor": "有赞 Youzan",
+  "link": "https://vant-ui.github.io",
+  "kind": "item",
+  "img": "previews/vant.png",
+  "chips": [
+   "Button",
+   "Field",
+   "Picker",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Uploader"
+  ],
+  "repo": "https://github.com/youzan/vant",
+  "desc": "移动端第一选择，Vue 3 + 小程序双端，组件平均 <3kB gzip。"
+ },
+ {
+  "id": "nuxt-ui",
+  "name": "Nuxt UI",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "Nuxt / SSR 满分",
+  "vendor": "Nuxt",
+  "link": "https://ui.nuxt.com",
+  "kind": "item",
+  "img": "previews/nuxt-ui.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/nuxt/ui",
+  "desc": "Nuxt 官方旗舰，基于 Reka UI + Tailwind，全量 a11y、RTL 与暗色。"
+ },
+ {
+  "id": "shadcn-vue",
+  "name": "shadcn-vue",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "Radix 系 / Tailwind",
+  "vendor": "社区",
+  "link": "https://www.shadcn-vue.com",
+  "kind": "item",
+  "img": "previews/shadcn-vue.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Dialog"
+  ],
+  "repo": "https://github.com/radix-vue/shadcn-vue",
+  "desc": "Vue 版的复制即用组件集，基于 Reka UI + Tailwind。"
+ },
+ {
+  "id": "reka-ui",
+  "name": "Reka UI",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "无样式原语 / a11y",
+  "vendor": "unovue",
+  "link": "https://reka-ui.com",
+  "kind": "item",
+  "img": "previews/reka-ui.png",
+  "chips": [
+   "Dialog",
+   "DropdownMenu",
+   "Select",
+   "Checkbox",
+   "RadioGroup",
+   "Switch",
+   "Tabs",
+   "Accordion",
+   "Tooltip"
+  ],
+  "repo": "https://github.com/unovue/reka-ui",
+  "desc": "Vue 官方支持的 Headless 内核，零样式、100% 可定制。"
+ },
+ {
+  "id": "arco-vue",
+  "name": "Arco Design",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "企业级 / 设计系统",
+  "vendor": "字节跳动",
+  "link": "https://arco.design/vue",
+  "kind": "item",
+  "img": "previews/arco-vue.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/arco-design/arco-design-vue",
+  "desc": "字节跳动设计系统，配套物料市场与低代码平台，结构清晰。"
+ },
+ {
+  "id": "tdesign-vue",
+  "name": "TDesign",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "多端统一设计系统",
+  "vendor": "腾讯 Tencent",
+  "link": "https://tdesign.tencent.com/vue",
+  "kind": "item",
+  "img": "previews/tdesign-vue.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/Tencent/tdesign-vue",
+  "desc": "腾讯多端统一设计系统（React/Vue/小程序/Flutter）。"
+ },
+ {
+  "id": "vuestic",
+  "name": "Vuestic UI",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "现代 / 即装即用",
+  "vendor": "Epicmax",
+  "link": "https://vuestic.dev",
+  "kind": "item",
+  "img": "previews/vuestic.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/epicmaxco/vuestic-ui",
+  "desc": "42 个业务组件，配置简单，响应式高性能。"
+ },
+ {
+  "id": "inkline",
+  "name": "Inkline",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "现代 / 可定制",
+  "vendor": "Inkline",
+  "link": "https://inkline.io",
+  "kind": "item",
+  "img": "previews/inkline.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Table"
+  ],
+  "repo": "https://github.com/inkline/inkline",
+  "desc": "Vue 3 组件库，内置设计系统、暗黑模式与表单验证。"
+ },
+ {
+  "id": "ng-material",
+  "name": "Angular Material",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "Material Design",
+  "vendor": "Google",
+  "link": "https://material.angular.io",
+  "kind": "item",
+  "img": "previews/ng-material.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "SlideToggle",
+   "Slider",
+   "Datepicker",
+   "FormField"
+  ],
+  "repo": "https://github.com/angular/components",
+  "desc": "Google 官方维护，基于 CDK 原语，内置动画与 i18n。"
+ },
+ {
+  "id": "ng-zorro",
+  "name": "NG-ZORRO",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 (Angular 版 antd)",
+  "vendor": "蚂蚁集团",
+  "link": "https://ng.ant.design",
+  "kind": "item",
+  "img": "previews/ng-zorro.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/NG-ZORRO/ng-zorro-antd",
+  "desc": "Ant Design 的 Angular 实现，API 与 React 版对齐。"
+ },
+ {
+  "id": "primeng",
+  "name": "PrimeNG",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 / 80+ 组件",
+  "vendor": "PrimeTek",
+  "link": "https://primeng.org",
+  "kind": "item",
+  "img": "previews/primeng.png",
+  "chips": [
+   "Button",
+   "InputText",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Slider",
+   "DatePicker",
+   "Form"
+  ],
+  "repo": "https://github.com/primefaces/primeng",
+  "desc": "Angular 企业级组件套件，主题丰富、企业支持完善。"
+ },
+ {
+  "id": "clarity",
+  "name": "Clarity",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 / 设计系统",
+  "vendor": "VMware",
+  "link": "https://clarity.design",
+  "kind": "item",
+  "img": "previews/clarity.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Slider",
+   "Datepicker",
+   "Form"
+  ],
+  "repo": "https://github.com/vmware-clarity/ng-clarity",
+  "desc": "VMware 设计系统，含 Angular 组件与核心 CSS。"
+ },
+ {
+  "id": "ng-bootstrap",
+  "name": "NG Bootstrap",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "Bootstrap 风格",
+  "vendor": "NG Bootstrap",
+  "link": "https://ng-bootstrap.github.io",
+  "kind": "item",
+  "img": "previews/ng-bootstrap.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Input",
+   "Checkbox",
+   "Radio",
+   "Select",
+   "Table",
+   "ListGroup",
+   "Card"
+  ],
+  "repo": "https://github.com/ng-bootstrap/ng-bootstrap",
+  "desc": "Bootstrap 5 的 Angular 实现，无 jQuery 依赖。"
+ },
+ {
+  "id": "taiga-ui",
+  "name": "Taiga UI",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "现代 / 设计系统",
+  "vendor": "Tinkoff",
+  "link": "https://taiga-ui.dev",
+  "kind": "item",
+  "img": "previews/taiga-ui.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Date",
+   "Form"
+  ],
+  "repo": "https://github.com/taiga-family/taiga-ui",
+  "desc": "Angular + 设计系统的现代组件库，含编辑器等高级件。"
+ },
+ {
+  "id": "skeleton",
+  "name": "Skeleton",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "设计系统 / Tailwind",
+  "vendor": "Skeleton",
+  "link": "https://skeleton.dev",
+  "kind": "item",
+  "img": "previews/skeleton.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Table"
+  ],
+  "repo": "https://github.com/skeletonlabs/skeleton",
+  "desc": "基于 Tailwind 的自适应主题 Svelte 设计系统。"
+ },
+ {
+  "id": "shadcn-svelte",
+  "name": "shadcn-svelte",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "Bits UI / Tailwind",
+  "vendor": "社区",
+  "link": "https://shadcn-svelte.com",
+  "kind": "item",
+  "img": "previews/shadcn-svelte.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Dialog"
+  ],
+  "repo": "https://github.com/huntabyte/shadcn-svelte",
+  "desc": "Svelte 版复制即用组件集，基于 Bits UI + Tailwind。"
+ },
+ {
+  "id": "smui",
+  "name": "Svelte Material UI (SMUI)",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "Material Design",
+  "vendor": "SMUI",
+  "link": "https://sveltematerialui.com",
+  "kind": "item",
+  "img": "previews/smui.png",
+  "chips": [
+   "Button",
+   "Textfield",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Table"
+  ],
+  "repo": "https://github.com/hperrin/svelte-material-ui",
+  "desc": "Material Design 的 Svelte 实现，组件覆盖全面。"
+ },
+ {
+  "id": "flowbite-svelte",
+  "name": "Flowbite Svelte",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "Tailwind / 极简",
+  "vendor": "Flowbite",
+  "link": "https://flowbite-svelte.com",
+  "kind": "item",
+  "img": "previews/flowbite-svelte.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Range",
+   "Form",
+   "Table"
+  ],
+  "repo": "https://github.com/themesberg/flowbite-svelte",
+  "desc": "Tailwind + Svelte 组件，遵循简洁极简的设计原则。"
+ },
+ {
+  "id": "carbon-svelte",
+  "name": "Carbon Components Svelte",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "企业级 (Carbon)",
+  "vendor": "IBM",
+  "link": "https://carbon-components-svelte.onrender.com",
+  "kind": "item",
+  "img": "previews/carbon-svelte.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Slider",
+   "Form",
+   "DataTable"
+  ],
+  "repo": "https://github.com/carbon-design-system/carbon-components-svelte",
+  "desc": "IBM Carbon 设计系统的 Svelte 实现。"
+ },
+ {
+  "id": "ark-ui",
+  "name": "Ark UI",
+  "fw": [
+   "Solid",
+   "Vue"
+  ],
+  "theme": "无样式 / 跨框架",
+  "vendor": "Chakra",
+  "link": "https://ark-ui.com",
+  "kind": "item",
+  "img": "previews/ark-ui.png",
+  "chips": [
+   "Dialog",
+   "Dropdown",
+   "Select",
+   "Checkbox",
+   "RadioGroup",
+   "Switch",
+   "Tabs",
+   "Accordion",
+   "Tooltip"
+  ],
+  "repo": "https://github.com/chakra-ui/ark",
+  "desc": "更轻更快的 Headless 组件库，Solid/Vue 双版本，可 tree-shaking。"
+ },
+ {
+  "id": "kobalte",
+  "name": "Kobalte",
+  "fw": [
+   "Solid"
+  ],
+  "theme": "无样式 / a11y",
+  "vendor": "Kobalte",
+  "link": "https://kobalte.dev",
+  "kind": "item",
+  "img": "previews/kobalte.png",
+  "chips": [
+   "Dialog",
+   "DropdownMenu",
+   "Select",
+   "Checkbox",
+   "RadioGroup",
+   "Switch",
+   "Tabs",
+   "Accordion",
+   "Tooltip"
+  ],
+  "repo": "https://github.com/kobaltedev/kobalte",
+  "desc": "SolidJS 的无样式可访问组件原语。"
+ },
+ {
+  "id": "solid-headless",
+  "name": "Solid Bootstrap",
+  "fw": [
+   "Solid"
+  ],
+  "theme": "Bootstrap 风格",
+  "vendor": "SolidJS",
+  "link": "https://www.solid-bootstrap.com",
+  "kind": "item",
+  "img": "previews/solid-headless.png",
+  "chips": [
+   "Button",
+   "Form",
+   "InputGroup",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Table",
+   "ListGroup"
+  ],
+  "repo": "https://github.com/solidjs/solid-bootstrap",
+  "desc": "Bootstrap 5 的 Solid 实现，API 贴近 React-Bootstrap。"
+ },
+ {
+  "id": "shoelace",
+  "name": "Shoelace (Web Awesome)",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "框架无关 / 标准化",
+  "vendor": "Web Awesome",
+  "link": "https://shoelace.style",
+  "kind": "item",
+  "img": "previews/shoelace.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Range",
+   "Form",
+   "FileUpload"
+  ],
+  "repo": "https://github.com/shoelace-style/shoelace",
+  "desc": "标准 Web Components，任意框架可用，框架无关首选。"
+ },
+ {
+  "id": "material-web",
+  "name": "Material Web (MWC)",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "Material Design",
+  "vendor": "Google",
+  "link": "https://material-web.dev",
+  "kind": "item",
+  "img": "previews/material-web.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "List"
+  ],
+  "repo": "https://github.com/material-components/material-web",
+  "desc": "Google 官方 Material Design 3 的 Web Components。"
+ },
+ {
+  "id": "carbon",
+  "name": "Carbon Design System",
+  "fw": [
+   "Web Components",
+   "React",
+   "Vue",
+   "Svelte"
+  ],
+  "theme": "企业级 (IBM)",
+  "vendor": "IBM",
+  "link": "https://carbondesignsystem.com",
+  "kind": "item",
+  "img": "previews/carbon.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Slider",
+   "Form",
+   "DataTable"
+  ],
+  "repo": "https://github.com/carbon-design-system/carbon",
+  "desc": "IBM 企业级设计系统，含 React/Vue/Svelte/Web Components 多实现。"
+ },
+ {
+  "id": "lion",
+  "name": "Lion",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "无样式 / 表单原语",
+  "vendor": "ING",
+  "link": "https://lion-web.netlify.app",
+  "kind": "item",
+  "img": "previews/lion.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "File"
+  ],
+  "repo": "https://github.com/ing-bank/lion",
+  "desc": "ING 出品的 Web Components 表单原语，无障碍优先。"
+ },
+ {
+  "id": "fast",
+  "name": "FAST (Microsoft)",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "框架无关 / 可定制",
+  "vendor": "Microsoft",
+  "link": "https://www.fast.design",
+  "kind": "item",
+  "img": "previews/fast.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Card"
+  ],
+  "repo": "https://github.com/microsoft/fast",
+  "desc": "微软 FAST 框架，提供可主题化的 Web Components 与设计系统基础。"
+ },
+ {
+  "id": "bootstrap",
+  "name": "Bootstrap",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "经典 / 栅格",
+  "vendor": "Bootstrap",
+  "link": "https://getbootstrap.com",
+  "kind": "item",
+  "img": "previews/bootstrap.png",
+  "chips": [
+   "Button",
+   "Form",
+   "InputGroup",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Table",
+   "ListGroup"
+  ],
+  "repo": "https://github.com/twbs/bootstrap",
+  "desc": "最流行的移动优先 CSS 框架，无 jQuery、CSS 变量主题、暗黑模式。"
+ },
+ {
+  "id": "tailwind",
+  "name": "Tailwind CSS",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "原子化 Utility",
+  "vendor": "Tailwind Labs",
+  "link": "https://tailwindcss.com",
+  "kind": "item",
+  "img": "previews/tailwind.png",
+  "chips": [
+   "Utility Classes (Grid/Flex/Spacing/Typography)",
+   "Forms Plugin",
+   "Typography Plugin",
+   "Container",
+   "Divider (Border)",
+   "Badge (via classes)",
+   "Card (via classes)",
+   "Button (via classes)"
+  ],
+  "repo": "https://github.com/tailwindlabs/tailwindcss",
+  "desc": "原子化 CSS 引擎，高度定制，作为样式层被众多组件库采用。"
+ },
+ {
+  "id": "tailwindui",
+  "name": "Tailwind UI",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "官方付费模板",
+  "vendor": "Tailwind Labs",
+  "link": "https://tailwindui.com",
+  "kind": "item",
+  "img": "previews/tailwindui.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Card",
+   "Modal",
+   "Dropdown",
+   "Nav",
+   "Tabs",
+   "Accordion",
+   "Table"
+  ],
+  "repo": "https://github.com/tailwindlabs/tailwindui",
+  "desc": "Tailwind 官方付费组件与模板，一次购买终身使用，质量极高。"
+ },
+ {
+  "id": "daisyui",
+  "name": "daisyUI",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "Tailwind 插件",
+  "vendor": "daisyUI",
+  "link": "https://daisyui.com",
+  "kind": "item",
+  "img": "previews/daisyui.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Table",
+   "Card"
+  ],
+  "repo": "https://github.com/saadeghi/daisyui",
+  "desc": "Tailwind 最流行的组件插件，语义化类名、多主题，零 JS 依赖。"
+ },
+ {
+  "id": "bulma",
+  "name": "Bulma",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "纯 CSS / Flexbox",
+  "vendor": "Bulma",
+  "link": "https://bulma.io",
+  "kind": "item",
+  "img": "previews/bulma.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Table",
+   "Card",
+   "Tag"
+  ],
+  "repo": "https://github.com/jgthms/bulma",
+  "desc": "基于 Flexbox 的纯 CSS 框架，无 JS、轻量。"
+ },
+ {
+  "id": "foundation",
+  "name": "Foundation",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "企业级 / 响应式",
+  "vendor": "ZURB / XY Grid",
+  "link": "https://get.foundation",
+  "kind": "item",
+  "img": "previews/foundation.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Table",
+   "Accordion"
+  ],
+  "repo": "https://github.com/foundation/foundation-sites",
+  "desc": "企业级响应式前端框架，XY Grid 灵活，语义化。"
+ },
+ {
+  "id": "pico",
+  "name": "Pico.css",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "极简 / 无类",
+  "vendor": "Pico",
+  "link": "https://picocss.com",
+  "kind": "item",
+  "img": "previews/pico.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Table",
+   "Card"
+  ],
+  "repo": "https://github.com/picocss/pico",
+  "desc": "超轻量级语义化 CSS 框架，无需写类名，写 HTML 即得样式。"
+ },
+ {
+  "id": "semantic-ui",
+  "name": "Semantic UI",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "语义化",
+  "vendor": "Semantic UI",
+  "link": "https://semantic-ui.com",
+  "kind": "item",
+  "img": "previews/semantic-ui.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Table",
+   "Card",
+   "Label"
+  ],
+  "repo": "https://github.com/Semantic-Org/Semantic-UI",
+  "desc": "以自然语言类名组织 UI，内容驱动站点友好。"
+ },
+ {
+  "id": "spectre",
+  "name": "Spectre.css",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "轻量 / 现代",
+  "vendor": "Spectre",
+  "link": "https://picturepan2.github.io/spectre",
+  "kind": "item",
+  "img": "previews/spectre.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Table",
+   "Card"
+  ],
+  "repo": "https://github.com/picturepan2/spectre",
+  "desc": "轻量级、现代、响应式的 CSS 框架。"
+ },
+ {
+  "id": "atlassian",
+  "name": "Atlassian Design System",
+  "fw": [
+   "React",
+   "Web Components"
+  ],
+  "theme": "协作工具 (Jira/Confluence)",
+  "vendor": "Atlassian",
+  "link": "https://atlassian.design",
+  "kind": "item",
+  "img": "previews/atlassian.png",
+  "chips": [
+   "Button",
+   "TextField",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Form",
+   "Table",
+   "List"
+  ],
+  "repo": "https://github.com/atlassian/atlaskit",
+  "desc": "Jira/Confluence 同款设计系统，含 React 组件（AtlasKit）。"
+ },
+ {
+  "id": "lightning",
+  "name": "Lightning Design System",
+  "fw": [
+   "CSS",
+   "Web Components"
+  ],
+  "theme": "CRM (Salesforce)",
+  "vendor": "Salesforce",
+  "link": "https://www.lightningdesignsystem.com",
+  "kind": "item",
+  "img": "previews/lightning.png",
+  "chips": [
+   "Button",
+   "Form",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Toggle",
+   "Table",
+   "Card"
+  ],
+  "repo": "https://github.com/salesforce-ux/design-system",
+  "desc": "Salesforce 设计系统，CRM 应用组件与规范。"
+ },
+ {
+  "id": "fluent-ds",
+  "name": "Fluent 2 Design",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "Microsoft 全平台",
+  "vendor": "Microsoft",
+  "link": "https://fluent2.microsoft.design",
+  "kind": "item",
+  "img": "previews/fluent-ds.png",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Checkbox",
+   "Radio",
+   "Switch",
+   "Slider",
+   "Form",
+   "Table"
+  ],
+  "repo": "https://github.com/microsoft/fluentui",
+  "desc": "微软 Fluent 2 跨平台设计语言，含 Web/Win/移动端实现。"
+ },
+ {
+  "id": "primereact",
+  "name": "PrimeReact",
+  "vendor": "PrimeTek",
+  "fw": [
+   "React"
+  ],
+  "theme": "企业级 / 数据密集",
+  "link": "https://primereact.org",
+  "repo": "https://github.com/primefaces/primereact",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "DataTable",
+   "Chart",
+   "Form",
+   "Dialog"
+  ],
+  "kind": "item",
+  "img": "previews/primereact.png"
+ },
+ {
+  "id": "untitledui",
+  "name": "Untitled UI",
+  "vendor": "Untitled UI",
+  "fw": [
+   "React"
+  ],
+  "theme": "设计系统 / Figma 组件",
+  "link": "https://www.untitledui.com",
+  "repo": "https://www.untitledui.com",
+  "license": "商用",
+  "chips": [
+   "Button",
+   "Input",
+   "Card",
+   "Dropdown",
+   "Avatar"
+  ],
+  "kind": "item",
+  "img": "previews/untitledui.png"
+ },
+ {
+  "id": "reshaped",
+  "name": "Reshaped",
+  "vendor": "Reshaped",
+  "fw": [
+   "React"
+  ],
+  "theme": "现代产品 UI / 设计系统",
+  "link": "https://reshaped.dev",
+  "repo": "https://github.com/reshaped/reshaped",
+  "license": "商用",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Modal",
+   "Toast"
+  ],
+  "kind": "item",
+  "img": "previews/reshaped.png"
+ },
+ {
+  "id": "alignui",
+  "name": "AlignUI",
+  "vendor": "AlignUI",
+  "fw": [
+   "React"
+  ],
+  "theme": "设计系统组件 / Figma",
+  "link": "https://alignui.com",
+  "repo": "https://github.com/align-ui/align-ui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Card",
+   "Tabs",
+   "Dialog"
+  ],
+  "kind": "item",
+  "img": "previews/alignui.png"
+ },
+ {
+  "id": "baseui-primitives",
+  "name": "Base UI",
+  "vendor": "MUI",
+  "fw": [
+   "React"
+  ],
+  "theme": "无样式原语 / Headless",
+  "link": "https://base-ui.com",
+  "repo": "https://github.com/mui/base-ui",
+  "license": "MIT",
+  "chips": [
+   "Menu",
+   "Select",
+   "Dialog",
+   "Popover",
+   "Tooltip"
+  ],
+  "kind": "item",
+  "img": "previews/baseui-primitives.png"
+ },
+ {
+  "id": "kiboui",
+  "name": "Kibo UI",
+  "vendor": "Kibo",
+  "fw": [
+   "React"
+  ],
+  "theme": "shadcn 风格区块",
+  "link": "https://www.kibo-ui.com",
+  "repo": "https://github.com/kibocode/kibo-ui",
+  "license": "MIT",
+  "chips": [
+   "Accordion",
+   "Carousel",
+   "Command",
+   "Calendar"
+  ],
+  "kind": "item",
+  "img": "previews/kiboui.png"
+ },
+ {
+  "id": "tailark",
+  "name": "Tailark",
+  "vendor": "Tailark",
+  "fw": [
+   "React"
+  ],
+  "theme": "营销 / 落地页区块",
+  "link": "https://tailark.com",
+  "repo": "https://tailark.com",
+  "license": "商用",
+  "chips": [
+   "Hero",
+   "Pricing",
+   "Feature",
+   "CTA"
+  ],
+  "kind": "item",
+  "img": "previews/tailark.png"
+ },
+ {
+  "id": "aceternity",
+  "name": "Aceternity UI",
+  "vendor": "Aceternity",
+  "fw": [
+   "React"
+  ],
+  "theme": "动画组件 / 炫酷",
+  "link": "https://ui.aceternity.com",
+  "repo": "https://github.com/aceternity-ai/aceternity-ui",
+  "license": "MIT",
+  "chips": [
+   "Card",
+   "Background",
+   "3D",
+   "Carousel"
+  ],
+  "kind": "item",
+  "img": "previews/aceternity.png"
+ },
+ {
+  "id": "tremor",
+  "name": "Tremor",
+  "vendor": "Tremor",
+  "fw": [
+   "React"
+  ],
+  "theme": "数据仪表盘 / 图表",
+  "link": "https://tremor.so",
+  "repo": "https://github.com/tremorlabs/tremor",
+  "license": "Apache",
+  "chips": [
+   "Chart",
+   "Metric",
+   "Table",
+   "DatePicker"
+  ],
+  "kind": "item",
+  "img": "previews/tremor.png"
+ },
+ {
+  "id": "parkui",
+  "name": "Park UI",
+  "vendor": "Park UI / Chakra",
+  "fw": [
+   "React"
+  ],
+  "theme": "可移植组件 / 多框架",
+  "link": "https://park-ui.com",
+  "repo": "https://github.com/park-ui/park-ui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Tabs"
+  ],
+  "kind": "item",
+  "img": "previews/parkui.png"
+ },
+ {
+  "id": "magicui",
+  "name": "Magic UI",
+  "vendor": "Magic UI",
+  "fw": [
+   "React"
+  ],
+  "theme": "动画 / 落地页组件",
+  "link": "https://magicui.design",
+  "repo": "https://github.com/magicuidesign/magicui",
+  "license": "MIT",
+  "chips": [
+   "Marquee",
+   "Border",
+   "Blur",
+   "Ripple"
+  ],
+  "kind": "item",
+  "img": "previews/magicui.png"
+ },
+ {
+  "id": "floatui",
+  "name": "Float UI",
+  "vendor": "Float UI",
+  "fw": [
+   "React"
+  ],
+  "theme": "Tailwind 组件",
+  "link": "https://floatui.com",
+  "repo": "https://floatui.com",
+  "license": "商用",
+  "chips": [
+   "Dropdown",
+   "Modal",
+   "Tooltip",
+   "Datepicker"
+  ],
+  "kind": "item",
+  "img": "previews/floatui.png"
+ },
+ {
+  "id": "flowbite-react",
+  "name": "Flowbite React",
+  "vendor": "Flowbite",
+  "fw": [
+   "React"
+  ],
+  "theme": "Tailwind 组件",
+  "link": "https://flowbite.com",
+  "repo": "https://github.com/themesberg/flowbite-react",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Card",
+   "Navbar"
+  ],
+  "kind": "item",
+  "img": "previews/flowbite-react.png"
+ },
+ {
+  "id": "preline",
+  "name": "Preline UI",
+  "vendor": "Preline",
+  "fw": [
+   "React"
+  ],
+  "theme": "Tailwind 组件 / 设计系统",
+  "link": "https://preline.co",
+  "repo": "https://github.com/htmlstreamofficial/preline",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Modal",
+   "Offcanvas"
+  ],
+  "kind": "item",
+  "img": "previews/preline.png"
+ },
+ {
+  "id": "keepreact",
+  "name": "Keep React",
+  "vendor": "Keep",
+  "fw": [
+   "React"
+  ],
+  "theme": "Tailwind 组件",
+  "link": "https://keepdesign.io",
+  "repo": "https://github.com/Believe-ds/Keep-React",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Card",
+   "Table"
+  ],
+  "kind": "item",
+  "img": "previews/keepreact.png"
+ },
+ {
+  "id": "originui",
+  "name": "Origin UI",
+  "vendor": "Origin UI",
+  "fw": [
+   "React"
+  ],
+  "theme": "免费组件 / 现代",
+  "link": "https://originui.com",
+  "repo": "https://github.com/origin-space/originui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Select",
+   "Sheet"
+  ],
+  "kind": "item",
+  "img": "previews/originui.png"
+ },
+ {
+  "id": "react-spectrum",
+  "name": "React Spectrum",
+  "vendor": "Adobe",
+  "fw": [
+   "React"
+  ],
+  "theme": "企业设计系统",
+  "link": "https://react-spectrum.adobe.com",
+  "repo": "https://github.com/adobe/react-spectrum",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "TextField",
+   "TableView",
+   "Dialog"
+  ],
+  "kind": "item",
+  "img": "previews/react-spectrum.png"
+ },
+ {
+  "id": "recharts",
+  "name": "Recharts",
+  "vendor": "Recharts",
+  "fw": [
+   "React"
+  ],
+  "theme": "图表 / 数据可视化",
+  "link": "https://recharts.org",
+  "repo": "https://github.com/recharts/recharts",
+  "license": "MIT",
+  "chips": [
+   "Line",
+   "Bar",
+   "Area",
+   "Pie"
+  ],
+  "kind": "item",
+  "img": "previews/recharts.png"
+ },
+ {
+  "id": "nivo",
+  "name": "Nivo",
+  "vendor": "Plouc",
+  "fw": [
+   "React"
+  ],
+  "theme": "图表 / 数据可视化",
+  "link": "https://nivo.rocks",
+  "repo": "https://github.com/plouc/nivo",
+  "license": "MIT",
+  "chips": [
+   "Line",
+   "Bar",
+   "Heatmap",
+   "Sankey"
+  ],
+  "kind": "item",
+  "img": "previews/nivo.png"
+ },
+ {
+  "id": "visx",
+  "name": "Visx",
+  "vendor": "Airbnb",
+  "fw": [
+   "React"
+  ],
+  "theme": "图表 / D3 底层",
+  "link": "https://airbnb.io/visx",
+  "repo": "https://github.com/airbnb/visx",
+  "license": "MIT",
+  "chips": [
+   "Axis",
+   "Shape",
+   "Scale",
+   "Tooltip"
+  ],
+  "kind": "item",
+  "img": "previews/visx.png"
+ },
+ {
+  "id": "tanstack-ui",
+  "name": "TanStack UI",
+  "vendor": "TanStack",
+  "fw": [
+   "React"
+  ],
+  "theme": "Headless / 表格表单",
+  "link": "https://tanstack.com",
+  "repo": "https://github.com/TanStack/ui",
+  "license": "MIT",
+  "chips": [
+   "Table",
+   "Form",
+   "Query",
+   "Router"
+  ],
+  "kind": "item",
+  "img": "previews/tanstack-ui.png"
+ },
+ {
+  "id": "cmdk",
+  "name": "cmdk",
+  "vendor": "pacocoursey",
+  "fw": [
+   "React"
+  ],
+  "theme": "命令面板 / 快捷键",
+  "link": "https://cmdk.paco.me",
+  "repo": "https://github.com/pacocoursey/cmdk",
+  "license": "MIT",
+  "chips": [
+   "Command",
+   "Dialog"
+  ],
+  "kind": "item",
+  "img": "previews/cmdk.png"
+ },
+ {
+  "id": "sonner",
+  "name": "Sonner",
+  "vendor": "emilkowalski",
+  "fw": [
+   "React"
+  ],
+  "theme": "Toast 通知",
+  "link": "https://sonner.emilkowalkski.com",
+  "repo": "https://github.com/emilkowalski/sonner",
+  "license": "MIT",
+  "chips": [
+   "Toast"
+  ],
+  "kind": "item",
+  "img": "previews/sonner.png"
+ },
+ {
+  "id": "plate",
+  "name": "Plate",
+  "vendor": "Plate",
+  "fw": [
+   "React"
+  ],
+  "theme": "富文本编辑器",
+  "link": "https://platejs.org",
+  "repo": "https://github.com/udecode/plate",
+  "license": "MIT",
+  "chips": [
+   "Editor",
+   "Toolbar",
+   "Mention",
+   "Slash"
+  ],
+  "kind": "item",
+  "img": "previews/plate.png"
+ },
+ {
+  "id": "mambaui",
+  "name": "Mamba UI",
+  "vendor": "Mamba",
+  "fw": [
+   "React"
+  ],
+  "theme": "Tailwind 区块",
+  "link": "https://mambaui.com",
+  "repo": "https://github.com/MambaUI/MambaUI",
+  "license": "MIT",
+  "chips": [
+   "Hero",
+   "Feature",
+   "Pricing",
+   "CTA"
+  ],
+  "kind": "item",
+  "img": "previews/mambaui.png"
+ },
+ {
+  "id": "kokonutui",
+  "name": "Kokonut UI",
+  "vendor": "Kokonut",
+  "fw": [
+   "React"
+  ],
+  "theme": "动画 / 现代组件",
+  "link": "https://kokonutui.com",
+  "repo": "https://github.com/KokonutUI/kokonutui",
+  "license": "MIT",
+  "chips": [
+   "Card",
+   "Chart",
+   "Calendar",
+   "Command"
+  ],
+  "kind": "item",
+  "img": "previews/kokonutui.png"
+ },
+ {
+  "id": "diceui",
+  "name": "Dice UI",
+  "vendor": "Dice",
+  "fw": [
+   "React"
+  ],
+  "theme": "Radix 风格组件",
+  "link": "https://diceui.com",
+  "repo": "https://github.com/diceui/dice-ui",
+  "license": "MIT",
+  "chips": [
+   "Combobox",
+   "DatePicker",
+   "Tags",
+   "Slider"
+  ],
+  "kind": "item",
+  "img": "previews/diceui.png"
+ },
+ {
+  "id": "paper-rn",
+  "name": "React Native Paper",
+  "vendor": "Callstack",
+  "fw": [
+   "React"
+  ],
+  "theme": "移动端 / 跨端",
+  "link": "https://reactnativepaper.com",
+  "repo": "https://github.com/callstack/react-native-paper",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "TextInput",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/paper-rn.png"
+ },
+ {
+  "id": "varlet",
+  "name": "Varlet",
+  "vendor": "Varlet",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "移动端 / Vue3",
+  "link": "https://varletjs.org",
+  "repo": "https://github.com/varletjs/varlet",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Picker",
+   "ActionSheet"
+  ],
+  "kind": "item",
+  "img": "previews/varlet.png"
+ },
+ {
+  "id": "wave-ui",
+  "name": "Wave UI",
+  "vendor": "Antoniandre",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "Material 风 / Vue3",
+  "link": "https://antoniandre.github.io/wave-ui",
+  "repo": "https://github.com/antoniandre/wave-ui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Dialog",
+   "Tabs"
+  ],
+  "kind": "item",
+  "img": "previews/wave-ui.png"
+ },
+ {
+  "id": "balmui",
+  "name": "BalmUI",
+  "vendor": "BalmJS",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "Material 风 / Vue3",
+  "link": "https://next-material.balmjs.com",
+  "repo": "https://github.com/balmjs/balm-ui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Menu",
+   "Dialog"
+  ],
+  "kind": "item",
+  "img": "previews/balmui.png"
+ },
+ {
+  "id": "vue-final-modal",
+  "name": "Vue Final Modal",
+  "vendor": "Vue Final",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "模态框 / 动画",
+  "link": "https://vue-final-modal.org",
+  "repo": "https://github.com/vue-final/vue-final-modal",
+  "license": "MIT",
+  "chips": [
+   "Modal",
+   "Drawer",
+   "Teleport"
+  ],
+  "kind": "item",
+  "img": "previews/vue-final-modal.png"
+ },
+ {
+  "id": "veevalidate",
+  "name": "VeeValidate",
+  "vendor": "Logaretm",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "表单校验 / Headless",
+  "link": "https://vee-validate.logaretm.com",
+  "repo": "https://github.com/logaretm/vee-validate",
+  "license": "MIT",
+  "chips": [
+   "Form",
+   "Field",
+   "ErrorMessage"
+  ],
+  "kind": "item",
+  "img": "previews/veevalidate.png"
+ },
+ {
+  "id": "tailgrids-vue",
+  "name": "TailGrids Vue",
+  "vendor": "TailGrids",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "Tailwind 组件",
+  "link": "https://tailgrids.com",
+  "repo": "https://github.com/TailGrids/tailgrids-vue",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Hero",
+   "Pricing"
+  ],
+  "kind": "item",
+  "img": "previews/tailgrids-vue.png"
+ },
+ {
+  "id": "volt-vue",
+  "name": "Volt Vue",
+  "vendor": "Themesberg",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "免费 Bootstrap 风",
+  "link": "https://demos.creative-tim.com/volt",
+  "repo": "https://github.com/themesberg/volt-bootstrap-5-dashboard",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Table",
+   "Chart"
+  ],
+  "kind": "item",
+  "img": "previews/volt-vue.png"
+ },
+ {
+  "id": "flowbite-vue",
+  "name": "Flowbite Vue",
+  "vendor": "Flowbite",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "Tailwind 组件",
+  "link": "https://flowbite-vue.com",
+  "repo": "https://github.com/themesberg/flowbite-vue",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Card",
+   "Navbar"
+  ],
+  "kind": "item",
+  "img": "previews/flowbite-vue.png"
+ },
+ {
+  "id": "nebular",
+  "name": "Nebular",
+  "vendor": "Akveo",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 / 主题化",
+  "link": "https://akveo.github.io/nebular",
+  "repo": "https://github.com/akveo/nebular",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Layout",
+   "Auth"
+  ],
+  "kind": "item",
+  "img": "previews/nebular.png"
+ },
+ {
+  "id": "devextreme",
+  "name": "DevExtreme",
+  "vendor": "DevExpress",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 / 商业",
+  "link": "https://js.devexpress.com/Angular",
+  "repo": "https://github.com/DevExpress/DevExtreme",
+  "license": "商用",
+  "chips": [
+   "DataGrid",
+   "Charts",
+   "Scheduler",
+   "Form"
+  ],
+  "kind": "item",
+  "img": "previews/devextreme.png"
+ },
+ {
+  "id": "kendo-angular",
+  "name": "Kendo UI for Angular",
+  "vendor": "Telerik",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 / 商业",
+  "link": "https://www.telerik.com/kendo-angular-ui",
+  "repo": "https://www.telerik.com/kendo-angular-ui",
+  "license": "商用",
+  "chips": [
+   "Grid",
+   "Chart",
+   "Editor",
+   "Scheduler"
+  ],
+  "kind": "item",
+  "img": "previews/kendo-angular.png"
+ },
+ {
+  "id": "syncfusion-ng",
+  "name": "Syncfusion EJ2",
+  "vendor": "Syncfusion",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 / 商业",
+  "link": "https://www.syncfusion.com/angular-components",
+  "repo": "https://github.com/syncfusion/ej2-angular",
+  "license": "商用",
+  "chips": [
+   "Grid",
+   "Chart",
+   "Diagram",
+   "PDF"
+  ],
+  "kind": "item",
+  "img": "previews/syncfusion-ng.png"
+ },
+ {
+  "id": "ag-grid",
+  "name": "AG Grid",
+  "vendor": "AG Grid",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "数据表格 / 高性能",
+  "link": "https://www.ag-grid.com/angular-data-grid",
+  "repo": "https://github.com/ag-grid/ag-grid",
+  "license": "MIT",
+  "chips": [
+   "DataGrid",
+   "Tree",
+   "Pivot",
+   "Charts"
+  ],
+  "kind": "item",
+  "img": "previews/ag-grid.png"
+ },
+ {
+  "id": "ionic-ng",
+  "name": "Ionic Angular",
+  "vendor": "Ionic",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "移动 / 混合应用",
+  "link": "https://ionicframework.com",
+  "repo": "https://github.com/ionic-team/ionic-framework",
+  "license": "MIT",
+  "chips": [
+   "App",
+   "Tabs",
+   "Card",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/ionic-ng.png"
+ },
+ {
+  "id": "covalent",
+  "name": "Covalent",
+  "vendor": "Teradata",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 / 数据",
+  "link": "https://teradata.github.io/covalent",
+  "repo": "https://github.com/Teradata/covalent",
+  "license": "MIT",
+  "chips": [
+   "Layout",
+   "DataTable",
+   "Chart",
+   "File"
+  ],
+  "kind": "item",
+  "img": "previews/covalent.png"
+ },
+ {
+  "id": "fundamental-ngx",
+  "name": "Fundamental NGX",
+  "vendor": "SAP",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业设计系统",
+  "link": "https://sap.github.io/fundamental-ngx",
+  "repo": "https://github.com/SAP/fundamental-ngx",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Input",
+   "Table",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/fundamental-ngx.png"
+ },
+ {
+  "id": "agnosui",
+  "name": "AgnosUI",
+  "vendor": "AgnosUI",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "Headless / 可定制",
+  "link": "https://agnosui.github.io",
+  "repo": "https://github.com/agnosui/agnosui",
+  "license": "MIT",
+  "chips": [
+   "Accordion",
+   "Datepicker",
+   "Rating",
+   "Slider"
+  ],
+  "kind": "item",
+  "img": "previews/agnosui.png"
+ },
+ {
+  "id": "ng-aquila",
+  "name": "ng-aquila",
+  "vendor": "Nationwide",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "金融设计系统",
+  "link": "https://designsystem.nationwide.com",
+  "repo": "https://github.com/klabrecque/ng-aquila",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Input",
+   "Card",
+   "Stepper"
+  ],
+  "kind": "item",
+  "img": "previews/ng-aquila.png"
+ },
+ {
+  "id": "devui-ng",
+  "name": "DevUI",
+  "vendor": "华为 Huawei",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "企业级 / 华为",
+  "link": "https://devui.design",
+  "repo": "https://github.com/DevCloudFE/ng-devui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Table",
+   "Tree"
+  ],
+  "kind": "item",
+  "img": "previews/devui-ng.png"
+ },
+ {
+  "id": "oblique",
+  "name": "Oblique",
+  "vendor": "Swiss Post",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "政府 / 企业",
+  "link": "https://oblique.obs.ch",
+  "repo": "https://github.com/obliqueOTypescript/oblique",
+  "license": "MIT",
+  "chips": [
+   "MasterLayout",
+   "Nav",
+   "Form",
+   "Notification"
+  ],
+  "kind": "item",
+  "img": "previews/oblique.png"
+ },
+ {
+  "id": "sbb-angular",
+  "name": "sbb-angular",
+  "vendor": "SBB",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "交通 / 公共设计",
+  "link": "https://angular.sbb.ch",
+  "repo": "https://github.com/sbb-design-systems/angular",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Train",
+   "Map",
+   "Form"
+  ],
+  "kind": "item",
+  "img": "previews/sbb-angular.png"
+ },
+ {
+  "id": "ngx-bootstrap",
+  "name": "ngx-bootstrap",
+  "vendor": "ValorSoftware",
+  "fw": [
+   "Angular"
+  ],
+  "theme": "Bootstrap 风",
+  "link": "https://valor-software.com/ngx-bootstrap",
+  "repo": "https://github.com/valor-software/ngx-bootstrap",
+  "license": "MIT",
+  "chips": [
+   "Modal",
+   "Tabs",
+   "Tooltip",
+   "Datepicker"
+  ],
+  "kind": "item",
+  "img": "previews/ngx-bootstrap.png"
+ },
+ {
+  "id": "meltui",
+  "name": "Melt UI",
+  "vendor": "Melt",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "Headless / 无样式",
+  "link": "https://melt-ui.com",
+  "repo": "https://github.com/melt-ui/melt-ui",
+  "license": "MIT",
+  "chips": [
+   "Menu",
+   "Dialog",
+   "Select",
+   "Tooltip"
+  ],
+  "kind": "item",
+  "img": "previews/meltui.png"
+ },
+ {
+  "id": "bitsui",
+  "name": "Bits UI",
+  "vendor": "Bits UI",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "无样式 / 可定制",
+  "link": "https://www.bits-ui.com",
+  "repo": "https://github.com/huntabyte/bits-ui",
+  "license": "MIT",
+  "chips": [
+   "Accordion",
+   "Dialog",
+   "Datepicker",
+   "Toast"
+  ],
+  "kind": "item",
+  "img": "previews/bitsui.png"
+ },
+ {
+  "id": "svar",
+  "name": "SVAR",
+  "vendor": "SVAR",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "数据组件 / 表格",
+  "link": "https://svar.dev",
+  "repo": "https://github.com/svar-widget/svar-svelte",
+  "license": "MIT",
+  "chips": [
+   "Grid",
+   "Gantt",
+   "Kanban",
+   "FileManager"
+  ],
+  "kind": "item",
+  "img": "previews/svar.png"
+ },
+ {
+  "id": "sveltestrap",
+  "name": "Sveltestrap",
+  "vendor": "Sveltestrap",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "Bootstrap 风",
+  "link": "https://sveltestrap.js.org",
+  "repo": "https://github.com/bestguy/sveltestrap",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Navbar"
+  ],
+  "kind": "item",
+  "img": "previews/sveltestrap.png"
+ },
+ {
+  "id": "smelte",
+  "name": "Smelte",
+  "vendor": "Smelte",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "Material 风",
+  "link": "https://smeltejs.com",
+  "repo": "https://github.com/matyunya/smelte",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Input",
+   "DataTable"
+  ],
+  "kind": "item",
+  "img": "previews/smelte.png"
+ },
+ {
+  "id": "attractions",
+  "name": "Attractions",
+  "vendor": "illright",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "现代 / 轻量",
+  "link": "https://attractions.scalar.dev",
+  "repo": "https://github.com/illright/attractions",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Tooltip",
+   "Notification"
+  ],
+  "kind": "item",
+  "img": "previews/attractions.png"
+ },
+ {
+  "id": "svelteui",
+  "name": "SvelteUI",
+  "vendor": "SvelteUI",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "现代组件",
+  "link": "https://svelteui.dev",
+  "repo": "https://github.com/svelteuidev/svelteui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "AppShell"
+  ],
+  "kind": "item",
+  "img": "previews/svelteui.png"
+ },
+ {
+  "id": "grailui",
+  "name": "Grail UI",
+  "vendor": "Grail UI",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "Headless / 可访问",
+  "link": "https://grail-ui.vercel.app",
+  "repo": "https://github.com/grail-ui/grail-ui",
+  "license": "MIT",
+  "chips": [
+   "Accordion",
+   "Dialog",
+   "Slider",
+   "Tooltip"
+  ],
+  "kind": "item",
+  "img": "previews/grailui.png"
+ },
+ {
+  "id": "atoui",
+  "name": "Ato UI",
+  "vendor": "Ato UI",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "现代 / 主题化",
+  "link": "https://ato-ui.com",
+  "repo": "https://github.com/ato-ui/ato-ui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Toast"
+  ],
+  "kind": "item",
+  "img": "previews/atoui.png"
+ },
+ {
+  "id": "m3-svelte",
+  "name": "M3 Svelte",
+  "vendor": "techniq",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "Material 3",
+  "link": "https://github.com/techniq/m3-svelte",
+  "repo": "https://github.com/techniq/m3-svelte",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Switch",
+   "Slider"
+  ],
+  "kind": "item",
+  "img": "previews/m3-svelte.png"
+ },
+ {
+  "id": "konsta",
+  "name": "Konsta",
+  "vendor": "Konsta",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "移动 / 原生风",
+  "link": "https://konsta.io",
+  "repo": "https://github.com/konstaui/konsta",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Navbar",
+   "Card",
+   "Sheet"
+  ],
+  "kind": "item",
+  "img": "previews/konsta.png"
+ },
+ {
+  "id": "yesvelte",
+  "name": "Yesvelte",
+  "vendor": "Yesvelte",
+  "fw": [
+   "Svelte"
+  ],
+  "theme": "现代组件",
+  "link": "https://yesvelte.com",
+  "repo": "https://github.com/yesvelte/yesvelte",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Alert"
+  ],
+  "kind": "item",
+  "img": "previews/yesvelte.png"
+ },
+ {
+  "id": "solid-ui",
+  "name": "Solid UI",
+  "vendor": "Solid UI",
+  "fw": [
+   "Solid"
+  ],
+  "theme": "Radix 风格",
+  "link": "https://solid-ui.com",
+  "repo": "https://github.com/solidjs-community/solid-ui",
+  "license": "MIT",
+  "chips": [
+   "Dialog",
+   "Dropdown",
+   "Select",
+   "Toast"
+  ],
+  "kind": "item",
+  "img": "previews/solid-ui.png"
+ },
+ {
+  "id": "hope-ui",
+  "name": "Hope UI",
+  "vendor": "Hope UI",
+  "fw": [
+   "Solid"
+  ],
+  "theme": "Chakra 风格",
+  "link": "https://hope-ui.com",
+  "repo": "https://github.com/hope-ui/hope-ui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Input",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/hope-ui.png"
+ },
+ {
+  "id": "solid-headless-ui",
+  "name": "Solid Headless",
+  "vendor": "solidjs",
+  "fw": [
+   "Solid"
+  ],
+  "theme": "无样式原语",
+  "link": "https://github.com/solidjs/solid-headless",
+  "repo": "https://github.com/solidjs/solid-headless",
+  "license": "MIT",
+  "chips": [
+   "Disclosure",
+   "Dialog",
+   "Listbox",
+   "Menu"
+  ],
+  "kind": "item",
+  "img": "previews/solid-headless-ui.png"
+ },
+ {
+  "id": "qwik-ui",
+  "name": "Qwik UI",
+  "vendor": "Qwik",
+  "fw": [
+   "Qwik"
+  ],
+  "theme": "Headless / 可访问",
+  "link": "https://qwikui.com",
+  "repo": "https://github.com/QwikDev/qwik-ui",
+  "license": "MIT",
+  "chips": [
+   "Accordion",
+   "Dialog",
+   "Tabs",
+   "Tooltip"
+  ],
+  "kind": "item",
+  "img": "previews/qwik-ui.png"
+ },
+ {
+  "id": "spectrum-wc",
+  "name": "Spectrum Web Components",
+  "vendor": "Adobe",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "企业设计系统",
+  "link": "https://opensource.adobe.com/spectrum-web-components",
+  "repo": "https://github.com/adobe/spectrum-web-components",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Dialog",
+   "Picker"
+  ],
+  "kind": "item",
+  "img": "previews/spectrum-wc.png"
+ },
+ {
+  "id": "ui5-wc",
+  "name": "UI5 Web Components",
+  "vendor": "SAP",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "企业设计系统",
+  "link": "https://sap.github.io/ui5-webcomponents",
+  "repo": "https://github.com/SAP/ui5-webcomponents",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Table",
+   "Calendar"
+  ],
+  "kind": "item",
+  "img": "previews/ui5-wc.png"
+ },
+ {
+  "id": "axa-pl",
+  "name": "AXA Pattern Library",
+  "vendor": "AXA",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "金融 / 企业",
+  "link": "https://github.com/axa-ch/patterns-library",
+  "repo": "https://github.com/axa-ch/patterns-library",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Stepper"
+  ],
+  "kind": "item",
+  "img": "previews/axa-pl.png"
+ },
+ {
+  "id": "brightspace-ui",
+  "name": "Brightspace UI",
+  "vendor": "D2L",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "教育 / 企业",
+  "link": "https://github.com/BrightspaceUI/core",
+  "repo": "https://github.com/BrightspaceUI/core",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Dialog",
+   "Dropdown"
+  ],
+  "kind": "item",
+  "img": "previews/brightspace-ui.png"
+ },
+ {
+  "id": "clarity-core",
+  "name": "Clarity Core",
+  "vendor": "VMware",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "企业设计系统",
+  "link": "https://clarity.design",
+  "repo": "https://github.com/vmware-clarity/core",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Alert"
+  ],
+  "kind": "item",
+  "img": "previews/clarity-core.png"
+ },
+ {
+  "id": "kor",
+  "name": "Kor",
+  "vendor": "Microfrontend",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "设计系统",
+  "link": "https://kor-ui.com",
+  "repo": "https://github.com/micro-lc/kor",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Dialog",
+   "Toast"
+  ],
+  "kind": "item",
+  "img": "previews/kor.png"
+ },
+ {
+  "id": "momentum-ui",
+  "name": "Momentum UI",
+  "vendor": "Cisco",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "企业设计系统",
+  "link": "https://momentum.design",
+  "repo": "https://github.com/momentum-design/momentum-ui",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Chart"
+  ],
+  "kind": "item",
+  "img": "previews/momentum-ui.png"
+ },
+ {
+  "id": "pharos",
+  "name": "Pharos",
+  "vendor": "JSTOR",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "学术 / 企业",
+  "link": "https://pharos.jstor.org",
+  "repo": "https://github.com/ithaka/pharos",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Dialog",
+   "Tabs"
+  ],
+  "kind": "item",
+  "img": "previews/pharos.png"
+ },
+ {
+  "id": "redhat-ds",
+  "name": "Red Hat Design System",
+  "vendor": "Red Hat",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "企业 / 开源",
+  "link": "https://www.redhat.com/designsystem",
+  "repo": "https://github.com/redhat-design-system/red-hat-design-system",
+  "license": "CC-BY",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/redhat-ds.png"
+ },
+ {
+  "id": "calcite",
+  "name": "Calcite Components",
+  "vendor": "Esri",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "地图 / GIS",
+  "link": "https://developers.arcgis.com/calcite-design-system",
+  "repo": "https://github.com/Esri/calcite-design-system",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Map",
+   "Panel"
+  ],
+  "kind": "item",
+  "img": "previews/calcite.png"
+ },
+ {
+  "id": "vaadin-wc",
+  "name": "Vaadin Components",
+  "vendor": "Vaadin",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "企业级",
+  "link": "https://vaadin.com/components",
+  "repo": "https://github.com/vaadin/web-components",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Grid",
+   "Form",
+   "DatePicker"
+  ],
+  "kind": "item",
+  "img": "previews/vaadin-wc.png"
+ },
+ {
+  "id": "agnosticui",
+  "name": "AgnosticUI",
+  "vendor": "AgnosticUI",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "框架无关",
+  "link": "https://agnosticui.com",
+  "repo": "https://github.com/AgnosticUI/agnosticui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Tabs"
+  ],
+  "kind": "item",
+  "img": "previews/agnosticui.png"
+ },
+ {
+  "id": "dile-wc",
+  "name": "Dile Components",
+  "vendor": "Dile",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "框架无关",
+  "link": "https://dile.github.io",
+  "repo": "https://github.com/OpenWebComponents/dile-components",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Tabs"
+  ],
+  "kind": "item",
+  "img": "previews/dile-wc.png"
+ },
+ {
+  "id": "wired-elements",
+  "name": "wired-elements",
+  "vendor": "wiredjs",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "手绘风 / 趣味",
+  "link": "https://wiredjs.com",
+  "repo": "https://github.com/wiredjs/wired-elements",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Input",
+   "Card",
+   "Slider"
+  ],
+  "kind": "item",
+  "img": "previews/wired-elements.png"
+ },
+ {
+  "id": "unocss",
+  "name": "UnoCSS",
+  "vendor": "UnoCSS",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "原子化 CSS 引擎",
+  "link": "https://unocss.dev",
+  "repo": "https://github.com/unocss/unocss",
+  "license": "MIT",
+  "chips": [
+   "Utility",
+   "Icon",
+   "Attributify"
+  ],
+  "kind": "item",
+  "img": "previews/unocss.png"
+ },
+ {
+  "id": "open-props",
+  "name": "Open Props",
+  "vendor": "Open Props",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "CSS 变量 / 设计令牌",
+  "link": "https://open-props.style",
+  "repo": "https://github.com/argyleink/open-props",
+  "license": "MIT",
+  "chips": [
+   "Theme",
+   "Tokens",
+   "Gradients"
+  ],
+  "kind": "item",
+  "img": "previews/open-props.png"
+ },
+ {
+  "id": "panda-css",
+  "name": "Panda CSS",
+  "vendor": "Chakra",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "原子化 / 类型安全",
+  "link": "https://panda-css.com",
+  "repo": "https://github.com/chakra-ui/panda",
+  "license": "MIT",
+  "chips": [
+   "Utility",
+   "Recipe",
+   "Tokens"
+  ],
+  "kind": "item",
+  "img": "previews/panda-css.png"
+ },
+ {
+  "id": "vanilla-extract",
+  "name": "Vanilla Extract",
+  "vendor": "Vanilla Extract",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "零运行时 / TS",
+  "link": "https://vanilla-extract.style",
+  "repo": "https://github.com/vanilla-extract-css/vanilla-extract",
+  "license": "MIT",
+  "chips": [
+   "Style",
+   "Theme",
+   "Recipe"
+  ],
+  "kind": "item",
+  "img": "previews/vanilla-extract.png"
+ },
+ {
+  "id": "stylex",
+  "name": "StyleX",
+  "vendor": "Meta",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "原子化 / 规模化",
+  "link": "https://stylexjs.dev",
+  "repo": "https://github.com/facebook/stylex",
+  "license": "MIT",
+  "chips": [
+   "Style",
+   "Create",
+   "Attrs"
+  ],
+  "kind": "item",
+  "img": "previews/stylex.png"
+ },
+ {
+  "id": "lightning-css",
+  "name": "Lightning CSS",
+  "vendor": "Lightning CSS",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "CSS 编译器 / 工具",
+  "link": "https://lightningcss.dev",
+  "repo": "https://github.com/parcel-bundler/lightningcss",
+  "license": "MIT",
+  "chips": [
+   "Bundler",
+   "Minify",
+   "Transform"
+  ],
+  "kind": "item",
+  "img": "previews/lightning-css.png"
+ },
+ {
+  "id": "halfmoon",
+  "name": "Halfmoon",
+  "vendor": "Halfmoon",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "框架 / 暗色",
+  "link": "https://www.gethalfmoon.com",
+  "repo": "https://github.com/halfmoonui/halfmoon",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Navbar"
+  ],
+  "kind": "item",
+  "img": "previews/halfmoon.png"
+ },
+ {
+  "id": "milligram",
+  "name": "Milligram",
+  "vendor": "Milligram",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "极简 / 轻量",
+  "link": "https://milligram.io",
+  "repo": "https://github.com/milligram/milligram",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Table"
+  ],
+  "kind": "item",
+  "img": "previews/milligram.png"
+ },
+ {
+  "id": "beer-css",
+  "name": "Beer CSS",
+  "vendor": "Beer",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "Material 风",
+  "link": "https://www.beercss.com",
+  "repo": "https://github.com/beercss/beercss",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Dialog",
+   "App"
+  ],
+  "kind": "item",
+  "img": "previews/beer-css.png"
+ },
+ {
+  "id": "materialize",
+  "name": "Materialize",
+  "vendor": "Materialize",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "Material 风",
+  "link": "https://materializecss.com",
+  "repo": "https://github.com/Dogfalo/materialize",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Modal",
+   "Carousel"
+  ],
+  "kind": "item",
+  "img": "previews/materialize.png"
+ },
+ {
+  "id": "chota",
+  "name": "Chota",
+  "vendor": "Chota",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "微框架 / 极简",
+  "link": "https://jenil.github.io/chota",
+  "repo": "https://github.com/jenil/chota",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Grid",
+   "Nav"
+  ],
+  "kind": "item",
+  "img": "previews/chota.png"
+ },
+ {
+  "id": "pure-css",
+  "name": "Pure.css",
+  "vendor": "Yahoo",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "极简 / 模块化",
+  "link": "https://purecss.io",
+  "repo": "https://github.com/pure-css/pure",
+  "license": "BSD",
+  "chips": [
+   "Button",
+   "Grid",
+   "Form",
+   "Menu"
+  ],
+  "kind": "item",
+  "img": "previews/pure-css.png"
+ },
+ {
+  "id": "tachyons",
+  "name": "Tachyons",
+  "vendor": "Tachyons",
+  "fw": [
+   "CSS"
+  ],
+  "theme": "原子化 / 古典",
+  "link": "https://tachyons.io",
+  "repo": "https://github.com/tachyons-css/tachyons",
+  "license": "MIT",
+  "chips": [
+   "Utility",
+   "Layout",
+   "Type"
+  ],
+  "kind": "item",
+  "img": "previews/tachyons.png"
+ },
+ {
+  "id": "material-design",
+  "name": "Material Design",
+  "vendor": "Google",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "设计语言 / 规范",
+  "link": "https://m3.material.io",
+  "repo": "https://m3.material.io",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Color",
+   "Type"
+  ],
+  "kind": "item",
+  "img": "previews/material-design.png"
+ },
+ {
+  "id": "sap-fiori",
+  "name": "SAP Fiori",
+  "vendor": "SAP",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "企业设计系统",
+  "link": "https://experience.sap.com/fiori-design",
+  "repo": "https://experience.sap.com/fiori-design",
+  "license": "Apache",
+  "chips": [
+   "Launchpad",
+   "Card",
+   "List",
+   "Object"
+  ],
+  "kind": "item",
+  "img": "previews/sap-fiori.png"
+ },
+ {
+  "id": "sap-fundamental",
+  "name": "SAP Fundamental",
+  "vendor": "SAP",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "企业样式",
+  "link": "https://sap.github.io/fundamental-styles",
+  "repo": "https://github.com/SAP/fundamental-styles",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Table",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/sap-fundamental.png"
+ },
+ {
+  "id": "oracle-redwood",
+  "name": "Oracle Redwood",
+  "vendor": "Oracle",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "企业设计系统",
+  "link": "https://www.oracle.com/redwood",
+  "repo": "https://www.oracle.com/redwood",
+  "license": "商用",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Page"
+  ],
+  "kind": "item",
+  "img": "previews/oracle-redwood.png"
+ },
+ {
+  "id": "twilio-paste",
+  "name": "Twilio Paste",
+  "vendor": "Twilio",
+  "fw": [
+   "React"
+  ],
+  "theme": "通信 / 企业",
+  "link": "https://paste.twilio.com",
+  "repo": "https://github.com/twilio-labs/paste",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Grid"
+  ],
+  "kind": "item",
+  "img": "previews/twilio-paste.png"
+ },
+ {
+  "id": "hubspot-canvas",
+  "name": "HubSpot Canvas",
+  "vendor": "HubSpot",
+  "fw": [
+   "React"
+  ],
+  "theme": "营销 / 企业",
+  "link": "https://canvas.hubspot.com",
+  "repo": "https://github.com/HubSpot/canvas",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/hubspot-canvas.png"
+ },
+ {
+  "id": "audi-ui",
+  "name": "Audi UI",
+  "vendor": "Audi",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "汽车 / 品牌",
+  "link": "https://www.audi.com/ci",
+  "repo": "https://www.audi.com/ci",
+  "license": "商用",
+  "chips": [
+   "Button",
+   "Card",
+   "Grid",
+   "Type"
+  ],
+  "kind": "item",
+  "img": "previews/audi-ui.png"
+ },
+ {
+  "id": "backpack",
+  "name": "Backpack",
+  "vendor": "Skyscanner",
+  "fw": [
+   "React"
+  ],
+  "theme": "旅行 / 企业",
+  "link": "https://backpack.github.io",
+  "repo": "https://github.com/Skyscanner/backpack",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Breadcrumb",
+   "Dialog"
+  ],
+  "kind": "item",
+  "img": "previews/backpack.png"
+ },
+ {
+  "id": "devui-design",
+  "name": "DevUI Design",
+  "vendor": "华为 Huawei",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "企业级 / 华为",
+  "link": "https://devui.design",
+  "repo": "https://github.com/DevCloudFE/devui",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Table",
+   "Tree"
+  ],
+  "kind": "item",
+  "img": "previews/devui-design.png"
+ },
+ {
+  "id": "mand-mobile",
+  "name": "Mand Mobile",
+  "vendor": "滴滴 Didi",
+  "fw": [
+   "Vue"
+  ],
+  "theme": "移动端 / 滴滴",
+  "link": "https://didi.github.io/mand-mobile",
+  "repo": "https://github.com/didi/mand-mobile",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Tab",
+   "Toast",
+   "Popup"
+  ],
+  "kind": "item",
+  "img": "previews/mand-mobile.png"
+ },
+ {
+  "id": "ke-design",
+  "name": "Ke.Design",
+  "vendor": "贝壳 Beike",
+  "fw": [
+   "React"
+  ],
+  "theme": "房产 / 企业",
+  "link": "https://ke.design",
+  "repo": "https://github.com/ke-cloud/ke-design",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/ke-design.png"
+ },
+ {
+  "id": "vercel-geist",
+  "name": "Vercel Geist",
+  "vendor": "Vercel",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "极简 / 开发者",
+  "link": "https://vercel.com/geist",
+  "repo": "https://github.com/vercel/geist",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Font",
+   "Color"
+  ],
+  "kind": "item",
+  "img": "previews/vercel-geist.png"
+ },
+ {
+  "id": "workday-canvas",
+  "name": "Workday Canvas",
+  "vendor": "Workday",
+  "fw": [
+   "React"
+  ],
+  "theme": "企业 HR",
+  "link": "https://designsystem.workday.com",
+  "repo": "https://github.com/Workday/canvas-kit",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/workday-canvas.png"
+ },
+ {
+  "id": "zendesk-garden",
+  "name": "Zendesk Garden",
+  "vendor": "Zendesk",
+  "fw": [
+   "React"
+  ],
+  "theme": "企业 / 客服",
+  "link": "https://garden.zendesk.com",
+  "repo": "https://github.com/zendeskgarden/react-components",
+  "license": "Apache",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/zendesk-garden.png"
+ },
+ {
+  "id": "bbc-gel",
+  "name": "BBC GEL",
+  "vendor": "BBC",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "媒体 / 公共",
+  "link": "https://www.bbc.co.uk/gel",
+  "repo": "https://www.bbc.co.uk/gel",
+  "license": "CC-BY",
+  "chips": [
+   "Button",
+   "Card",
+   "Grid",
+   "Type"
+  ],
+  "kind": "item",
+  "img": "previews/bbc-gel.png"
+ },
+ {
+  "id": "uswds",
+  "name": "U.S. Web Design System",
+  "vendor": "U.S. GSA",
+  "fw": [
+   "Web Components"
+  ],
+  "theme": "政府 / 公共",
+  "link": "https://designsystem.digital.gov",
+  "repo": "https://github.com/uswds/uswds",
+  "license": "CC0",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Banner"
+  ],
+  "kind": "item",
+  "img": "previews/uswds.png"
+ },
+ {
+  "id": "govuk",
+  "name": "GOV.UK Design System",
+  "vendor": "UK Gov",
+  "fw": [
+   "Multi"
+  ],
+  "theme": "政府 / 公共",
+  "link": "https://design-system.service.gov.uk",
+  "repo": "https://github.com/alphagov/govuk-frontend",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Footer"
+  ],
+  "kind": "item",
+  "img": "previews/govuk.png"
+ },
+ {
+  "id": "nord",
+  "name": "Nord Design System",
+  "vendor": "Nordhealth",
+  "fw": [
+   "React"
+  ],
+  "theme": "医疗 / 企业",
+  "link": "https://nordhealth.design",
+  "repo": "https://github.com/nordhealth-design/nord",
+  "license": "MIT",
+  "chips": [
+   "Button",
+   "Card",
+   "Form",
+   "Modal"
+  ],
+  "kind": "item",
+  "img": "previews/nord.png"
+ },
+ {
+  "id": "proj-2021-two-good-co",
+  "name": "Two Good Co",
+  "agency": "Two Good Co",
+  "year": 2021,
+  "award": "Awwwards SOTD",
+  "theme": "作品集 / 电商",
+  "tech": [
+   "Next.js",
+   "GSAP",
+   "平滑动画"
+  ],
+  "link": "https://www.twogoodco.com",
+  "img": "previews/proj-2021-two-good-co.png",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Two Good Co"
+ },
+ {
+  "id": "proj-2023-atmos",
+  "name": "Atmos",
+  "agency": "Wawa",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "3D / WebGL",
+  "tech": [
+   "React Three Fiber",
+   "GLSL",
+   "GSAP"
+  ],
+  "link": "https://atmos.studio",
+  "img": "previews/proj-2023-atmos.png",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Wawa"
+ },
+ {
+  "id": "proj-2023-obys",
+  "name": "Obys Agency",
+  "agency": "Obys",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "创意机构",
+  "tech": [
+   "Vanilla JS",
+   "GSAP",
+   "WebGL"
+  ],
+  "link": "https://obys.agency",
+  "img": "previews/proj-2023-obys.png",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Obys"
+ },
+ {
+  "id": "proj-2024-gentlerain",
+  "name": "Gentle Rain",
+  "agency": "Manish",
+  "year": 2024,
+  "award": "Awwwards",
+  "theme": "3D / WebGL",
+  "tech": [
+   "R3F",
+   "GLSL",
+   "Lenis"
+  ],
+  "link": "https://gentlerain.ai",
+  "img": "previews/proj-2024-gentlerain.png",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Manish"
+ },
+ {
+  "id": "proj-2025-adidas",
+  "name": "Adidas (Clone)",
+  "agency": "Ali Sanati",
+  "year": 2025,
+  "award": "Awwwards",
+  "theme": "产品落地页",
+  "tech": [
+   "Three.js",
+   "GSAP",
+   "Lenis"
+  ],
+  "link": "https://github.com/Ali-Sanati/awwwards-adidas",
+  "img": "previews/proj-2025-adidas.png",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Ali Sanati"
+ },
+ {
+  "id": "proj-template-portfolio",
+  "name": "Portfolio Template",
+  "agency": "Community",
+  "year": 2024,
+  "award": "模板",
+  "theme": "作品集模板",
+  "tech": [
+   "Vite",
+   "GSAP",
+   "Three.js"
+  ],
+  "link": "https://github.com",
+  "img": "previews/proj-template-portfolio.png",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Community"
+ },
+ {
+  "id": "proj-bruno-folio-2019",
+  "name": "Bruno Simon Folio 2019",
+  "agency": "Bruno Simon",
+  "year": 2019,
+  "award": "Awwwards SOTM",
+  "theme": "3D / WebGL 标杆",
+  "tech": [
+   "Three.js",
+   "Cannon.js",
+   "GSAP"
+  ],
+  "link": "https://bruno-simon.com",
+  "img": "previews/proj-bruno-folio-2019.png",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Bruno Simon"
+ },
+ {
+  "id": "proj-bruno-folio-2025",
+  "name": "Bruno Simon Folio 2025",
+  "agency": "Bruno Simon",
+  "year": 2025,
+  "award": "Awwwards SOTM",
+  "theme": "3D / WebGL 标杆",
+  "tech": [
+   "React Three Fiber",
+   "Rapier",
+   "GSAP"
+  ],
+  "link": "https://bruno-simon.com",
+  "img": "previews/proj-bruno-folio-2025.png",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Bruno Simon"
+ },
+ {
+  "id": "awd-lusion-oryzo",
+  "name": "Lusion — Oryzo AI",
+  "agency": "Lusion",
+  "year": 2024,
+  "award": "Awwwards SOTM",
+  "theme": "WebGL / AI",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://lusion.com/work/oryzo",
+  "accent": "#6ee7b7",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Lusion",
+  "img": "previews/awd-lusion-oryzo.png"
+ },
+ {
+  "id": "awd-immersive-gq",
+  "name": "Immersive Garden — GQ&AP",
+  "agency": "Immersive Garden",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "创意机构",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://www.immersive-garden.com",
+  "accent": "#ff6b9d",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Immersive Garden",
+  "img": "previews/awd-immersive-gq.png"
+ },
+ {
+  "id": "awd-immersive-cartier",
+  "name": "Immersive Garden — Cartier",
+  "agency": "Immersive Garden",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "奢侈品牌",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://www.cartier.com",
+  "accent": "#c9a227",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Immersive Garden",
+  "img": "previews/awd-immersive-cartier.png"
+ },
+ {
+  "id": "awd-resn-tracing",
+  "name": "Resn — Tracing Art",
+  "agency": "Resn",
+  "year": 2023,
+  "award": "FWA",
+  "theme": "实验 / WebGL",
+  "tech": [
+   "Canvas"
+  ],
+  "link": "https://www.resn.co.nz",
+  "accent": "#ff3e00",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Resn",
+  "img": "previews/awd-resn-tracing.png"
+ },
+ {
+  "id": "awd-noomo",
+  "name": "Noomo Agency",
+  "agency": "Noomo",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "机构作品集",
+  "tech": [
+   "Nuxt3",
+   "Three"
+  ],
+  "link": "https://noomo.agency",
+  "accent": "#22d3ee",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Noomo",
+  "img": "previews/awd-noomo.png"
+ },
+ {
+  "id": "awd-unknown",
+  "name": "THE UN KNOWN",
+  "agency": "The Unknown",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "创意机构",
+  "tech": [
+   "Astro"
+  ],
+  "link": "https://www.the-unknown.studio",
+  "accent": "#a78bfa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "The Unknown",
+  "img": "previews/awd-unknown.png"
+ },
+ {
+  "id": "awd-jeton",
+  "name": "Jeton",
+  "agency": "Bürocratik",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "金融科技",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://jeton.com",
+  "accent": "#f59e0b",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Bürocratik",
+  "img": "previews/awd-jeton.png"
+ },
+ {
+  "id": "awd-activetheory",
+  "name": "Active Theory",
+  "agency": "Active Theory",
+  "year": 2023,
+  "award": "Awwwards / FWA",
+  "theme": "互动体验",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://activetheory.net",
+  "accent": "#f472b6",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Active Theory",
+  "img": "previews/awd-activetheory.png"
+ },
+ {
+  "id": "awd-cuberto",
+  "name": "Cuberto",
+  "agency": "Cuberto",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "创意机构",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://cuberto.com",
+  "accent": "#22d3ee",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Cuberto",
+  "img": "previews/awd-cuberto.png"
+ },
+ {
+  "id": "awd-akqa",
+  "name": "AKQA",
+  "agency": "AKQA",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "数字代理",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://www.akqa.com",
+  "accent": "#ef4444",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "AKQA",
+  "img": "previews/awd-akqa.png"
+ },
+ {
+  "id": "awd-hellomonday",
+  "name": "Hello Monday",
+  "agency": "Hello Monday",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "品牌体验",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://hellomonday.com",
+  "accent": "#34d399",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Hello Monday",
+  "img": "previews/awd-hellomonday.png"
+ },
+ {
+  "id": "awd-dogstudio",
+  "name": "Dogstudio",
+  "agency": "Dogstudio",
+  "year": 2021,
+  "award": "Awwwards",
+  "theme": "创意机构",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://dogstudio.co",
+  "accent": "#60a5fa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Dogstudio",
+  "img": "previews/awd-dogstudio.png"
+ },
+ {
+  "id": "awd-makemepulse",
+  "name": "Makemepulse",
+  "agency": "Makemepulse",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "创意机构",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://www.makemepulse.com",
+  "accent": "#fb7185",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Makemepulse",
+  "img": "previews/awd-makemepulse.png"
+ },
+ {
+  "id": "awd-rga",
+  "name": "R/GA",
+  "agency": "R/GA",
+  "year": 2021,
+  "award": "Awwwards",
+  "theme": "数字代理",
+  "tech": [
+   "Web"
+  ],
+  "link": "https://www.rga.com",
+  "accent": "#f59e0b",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "R/GA",
+  "img": "previews/awd-rga.png"
+ },
+ {
+  "id": "awd-webflow",
+  "name": "Webflow",
+  "agency": "Webflow",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "建站平台",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://webflow.com",
+  "accent": "#4353ff",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Webflow",
+  "img": "previews/awd-webflow.png"
+ },
+ {
+  "id": "awd-waaark",
+  "name": "Waaark",
+  "agency": "Waaark",
+  "year": 2020,
+  "award": "Awwwards",
+  "theme": "作品集",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://waaark.com",
+  "accent": "#a78bfa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Waaark",
+  "img": "previews/awd-waaark.png"
+ },
+ {
+  "id": "awd-locomotive",
+  "name": "Locomotive",
+  "agency": "Locomotive",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "作品集 / 平滑滚动",
+  "tech": [
+   "Lenis"
+  ],
+  "link": "https://locomotive.ca",
+  "accent": "#f97316",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Locomotive",
+  "img": "previews/awd-locomotive.png"
+ },
+ {
+  "id": "awd-huge",
+  "name": "Huge Inc",
+  "agency": "Huge",
+  "year": 2021,
+  "award": "Awwwards",
+  "theme": "数字代理",
+  "tech": [
+   "Web"
+  ],
+  "link": "https://www.hugeinc.com",
+  "accent": "#f43f5e",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Huge",
+  "img": "previews/awd-huge.png"
+ },
+ {
+  "id": "awd-antinomy",
+  "name": "Antinomy",
+  "agency": "Antinomy",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "实验",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://antinomy.studio",
+  "accent": "#22d3ee",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Antinomy",
+  "img": "previews/awd-antinomy.png"
+ },
+ {
+  "id": "awd-qode",
+  "name": "Qode",
+  "agency": "Qode",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "模板 / 作品集",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://qodeinteractive.com",
+  "accent": "#8b5cf6",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Qode",
+  "img": "previews/awd-qode.png"
+ },
+ {
+  "id": "awd-cleave",
+  "name": "Cleave",
+  "agency": "Cleave",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "创意",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://cleave.me",
+  "accent": "#34d399",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Cleave",
+  "img": "previews/awd-cleave.png"
+ },
+ {
+  "id": "awd-aristide",
+  "name": "Aristide",
+  "agency": "Aristide",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "作品集",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://aristidebenoist.com",
+  "accent": "#60a5fa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Aristide",
+  "img": "previews/awd-aristide.png"
+ },
+ {
+  "id": "awd-tolus",
+  "name": "Tolus",
+  "agency": "Tolus",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "机构",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://tolus.studio",
+  "accent": "#f472b6",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Tolus",
+  "img": "previews/awd-tolus.png"
+ },
+ {
+  "id": "awd-crafted",
+  "name": "Crafted",
+  "agency": "Crafted",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "创意",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://crafted.works",
+  "accent": "#fb923c",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Crafted",
+  "img": "previews/awd-crafted.png"
+ },
+ {
+  "id": "awd-hakuhodo",
+  "name": "Hakuhodo",
+  "agency": "Hakuhodo",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "广告 / 创意",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://www.hakuhodo.fr",
+  "accent": "#ef4444",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Hakuhodo",
+  "img": "previews/awd-hakuhodo.png"
+ },
+ {
+  "id": "awd-fashionawards",
+  "name": "Fashion Awards",
+  "agency": "British Fashion Council",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "时尚",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://fashionawards.com",
+  "accent": "#d946ef",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "British Fashion Council",
+  "img": "previews/awd-fashionawards.png"
+ },
+ {
+  "id": "awd-cupra",
+  "name": "Cupra",
+  "agency": "Cupra",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "汽车",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://www.cupra.fr",
+  "accent": "#f59e0b",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Cupra",
+  "img": "previews/awd-cupra.png"
+ },
+ {
+  "id": "awd-volvo",
+  "name": "Volvo",
+  "agency": "Volvo",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "汽车",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://www.volvocars.com",
+  "accent": "#60a5fa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Volvo",
+  "img": "previews/awd-volvo.png"
+ },
+ {
+  "id": "awd-gucci",
+  "name": "Gucci",
+  "agency": "Gucci",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "奢侈",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://www.gucci.com",
+  "accent": "#c9a227",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Gucci",
+  "img": "previews/awd-gucci.png"
+ },
+ {
+  "id": "awd-balenciaga",
+  "name": "Balenciaga",
+  "agency": "Balenciaga",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "奢侈",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://www.balenciaga.com",
+  "accent": "#9ca3af",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Balenciaga",
+  "img": "previews/awd-balenciaga.png"
+ },
+ {
+  "id": "awd-louisvuitton",
+  "name": "Louis Vuitton",
+  "agency": "Louis Vuitton",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "奢侈",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://www.louisvuitton.com",
+  "accent": "#c9a227",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Louis Vuitton",
+  "img": "previews/awd-louisvuitton.png"
+ },
+ {
+  "id": "awd-apple",
+  "name": "Apple",
+  "agency": "Apple",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "产品",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://www.apple.com",
+  "accent": "#9ca3af",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Apple",
+  "img": "previews/awd-apple.png"
+ },
+ {
+  "id": "awd-cybernauts",
+  "name": "cybērnauts",
+  "agency": "Cybernauts",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "创意",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://cybernauts.studio",
+  "accent": "#22d3ee",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Cybernauts",
+  "img": "previews/awd-cybernauts.png"
+ },
+ {
+  "id": "awd-instrument",
+  "name": "Instrument",
+  "agency": "Instrument",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "数字代理",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://instrument.com",
+  "accent": "#60a5fa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Instrument",
+  "img": "previews/awd-instrument.png"
+ },
+ {
+  "id": "awd-field",
+  "name": "Field.io",
+  "agency": "Field",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "创意",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://field.io",
+  "accent": "#22d3ee",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Field",
+  "img": "previews/awd-field.png"
+ },
+ {
+  "id": "awd-animade",
+  "name": "Animade",
+  "agency": "Animade",
+  "year": 2021,
+  "award": "Awwwards",
+  "theme": "创意",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://animade.tv",
+  "accent": "#f472b6",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Animade",
+  "img": "previews/awd-animade.png"
+ },
+ {
+  "id": "awd-unseen",
+  "name": "Unseen",
+  "agency": "Unseen",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "机构",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://unseen.co",
+  "accent": "#a78bfa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Unseen",
+  "img": "previews/awd-unseen.png"
+ },
+ {
+  "id": "awd-haus",
+  "name": "Haus",
+  "agency": "Haus",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "品牌",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://haus.studio",
+  "accent": "#f59e0b",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Haus",
+  "img": "previews/awd-haus.png"
+ },
+ {
+  "id": "awd-buck",
+  "name": "Buck",
+  "agency": "Buck",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "创意",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://buck.co",
+  "accent": "#60a5fa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Buck",
+  "img": "previews/awd-buck.png"
+ },
+ {
+  "id": "awd-raggededge",
+  "name": "Ragged Edge",
+  "agency": "Ragged Edge",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "品牌",
+  "tech": [
+   "Web"
+  ],
+  "link": "https://raggededge.com",
+  "accent": "#34d399",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Ragged Edge",
+  "img": "previews/awd-raggededge.png"
+ },
+ {
+  "id": "awd-velvet",
+  "name": "Velvet",
+  "agency": "Velvet",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "创意",
+  "tech": [
+   "GSAP"
+  ],
+  "link": "https://velvet.studio",
+  "accent": "#fb7185",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Velvet",
+  "img": "previews/awd-velvet.png"
+ },
+ {
+  "id": "awd-bureau-borsche",
+  "name": "Bureau Borsche",
+  "agency": "Bureau Borsche",
+  "year": 2022,
+  "award": "Awwwards",
+  "theme": "设计",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://bureau-borsche.com",
+  "accent": "#f59e0b",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Bureau Borsche",
+  "img": "previews/awd-bureau-borsche.png"
+ },
+ {
+  "id": "awd-studio-lumio",
+  "name": "Studio Lumio",
+  "agency": "Lumio",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "工作室",
+  "tech": [
+   "Three.js"
+  ],
+  "link": "https://studiolumio.com",
+  "accent": "#34d399",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Lumio",
+  "img": "previews/awd-studio-lumio.png"
+ },
+ {
+  "id": "awd-buzzed",
+  "name": "Buzzed",
+  "agency": "Buzzed",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "互动",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://buzzed.studio",
+  "accent": "#f472b6",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Buzzed",
+  "img": "previews/awd-buzzed.png"
+ },
+ {
+  "id": "awd-verve",
+  "name": "Verve",
+  "agency": "Verve",
+  "year": 2023,
+  "award": "Awwwards",
+  "theme": "音乐",
+  "tech": [
+   "WebGL"
+  ],
+  "link": "https://verve.com",
+  "accent": "#a78bfa",
+  "kind": "proj",
+  "fw": [],
+  "vendor": "Verve",
+  "img": "previews/awd-verve.png"
+ }
+];
+const SEL_KEY = 'uihub-sel-v2';
+let sel = new Set(JSON.parse(localStorage.getItem(SEL_KEY)||'[]'));
+let state = { fw:null, kind:'all', theme:null, onlySel:false };
+const $=s=>document.querySelector(s);
+const view=$('#view');
+const FW={React:'fw-react',Vue:'fw-vue',Angular:'fw-angular',Svelte:'fw-svelte',Solid:'fw-solid','Web Components':'fw-wc',CSS:'fw-css',Multi:'fw-multi',Qwik:'fw-qwik'};
+function fwColor(f){return FW[f]||'fw-multi';}
+function kinds(){const s=new Set();ITEMS.forEach(i=>s.add(i.kind||'item'));return [...s];}
+function fwList(){const s=new Set();ITEMS.forEach(i=>(i.fw||[]).forEach(f=>s.add(f)));return [...s];}
+function themeList(){const s=new Set();ITEMS.forEach(i=>{if(i.theme)s.add(i.theme);});return [...s].sort();}
+
+// kind 段：全部 / 组件库 / 获奖项目（用中文显示）
+const KIND_LABEL={item:'组件库',proj:'获奖项目'};
+function renderKindSeg(){
+  const wrap=$('#kindSeg');
+  let h='<button data-kind="all" class="'+(state.kind==='all'?'active':'')+'">全部</button>';
+  kinds().forEach(k=>{h+='<button data-kind="'+k+'" class="'+(state.kind===k?'active':'')+'">'+(KIND_LABEL[k]||k)+'</button>';});
+  wrap.innerHTML=h;
+  wrap.querySelectorAll('button').forEach(b=>b.onclick=()=>{state.kind=b.dataset.kind;renderKindSeg();render();});
+}
+function renderFw(){
+  const w=$('#fwChips');
+  let h='<div class="chip '+(!state.fw?'active':'')+'" data-fw="">框架：全部 <span style="opacity:.6;font-size:11px">'+ITEMS.length+'</span></div>';
+  fwList().forEach(f=>{const c=ITEMS.filter(i=>(i.fw||[]).includes(f)).length;h+='<div class="chip '+(state.fw===f?'active':'')+'" data-fw="'+f+'">'+f+' <span style="opacity:.6;font-size:11px">'+c+'</span></div>';});
+  w.innerHTML=h;
+  w.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{state.fw=c.dataset.fw||null;renderFw();render();});
+}
+function renderThemes(){
+  const w=$('#themeChips');
+  let h='<div class="chip '+(!state.theme?'active':'')+'" data-th="">主题：全部 <span style="opacity:.6;font-size:11px">'+ITEMS.length+'</span></div>';
+  themeList().forEach(t=>{const c=ITEMS.filter(i=>i.theme===t).length;h+='<div class="chip '+(state.theme===t?'active':'')+'" data-th="'+t+'">'+t+' <span style="opacity:.6;font-size:11px">'+c+'</span></div>';});
+  w.innerHTML=h;
+  w.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{state.theme=c.dataset.th||null;renderThemes();render();});
+}
+function filtered(){
+  return ITEMS.filter(i=>{
+   if(state.kind!=='all'&&(i.kind||'item')!==state.kind)return false;
+   if(state.fw&&!(i.fw||[]).includes(state.fw))return false;
+   if(state.theme&&i.theme!==state.theme)return false;
+   if(state.onlySel&&!sel.has(i.id))return false;
+   return true;});
+}
+function save(){localStorage.setItem(SEL_KEY,JSON.stringify([...sel]));}
+function toggle(id){if(sel.has(id))sel.delete(id);else sel.add(id);save();renderBar();render();}
+function renderBar(){const n=sel.size;$('#selN').textContent=n;$('#bar').classList.toggle('on',n>0);}
+function renderStats(){
+  const fws=new Set(),ths=new Set();
+  ITEMS.forEach(i=>{(i.fw||[]).forEach(f=>fws.add(f));if(i.theme)ths.add(i.theme);});
+  const libs=ITEMS.filter(i=>i.kind!=='proj').length, projs=ITEMS.filter(i=>i.kind==='proj').length;
+  $('#stats').innerHTML='<div class="stat"><b>'+ITEMS.length+'</b><span>预览项</span></div>'+
+    '<div class="stat"><b>'+libs+'</b><span>组件库</span></div>'+
+    '<div class="stat"><b>'+projs+'</b><span>获奖项目</span></div>'+
+    '<div class="stat"><b>'+fws.size+'</b><span>框架生态</span></div>'+
+    '<div class="stat"><b>'+ths.size+'</b><span>主题</span></div>';
+  $('#f-total').textContent=ITEMS.length;
+}
+function render(){
+ const list=filtered();
+ const parts=[];if(state.kind!=='all')parts.push('类型=<b>'+(KIND_LABEL[state.kind]||state.kind)+'</b>');
+ if(state.fw)parts.push('框架=<b>'+state.fw+'</b>');if(state.theme)parts.push('主题=<b>'+state.theme+'</b>');
+ if(state.onlySel)parts.push('仅看已选');
+ $('#ctxLbl').innerHTML=(parts.length?parts.join(' · ')+' ｜ ':'')+'命中 <b>'+list.length+'</b> 项';
+ $('#clearBtn').style.display=parts.length?'inline-block':'none';
+ if(!list.length){view.innerHTML='<div class="empty">没有匹配项。</div>';return;}
+
+ const libs=list.filter(i=>i.kind!=='proj');
+ const projs=list.filter(i=>i.kind==='proj');
+
+ if(state.kind==='all'){
+   let h='';
+   h+='<section class="sec"><div class="sec-h"><span class="sec-ic">📦</span><h2>UI 组件库与设计系统</h2><span class="sec-n">'+libs.length+'</span><span class="sec-tip">复制即用 · 覆盖 React / Vue / Angular / Svelte / Solid / Web Components / CSS / 大厂设计系统</span></div>'+(libs.length?'<div class="grid">'+libs.map(cardHtml).join('')+'</div>':'<div class="empty">无</div>')+'</section>';
+   h+='<section class="sec"><div class="sec-h"><span class="sec-ic">🏆</span><h2>世界级获奖项目</h2><span class="sec-n">'+projs.length+'</span><span class="sec-tip">Awwwards / FWA / CSSDA 等获奖网站，含可运行源码与真实预览</span></div>'+(projs.length?'<div class="grid">'+projs.map(cardHtml).join('')+'</div>':'<div class="empty">无</div>')+'</section>';
+   view.innerHTML=h;
+ } else {
+   const only=state.kind==='proj'?projs:libs;
+   view.innerHTML='<div class="grid">'+only.map(cardHtml).join('')+'</div>';
+ }
+ view.querySelectorAll('.item').forEach(el=>el.onclick=()=>toggle(el.dataset.id));
+}
+
+function cardHtml(i){
+   const selc=sel.has(i.id);
+   const isProj=i.kind==='proj';
+   const fwTags=(i.fw||[]).map(f=>'<span class="ftag '+fwColor(f)+'">'+f+'</span>').join('');
+   let sub,extra='';
+   if(isProj){
+     sub=(i.agency||'')+' · '+(i.year||'');
+     extra='<div class="award">★ '+i.award+'</div>';
+   } else {
+     sub=(i.vendor||'')+' · '+(i.theme||'');
+   }
+   const chipsArr=isProj?(i.tech||[]):(i.chips||[]);
+   const chipsHtml=chipsArr.slice(0,6).map(c=>'<span class="ctag">'+c+'</span>').join('');
+   return '<div class="item '+(selc?'sel':'')+'" data-id="'+i.id+'">'+
+     '<span class="kind '+(isProj?'proj':'')+'">'+(isProj?'★ 获奖':'库')+'</span>'+
+     '<span class="pick">'+(selc?'✓':'+')+'</span>'+
+     '<img src="'+i.img+'" alt="'+i.name+'">'+
+     '<div class="body"><h3>'+i.name+'</h3>'+
+     '<div class="vendor">'+sub.trim()+'</div>'+
+     extra+
+     (chipsHtml?'<div class="chips2">'+chipsHtml+'</div>':'')+
+     (fwTags?'<div class="fw">'+fwTags+'</div>':'')+
+     '</div>'+
+     '<a class="open" href="'+i.link+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">↗ 打开</a>'+
+   '</div>';
+}
+$('#clearBtn').onclick=()=>{state.fw=null;state.theme=null;state.kind='all';state.onlySel=false;renderKindSeg();renderFw();renderThemes();render();};
+$('#onlySel').onclick=()=>{state.onlySel=!state.onlySel;render();};
+$('#clearSel').onclick=()=>{sel.clear();save();renderBar();render();};
+$('#copySel').onclick=async()=>{const rows=ITEMS.filter(i=>sel.has(i.id)).map(i=>i.name+' — '+i.link);try{await navigator.clipboard.writeText(rows.join('\n'));$('#copySel').textContent='✓ 已复制';setTimeout(()=>$('#copySel').textContent='📋 复制已选',1500);}catch(e){alert(rows.join('\n'));}};
+renderStats();renderKindSeg();renderFw();renderThemes();render();renderBar();
+</script></body></html>

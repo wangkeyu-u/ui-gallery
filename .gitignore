@@ -1,0 +1,7 @@
+node_modules/
+source/
+.workbuddy/
+.DS_Store
+*.zip
+*.log
+/tmp/

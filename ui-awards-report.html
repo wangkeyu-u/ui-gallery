@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>世界级 UI 设计大赛获奖作品 · 效果提示词 · 源码合集</title>
+<style>
+  :root{
+    --bg:#f7f7f8; --card:#ffffff; --ink:#16161a; --sub:#5b5b66;
+    --line:#e7e7ec; --accent:#ff4d2e; --accent2:#2d2dff; --ok:#0a9d6b;
+    --chip:#eef0ff; --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(20,20,40,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.65;font-size:15px}
+  .wrap{max-width:1120px;margin:0 auto;padding:40px 22px 80px}
+  header.hero{padding:34px 32px;border-radius:20px;background:linear-gradient(135deg,#16161a,#2b2b3a);color:#fff;box-shadow:var(--shadow)}
+  header.hero h1{margin:0 0 8px;font-size:28px;letter-spacing:.3px}
+  header.hero p{margin:0;color:#c9c9d6;max-width:760px}
+  .meta{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
+  .meta span{background:rgba(255,255,255,.12);padding:5px 11px;border-radius:999px;font-size:12.5px}
+  h2{font-size:21px;margin:46px 0 6px;display:flex;align-items:center;gap:10px}
+  h2 .n{background:var(--ink);color:#fff;width:26px;height:26px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+  .lead{color:var(--sub);margin:4px 0 22px}
+  .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+  .comp{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+  .comp b{display:block;font-size:15.5px;margin-bottom:4px}
+  .comp span{color:var(--sub);font-size:13px}
+  .comp a{color:var(--accent2);text-decoration:none;font-size:13px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 22px 8px;margin-bottom:18px;box-shadow:var(--shadow)}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+  .card h3{margin:0;font-size:18.5px}
+  .card .studio{color:var(--sub);font-size:13px;margin-top:2px}
+  .badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+  .badge{font-size:11.5px;padding:3px 9px;border-radius:999px;background:var(--chip);color:#3a3ad6;font-weight:600}
+  .badge.award{background:#ffe9e3;color:#c8341a}
+  .badge.year{background:#e9f7f0;color:#0a7a52}
+  .desc{margin:12px 0 14px;color:#2c2c34}
+  .effect{background:#fafaff;border:1px dashed #cfd2ff;border-radius:10px;padding:10px 13px;font-size:13.5px;color:#34344a;margin-bottom:14px}
+  .effect b{color:var(--accent2)}
+  details{border-top:1px solid var(--line);margin-top:6px}
+  details summary{cursor:pointer;padding:13px 2px;font-weight:600;font-size:14px;color:var(--ink);list-style:none;display:flex;align-items:center;gap:8px}
+  details summary::-webkit-details-marker{display:none}
+  details summary::before{content:"▸";color:var(--accent);transition:transform .15s}
+  details[open] summary::before{transform:rotate(90deg)}
+  .prompt{background:#0f0f13;color:#e8e8ef;border-radius:10px;padding:13px 15px;font-size:13px;white-space:pre-wrap;font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace;margin:8px 0 16px;overflow-x:auto;line-height:1.55}
+  .prompt .lab{color:#7fd1a8;display:block;margin-bottom:6px;font-weight:600}
+  .prompt.img .lab{color:#ffb27f}
+  .links{display:flex;flex-wrap:wrap;gap:10px;margin:4px 0 18px}
+  .links a{font-size:13px;text-decoration:none;padding:7px 13px;border-radius:9px;border:1px solid var(--line);color:var(--accent2);background:#fff;font-weight:600}
+  .links a.src{background:#16161a;color:#fff;border-color:#16161a}
+  .links a:hover{opacity:.85}
+  .res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .res{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+  .res b{font-size:14.5px}
+  .res p{color:var(--sub);font-size:13px;margin:6px 0 10px}
+  .res a{color:var(--accent2);text-decoration:none;font-size:13px;font-weight:600}
+  .stack{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+  .stack .s{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;min-width:160px;flex:1}
+  .stack .s b{display:block;font-size:14px}
+  .stack .s code{font-size:12px;color:var(--accent);background:#fff3f0;padding:1px 6px;border-radius:6px}
+  .stack .s span{font-size:12.5px;color:var(--sub)}
+  .tips{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;box-shadow:var(--shadow)}
+  .tips li{margin:7px 0;color:#2c2c34}
+  footer{margin-top:48px;color:var(--sub);font-size:12.5px;text-align:center}
+  .tag{display:inline-block;font-size:11px;color:#fff;background:var(--accent);border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <h1>世界级 UI 设计大赛获奖作品 · 效果提示词 · 源码合集</h1>
+    <p>精选 Awwwards、CSS Design Awards、FWA、Webby、Red Dot、iF 等国际顶级赛事的获奖/入围作品，配套「图像生成提示词」（复刻视觉风格）与「代码生成提示词」（复刻交互效果），并附上可直接参考的开源源码与模板仓库。</p>
+    <div class="meta">
+      <span>整理日期：2026-07-12</span>
+      <span>覆盖赛事：6 类</span>
+      <span>精选作品：10 个</span>
+      <span>源码仓库：20+ 个</span>
+    </div>
+  </header>
+
+  <!-- 1. 赛事总览 -->
+  <h2><span class="n">1</span>顶级 UI / 网页设计大赛一览</h2>
+  <p class="lead">这些赛事是「获奖级 UI 效果」的主要来源，浏览它们的画廊是找灵感的第一站。</p>
+  <div class="comp-grid">
+    <div class="comp"><b>Awwwards</b><span>业界最权威的网页设计与开发奖项，分 SOTD/SOTM/SOTY 及 Developer Award。</span><br><a href="https://www.awwwards.com/" target="_blank">awwwards.com ↗</a></div>
+    <div class="comp"><b>CSS Design Awards</b><span>专注 UI/UX/创新，每日评选 Website of the Day（WOTD）。</span><br><a href="https://www.cssdesignawards.com/" target="_blank">cssdesignawards.com ↗</a></div>
+    <div class="comp"><b>FWA (Favourite Website Awards)</b><span>成立最早的数字创意奖项之一，偏前沿实验性作品。</span><br><a href="https://thefwa.com/" target="_blank">thefwa.com ↗</a></div>
+    <div class="comp"><b>The Webby Awards</b><span>由 IADAS 评选，号称「互联网奥斯卡」，含网站/互动/AI 等类目。</span><br><a href="https://www.webbyawards.com/" target="_blank">webbyawards.com ↗</a></div>
+    <div class="comp"><b>Red Dot Design Award</b><span>德国红点奖，含 Brands &amp; Communication Design，覆盖 UI/UX/数字产品。</span><br><a href="https://www.red-dot.org/" target="_blank">red-dot.org ↗</a></div>
+    <div class="comp"><b>iF Design Award</b><span>德国 iF 设计奖，数字体验类目收录大量获奖 App / 网站界面。</span><br><a href="https://ifdesign.com/" target="_blank">ifdesign.com ↗</a></div>
+  </div>
+
+  <!-- 2. 精选作品 -->
+  <h2><span class="n">2</span>精选获奖作品 + 效果提示词 + 源码</h2>
+  <p class="lead">每个作品含：视觉/交互效果说明、图像生成提示词（给 Midjourney / Stable Diffusion / 即梦等）、代码生成提示词（给 v0 / Cursor / Claude / 通义灵码等）、以及开源源码/模板链接。</p>
+
+  <!-- Work 1 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Bruno Simon · 3D 互动作品集（Folio 2025 / 2019）<span class="tag">标杆</span></h3>
+        <div class="studio">Bruno Simon（个人 / Three.js 大神）</div>
+        <div class="badges"><span class="badge award">Awwwards SOTD/SOTY</span><span class="badge year">2019 / 2025</span><span class="badge">Three.js</span><span class="badge">物理引擎</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>把个人主页做成可「开车探索」的 3D 开放世界——物理碰撞、昼夜/季节循环、风/雨/雪/闪电/龙卷风天气系统、地形水体植被、可交互物件。2025 版完整开源，是工业级 3D 网站架构范本。</div>
+    <details open>
+      <summary>图像生成提示词（复刻视觉风格）</summary>
+      <div class="prompt img"><span class="lab"># Image prompt (Midjourney / SD / 即梦)</span>An award-winning 3D interactive portfolio homepage rendered as a playful low-poly open-world, a tiny car driving across a stylized island with rolling hills, trees, and water, soft cinematic daylight with volumetric clouds, pastel and vibrant color palette, isometric-ish third-person camera, pixel-perfect web design aesthetic, game-like UI overlays and floating labels, octane render, clean modern typography, 8k --ar 16:9 --style raw --v 6.1</div>
+    </details>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude / 通义灵码)</span>用 Three.js + Vite 做一个可驾驶探索的 3D 作品集首页：
+- 场景：低多边形小岛，含地形、水面、树木、可交互展板（点击进入项目）
+- 物理：接入 cannon-es 物理引擎，键盘/手柄控制一辆小车，带惯性、碰撞、地形跟随
+- 环境：昼夜循环 + 季节循环时间轴，联动天气系统（风/雨/雪/闪电粒子）
+- 相机：第三人称跟随，支持鼠标拖拽环视
+- 加载：GLB 模型 + 纹理压缩（KTX2/WebP），自定义 loading 进度条
+- 工程：分层 Game Loop（输入→物理→渲染→音频），模块化 src 结构
+参考 Bruno Simon 官方仓库 brunosimon/folio-2025 的架构，输出可 npm run dev 运行的最小可玩版本。</div>
+    </details>
+    <div class="links">
+      <a class="src" href="https://github.com/brunosimon/folio-2025" target="_blank">官方源码 folio-2025 ↗</a>
+      <a class="src" href="https://github.com/brunosimon/folio-2019" target="_blank">早期版 folio-2019 ↗</a>
+      <a href="https://bruno-simon.com/" target="_blank">在线预览 ↗</a>
+      <a href="https://github.com/HelloGitHub-Team/Article/blob/master/contents/JavaScript/folio-2019/content.md" target="_blank">中文搭建教程 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 2 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Atmos（3D 流体渐变网站）</h3>
+        <div class="studio">Leeroy（创意机构）</div>
+        <div class="badges"><span class="badge award">Awwwards 3D 提名</span><span class="badge year">2023</span><span class="badge">React Three Fiber</span><span class="badge">自定义着色器</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>滚动驱动的 3D 渐变流体场景，Lamina 动态渐变背景、曲线挤出路径、环境贴图、2D 文字嵌入 3D、后处理辉光与速度感淡入。已有完整 R3F 复刻教程与成品源码。</div>
+    <details>
+      <summary>图像生成提示词（复刻视觉风格）</summary>
+      <div class="prompt img"><span class="lab"># Image prompt (Midjourney / SD / 即梦)</span>A mesmerizing 3D abstract website hero, smooth flowing gradient liquid forms in electric blue, violet and magenta, soft caustics and subsurface glow, a thin curved neon line weaving through the scene, dreamy depth of field, dark studio background, premium web design, WebGL art style, cinematic lighting, 8k --ar 16:9 --style raw --v 6.1</div>
+    </details>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>用 React Three Fiber + drei + lamina 复刻 Atmos 风格首页：
+- 背景：Lamina 多层动态渐变着色器（随滚动/时间流动）
+- 主体：一条沿 CatmullRom 曲线挤出的发光路径（ExtrudeGeometry）
+- 文字：用 troika-three-text 在 3D 场景里渲染 2D 标题
+- 滚动：@react-three/drei ScrollControls 驱动相机沿曲线前进
+- 后处理：@react-three/postprocessing 加 Bloom + 速度淡入
+- 性能：加载屏 + 响应式（移动端降帧）
+参考 wass08/r3f-wawatmos-final 的最终源码与 starter 包。</div>
+    </details>
+    <div class="links">
+      <a class="src" href="https://github.com/wass08/r3f-wawatmos-final" target="_blank">复刻成品源码 ↗</a>
+      <a class="src" href="https://github.com/wass08/r3f-wawatmos-starter" target="_blank">Starter 包 ↗</a>
+      <a href="https://atmos.leeroy.ca/" target="_blank">原站预览 ↗</a>
+      <a href="https://www.wawasensei.dev/tuto/reproduce-atmos-awwwards-3d-website-with-react-three-fiber" target="_blank">图文教程 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 3 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Gentlerain.ai（Canvas 叙事型官网）</h3>
+        <div class="studio">Gentlerain AI</div>
+        <div class="badges"><span class="badge award">Awwwards Winner</span><span class="badge year">2024</span><span class="badge">Canvas</span><span class="badge">Lottie</span><span class="badge">Lenis</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>Canvas 驱动的主视觉 + Lottie 动画 + 分章节滚动叙事（图文交替区块 + 现代导航），平滑滚动用 Lenis。纯前端克隆已开源，适合学习「叙事型落地页」结构。</div>
+    <details>
+      <summary>图像生成提示词（复刻视觉风格）</summary>
+      <div class="prompt img"><span class="lab"># Image prompt (Midjourney / SD / 即梦)</span>A minimal elegant AI product landing page, soft animated canvas hero with gentle particle rain in monochrome, generous whitespace, refined sans-serif typography, alternating image and text sections, calm premium SaaS aesthetic, muted gradient background, award-winning web design, 8k --ar 16:9 --style raw --v 6.1</div>
+    </details>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>用 HTML/CSS/JS 克隆一个 Gentlerain 风格的 AI 产品落地页：
+- Hero：&lt;canvas&gt; 粒子/流体动画背景（requestAnimationFrame 实现细雨粒子）
+- 引入 Lottie（lottie-web）做章节图标动画
+- 用 Lenis 做平滑滚动，GSAP ScrollTrigger 做区块淡入/视差
+- 结构：导航栏 + Hero + 多个「左图右文/左文右图」交替 section + Footer marquee
+- 响应式：移动端折叠导航
+参考 manish-850/gentlerain.ai 的 index.html/style.css/script.js。</div>
+    </details>
+    <div class="links">
+      <a class="src" href="https://github.com/manish-850/gentlerain.ai" target="_blank">UI 克隆源码 ↗</a>
+      <a href="https://gentlerain.ai/" target="_blank">原站预览 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 4 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Adidas 3D 商品落地页（Awwwards 级）</h3>
+        <div class="studio">Ali-Sanati（开源复刻）</div>
+        <div class="badges"><span class="badge award">Awwwards-style</span><span class="badge">Next.js</span><span class="badge">R3F</span><span class="badge">GSAP</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>3D 球鞋模型（React Three Fiber + Drei）+ 滚动驱动动画 + Framer Motion 过渡 + Tailwind 精美响应式 UI + EmailJS 联系表单。从零到部署的完整生产级范例。</div>
+    <details>
+      <summary>图像生成提示词（复刻视觉风格）</summary>
+      <div class="prompt img"><span class="lab"># Image prompt (Midjourney / SD / 即梦)</span>A premium 3D sneaker product landing page, a single photorealistic shoe rotating on a clean pedestal, dramatic studio lighting with soft shadows, bold typographic hero headline, dark luxury background with subtle gradient, scroll-driven cinematic web layout, award-winning e-commerce design, 8k --ar 16:9 --style raw --v 6.1</div>
+    </details>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>用 Next.js + React Three Fiber + GSAP 做一个 3D 商品落地页：
+- 3D：Drei 加载 GLB 鞋模，Environment 环境光照 + 接触阴影
+- 滚动：GSAP/Framer Motion 让模型随滚动旋转/换色/镜头推进
+- 结构：Hero(3D) → 特性区块 → 配色切换 → 联系表单(EmailJS)
+- UI：Tailwind 响应式，Aceternity/Magic UI 组件点缀
+- 工程：模型预加载管理器，懒加载，路由 /shirts/[slug]
+参考 Ali-Sanati/awwwards-adidas 的 app/ 与 components/ 结构。</div>
+    </details>
+    <div class="links">
+      <a class="src" href="https://github.com/Ali-Sanati/awwwards-adidas" target="_blank">完整源码 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 5 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Obys Agency（滚动叙事 + 图像扭曲）</h3>
+        <div class="studio">Obys Creative Agency</div>
+        <div class="badges"><span class="badge award">CSSDA / Awwwards</span><span class="badge">GSAP</span><span class="badge">Shery.js</span><span class="badge">Lenis</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>Obys 是「获奖级滚动网站」的代名词：平滑滚动 + 复杂滚动时间轴 + 自定义光标（混合模式）+ 磁吸悬停 + 用 Shery.js(Three.js) 做图像扰动/gooey 失真。多个高保真开源克隆可用。</div>
+    <details>
+      <summary>图像生成提示词（复刻视觉风格）</summary>
+      <div class="prompt img"><span class="lab"># Image prompt (Midjourney / SD / 即梦)</span>A bold creative agency website, large expressive black-and-white photography with grain, huge contrasting typography, asymmetric editorial layout, distorted liquid image transitions, custom cursor, dark elegant mood, award-winning interaction design, Swiss-style composition, 8k --ar 16:9 --style raw --v 6.1</div>
+    </details>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>用原生 HTML/CSS/JS 复刻 Obys Agency 风格首页：
+- 平滑滚动：Lenis（或 Locomotive Scroll）
+- 滚动动画：GSAP + ScrollTrigger 做时间轴编排、区块揭示、视差
+- 光标：自定义 cursor + mix-blend-mode: difference
+- 磁吸：导航/按钮 hover 时向鼠标偏移（magnetic）
+- 图像失真：Shery.js 的 hoverPlainEffect / mouseFollow 做 gooey 扭曲
+- 加载：自定义时间轴 loading 屏
+参考 VimalXfraziX/Obys-Agency-Clone 或 nirajbharadva07/obys-agency。</div>
+    </details>
+    <div class="links">
+      <a class="src" href="https://github.com/VimalXfraziX/Obys-Agency-Clone" target="_blank">克隆 A（GSAP+Lenis+Shery）↗</a>
+      <a class="src" href="https://github.com/nirajbharadva07/obys-agency" target="_blank">克隆 B（原生+Loco）↗</a>
+      <a href="https://obys.agency/" target="_blank">原站预览 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 6 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Immersive Garden（WebGL 叙事大厂）</h3>
+        <div class="studio">Immersive Garden（巴黎，2025 年度工作室）</div>
+        <div class="badges"><span class="badge award">Awwwards Studio of the Year</span><span class="badge year">2025</span><span class="badge">Three.js</span><span class="badge">Webflow</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b> Cartier Watches &amp; Wonders、Omega Clearspace（3.6 万件太空垃圾线框↔渲染过渡）、Lacoste、GQ&amp;AP 等。特点是「滚动即叙事」：相机当作真实空间视口，模型在纹理/线框间切换，空间音频分层。官方不开源，但技术栈（Three.js+滚动编排）有大量拆解。</div>
+    <details>
+      <summary>图像生成提示词（复刻视觉风格）</summary>
+      <div class="prompt img"><span class="lab"># Image prompt (Midjourney / SD / 即梦)</span>A luxurious scroll-driven WebGL brand experience, a single elegant watch floating in a dark reflective alcove, water and mirrors with theatrical lighting, slow cinematic camera orbit, wireframe-to-render transition aesthetic, premium jewellery campaign, restrained sophisticated color, 8k --ar 16:9 --style raw --v 6.1</div>
+    </details>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>用 Three.js 复刻 Immersive Garden 风格的品牌叙事页：
+- 多个「壁龛」场景（如 6 个展示位），滚动切换相机/材质
+- 模型在「线框」与「贴图渲染」间随滚动过渡（material opacity 混合）
+- 滚动编排：用 GSAP ScrollTrigger 串联相机路径与材质变化
+- 音频：随滚动深度分层淡入空间音效
+- 性能：模型优化 + 纹理压缩，移动端降级
+参考 webgpu.com 对 Omega Clearspace / Cartier 的拆解文章。</div>
+    </details>
+    <div class="links">
+      <a href="https://www.immersive-garden.com/" target="_blank">机构官网 ↗</a>
+      <a href="https://www.webgpu.com/showcase/omega-clearspace-orbital-debris-threejs" target="_blank">Omega Clearspace 拆解 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 7 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Codrops（获奖级特效教程库）</h3>
+        <div class="studio">Tympanus（最活跃的前端特效教程站）</div>
+        <div class="badges"><span class="badge">Tutorial</span><span class="badge">GSAP</span><span class="badge">Three.js</span><span class="badge">WebGL</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>几乎所有 Awwwards 级微交互的「配方来源」：GSAP MotionPath 缩略图流、无限滚动视差、滚动驱动 3D 立方体画廊、SVG 地图动画、10 万+ 立方体抖动可视化、流体 X 光揭示、Barba/GSAP 页面转场……每篇都带可下载源码。</div>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>基于 Codrops 教程库实现一组获奖级特效（按需挑选）：
+1) GSAP MotionPath：堆叠缩略图沿曲线轨迹展开为流动图带
+2) 无限滚动：GSAP + Lenis 多层视差无缝循环
+3) 滚动驱动 3D 立方体画廊（ScrollTrigger + CSS transform）
+4) SVG 地图路径绘制动画（stroke-dashoffset + 运动追踪）
+5) Three.js 流体 X 光双场景混合揭示（自定义 shader）
+6) Barba.js + GSAP 自定义页面转场
+直接参考 tympanus.net/codrops 对应文章与 github.com/codrops 仓库。</div>
+      </details>
+    <div class="links">
+      <a class="src" href="https://tympanus.net/codrops/category/tutorials/" target="_blank">教程总目录 ↗</a>
+      <a class="src" href="https://github.com/codrops" target="_blank">Codrops 官方 GitHub ↗</a>
+      <a href="https://github.com/metzgr/codrops-animate-shaders-with-gsap" target="_blank">GSAP+Shader 特效示例 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 8 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Two-Good-Co（极简平滑滚动）</h3>
+        <div class="studio">开源克隆（Awwwards 精选站）</div>
+        <div class="badges"><span class="badge award">Awwwards Featured</span><span class="badge">GSAP</span><span class="badge">Locomotive</span><span class="badge">轻量</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>极简排版 + Locomotive 平滑滚动 + GSAP 揭示动画，是「轻量获奖风」入门最佳模板，代码量小、易改。</div>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>用 HTML/CSS/JS(GSAP + Locomotive Scroll) 克隆 Two-Good-Co 风格极简站点：大字号衬线/无衬线混排、全屏分章、滚动揭示文字、图片视差、底部平滑滚动指示。参考 jain-rithik/Two-Good-Co。</div>
+    </details>
+    <div class="links">
+      <a class="src" href="https://github.com/jain-rithik/Two-Good-Co" target="_blank">克隆源码 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 9 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>Awwwards-Level 3D 作品集模板</h3>
+        <div class="studio">vishalonlyy（开源模板）</div>
+        <div class="badges"><span class="badge">Template</span><span class="badge">React</span><span class="badge">R3F</span><span class="badge">Tailwind</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>开箱即用的「获奖级作品集」：3D Hero（行星+金环）、交错导航、滚动触发服务文案、clip-path 图片揭示 + 打字机、marquee 联系区。最适合作你自己的作品集起点。</div>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>用 React(Vite)+Tailwind+GSAP+R3F 生成一个开发者作品集模板：3D Hero（旋转行星+金环，Drei）、交错出场导航、ScrollTrigger 触发文案横向位移、clip-path 图片揭示+打字机、底部 marquee CTA、完全响应式。直接 fork vishalonlyy/awwwards-portfolio 并改 /constants/index.js。</div>
+    </details>
+    <div class="links">
+      <a class="src" href="https://github.com/vishalonlyy/awwwards-portfolio" target="_blank">模板源码 ↗</a>
+    </div>
+  </div>
+
+  <!-- Work 10 -->
+  <div class="card">
+    <div class="top">
+      <div>
+        <h3>顶尖 WebGL 机构参考（Lusion / Active Theory / Resn / 14islands）</h3>
+        <div class="studio">多家世界级数字机构</div>
+        <div class="badges"><span class="badge award">多次 SOTY</span><span class="badge">WebGL</span><span class="badge">参考</span></div>
+      </div>
+    </div>
+    <div class="effect"><b>效果：</b>这些机构几乎包揽各大奖项：Lusion 的 Gemini 双模式车（慢动作揭示着色/反射）、Active Theory 的 Adidas CHILE20 三世界、Resn 的 Tracing Art、14islands 的 Cartier 365。官方不开源，但技术文章与拆解极多，是「天花板」参考。</div>
+    <details>
+      <summary>代码生成提示词（复刻交互效果）</summary>
+      <div class="prompt"><span class="lab"># Build prompt (v0 / Cursor / Claude)</span>参考 Lusion / Active Theory 做高端 WebGL 体验：
+- Lusion Gemini：单辆车两种视觉模式，按住触发慢动作，揭示着色/反射/后处理差异（Three.js + EffectComposer）
+- Active Theory CHILE20：三个滚动驱动 WebGL 世界，500K 面服装烘焙为移动友好网格，跨世界流体转场
+- 通用：模型优化（Draco/KTX2）、移动降级、滚动编排用 GSAP
+参考 webgpu.com/tag/product-display 的拆解。</div>
+    </details>
+    <div class="links">
+      <a href="https://lusion.com/" target="_blank">Lusion ↗</a>
+      <a href="https://activetheory.com/" target="_blank">Active Theory ↗</a>
+      <a href="https://resn.co.nz/" target="_blank">Resn ↗</a>
+      <a href="https://www.14islands.com/" target="_blank">14islands ↗</a>
+      <a href="https://www.webgpu.com/tag/product-display" target="_blank">webgpu 拆解合集 ↗</a>
+    </div>
+  </div>
+
+  <!-- 3. 源码资源库 -->
+  <h2><span class="n">3</span>源码 / 模板资源库（直接挖）</h2>
+  <p class="lead">不想一个个找？这些「集合」里已经攒了大量获奖级克隆与模板。</p>
+  <div class="res-grid">
+    <div class="res"><b>GitHub · Topics: awwwards</b><p>官方话题页，聚合数百个 Awwwards 克隆/复刻仓库（Two-Good-Co、Miranda Paper、CRUE CREATIVE 等）。</p><a href="https://github.com/topics/awwwards" target="_blank">github.com/topics/awwwards ↗</a></div>
+    <div class="res"><b>awesome-threejs</b><p>Three.js 资源大全：教程、框架(R3F/Drei/Threlte)、物理、着色器工具、调试优化。</p><a href="https://github.com/AxiomeCG/awesome-threejs" target="_blank">awesome-threejs ↗</a></div>
+    <div class="res"><b>Three.js Journey</b><p>Bruno Simon 官方课程仓库，从入门到着色器/物理/后处理的完整练习代码。</p><a href="https://github.com/WichoFlores/threejs-journey" target="_blank">threejs-journey ↗</a></div>
+    <div class="res"><b>Codrops GitHub</b><p>所有教程配套源码，按效果可直接 copy 使用。</p><a href="https://github.com/codrops" target="_blank">github.com/codrops ↗</a></div>
+    <div class="res"><b>Awwwards 官方画廊</b><p>按 SOTD/SOTM/SOTY、行业、技术筛选获奖站，找灵感入口。</p><a href="https://www.awwwards.com/websites/sites_of_the_year/" target="_blank">awwwards.com/sites_of_the_year ↗</a></div>
+    <div class="res"><b>CSS Design Awards WOTD</b><p>每日网站之选，附评委分项评分（UI/UX/创新），便于挑高分作品。</p><a href="https://www.cssdesignawards.com/" target="_blank">cssdesignawards.com ↗</a></div>
+  </div>
+
+  <!-- 4. 技术栈速查 -->
+  <h2><span class="n">4</span>获奖级效果 · 技术栈速查</h2>
+  <p class="lead">绝大多数获奖站都建立在这套「现代创意前端」技术栈之上。</p>
+  <div class="stack">
+    <div class="s"><b>3D / WebGL</b><br><span>Three.js · React Three Fiber · Drei · Lamina · @react-three/postprocessing</span></div>
+    <div class="s"><b>动画编排</b><br><span>GSAP + ScrollTrigger · Framer Motion · Barba.js（页面转场）</span></div>
+    <div class="s"><b>平滑滚动</b><br><code>Lenis</code> <span>· Locomotive Scroll</span></div>
+    <div class="s"><b>图像失真/光标</b><br><span>Shery.js（Three.js）、自定义 cursor + mix-blend-mode</span></div>
+    <div class="s"><b>物理</b><br><code>cannon-es</code> <span>· Rapier（R3F 用 @react-three/rapier）</span></div>
+    <div class="s"><b>构建/工程</b><br><span>Vite · Next.js · 模型压缩 Draco/KTX2 · 纹理 WebP</span></div>
+  </div>
+
+  <!-- 5. 使用建议 -->
+  <h2><span class="n">5</span>给你的使用建议</h2>
+  <div class="tips">
+    <ul>
+      <li><b>先看效果再抄代码：</b>先逛 Awwwards / CSSDA 画廊锁定喜欢的作品，再用本文的源码链接去找对应克隆，效率最高。</li>
+      <li><b>提示词怎么用：</b>「图像提示词」丢给 Midjourney / Stable Diffusion / 即梦，生成同风格视觉参考；「代码提示词」直接粘进 v0 / Cursor / Claude / 通义灵码，让它生成可运行骨架。</li>
+      <li><b>从模板起步：</b>新手优先 fork <code>vishalonlyy/awwwards-portfolio</code> 或 <code>manish-850/gentlerain.ai</code>，改文案/配色即可，比从零写快 10 倍。</li>
+      <li><b>学架构看标杆：</b>想深入理解工业级 3D 网站，精读 <code>brunosimon/folio-2025</code> 的分层 Game Loop 与资源管线。</li>
+      <li><b>版权提醒：</b>克隆仓库多为「学习用途」，商用前请确认原作品授权，不要直接搬运品牌素材。</li>
+      <li><b>性能是获奖关键：</b>移动端降级、模型/纹理压缩、懒加载，决定你的「效果」是否真能上线。</li>
+    </ul>
+  </div>
+
+  <footer>
+    本页为调研整理产物，所有外链均指向公开资源（赛事官网 / GitHub 开源仓库 / 教程站）。提示词可在主流 AI 工具中直接使用。最后更新：2026-07-12。
+  </footer>
+
+</div>
+</body>
+</html>

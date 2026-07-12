@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UI 组件总库 · 全网组件库交叉索引</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>" />
+<style>
+  :root{
+    --bg:#0a0b14; --bg2:#10121f; --panel:rgba(255,255,255,.04);
+    --panel2:rgba(255,255,255,.06); --border:rgba(255,255,255,.10);
+    --txt:#e8eaf2; --muted:#8b90a8; --faint:#5b607a;
+    --cyan:#22d3ee; --violet:#a78bfa; --pink:#f472b6; --green:#34d399; --amber:#fbbf24;
+    --grad:linear-gradient(135deg,#22d3ee,#a78bfa 55%,#f472b6);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+    background:radial-gradient(1200px 800px at 12% -10%,#1a1d3a 0%,transparent 55%),
+               radial-gradient(1000px 700px at 100% 0%,#2a1740 0%,transparent 50%),
+               var(--bg);
+    color:var(--txt); line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1320px;margin:0 auto;padding:28px 22px 80px}
+  /* header */
+  header{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
+  .title{font-size:34px;font-weight:800;letter-spacing:.5px;
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);font-size:14.5px;max-width:720px}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+    padding:10px 16px;min-width:104px}
+  .stat b{font-size:22px;display:block;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:11.5px;color:var(--muted);letter-spacing:.5px}
+  /* controls */
+  .controls{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 70%,transparent);
+    padding:14px 0 14px;margin-bottom:8px;backdrop-filter:blur(6px)}
+  .topbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .search{flex:1;min-width:240px;display:flex;align-items:center;gap:8px;
+    background:var(--panel2);border:1px solid var(--border);border-radius:12px;padding:11px 14px}
+  .search input{flex:1;background:none;border:0;outline:0;color:var(--txt);font-size:14.5px}
+  .search input::placeholder{color:var(--faint)}
+  .seg{display:flex;background:var(--panel);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .seg button{background:none;border:0;color:var(--muted);padding:11px 16px;font-size:13.5px;cursor:pointer;font-weight:600}
+  .seg button.active{background:var(--grad);color:#0a0b14}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .chip{background:var(--panel);border:1px solid var(--border);border-radius:999px;
+    padding:7px 14px;font-size:13px;color:var(--muted);cursor:pointer;transition:.15s;user-select:none}
+  .chip:hover{border-color:var(--cyan);color:var(--txt)}
+  .chip.active{background:var(--grad);color:#0a0b14;border-color:transparent;font-weight:700}
+  .chip .n{opacity:.7;font-size:11px;margin-left:4px}
+  .ctxbar{display:flex;justify-content:space-between;align-items:center;margin:18px 2px 12px;flex-wrap:wrap;gap:8px}
+  .ctxbar .lbl{color:var(--muted);font-size:13px}
+  .ctxbar .lbl b{color:var(--txt)}
+  .clear{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;
+    padding:5px 12px;font-size:12.5px;cursor:pointer}
+  .clear:hover{color:var(--txt);border-color:var(--cyan)}
+  /* gallery */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px;
+    cursor:pointer;transition:.18s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-3px);border-color:rgba(167,139,250,.5);
+    box-shadow:0 12px 40px -16px rgba(120,90,255,.5)}
+  .card .row1{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .card h3{font-size:18px;font-weight:750}
+  .card .vendor{font-size:12px;color:var(--muted);margin-top:2px}
+  .fw{display:inline-flex;gap:5px;flex-wrap:wrap}
+  .ftag{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:7px;letter-spacing:.3px}
+  .fw-react{background:rgba(97,218,251,.16);color:#7dd3fc}
+  .fw-vue{background:rgba(104,211,145,.16);color:#86efac}
+  .fw-angular{background:rgba(240,98,146,.16);color:#f9a8c4}
+  .fw-svelte{background:rgba(247,165,90,.18);color:#fdba74}
+  .fw-solid{background:rgba(77,171,247,.16);color:#93c5fd}
+  .fw-wc{background:rgba(167,139,250,.16);color:#c4b5fd}
+  .fw-css{background:rgba(251,191,36,.16);color:#fcd34d}
+  .fw-multi{background:rgba(244,114,182,.16);color:#f9a8d4}
+  .meta{display:flex;gap:14px;margin:12px 0;font-size:12px;color:var(--muted);flex-wrap:wrap}
+  .meta b{color:var(--txt);font-weight:650}
+  .desc{font-size:13px;color:var(--muted);min-height:38px}
+  .ccount{display:inline-block;margin-top:8px;font-size:11.5px;color:var(--cyan);
+    background:rgba(34,211,238,.10);border:1px solid rgba(34,211,238,.25);padding:3px 9px;border-radius:8px}
+  .links{display:flex;gap:8px;margin-top:12px}
+  .links a{flex:1;text-align:center;font-size:12.5px;font-weight:600;padding:8px;border-radius:9px;
+    border:1px solid var(--border);background:var(--panel2);transition:.15s}
+  .links a:hover{border-color:var(--cyan);color:var(--cyan)}
+  /* component index */
+  .cat-block{margin-bottom:26px}
+  .cat-h{display:flex;align-items:center;gap:10px;margin:6px 0 14px;
+    font-size:16px;font-weight:700;color:var(--txt)}
+  .cat-h .dot{width:10px;height:10px;border-radius:3px}
+  .ctype-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+  .ctype{display:flex;align-items:center;justify-content:space-between;gap:8px;
+    background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:11px 14px;cursor:pointer;transition:.15s}
+  .ctype:hover{border-color:var(--violet);background:var(--panel2)}
+  .ctype .nm{font-size:13.5px;font-weight:600}
+  .ctype .nm small{display:block;color:var(--faint);font-weight:400;font-size:11px}
+  .ctype .cnt{font-size:12px;font-weight:700;color:var(--cyan);
+    background:rgba(34,211,238,.10);border-radius:8px;padding:3px 9px;white-space:nowrap}
+  .empty{text-align:center;color:var(--muted);padding:60px 0;font-size:14px}
+  /* modal */
+  .mask{position:fixed;inset:0;background:rgba(4,5,12,.78);backdrop-filter:blur(5px);
+    display:none;align-items:flex-start;justify-content:center;padding:48px 18px;z-index:50;overflow:auto}
+  .mask.on{display:flex}
+  .modal{width:min(720px,100%);background:var(--bg2);border:1px solid var(--border);
+    border-radius:18px;padding:26px;animation:pop .22s ease}
+  @keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .modal .x{position:absolute;top:18px;right:22px;cursor:pointer;color:var(--muted);font-size:22px;line-height:1}
+  .modal h2{font-size:24px}
+  .modal .m-vendor{color:var(--muted);font-size:13px;margin-top:4px}
+  .m-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:18px 0}
+  .m-meta div{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px 12px}
+  .m-meta span{display:block;font-size:11px;color:var(--muted);margin-bottom:3px}
+  .m-meta b{font-size:14px}
+  .m-sec-title{font-size:13px;color:var(--muted);margin:16px 0 10px;letter-spacing:.5px;text-transform:uppercase}
+  .comp-chips{display:flex;gap:7px;flex-wrap:wrap}
+  .comp-chips span{font-size:12px;padding:5px 11px;border-radius:8px;
+    background:var(--panel2);border:1px solid var(--border);color:var(--txt)}
+  .m-links{display:flex;gap:10px;margin-top:22px}
+  .m-links a{flex:1;text-align:center;padding:12px;border-radius:11px;font-weight:700;font-size:14px;
+    background:var(--grad);color:#0a0b14}
+  .m-links a.ghost{background:var(--panel2);color:var(--txt);border:1px solid var(--border)}
+  footer{margin-top:50px;text-align:center;color:var(--faint);font-size:12px;line-height:1.8}
+  footer b{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="title">🧩 UI 组件总库</div>
+    <div class="sub">收录全网主流 UI 组件库与设计系统，可按框架筛选、按组件类型做全局交叉索引。
+      点击任意组件类型，即可看到<b style="color:var(--txt)">所有提供它的库</b>。数据内嵌于本页，双击即可离线使用。</div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="controls">
+    <div class="topbar">
+      <label class="search">
+        🔍 <input id="q" placeholder="搜索库名 / 厂商 / 框架 / 组件（如 table、modal、datepicker）…" />
+      </label>
+      <div class="seg">
+        <button data-view="gallery" class="active">📚 总库画廊</button>
+        <button data-view="index">🧭 组件索引</button>
+      </div>
+    </div>
+    <div class="chips" id="fwChips"></div>
+  </div>
+
+  <div class="ctxbar">
+    <div class="lbl" id="ctxLbl"></div>
+    <button class="clear" id="clearBtn" style="display:none">✕ 清除筛选</button>
+  </div>
+
+  <div id="view"></div>
+
+  <footer>
+    <div>共收录 <b id="f-total">0</b> 个 UI 组件库 / 设计系统，覆盖 React · Vue · Angular · Svelte · Solid · Web Components · 纯 CSS 等生态。</div>
+    <div>Stars / 版本等数据为近似值，仅供参考；链接均指向官方文档与开源仓库。本页为离线自包含文件，不依赖任何外部服务。</div>
+  </footer>
+</div>
+
+<div class="mask" id="mask">
+  <div class="modal" id="modal" style="position:relative"></div>
+</div>
+
+<script>
+/* ============================ 数据集 ============================ */
+/* fw: 框架标签；components: 该库真实组件名（英文规范名） */
+const LIBRARIES = [
+  // ---------- React ----------
+  { id:"antd", name:"Ant Design", vendor:"蚂蚁集团 Ant Group", fw:["React"], version:"v5", stars:"92k", license:"MIT", theme:"企业级 / 数据密集",
+    docs:"https://ant.design", repo:"https://github.com/ant-design/ant-design",
+    desc:"最成熟的企业级 React 组件库，组件最全、中后台首选。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Rate","InputNumber","Cascader","AutoComplete","ColorPicker","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Breadcrumb","Pagination","Steps","Drawer","Modal","Alert","Message","Notification","Progress","Spin","Result","Empty","Timeline","Transfer","Tree","Calendar","Carousel","Image","Descriptions","Statistic","Anchor","Affix","BackTop","Watermark","Grid","Layout","Space","Divider","Collapse","Segmented","QRCode","Mentions","Skeleton"] },
+  { id:"mui", name:"Material UI (MUI)", vendor:"MUI / Google 规范", fw:["React"], version:"v6", stars:"93k", license:"MIT", theme:"Material Design 3",
+    docs:"https://mui.com", repo:"https://github.com/mui/material-ui",
+    desc:"Google Material Design 规范的标杆实现，高度可定制、暗黑模式一流。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Table","List","Card","Avatar","Badge","Chip","Tooltip","Popover","Menu","Tabs","Breadcrumb","Pagination","Stepper","Dialog","Alert","Snackbar","Progress","Skeleton","Accordion","Drawer","Grid","Stack","Divider","ImageList","Timeline","Autocomplete","Rating","TransferList"] },
+  { id:"chakra", name:"Chakra UI", vendor:"Chakra / Segun Adebayo", fw:["React"], version:"v3", stars:"38k", license:"MIT", theme:"简洁 / 组合式",
+    docs:"https://chakra-ui.com", repo:"https://github.com/chakra-ui/chakra-ui",
+    desc:"组合式 API + Emotion，内置暗黑模式与 a11y，源码易读可二次封装。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Menu","Tabs","Accordion","Modal","Drawer","Alert","Toast","Progress","Spinner","Stat","Stack","Grid","Flex","Divider","NumberInput","PinInput","Rating"] },
+  { id:"mantine", name:"Mantine", vendor:"Mantine", fw:["React"], version:"v7", stars:"27k", license:"MIT", theme:"现代 / 暗色原生",
+    docs:"https://mantine.dev", repo:"https://github.com/mantinedev/mantine",
+    desc:"100+ 组件 + 大量 Hooks，TypeScript 友好，开箱暗色模式，开发体验极佳。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Menu","Tabs","Accordion","Modal","Drawer","Alert","Notification","Progress","Loader","Timeline","Stepper","Pagination","Grid","Stack","Divider","Carousel","Segmented","Rating","ColorPicker","Chip","Autocomplete","TransferList"] },
+  { id:"shadcn", name:"shadcn/ui", vendor:"shadcn", fw:["React"], version:"—", stars:"80k", license:"MIT", theme:"Radix + Tailwind 白盒",
+    docs:"https://ui.shadcn.com", repo:"https://github.com/shadcn-ui/ui",
+    desc:"复制即用、100% 代码所有权。基于 Radix 原语 + Tailwind，年度最热仓库。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","Dialog","Drawer","Alert","Toast","Tooltip","Popover","DropdownMenu","Tabs","Accordion","Card","Avatar","Badge","Table","Calendar","Command","Sheet","Sheet","Breadcrumb","Pagination","Carousel","Chart","Progress","Skeleton","Sonner","Menubar","ContextMenu","Toggle","ToggleGroup","NavigationMenu","Collapsible","HoverCard","Slider","Label"] },
+  { id:"radix", name:"Radix UI", vendor:"Radix / Modulz", fw:["React"], version:"—", stars:"15k", license:"MIT", theme:"无样式原语 / a11y",
+    docs:"https://www.radix-ui.com", repo:"https://github.com/radix-ui/primitives",
+    desc:"WAI-ARIA 合规的无样式交互原语，shadcn 的底层内核，可完全掌控样式。",
+    components:["Dialog","DropdownMenu","Select","Checkbox","RadioGroup","Switch","Tabs","Accordion","Tooltip","Popover","HoverCard","ContextMenu","Menubar","NavigationMenu","Toast","Toggle","ToggleGroup","Collapsible","Slider","ScrollArea","Progress","Avatar","Label","Slot"] },
+  { id:"headlessui", name:"Headless UI", vendor:"Tailwind Labs", fw:["React","Vue"], version:"v2", stars:"26k", license:"MIT", theme:"无样式 / a11y",
+    docs:"https://headlessui.com", repo:"https://github.com/tailwindlabs/headlessui",
+    desc:"Tailwind 官方无样式组件，React/Vue 双版本，可访问性优先。",
+    components:["Dialog","Menu","Listbox","Combobox","Switch","RadioGroup","Tab","Disclosure","Popover","Transition","Command"] },
+  { id:"nextui", name:"NextUI (HeroUI)", vendor:"NextUI", fw:["React"], version:"v2", stars:"23k", license:"MIT", theme:"现代 / SSR 友好",
+    docs:"https://nextui.org", repo:"https://github.com/nextui-org/nextui",
+    desc:"基于 React Aria + Tailwind，强调高性能与 SSR，组件量 200+。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Table","List","Card","Avatar","Badge","Chip","Tooltip","Popover","Dropdown","Menu","Tabs","Accordion","Modal","Drawer","Alert","Toast","Progress","Spinner","Pagination","Calendar","Carousel","Image","Stat","Snippet","Code","Link","Skeleton"] },
+  { id:"semi", name:"Semi Design", vendor:"字节跳动 ByteDance", fw:["React"], version:"v2", stars:"13k", license:"MIT", theme:"企业级 / 设计代币",
+    docs:"https://semi.design", repo:"https://github.com/DouyinFE/semi-design",
+    desc:"Design Token 与 Figma 插件完善，支持多主题动态切换，含主题商店。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Breadcrumb","Pagination","Steps","Drawer","Modal","Alert","Toast","Notification","Progress","Spin","Timeline","Tree","Calendar","Carousel","Image","Descriptions","Navigation","Anchor","Divider","Grid","Skeleton"] },
+  { id:"blueprint", name:"Blueprint", vendor:"Palantir", fw:["React"], version:"v5", stars:"21k", license:"Apache-2.0", theme:"数据密集型",
+    docs:"https://blueprintjs.com", repo:"https://github.com/palantir/blueprint",
+    desc:"面向数据密集应用（表格/图表/表单）的 React 组件套件。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","FileUpload","Table","Card","Menu","Tabs","Breadcrumb","Pagination","Collapse","Dialog","Drawer","Alert","Toast","Progress","Spinner","Timeline","Tree","Calendar","Panel","Divider","Tag","TagInput","NumericInput"] },
+  { id:"grommet", name:"Grommet", vendor:"HPE", fw:["React"], version:"v2", stars:"8k", license:"Apache-2.0", theme:"企业级 / 响应式",
+    docs:"https://v2.grommet.io", repo:"https://github.com/grommet/grommet",
+    desc:"HPE 出品的响应式 React 组件库，主题系统强大。",
+    components:["Button","TextInput","Select","CheckBox","RadioButton","RangeInput","Form","FileInput","DataTable","List","Card","Avatar","Badge","Menu","Tabs","Accordion","Layer","Modal","Announce","Meter","Spinner","Calendar","Carousel","Grid","Box","Drop","InfiniteScroll"] },
+  { id:"evergreen", name:"Evergreen", vendor:"Segment", fw:["React"], version:"v7", stars:"12k", license:"MIT", theme:"产品级",
+    docs:"https://evergreen.segment.com", repo:"https://github.com/segmentio/evergreen",
+    desc:"Segment 出品的产品级 React UI 套件，开箱即用。",
+    components:["Button","TextInput","Select","Checkbox","Radio","Switch","Slider","Form","FilePicker","Table","List","Card","Avatar","Badge","Tag","Popover","Menu","Tabs","Accordion","Dialog","Drawer","Alert","Toaster","Spinner","Pane","Heading","Paragraph"] },
+  { id:"fluent", name:"Fluent UI (React)", vendor:"Microsoft", fw:["React"], version:"v9", stars:"18k", license:"MIT", theme:"Microsoft / Fluent",
+    docs:"https://react.fluentui.dev", repo:"https://github.com/microsoft/fluentui",
+    desc:"微软 Fluent Design 的 React 实现，Office/Windows 同款。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Dropdown","Form","Table","List","Card","Avatar","Badge","Menu","Tabs","Accordion","Dialog","Drawer","Alert","Toast","Progress","Spinner","Breadcrumb","Pagination","Calendar","Image","Divider","Toolbar","Tooltip"] },
+  { id:"polaris", name:"Polaris", vendor:"Shopify", fw:["React"], version:"v12", stars:"13k", license:"MIT", theme:"电商 / Shopify",
+    docs:"https://polaris.shopify.com", repo:"https://github.com/Shopify/polaris",
+    desc:"Shopify 管理后台设计系统，电商场景组件齐全。",
+    components:["Button","TextField","Select","Checkbox","Radio","Switch","Slider","Form","DropZone","DataTable","List","Card","Avatar","Badge","Tag","Popover","Menu","Tabs","Accordion","Modal","Toast","Frame","Banner","Spinner","Pagination","DatePicker","IndexTable","Filters","ChoiceList"] },
+  { id:"primer", name:"Primer", vendor:"GitHub", fw:["React"], version:"v36", stars:"13k", license:"MIT", theme:"GitHub / 开发者工具",
+    docs:"https://primer.style", repo:"https://github.com/primer/react",
+    desc:"GitHub 官方设计系统，开发者工具与文档站同款风格。",
+    components:["Button","TextInput","Select","Checkbox","Radio","Switch","Form","FileUpload","Table","List","Card","Avatar","Label","Tooltip","Popover","ActionMenu","NavList","TabNav","Dialog","Toast","Flash","Spinner","Pagination","Calendar","PageLayout","Timeline"] },
+  { id:"baseweb", name:"Base Web", vendor:"Uber", fw:["React"], version:"v14", stars:"9k", license:"MIT", theme:"产品级",
+    docs:"https://baseweb.design", repo:"https://github.com/uber/baseweb",
+    desc:"Uber 基于 Styletron 的 React 组件库，主题可深度定制。",
+    components:["Button","Input","Select","Checkbox","Radio","Slider","Form","FileUploader","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Menu","Tabs","Accordion","Modal","Drawer","Toast","Notification","Progress","Spinner","Pagination","DatePicker","TreeView","Combobox"] },
+  { id:"gestalt", name:"Gestalt", vendor:"Pinterest", fw:["React"], version:"v1", stars:"4k", license:"Apache-2.0", theme:"产品级",
+    docs:"https://gestalt.pinterest.systems", repo:"https://github.com/pinterest/gestalt",
+    desc:"Pinterest 设计系统，强调一致的产品体验。",
+    components:["Button","TextField","Select","Checkbox","Radio","Switch","Form","FileUploader","Table","List","Card","Avatar","Badge","Tooltip","Popover","Dropdown","Tabs","Modal","Sheet","Toast","Banner","Spinner","Pagination","DatePicker","Collapsible"] },
+  { id:"antd-mobile", name:"Ant Design Mobile", vendor:"蚂蚁集团", fw:["React"], version:"v5", stars:"12k", license:"MIT", theme:"移动端 / H5",
+    docs:"https://mobile.ant.design", repo:"https://github.com/ant-design/ant-design-mobile",
+    desc:"移动端 Ant Design，组件专为拇指操作设计，支持 PWA。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","ImagePicker","List","Card","Avatar","Badge","Tag","Popover","Dropdown","Tabs","ActionSheet","Dialog","Toast","NoticeBar","Progress","ActivityIndicator","DatePicker","Picker","Swiper","Grid","Steps","Result","Empty"] },
+  { id:"react-bootstrap", name:"React Bootstrap", vendor:"React Bootstrap", fw:["React"], version:"v2", stars:"23k", license:"MIT", theme:"Bootstrap 风格",
+    docs:"https://react-bootstrap.github.io", repo:"https://github.com/react-bootstrap/react-bootstrap",
+    desc:"Bootstrap 5 的 React 重写，无 jQuery 依赖。",
+    components:["Button","Form","InputGroup","Select","Checkbox","Radio","Switch","Table","ListGroup","Card","Badge","Alert","Toast","Modal","Offcanvas","Tooltip","Popover","Dropdown","Nav","Tabs","Accordion","Pagination","Spinner","Progress","Carousel","Breadcrumb","Placeholder"] },
+  { id:"ariakit", name:"Ariakit", vendor:"Ariakit", fw:["React"], version:"v0.4", stars:"8k", license:"MIT", theme:"无样式 / a11y",
+    docs:"https://ariakit.org", repo:"https://github.com/ariakit/ariakit",
+    desc:"低层级无障碍 React 组件原语，键盘导航一流。",
+    components:["Button","Checkbox","Radio","Switch","Form","Select","Combobox","Dialog","Popover","Menu","Tab","Disclosure","Tooltip","Composite","Toolbar","Slider","Group"] },
+  { id:"react-aria", name:"React Aria Components", vendor:"Adobe", fw:["React"], version:"—", stars:"12k", license:"Apache-2.0", theme:"无样式 / a11y",
+    docs:"https://react-spectrum.adobe.com/react-aria", repo:"https://github.com/adobe/react-spectrum",
+    desc:"Adobe 出品的组件原语，行为/无障碍开箱即用，样式自定。",
+    components:["Button","ToggleButton","Checkbox","Radio","Switch","TextField","Select","ComboBox","DatePicker","Form","Table","ListBox","Menu","Tabs","Accordion","Dialog","Modal","Popover","Tooltip","Toast","Disclosure","Slider","NumberField","SearchField","TagGroup","Tree","GridList"] },
+
+  // ---------- Vue ----------
+  { id:"element-plus", name:"Element Plus", vendor:"饿了么 / Element", fw:["Vue"], version:"v2", stars:"26k", license:"MIT", theme:"企业级 / 后台",
+    docs:"https://element-plus.org", repo:"https://github.com/element-plus/element-plus",
+    desc:"Vue 3 生态扛把子，国内使用率最高，后台 CRUD 首选。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Rate","InputNumber","Cascader","Autocomplete","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Breadcrumb","Pagination","Steps","Drawer","Dialog","Alert","Message","Notification","Progress","Loading","Result","Empty","Timeline","Transfer","Tree","Calendar","Carousel","Image","Descriptions","Collapse","Segmented","ColorPicker"] },
+  { id:"naive-ui", name:"Naive UI", vendor:"TuSan (尤雨溪推荐)", fw:["Vue"], version:"v2", stars:"17k", license:"MIT", theme:"现代 / TS 友好",
+    docs:"https://www.naiveui.com", repo:"https://github.com/tusen-ai/naive-ui",
+    desc:"全 TS + Composition API，零外部依赖，主题系统基于 CSS 变量。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Rate","InputNumber","Cascader","AutoComplete","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Breadcrumb","Pagination","Steps","Drawer","Dialog","Alert","Message","Notification","Progress","Spin","Result","Empty","Timeline","Transfer","Tree","Calendar","Carousel","Image","Descriptions","Collapse","Segmented","ColorPicker","DataTable"] },
+  { id:"vuetify", name:"Vuetify", vendor:"Vuetify", fw:["Vue"], version:"v3", stars:"40k", license:"MIT", theme:"Material Design 3",
+    docs:"https://vuetifyjs.com", repo:"https://github.com/vuetifyjs/vuetify",
+    desc:"Vue 的 Material Design 标杆，生态最成熟，Material You 动态主题。",
+    components:["Button","TextField","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","FileInput","DataTable","List","Card","Avatar","Badge","Chip","Tooltip","Menu","Tabs","Breadcrumb","Pagination","Stepper","NavigationDrawer","Dialog","Snackbar","Alert","Progress","ProgressLinear","Skeleton","Timeline","Treeview","Calendar","Carousel","Image","Footer","AppBar","BottomNav"] },
+  { id:"quasar", name:"Quasar", vendor:"Quasar", fw:["Vue"], version:"v2", stars:"26k", license:"MIT", theme:"跨端 / 全家桶",
+    docs:"https://quasar.dev", repo:"https://github.com/quasarframework/quasar",
+    desc:"同一套代码编译 SPA/PWA/SSR/移动端/桌面，CLI 工程化完善。",
+    components:["Button","Input","Select","Checkbox","Radio","Toggle","Slider","DatePicker","Form","Uploader","Table","List","Card","Avatar","Badge","Chip","Tooltip","Menu","Tabs","Breadcrumbs","Pagination","Stepper","Drawer","Dialog","Notify","Banner","Spinner","Timeline","Tree","Carousel","Image","ExpansionItem","Splitter","Parallax"] },
+  { id:"primevue", name:"PrimeVue", vendor:"PrimeTek", fw:["Vue"], version:"v4", stars:"13k", license:"MIT", theme:"企业级 / 30+ 主题",
+    docs:"https://primevue.org", repo:"https://github.com/primefaces/primevue",
+    desc:"80+ 复杂组件，Styled/Unstyled 双模式，带可视化主题工厂。",
+    components:["Button","InputText","Select","Checkbox","Radio","ToggleSwitch","Slider","DatePicker","Form","FileUpload","DataTable","DataView","Listbox","Card","Avatar","Badge","Tag","Tooltip","Menu","TabView","Breadcrumb","Paginator","Steps","Drawer","Dialog","Toast","ConfirmPopup","ProgressBar","ProgressSpinner","Timeline","Tree","TreeSelect","Calendar","Carousel","Image","Accordion","Galleria","Chart","ColorPicker","Rating","Cascader","OrganizationChart","OrderList","PickList"] },
+  { id:"antdv", name:"Ant Design Vue", vendor:"阿里系", fw:["Vue"], version:"v4", stars:"21k", license:"MIT", theme:"企业级 / 与 React 对齐",
+    docs:"https://antdv.com", repo:"https://github.com/vueComponent/ant-design-vue",
+    desc:"与 React 版 API 对齐，支持 Vite / Nuxt，含 ProComponents。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Rate","InputNumber","Cascader","AutoComplete","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Breadcrumb","Pagination","Steps","Drawer","Modal","Alert","Message","Notification","Progress","Spin","Result","Empty","Timeline","Transfer","Tree","Calendar","Carousel","Image","Descriptions","Collapse","Segmented","QRCode"] },
+  { id:"vant", name:"Vant", vendor:"有赞 Youzan", fw:["Vue"], version:"v4", stars:"23k", license:"MIT", theme:"移动端 / H5",
+    docs:"https://vant-ui.github.io", repo:"https://github.com/youzan/vant",
+    desc:"移动端第一选择，Vue 3 + 小程序双端，组件平均 <3kB gzip。",
+    components:["Button","Field","Picker","Checkbox","Radio","Switch","Slider","Form","Uploader","List","Card","Avatar","Badge","Tag","Popover","Dropdown","Tab","ActionSheet","Dialog","Toast","NoticeBar","Progress","Loading","Steps","TreeSelect","Calendar","Swipe","Image","Collapse","Empty","ContactCard"] },
+  { id:"nuxt-ui", name:"Nuxt UI", vendor:"Nuxt", fw:["Vue"], version:"v3", stars:"6k", license:"MIT", theme:"Nuxt / SSR 满分",
+    docs:"https://ui.nuxt.com", repo:"https://github.com/nuxt/ui",
+    desc:"Nuxt 官方旗舰，基于 Reka UI + Tailwind，全量 a11y、RTL 与暗色。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","FileUpload","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Accordion","Modal","Slideover","Alert","Toast","Progress","Spinner","Pagination","Carousel","CommandPalette","ColorPicker","Dashboard"] },
+  { id:"shadcn-vue", name:"shadcn-vue", vendor:"社区", fw:["Vue"], version:"—", stars:"8k", license:"MIT", theme:"Radix 系 / Tailwind",
+    docs:"https://www.shadcn-vue.com", repo:"https://github.com/radix-vue/shadcn-vue",
+    desc:"Vue 版的复制即用组件集，基于 Reka UI + Tailwind。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","Dialog","Drawer","Alert","Toast","Tooltip","Popover","DropdownMenu","Tabs","Accordion","Card","Avatar","Badge","Table","Calendar","Command","Breadcrumb","Pagination","Carousel","Chart","Progress","Skeleton","Menubar","ContextMenu","Toggle","NavigationMenu","Collapsible","HoverCard","Sonner"] },
+  { id:"reka-ui", name:"Reka UI", vendor:"unovue", fw:["Vue"], version:"—", stars:"5k", license:"MIT", theme:"无样式原语 / a11y",
+    docs:"https://reka-ui.com", repo:"https://github.com/unovue/reka-ui",
+    desc:"Vue 官方支持的 Headless 内核，零样式、100% 可定制。",
+    components:["Dialog","DropdownMenu","Select","Checkbox","RadioGroup","Switch","Tabs","Accordion","Tooltip","Popover","HoverCard","ContextMenu","Menubar","NavigationMenu","Toast","Toggle","ToggleGroup","Collapsible","Slider","ScrollArea","Progress","Avatar","Label"] },
+  { id:"arco-vue", name:"Arco Design", vendor:"字节跳动", fw:["Vue"], version:"v1", stars:"2k", license:"MIT", theme:"企业级 / 设计系统",
+    docs:"https://arco.design/vue", repo:"https://github.com/arco-design/arco-design-vue",
+    desc:"字节跳动设计系统，配套物料市场与低代码平台，结构清晰。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Rate","InputNumber","Cascader","AutoComplete","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Breadcrumb","Pagination","Steps","Drawer","Modal","Alert","Message","Notification","Progress","Spin","Timeline","Tree","Calendar","Carousel","Image","Descriptions","Collapse","Timeline","ColorPicker"] },
+  { id:"tdesign-vue", name:"TDesign", vendor:"腾讯 Tencent", fw:["Vue"], version:"—", stars:"2k", license:"MIT", theme:"多端统一设计系统",
+    docs:"https://tdesign.tencent.com/vue", repo:"https://github.com/Tencent/tdesign-vue",
+    desc:"腾讯多端统一设计系统（React/Vue/小程序/Flutter）。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Rate","InputNumber","Cascader","AutoComplete","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Breadcrumb","Pagination","Steps","Drawer","Dialog","Alert","Message","Notification","Progress","Loading","Result","Empty","Timeline","Tree","Calendar","Carousel","Image","Descriptions","Collapse"] },
+  { id:"vuestic", name:"Vuestic UI", vendor:"Epicmax", fw:["Vue"], version:"v1", stars:"4k", license:"MIT", theme:"现代 / 即装即用",
+    docs:"https://vuestic.dev", repo:"https://github.com/epicmaxco/vuestic-ui",
+    desc:"42 个业务组件，配置简单，响应式高性能。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","FileUpload","Table","List","Card","Avatar","Badge","Tag","Tooltip","Dropdown","Menu","Tabs","Accordion","Modal","Drawer","Alert","Toast","Progress","Spinner","Timeline","Pagination","Carousel","Calendar","DataTable"] },
+  { id:"inkline", name:"Inkline", vendor:"Inkline", fw:["Vue"], version:"v3", stars:"2k", license:"MIT", theme:"现代 / 可定制",
+    docs:"https://inkline.io", repo:"https://github.com/inkline/inkline",
+    desc:"Vue 3 组件库，内置设计系统、暗黑模式与表单验证。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Accordion","Modal","Drawer","Alert","Toast","Progress","Spinner","Pagination","Carousel","Collapse"] },
+
+  // ---------- Angular ----------
+  { id:"ng-material", name:"Angular Material", vendor:"Google", fw:["Angular"], version:"v17", stars:"24k", license:"MIT", theme:"Material Design",
+    docs:"https://material.angular.io", repo:"https://github.com/angular/components",
+    desc:"Google 官方维护，基于 CDK 原语，内置动画与 i18n。",
+    components:["Button","Input","Select","Checkbox","Radio","SlideToggle","Slider","Datepicker","FormField","Table","List","Card","Avatar","Badge","Chips","Tooltip","Menu","Tabs","Breadcrumb","Paginator","Stepper","Sidenav","Dialog","Snackbar","Alert","Progress","Spinner","Expansion","Accordion","BottomSheet","Carousel","GridList","Tree"] },
+  { id:"ng-zorro", name:"NG-ZORRO", vendor:"蚂蚁集团", fw:["Angular"], version:"v17", stars:"9k", license:"MIT", theme:"企业级 (Angular 版 antd)",
+    docs:"https://ng.ant.design", repo:"https://github.com/NG-ZORRO/ng-zorro-antd",
+    desc:"Ant Design 的 Angular 实现，API 与 React 版对齐。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","DatePicker","Form","Upload","Rate","InputNumber","Cascader","AutoComplete","Table","List","Card","Avatar","Badge","Tag","Tooltip","Popover","Dropdown","Menu","Tabs","Breadcrumb","Pagination","Steps","Drawer","Modal","Alert","Message","Notification","Progress","Spin","Result","Empty","Timeline","Transfer","Tree","Calendar","Carousel","Image","Descriptions","Collapse","Segmented","QRCode"] },
+  { id:"primeng", name:"PrimeNG", vendor:"PrimeTek", fw:["Angular"], version:"v17", stars:"9k", license:"MIT", theme:"企业级 / 80+ 组件",
+    docs:"https://primeng.org", repo:"https://github.com/primefaces/primeng",
+    desc:"Angular 企业级组件套件，主题丰富、企业支持完善。",
+    components:["Button","InputText","Select","Checkbox","Radio","Toggle","Slider","DatePicker","Form","FileUpload","Table","DataView","Listbox","Card","Avatar","Badge","Tag","Tooltip","Menu","TabView","Breadcrumb","Paginator","Steps","Drawer","Dialog","Toast","ConfirmPopup","ProgressBar","ProgressSpinner","Timeline","Tree","TreeSelect","Calendar","Carousel","Image","Accordion","Galleria","Chart","ColorPicker","Rating","Cascader","OrderList","PickList"] },
+  { id:"clarity", name:"Clarity", vendor:"VMware", fw:["Angular"], version:"v13", stars:"7k", license:"MIT", theme:"企业级 / 设计系统",
+    docs:"https://clarity.design", repo:"https://github.com/vmware-clarity/ng-clarity",
+    desc:"VMware 设计系统，含 Angular 组件与核心 CSS。",
+    components:["Button","Input","Select","Checkbox","Radio","Toggle","Slider","Datepicker","Form","File","Datagrid","List","Card","Avatar","Badge","Tooltip","Dropdown","Menu","Tabs","Wizard","Signpost","Modal","Alert","Toast","Spinner","Tree","StackView","VerticalNav","Stepper"] },
+  { id:"ng-bootstrap", name:"NG Bootstrap", vendor:"NG Bootstrap", fw:["Angular"], version:"v16", stars:"8k", license:"MIT", theme:"Bootstrap 风格",
+    docs:"https://ng-bootstrap.github.io", repo:"https://github.com/ng-bootstrap/ng-bootstrap",
+    desc:"Bootstrap 5 的 Angular 实现，无 jQuery 依赖。",
+    components:["Button","Form","Input","Checkbox","Radio","Select","Table","ListGroup","Card","Badge","Alert","Toast","Modal","Offcanvas","Tooltip","Popover","Dropdown","Nav","Tabs","Accordion","Pagination","Progressbar","Spinner","Carousel","Rating","Datepicker","Collapse"] },
+  { id:"taiga-ui", name:"Taiga UI", vendor:"Tinkoff", fw:["Angular"], version:"v4", stars:"5k", license:"MIT", theme:"现代 / 设计系统",
+    docs:"https://taiga-ui.dev", repo:"https://github.com/taiga-family/taiga-ui",
+    desc:"Angular + 设计系统的现代组件库，含编辑器等高级件。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Date","Form","InputFiles","Table","Card","Avatar","Badge","Tag","Tooltip","Dropdown","Menu","Tabs","Accordion","Dialog","Alert","Notification","Progress","Spinner","Pagination","Carousel","Tree","Calendar","Editor","Breadcrumbs","Stepper"] },
+
+  // ---------- Svelte ----------
+  { id:"skeleton", name:"Skeleton", vendor:"Skeleton", fw:["Svelte"], version:"v2", stars:"18k", license:"MIT", theme:"设计系统 / Tailwind",
+    docs:"https://skeleton.dev", repo:"https://github.com/skeletonlabs/skeleton",
+    desc:"基于 Tailwind 的自适应主题 Svelte 设计系统。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","Table","List","Card","Avatar","Badge","Tag","Tooltip","Menu","Tabs","Accordion","Modal","Drawer","Alert","Toast","Progress","Spinner","Pagination","Carousel","Calendar","FileDrop","RangeSlider"] },
+  { id:"shadcn-svelte", name:"shadcn-svelte", vendor:"社区", fw:["Svelte"], version:"—", stars:"8k", license:"MIT", theme:"Bits UI / Tailwind",
+    docs:"https://shadcn-svelte.com", repo:"https://github.com/huntabyte/shadcn-svelte",
+    desc:"Svelte 版复制即用组件集，基于 Bits UI + Tailwind。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","Dialog","Drawer","Alert","Toast","Tooltip","Popover","DropdownMenu","Tabs","Accordion","Card","Avatar","Badge","Table","Calendar","Command","Breadcrumb","Pagination","Carousel","Chart","Progress","Skeleton","Menubar","ContextMenu","Toggle","NavigationMenu","Collapsible","HoverCard"] },
+  { id:"smui", name:"Svelte Material UI (SMUI)", vendor:"SMUI", fw:["Svelte"], version:"v7", stars:"3k", license:"MIT", theme:"Material Design",
+    docs:"https://sveltematerialui.com", repo:"https://github.com/hperrin/svelte-material-ui",
+    desc:"Material Design 的 Svelte 实现，组件覆盖全面。",
+    components:["Button","Textfield","Select","Checkbox","Radio","Switch","Slider","Form","Table","List","Card","Avatar","Badge","Chip","Tooltip","Menu","Tabs","Accordion","Dialog","Drawer","Alert","Snackbar","Progress","CircularProgress","LinearProgress","Pagination","Datepicker","Carousel","ImageList","TopAppBar"] },
+  { id:"flowbite-svelte", name:"Flowbite Svelte", vendor:"Flowbite", fw:["Svelte"], version:"v0.4", stars:"2k", license:"MIT", theme:"Tailwind / 极简",
+    docs:"https://flowbite-svelte.com", repo:"https://github.com/themesberg/flowbite-svelte",
+    desc:"Tailwind + Svelte 组件，遵循简洁极简的设计原则。",
+    components:["Button","Input","Select","Checkbox","Radio","Toggle","Range","Form","Table","List","Card","Avatar","Badge","Tooltip","Dropdown","Menu","Tabs","Accordion","Modal","Drawer","Alert","Toast","Progress","Spinner","Pagination","Carousel","Breadcrumb","Datepicker"] },
+  { id:"carbon-svelte", name:"Carbon Components Svelte", vendor:"IBM", fw:["Svelte"], version:"v0.8", stars:"1k", license:"Apache-2.0", theme:"企业级 (Carbon)",
+    docs:"https://carbon-components-svelte.onrender.com", repo:"https://github.com/carbon-design-system/carbon-components-svelte",
+    desc:"IBM Carbon 设计系统的 Svelte 实现。",
+    components:["Button","Input","Select","Checkbox","Radio","Toggle","Slider","Form","DataTable","List","Card","Avatar","Tag","Tooltip","Dropdown","Menu","Tabs","Accordion","Modal","Toast","Notification","Progress","Pagination","TreeView","Calendar","Breadcrumb","UNavigationMenu","Loading"] },
+
+  // ---------- Solid ----------
+  { id:"ark-ui", name:"Ark UI", vendor:"Chakra", fw:["Solid","Vue"], version:"v4", stars:"4k", license:"MIT", theme:"无样式 / 跨框架",
+    docs:"https://ark-ui.com", repo:"https://github.com/chakra-ui/ark",
+    desc:"更轻更快的 Headless 组件库，Solid/Vue 双版本，可 tree-shaking。",
+    components:["Dialog","Dropdown","Select","Checkbox","RadioGroup","Switch","Tabs","Accordion","Tooltip","Popover","HoverCard","Menu","Toast","Toggle","ToggleGroup","Collapsible","Slider","Combobox","DatePicker","Pagination","PinInput","NumberInput","Progress","Carousel","Steps"] },
+  { id:"kobalte", name:"Kobalte", vendor:"Kobalte", fw:["Solid"], version:"v0.13", stars:"3k", license:"MIT", theme:"无样式 / a11y",
+    docs:"https://kobalte.dev", repo:"https://github.com/kobaltedev/kobalte",
+    desc:"SolidJS 的无样式可访问组件原语。",
+    components:["Dialog","DropdownMenu","Select","Checkbox","RadioGroup","Switch","Tabs","Accordion","Tooltip","Popover","HoverCard","ContextMenu","Menu","Toast","Toggle","ToggleGroup","Collapsible","Slider","Combobox","Progress","Disclosure"] },
+  { id:"solid-headless", name:"Solid Bootstrap", vendor:"SolidJS", fw:["Solid"], version:"—", stars:"1k", license:"MIT", theme:"Bootstrap 风格",
+    docs:"https://www.solid-bootstrap.com", repo:"https://github.com/solidjs/solid-bootstrap",
+    desc:"Bootstrap 5 的 Solid 实现，API 贴近 React-Bootstrap。",
+    components:["Button","Form","InputGroup","Select","Checkbox","Radio","Switch","Table","ListGroup","Card","Badge","Alert","Toast","Modal","Offcanvas","Tooltip","Popover","Dropdown","Nav","Tabs","Accordion","Pagination","Spinner","Progress","Carousel","Breadcrumb"] },
+
+  // ---------- Web Components / 跨框架 ----------
+  { id:"shoelace", name:"Shoelace (Web Awesome)", vendor:"Web Awesome", fw:["Web Components"], version:"v2", stars:"13k", license:"MIT", theme:"框架无关 / 标准化",
+    docs:"https://shoelace.style", repo:"https://github.com/shoelace-style/shoelace",
+    desc:"标准 Web Components，任意框架可用，框架无关首选。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Range","Form","FileUpload","Table","Listbox","Card","Avatar","Badge","Tag","Tooltip","Dropdown","Menu","Tab","Accordion","Dialog","Drawer","Alert","Toast","Progress","Spinner","Carousel","Carousel","Image","Details","Popup","SplitPanel","Tree","Breadcrumb","Pagination","Rating","ColorPicker"] },
+  { id:"material-web", name:"Material Web (MWC)", vendor:"Google", fw:["Web Components"], version:"v2", stars:"8k", license:"Apache-2.0", theme:"Material Design",
+    docs:"https://material-web.dev", repo:"https://github.com/material-components/material-web",
+    desc:"Google 官方 Material Design 3 的 Web Components。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","List","Card","Avatar","Badge","Chips","Tooltip","Menu","Tabs","Dialog","Snackbar","Progress","CircularProgress","LinearProgress","Divider","TopAppBar","NavigationBar","NavigationRail"] },
+  { id:"carbon", name:"Carbon Design System", vendor:"IBM", fw:["Web Components","React","Vue","Svelte"], version:"v11", stars:"7k", license:"Apache-2.0", theme:"企业级 (IBM)",
+    docs:"https://carbondesignsystem.com", repo:"https://github.com/carbon-design-system/carbon",
+    desc:"IBM 企业级设计系统，含 React/Vue/Svelte/Web Components 多实现。",
+    components:["Button","Input","Select","Checkbox","Radio","Toggle","Slider","Form","DataTable","List","Card","Avatar","Tag","Tooltip","Dropdown","Menu","Tabs","Accordion","Modal","Toast","Notification","Progress","Pagination","TreeView","Calendar","Breadcrumb","UIShell","Loading","FileUploader","DatePicker","TimePicker"] },
+  { id:"lion", name:"Lion", vendor:"ING", fw:["Web Components"], version:"v3", stars:"2k", license:"MIT", theme:"无样式 / 表单原语",
+    docs:"https://lion-web.netlify.app", repo:"https://github.com/ing-bank/lion",
+    desc:"ING 出品的 Web Components 表单原语，无障碍优先。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","File","Textarea","Validation","Field","Fieldset","Listbox","Combobox","Pagination"] },
+  { id:"fast", name:"FAST (Microsoft)", vendor:"Microsoft", fw:["Web Components"], version:"v3", stars:"9k", license:"MIT", theme:"框架无关 / 可定制",
+    docs:"https://www.fast.design", repo:"https://github.com/microsoft/fast",
+    desc:"微软 FAST 框架，提供可主题化的 Web Components 与设计系统基础。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","Card","Accordion","Dialog","Menu","Tabs","Tooltip","TreeView","Anchor","Badge","Progress","Skeleton","Breadcrumb","Divider","Disclosure"] },
+
+  // ---------- CSS / 纯样式 ----------
+  { id:"bootstrap", name:"Bootstrap", vendor:"Bootstrap", fw:["CSS"], version:"v5", stars:"170k", license:"MIT", theme:"经典 / 栅格",
+    docs:"https://getbootstrap.com", repo:"https://github.com/twbs/bootstrap",
+    desc:"最流行的移动优先 CSS 框架，无 jQuery、CSS 变量主题、暗黑模式。",
+    components:["Button","Form","InputGroup","Select","Checkbox","Radio","Switch","Table","ListGroup","Card","Badge","Alert","Toast","Modal","Offcanvas","Tooltip","Popover","Dropdown","Nav","Tabs","Accordion","Pagination","Progress","Spinner","Carousel","Breadcrumb","Placeholder","Collapse"] },
+  { id:"tailwind", name:"Tailwind CSS", vendor:"Tailwind Labs", fw:["CSS"], version:"v4", stars:"84k", license:"MIT", theme:"原子化 Utility",
+    docs:"https://tailwindcss.com", repo:"https://github.com/tailwindlabs/tailwindcss",
+    desc:"原子化 CSS 引擎，高度定制，作为样式层被众多组件库采用。",
+    components:["Utility Classes (Grid/Flex/Spacing/Typography)","Forms Plugin","Typography Plugin","Container","Divider (Border)","Badge (via classes)","Card (via classes)","Button (via classes)"] },
+  { id:"tailwindui", name:"Tailwind UI", vendor:"Tailwind Labs", fw:["CSS"], version:"—", stars:"—", license:"付费", theme:"官方付费模板",
+    docs:"https://tailwindui.com", repo:"https://github.com/tailwindlabs/tailwindui",
+    desc:"Tailwind 官方付费组件与模板，一次购买终身使用，质量极高。",
+    components:["Button","Form","Card","Modal","Dropdown","Nav","Tabs","Accordion","Table","Hero","Pricing","Testimonials","Stepper","CommandPalette","SlideOver"] },
+  { id:"daisyui", name:"daisyUI", vendor:"daisyUI", fw:["CSS"], version:"v4", stars:"38k", license:"MIT", theme:"Tailwind 插件",
+    docs:"https://daisyui.com", repo:"https://github.com/saadeghi/daisyui",
+    desc:"Tailwind 最流行的组件插件，语义化类名、多主题，零 JS 依赖。",
+    components:["Button","Form","Input","Select","Checkbox","Radio","Toggle","Table","Card","Avatar","Badge","Alert","Toast","Modal","Drawer","Dropdown","Menu","Tabs","Accordion","Pagination","Progress","Spinner","Carousel","Breadcrumb","Collapse","Rating","Chat","Stat","Countdown","Steps","Timeline","Tooltip"] },
+  { id:"bulma", name:"Bulma", vendor:"Bulma", fw:["CSS"], version:"v1", stars:"49k", license:"MIT", theme:"纯 CSS / Flexbox",
+    docs:"https://bulma.io", repo:"https://github.com/jgthms/bulma",
+    desc:"基于 Flexbox 的纯 CSS 框架，无 JS、轻量。",
+    components:["Button","Form","Input","Select","Checkbox","Radio","Table","Card","Tag","Message","Modal","Dropdown","Navbar","Tabs","Pagination","Panel","Menu","Breadcrumb","Hero","Section","Footer","Columns (Grid)","Box","Notification"] },
+  { id:"foundation", name:"Foundation", vendor:"ZURB / XY Grid", fw:["CSS"], version:"v6", stars:"30k", license:"MIT", theme:"企业级 / 响应式",
+    docs:"https://get.foundation", repo:"https://github.com/foundation/foundation-sites",
+    desc:"企业级响应式前端框架，XY Grid 灵活，语义化。",
+    components:["Button","Form","Input","Select","Checkbox","Radio","Switch","Table","Accordion","Tabs","Dropdown","Menu","Modal","OffCanvas","Tooltip","Badge","Label","Progress","Slider","Pagination","Breadcrumbs","Callout","Card","Grid (XY)","Responsive Navigation"] },
+  { id:"pico", name:"Pico.css", vendor:"Pico", fw:["CSS"], version:"v2", stars:"14k", license:"MIT", theme:"极简 / 无类",
+    docs:"https://picocss.com", repo:"https://github.com/picocss/pico",
+    desc:"超轻量级语义化 CSS 框架，无需写类名，写 HTML 即得样式。",
+    components:["Button","Form","Input","Select","Checkbox","Radio","Switch","Table","Card","Modal","Dropdown","Group","Nav","Hero"] },
+  { id:"semantic-ui", name:"Semantic UI", vendor:"Semantic UI", fw:["CSS"], version:"v2", stars:"50k", license:"Apache-2.0", theme:"语义化",
+    docs:"https://semantic-ui.com", repo:"https://github.com/Semantic-Org/Semantic-UI",
+    desc:"以自然语言类名组织 UI，内容驱动站点友好。",
+    components:["Button","Form","Input","Select","Checkbox","Radio","Table","Card","Label","Message","Modal","Dropdown","Menu","Tab","Accordion","Pagination","Progress","Rail","Step","Breadcrumb","Segment","Statistic","Rating"] },
+  { id:"spectre", name:"Spectre.css", vendor:"Spectre", fw:["CSS"], version:"v0.5", stars:"12k", license:"MIT", theme:"轻量 / 现代",
+    docs:"https://picturepan2.github.io/spectre", repo:"https://github.com/picturepan2/spectre",
+    desc:"轻量级、现代、响应式的 CSS 框架。",
+    components:["Button","Form","Input","Select","Checkbox","Radio","Switch","Table","Card","Label","Modal","Dropdown","Nav","Tabs","Accordion","Pagination","Progress","Carousel","Steps","Hero","Empty","Toast"] },
+
+  // ---------- 大厂设计系统（多框架参考） ----------
+  { id:"atlassian", name:"Atlassian Design System", vendor:"Atlassian", fw:["React","Web Components"], version:"—", stars:"5k", license:"Apache-2.0", theme:"协作工具 (Jira/Confluence)",
+    docs:"https://atlassian.design", repo:"https://github.com/atlassian/atlaskit",
+    desc:"Jira/Confluence 同款设计系统，含 React 组件（AtlasKit）。",
+    components:["Button","TextField","Select","Checkbox","Radio","Toggle","Form","Table","List","Card","Avatar","Badge","Tag","Tooltip","DropdownMenu","Menu","Tabs","Modal","InlineDialog","Banner","Toast","Spinner","Pagination","Breadcrumbs","DateTimePicker"] },
+  { id:"lightning", name:"Lightning Design System", vendor:"Salesforce", fw:["CSS","Web Components"], version:"v2", stars:"4k", license:"BSD-3", theme:"CRM (Salesforce)",
+    docs:"https://www.lightningdesignsystem.com", repo:"https://github.com/salesforce-ux/design-system",
+    desc:"Salesforce 设计系统，CRM 应用组件与规范。",
+    components:["Button","Form","Input","Select","Checkbox","Radio","Toggle","Table","Card","Avatar","Badge","Tabs","Accordion","Modal","Toast","Progress","Pagination","Breadcrumbs","Carousel","Builder","ActivityTimeline"] },
+  { id:"fluent-ds", name:"Fluent 2 Design", vendor:"Microsoft", fw:["Multi"], version:"v2", stars:"—", license:"MIT", theme:"Microsoft 全平台",
+    docs:"https://fluent2.microsoft.design", repo:"https://github.com/microsoft/fluentui",
+    desc:"微软 Fluent 2 跨平台设计语言，含 Web/Win/移动端实现。",
+    components:["Button","Input","Select","Checkbox","Radio","Switch","Slider","Form","Table","Card","Avatar","Badge","Menu","Tabs","Dialog","Toast","Progress","Calendar","Navigation","Toolbar"] },
+];
+
+/* ============================ 分类推断 ============================ */
+const CATS = [
+  { id:"layout",   name:"布局 Layout",          color:"#22d3ee", keys:["grid","container","flex","divider","space","layout","box","stack","panel","columns","section","hero","footer","xy grid","spinner","loading","skeleton","placeholder","empty"] },
+  { id:"nav",      name:"导航 Navigation",      color:"#a78bfa", keys:["menu","nav","tab","breadcrumb","pagination","steps","stepper","dropdown","drawer","sidenav","topappbar","navigationbar","navigationrail","navbar","wizard","signpost"] },
+  { id:"display",  name:"数据展示 Data Display", color:"#34d399", keys:["table","list","card","avatar","badge","tag","chip","tooltip","popover","accordion","carousel","tree","calendar","image","statistic","description","timeline","stat","gallery","listbox","treeview","avatar","tree select","organizationchart","datagrid","datalist","grid list","imagelist","toplist","swipe","parallax"] },
+  { id:"input",    name:"数据录入 Data Entry",  color:"#fbbf24", keys:["button","input","select","checkbox","radio","switch","slider","datepicker","form","upload","rate","rating","inputnumber","numericinput","autocomplete","cascader","colorpicker","combobox","toggle","textfield","field","range","pininput","numberfield","searchfield","file","fileupload","filepicker","fileuploader","date","time","picker","textinput","text area","textarea","checkbox","phone","segmented","chips","taginput"] },
+  { id:"feedback", name:"反馈 Feedback",        color:"#f472b6", keys:["modal","dialog","drawer","alert","message","toast","snackbar","notification","progress","spinner","result","banner","flash","noticebar","infinitepanel","loading","confirm","activityindicator","offcanvas","slideovers","sheet","actionsheet","popup","contextmenu","hovercard","disclosure"] },
+  { id:"advanced", name:"高级 Advanced",        color:"#60a5fa", keys:["transfer","segmented","anchor","affix","backtop","watermark","mentions","command","commandpalette","collapsible","splitter","step","orderlist","picklist","combobox","chart","tree","treeview","expansion","tabview","splitpanel","navigationmenu","menubar","toggle","sticky","scrollarea"] },
+  { id:"media",    name:"媒体 Media",           color:"#fb923c", keys:["chart","video","audio","qrcode","image","carousel","editor","codemirror","richtext"] },
+];
+function catOf(name){
+  const n = name.toLowerCase();
+  for(const c of CATS){ if(c.keys.some(k=>n.includes(k))) return c.id; }
+  return "other";
+}
+const CAT_NAME = Object.fromEntries(CATS.map(c=>[c.id,c.name]));
+const CAT_COLOR = Object.fromEntries(CATS.map(c=>[c.id,c.color]));
+
+/* 规范化组件名用于跨库匹配 */
+function norm(s){ return s.toLowerCase().replace(/[\s_/()-]/g,"").replace("date picker","datepicker"); }
+
+/* ============================ 状态 ============================ */
+let state = { view:"gallery", q:"", fw:null, comp:null };
+
+/* ============================ 渲染 ============================ */
+const $ = s=>document.querySelector(s);
+const view = $("#view");
+
+function fwColor(fw){
+  const m={React:"fw-react",Vue:"fw-vue",Angular:"fw-angular",Svelte:"fw-svelte",Solid:"fw-solid","Web Components":"fw-wc",CSS:"fw-css",Multi:"fw-multi"};
+  return m[fw]||"fw-multi";
+}
+
+function fwList(){
+  const set=new Set(); LIBRARIES.forEach(l=>l.fw.forEach(f=>set.add(f)));
+  const order=["React","Vue","Angular","Svelte","Solid","Web Components","CSS","Multi"];
+  return order.filter(f=>set.has(f));
+}
+
+function renderFwChips(){
+  const wrap=$("#fwChips"); const list=fwList();
+  let html=`<div class="chip ${!state.fw?'active':''}" data-fw="">全部框架 <span class="n">${LIBRARIES.length}</span></div>`;
+  list.forEach(f=>{
+    const cnt=LIBRARIES.filter(l=>l.fw.includes(f)).length;
+    html+=`<div class="chip ${state.fw===f?'active':''}" data-fw="${f}">${f} <span class="n">${cnt}</span></div>`;
+  });
+  wrap.innerHTML=html;
+  wrap.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{ state.fw=c.dataset.fw||null; renderFwChips(); render(); });
+}
+
+function filtered(){
+  const q=state.q.trim().toLowerCase();
+  return LIBRARIES.filter(l=>{
+    if(state.fw && !l.fw.includes(state.fw)) return false;
+    if(state.comp){
+      const set=new Set(l.components.map(norm));
+      if(!set.has(state.comp)) return false;
+    }
+    if(q){
+      const hay=(l.name+" "+l.vendor+" "+l.fw.join(" ")+" "+l.components.join(" ")+" "+l.theme).toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function renderStats(){
+  const total=LIBRARIES.length;
+  const fws=new Set(); LIBRARIES.forEach(l=>l.fw.forEach(f=>fws.add(f)));
+  const compSet=new Set(); LIBRARIES.forEach(l=>l.components.forEach(c=>compSet.add(norm(c))));
+  const allComps=LIBRARIES.reduce((a,l)=>a+l.components.length,0);
+  $("#stats").innerHTML=`
+    <div class="stat"><b>${total}</b><span>组件库</span></div>
+    <div class="stat"><b>${fws.size}</b><span>框架生态</span></div>
+    <div class="stat"><b>${compSet.size}</b><span>独立组件类型</span></div>
+    <div class="stat"><b>${allComps.toLocaleString()}</b><span>组件实例</span></div>`;
+  $("#f-total").textContent=total;
+}
+
+function renderGallery(list){
+  if(!list.length){ view.innerHTML=`<div class="empty">没有匹配的组件库，试试别的筛选条件。</div>`; return; }
+  view.innerHTML=`<div class="grid">${list.map(l=>cardHTML(l)).join("")}</div>`;
+  view.querySelectorAll(".card").forEach(el=>el.onclick=()=>openModal(el.dataset.id));
+}
+function cardHTML(l){
+  const compCount=l.components.length;
+  return `<div class="card" data-id="${l.id}">
+    <div class="row1">
+      <div><h3>${l.name}</h3><div class="vendor">${l.vendor}</div></div>
+      <div class="fw">${l.fw.map(f=>`<span class="ftag ${fwColor(f)}">${f}</span>`).join("")}</div>
+    </div>
+    <div class="meta">
+      <div>版本 <b>${l.version}</b></div>
+      <div>⭐ <b>${l.stars}</b></div>
+      <div>许可 <b>${l.license}</b></div>
+    </div>
+    <div class="desc">${l.desc}</div>
+    <span class="ccount">${compCount} 个组件 · ${l.theme}</span>
+    <div class="links">
+      <a href="${l.docs}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📘 文档</a>
+      <a href="${l.repo}" target="_blank" rel="noopener" onclick="event.stopPropagation()">⭐ 源码</a>
+    </div>
+  </div>`;
+}
+
+/* 组件索引视图 */
+function buildCompIndex(){
+  const map=new Map(); // normName -> {name, cat, libs:Set}
+  LIBRARIES.forEach(l=>{
+    l.components.forEach(c=>{
+      const key=norm(c);
+      if(!map.has(key)) map.set(key,{name:c,cat:catOf(c),libs:new Set()});
+      map.get(key).libs.add(l.id);
+    });
+  });
+  // 分组
+  const groups={};
+  CATS.forEach(c=>groups[c.id]=[]);
+  groups.other=[];
+  [...map.entries()].forEach(([key,o])=>{ o.key=key; groups[o.cat].push(o); });
+  Object.values(groups).forEach(arr=>arr.sort((a,b)=>b.libs.size-a.libs.size));
+  return groups;
+}
+
+function renderIndex(){
+  const groups=buildCompIndex();
+  let html="";
+  CATS.concat([{id:"other",name:"其他 Other",color:"#8b90a8"}]).forEach(c=>{
+    const arr=groups[c.id]; if(!arr.length) return;
+    html+=`<div class="cat-block"><div class="cat-h"><span class="dot" style="background:${c.color}"></span>${c.name} <span style="color:var(--faint);font-weight:400;font-size:13px">(${arr.length})</span></div>`;
+    html+=`<div class="ctype-grid">`;
+    arr.forEach(o=>{
+      html+=`<div class="ctype" data-comp="${o.key}">
+        <div class="nm">${o.name}<small>${CAT_NAME[o.cat]}</small></div>
+        <div class="cnt">${o.libs.size} 库</div></div>`;
+    });
+    html+=`</div></div>`;
+  });
+  view.innerHTML=html;
+  view.querySelectorAll(".ctype").forEach(el=>el.onclick=()=>{
+    state.comp=el.dataset.comp; state.view="gallery";
+    document.querySelectorAll(".seg button").forEach(b=>b.classList.toggle("active",b.dataset.view==="gallery"));
+    render();
+  });
+}
+
+/* 详情弹窗 */
+function openModal(id){
+  const l=LIBRARIES.find(x=>x.id===id); if(!l) return;
+  // 按分类聚合组件
+  const byCat={};
+  l.components.forEach(c=>{ const k=catOf(c); (byCat[k]=byCat[k]||[]).push(c); });
+  let compHTML="";
+  CATS.concat([{id:"other",name:"其他"}]).forEach(c=>{
+    if(!byCat[c.id]) return;
+    compHTML+=`<div class="m-sec-title" style="color:${CAT_COLOR[c.id]||'var(--muted)'}">${c.name}</div><div class="comp-chips">${byCat[c.id].map(x=>`<span>${x}</span>`).join("")}</div>`;
+  });
+  $("#modal").innerHTML=`
+    <span class="x" id="mx">✕</span>
+    <div class="fw" style="margin-bottom:8px">${l.fw.map(f=>`<span class="ftag ${fwColor(f)}">${f}</span>`).join("")}</div>
+    <h2>${l.name}</h2>
+    <div class="m-vendor">${l.vendor} · ${l.theme}</div>
+    <div class="m-meta">
+      <div><span>版本</span><b>${l.version}</b></div>
+      <div><span>GitHub Stars</span><b>${l.stars}</b></div>
+      <div><span>开源许可</span><b>${l.license}</b></div>
+      <div><span>组件数量</span><b>${l.components.length}</b></div>
+    </div>
+    <div class="m-sec-title">组件清单（按分类）</div>
+    ${compHTML}
+    <div class="m-links">
+      <a href="${l.docs}" target="_blank" rel="noopener">📘 官方文档</a>
+      <a class="ghost" href="${l.repo}" target="_blank" rel="noopener">⭐ 开源源码</a>
+    </div>`;
+  $("#mx").onclick=closeModal;
+  $("#mask").classList.add("on");
+}
+function closeModal(){ $("#mask").classList.remove("on"); }
+$("#mask").onclick=e=>{ if(e.target.id==="mask") closeModal(); };
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeModal(); });
+
+/* 主渲染 */
+function render(){
+  const list=filtered();
+  // ctx label
+  const parts=[];
+  if(state.fw) parts.push(`框架=<b>${state.fw}</b>`);
+  if(state.comp){
+    const o=[...new Map(LIBRARIES.flatMap(l=>l.components.map(c=>[norm(c),c]))).entries()].find(([k])=>k===state.comp);
+    parts.push(`组件=<b>${o?o[1]:state.comp}</b>`);
+  }
+  if(state.q) parts.push(`搜索=<b>${state.q}</b>`);
+  const lbl=parts.length?`筛选：${parts.join(" · ")} ｜ 命中 <b>${list.length}</b> 个库`:`共 <b>${list.length}</b> 个组件库`;
+  $("#ctxLbl").innerHTML=lbl;
+  $("#clearBtn").style.display=parts.length?"inline-block":"none";
+
+  if(state.view==="index") renderIndex();
+  else renderGallery(list);
+}
+
+/* 事件 */
+$("#q").addEventListener("input",e=>{ state.q=e.target.value; render(); });
+document.querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{
+  state.view=b.dataset.view;
+  document.querySelectorAll(".seg button").forEach(x=>x.classList.toggle("active",x===b));
+  render();
+});
+$("#clearBtn").onclick=()=>{ state.fw=null; state.comp=null; state.q=""; $("#q").value=""; renderFwChips(); render(); };
+
+/* init */
+renderStats();
+renderFwChips();
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Awwwards 各届前五名 · 可运行源码索引</title>
+<style>
+  :root{--bg:#0c0c12;--card:#15151f;--ink:#f4f4fa;--sub:#9a9ab0;--line:#262633;
+    --ok:#34d399;--warn:#fbbf24;--link:#7aa2ff;--accent:#ff3d6e;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.6;font-size:14.5px}
+  .wrap{max-width:1180px;margin:0 auto;padding:36px 22px 80px}
+  header h1{font-size:26px;margin:0 0 6px}
+  header p{color:var(--sub);margin:0;max-width:820px}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0 8px;font-size:12.5px}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:9px;height:9px;border-radius:50%}
+  .dot.ok{background:var(--ok)} .dot.warn{background:var(--warn)} .dot.link{background:var(--link)}
+  h2{font-size:20px;margin:38px 0 4px;padding-top:14px;border-top:1px solid var(--line)}
+  h2 .yr{color:var(--accent)}
+  .sub{color:var(--sub);font-size:13px;margin:0 0 14px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--sub);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+  td a{color:var(--link);text-decoration:none}
+  td a:hover{text-decoration:underline}
+  .tag{font-size:11px;padding:2px 8px;border-radius:999px;white-space:nowrap;font-weight:600}
+  .tag.ok{background:rgba(52,211,153,.15);color:var(--ok)}
+  .tag.warn{background:rgba(251,191,36,.15);color:var(--warn)}
+  .tag.link{background:rgba(122,162,255,.15);color:var(--link)}
+  .local{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:#cdb4ff}
+  .sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:18px}
+  .sec h3{margin:0 0 12px;font-size:16px}
+  .repo{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px;background:#101019}
+  .repo .name{font-weight:700;font-size:14.5px}
+  .repo .maps{font-size:12px;color:var(--sub);margin:2px 0 8px}
+  .repo pre{margin:0;background:#07070d;border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto;font-size:12px;color:#d8e0ff;font-family:ui-monospace,Menlo,Consolas,monospace}
+  .repo .sz{float:right;font-size:11px;color:var(--sub)}
+  .note{color:var(--sub);font-size:12.5px;margin-top:10px}
+  footer{margin-top:40px;color:var(--sub);font-size:12px;text-align:center}
+  code{background:#07070d;padding:1px 5px;border-radius:5px;font-size:12px;color:#d8e0ff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Awwwards 各届前五名 · 可运行源码索引</h1>
+    <p>按年份（届）列出 Awwwards 年度大奖 Top 5 获奖设计，并为每一项标注「可被你直接使用的源码」状态：<b>官方开源</b>（获奖方亲自放出）、<b>本地已克隆的可运行复刻</b>（本仓库 <code>source/</code> 内已下载，开箱即跑）、<b>闭源</b>（附同类可运行模板/教程链接）。</p>
+    <div class="legend">
+      <span><i class="dot ok"></i>✅ 官方开源（直接用）</span>
+      <span><i class="dot warn"></i>🟢 本地已克隆可运行复刻</span>
+      <span><i class="dot link"></i>🔗 闭源·附同类模板</span>
+    </div>
+  </header>
+
+  <!-- 2025 -->
+  <h2><span class="yr">2025</span> 年度大奖 Top 5</h2>
+  <p class="sub">Awwwards Annual Awards 2025</p>
+  <table>
+    <tr><th>奖项</th><th>作品 / 工作室</th><th>源码状态</th><th>可用源码（点击用）</th></tr>
+    <tr><td>Site of the Year</td><td>Lando Norris — OFF+BRAND.PRO</td><td><span class="tag link">闭源</span></td><td><a href="https://www.awwwards.com/annual-awards-2025/" target="_blank">原站/提名</a> · 同类：<a href="source/2025-adidas/" target="_blank">2025-adidas 克隆</a></td></tr>
+    <tr><td>Developer SOTY</td><td>Messenger — abeto</td><td><span class="tag link">闭源</span></td><td><a href="https://www.awwwards.com/annual-awards-2025/" target="_blank">提名页</a></td></tr>
+    <tr><td>E-commerce SOTY</td><td>Scout Motors</td><td><span class="tag link">闭源</span></td><td>同类 3D 商品页：<a href="source/2025-adidas/" target="_blank">2025-adidas 克隆</a></td></tr>
+    <tr><td>Agency SOTY</td><td>Immersive Garden</td><td><span class="tag link">闭源</span></td><td><a href="https://www.immersive-garden.com/" target="_blank">机构官网</a> · WebGL 拆解见报告</td></tr>
+    <tr><td>Studio SOTY</td><td>Malvah</td><td><span class="tag link">闭源</span></td><td>同类模板：<a href="source/template-portfolio/" target="_blank">作品集模板</a></td></tr>
+    <tr><td>🏆 官方开源彩蛋</td><td>Bruno Simon Portfolio (SOTY 2025)</td><td><span class="tag ok">官方开源</span></td><td><a href="https://github.com/brunosimon/folio-2025" target="_blank">github.com/brunosimon/folio-2025</a></td></tr>
+  </table>
+
+  <!-- 2024 -->
+  <h2><span class="yr">2024</span> 年度大奖 Top 5</h2>
+  <p class="sub">Awwwards Annual Awards 2024 · Sites of the Year</p>
+  <table>
+    <tr><th>奖项</th><th>作品 / 工作室</th><th>源码状态</th><th>可用源码</th></tr>
+    <tr><td>Site of the Year</td><td>Igloo Inc — abeto</td><td><span class="tag link">闭源</span></td><td>同类 3D：<a href="source/2023-atmos/" target="_blank">Atmos 克隆</a></td></tr>
+    <tr><td>Site of the Year</td><td>Don't Board Me — The First The Last</td><td><span class="tag link">闭源</span></td><td>同类模板：<a href="source/template-portfolio/" target="_blank">作品集模板</a></td></tr>
+    <tr><td>Site of the Year</td><td>Opal Tadpole — Claudio Guglieri</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2024-gentlerain/" target="_blank">Gentlerain 克隆</a></td></tr>
+    <tr><td>🟢 已克隆</td><td>Gentlerain.ai（2024 Winner）</td><td><span class="tag warn">本地克隆</span></td><td><a href="source/2024-gentlerain/" target="_blank">source/2024-gentlerain/</a> （纯静态，开箱即跑）</td></tr>
+    <tr><td> notable 2024</td><td>Wix Studio × Pantone / Mammut</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2023-obys/" target="_blank">Obys 克隆</a></td></tr>
+  </table>
+
+  <!-- 2023 -->
+  <h2><span class="yr">2023</span> 年度大奖 Top 5</h2>
+  <p class="sub">Awwwards Annual Awards 2023</p>
+  <table>
+    <tr><th>奖项</th><th>作品 / 工作室</th><th>源码状态</th><th>可用源码</th></tr>
+    <tr><td>Site of the Year</td><td>Lusion v3 — Lusion</td><td><span class="tag link">闭源</span></td><td>同类 R3F：<a href="source/2023-atmos/" target="_blank">Atmos 克隆</a></td></tr>
+    <tr><td>E-commerce SOTY</td><td>Noomo Agency — Noomo</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2023-obys/" target="_blank">Obys 克隆</a></td></tr>
+    <tr><td>Studio SOTY</td><td>Obys</td><td><span class="tag warn">本地克隆</span></td><td><a href="source/2023-obys/" target="_blank">source/2023-obys/</a> （GSAP+Lenis+Shery.js）</td></tr>
+    <tr><td>Agency SOTY</td><td>Locomotive</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2021-two-good-co/" target="_blank">Two-Good-Co 克隆</a></td></tr>
+    <tr><td>🟢 已克隆 (R3F)</td><td>Atmos（2023 SOTD 风格）</td><td><span class="tag warn">本地克隆</span></td><td><a href="source/2023-atmos/" target="_blank">source/2023-atmos/</a></td></tr>
+  </table>
+
+  <!-- 2022 -->
+  <h2><span class="yr">2022</span> 年度大奖 Top 5</h2>
+  <p class="sub">Awwwards Annual Awards 2022 · Sites of the Year</p>
+  <table>
+    <tr><th>奖项</th><th>作品 / 工作室</th><th>源码状态</th><th>可用源码</th></tr>
+    <tr><td>Site of the Year</td><td>KPR — Resn</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2023-atmos/" target="_blank">Atmos 克隆</a></td></tr>
+    <tr><td>Site of the Year</td><td>The Other Side of Truth — The First The Last</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2023-obys/" target="_blank">Obys 克隆</a></td></tr>
+    <tr><td>Site of the Year</td><td>Persepolis Reimagined — Monks</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2024-gentlerain/" target="_blank">Gentlerain 克隆</a></td></tr>
+    <tr><td>Studio SOTY</td><td>Synchronized</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2021-two-good-co/" target="_blank">Two-Good-Co 克隆</a></td></tr>
+    <tr><td>🟢 已克隆</td><td>Two-Good-Co（2022 精选风格）</td><td><span class="tag warn">本地克隆</span></td><td><a href="source/2021-two-good-co/" target="_blank">source/2021-two-good-co/</a></td></tr>
+  </table>
+
+  <!-- 2021 -->
+  <h2><span class="yr">2021</span> 年度大奖 Top 5</h2>
+  <p class="sub">Awwwards Annual Awards 2021</p>
+  <table>
+    <tr><th>奖项</th><th>作品 / 工作室</th><th>源码状态</th><th>可用源码</th></tr>
+    <tr><td>Site of the Year</td><td>Prometheus Fuels — Resn / Active Theory</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2023-atmos/" target="_blank">Atmos 克隆</a></td></tr>
+    <tr><td>Developer SOTY</td><td>Umami Land — MediaMonks</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/template-portfolio/" target="_blank">作品集模板</a></td></tr>
+    <tr><td>Studio SOTY</td><td>Green Chameleon</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2021-two-good-co/" target="_blank">Two-Good-Co 克隆</a></td></tr>
+    <tr><td>Agency SOTY</td><td>Locomotive</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2023-obys/" target="_blank">Obys 克隆</a></td></tr>
+    <tr><td>Independent</td><td>Luis Henrique Bizarro</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/template-portfolio/" target="_blank">作品集模板</a></td></tr>
+  </table>
+
+  <!-- 2019 -->
+  <h2><span class="yr">2019</span> 年度大奖 Top 5（含官方开源标杆）</h2>
+  <p class="sub">Awwwards Annual Awards 2019</p>
+  <table>
+    <tr><th>奖项</th><th>作品 / 工作室</th><th>源码状态</th><th>可用源码</th></tr>
+    <tr><td>Site of the Year</td><td>Nomadic Tribe — Makemepulse</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2023-obys/" target="_blank">Obys 克隆</a></td></tr>
+    <tr><td>🏆 SOTY + Dev SOTY</td><td>Bruno Simon Portfolio</td><td><span class="tag ok">官方开源</span></td><td><a href="https://github.com/brunosimon/folio-2019" target="_blank">github.com/brunosimon/folio-2019</a></td></tr>
+    <tr><td>Studio SOTY</td><td>Adoratorio</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2023-atmos/" target="_blank">Atmos 克隆</a></td></tr>
+    <tr><td>Agency SOTY</td><td>Locomotive</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2021-two-good-co/" target="_blank">Two-Good-Co 克隆</a></td></tr>
+    <tr><td>E-commerce SOTY</td><td>Retail 710 — MA</td><td><span class="tag link">闭源</span></td><td>同类：<a href="source/2025-adidas/" target="_blank">Adidas 克隆</a></td></tr>
+  </table>
+
+  <!-- 本地源码库 -->
+  <h2>🟢 本地已克隆 · 可运行源码库</h2>
+  <p class="sub">以下源码已下载到本项目的 <code>source/</code> 目录，直接用对应命令即可跑起来。</p>
+  <div class="sec">
+    <div class="repo">
+      <span class="sz">20 MB</span>
+      <div class="name">2024-gentlerain</div>
+      <div class="maps">对应：Gentlerain.ai（Awwwards 2024 Winner）· 纯静态，零构建</div>
+      <pre>cd source/2024-gentlerain
+python3 -m http.server 8081
+# 浏览器打开 http://localhost:8081</pre>
+    </div>
+    <div class="repo">
+      <span class="sz">159 MB</span>
+      <div class="name">2021-two-good-co</div>
+      <div class="maps">对应：Two-Good-Co（极简平滑滚动风格）· 纯静态</div>
+      <pre>cd source/2021-two-good-co
+python3 -m http.server 8082
+# 打开 http://localhost:8082</pre>
+    </div>
+    <div class="repo">
+      <span class="sz">49 MB</span>
+      <div class="name">2023-obys</div>
+      <div class="maps">对应：Obys Agency（Studio SOTY 2023）· GSAP + Lenis + Shery.js</div>
+      <pre>cd source/2023-obys
+python3 -m http.server 8083
+# 打开 http://localhost:8083</pre>
+    </div>
+    <div class="repo">
+      <span class="sz">2.4 MB</span>
+      <div class="name">2023-atmos</div>
+      <div class="maps">对应：Atmos（R3F 3D 渐变）· React Three Fiber + Vite</div>
+      <pre>cd source/2023-atmos
+npm install
+npm run dev      # 或 npm run build 后 preview</pre>
+    </div>
+    <div class="repo">
+      <span class="sz">53 MB</span>
+      <div class="name">template-portfolio</div>
+      <div class="maps">通用 3D 作品集模板 · React + Vite + GSAP + R3F（已验证可 build）</div>
+      <pre>cd source/template-portfolio
+npm install
+npm run dev      # ✓ 已实测 npm run build 通过</pre>
+    </div>
+    <div class="repo">
+      <span class="sz">76 MB</span>
+      <div class="name">2025-adidas</div>
+      <div class="maps">对应：Adidas 3D 商品落地页（2025 风格）· Next.js + R3F</div>
+      <pre>cd source/2025-adidas
+npm install
+npm run dev      # next dev --turbopack</pre>
+    </div>
+    <p class="note">说明：3 个「官方开源」获奖作品（Bruno Simon folio-2019 / folio-2025、以及各闭源站）未全部克隆，以节省体积——它们均提供 GitHub 链接，<code>git clone</code> 即可获得完整源码。本地 6 个仓库已做浅克隆（<code>--depth 1</code>），体积合计约 360 MB。</p>
+  </div>
+
+  <footer>索引生成于 2026-07-12 · 源码均为公开仓库（MIT/各自许可证）· 商用前请确认原作品授权</footer>
+</div>
+</body>
+</html>
