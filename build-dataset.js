@@ -223,6 +223,34 @@ console.log('awards:', awards.length);
 // ---------- 4) 合并输出 ----------
 const ITEMS = [...existingItems, ...newLibs, ...awards];
 fs.writeFileSync('preview-data.json', JSON.stringify(ITEMS, null, 1));
+
+// ---------- 5) 合并复现提示词（来自 repro 闭环，保证重建不丢）----------
+(function mergeReproPrompts() {
+  let n = 0;
+  for (const it of ITEMS) {
+    const rj = path.join('repro', it.id, 'result.json');
+    if (!fs.existsSync(rj)) continue;
+    try {
+      const r = JSON.parse(fs.readFileSync(rj, 'utf8'));
+      let p = '';
+      if (r.finalPrompt && fs.existsSync(r.finalPrompt)) {
+        p = fs.readFileSync(r.finalPrompt, 'utf8').trim();
+      } else {
+        const dir = path.join('repro', it.id);
+        if (fs.statSync(dir).isDirectory()) {
+          const cand = fs.readdirSync(dir)
+            .filter(f => /^prompt\.v\d+\.md$/.test(f))
+            .sort((a, b) => +b.match(/v(\d+)/)[1] - +a.match(/v(\d+)/)[1]);
+          if (cand.length) p = fs.readFileSync(path.join(dir, cand[0]), 'utf8').trim();
+        }
+      }
+      if (p) { it.prompt = p; n++; }
+    } catch (e) { /* ignore */ }
+  }
+  fs.writeFileSync('preview-data.json', JSON.stringify(ITEMS, null, 1));
+  console.log('merged repro prompts:', n);
+})();
+
 console.log('TOTAL ITEMS:', ITEMS.length);
 const fwCount = new Set();
 ITEMS.forEach(i => (i.fw || []).forEach(f => fwCount.add(f)));

@@ -5,3 +5,7 @@ source/
 *.zip
 *.log
 /tmp/
+repro/
+*-proof.png
+redesign-*.png
+
