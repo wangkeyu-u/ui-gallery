@@ -60,7 +60,8 @@ In one line: **it's a prompt library + verification system that teaches AI to "c
 ## 核心特性 / Key Features
 
 - **离线自包含 / Offline & self-contained** — 画廊 HTML 内嵌数据 JSON，预览图放本地 `previews/`，无需服务器、无需联网。The gallery HTML embeds the data JSON; preview images live in local `previews/`; no server, no network needed.
-- **策展式编辑风 UI / Editorial curated UI** — 暖纸色背景、墨黑排版、朱砂红点缀；杂志版头、目录编号、发丝线、画框式卡片。Warm paper background, ink-black typography, vermilion accents; magazine masthead, catalogue numbering, hairlines, framed cards.
+- **暗色高级风 UI / Dark premium UI** — 近黑背景 `#1b1b1f` + 径向渐变、金色 `#D4AF37` 强调、SF Pro 字体；卡片画框、毛玻璃 sticky 控制栏、滚动淡入上滑动效（缓动 `cubic-bezier(0.4,0,0.6,1)`）。Near-black `#1b1b1f` radial-gradient background, gold `#D4AF37` accent, SF Pro type; framed cards, frosted sticky controls, fade-and-rise scroll reveals (Apple easing).
+- **画廊自身即用生成提示词改造 / The gallery eats its own dog food** — 本画廊的 UI 正是用其中一份获奖站高保真提示词（`awd-apple`）驱动重设计的。The gallery's own UI was restyled using one of its generated high-fidelity prompts (`awd-apple`).
 - **分区浏览 / Sectioned browsing** — 组件库（177）与获奖项目（53）分块独立区域，默认全量摊开，纯滚动查看。Component libraries (177) and award projects (53) in separate areas, fully expanded by default, pure scroll.
 - **多维筛选 / Multi-dimensional filters** — 类型切换（全部 / 组件库 / 获奖项目）、框架下拉、主题下拉，均显示各组卡片数量。Type switch (all / libraries / awards), framework dropdown, theme dropdown — each shows per-group card counts.
 - **点选 + 持久化 / Select & persist** — 点击卡片选中（高亮 + ✓），选择存 localStorage，刷新不丢；右下角浮标显示已选数量。Click to select (highlight + ✓); selection persists in localStorage; bottom-right badge shows count.
@@ -287,7 +288,7 @@ node gen-gallery.js
 | 带高保真提示词的站点 / Sites with hifi prompt | 207 / 230 |
 | 标注「待验证」/ Marked "pending" | 36（含尚未复现的站点，未误标失败 / includes not-yet-reproduced, not falsely failed） |
 
-画廊卡片徽章含义 / Badge meanings：`✓ 复现通过`（绿 / green）、`✦ 动画还原`（金 / gold）、`✕ 未复现`（朱砂红 / vermilion）、`· 待验证`（灰 / grey）。
+画廊卡片徽章含义 / Badge meanings：`✓ 复现通过`（绿 / green）、`✦ 动画还原`（金 / gold）、`✕ 未复现`（红 / red）、`· 待验证`（灰 / grey）。
 
 > 注：验证由 AI agent 在本地以系统 Chrome 实机截图对比完成，迭代上限 3 次。动画还原判定以首屏 `@keyframes` / transition 一致性为准。
 > Note: verification is done by AI agents locally with system Chrome, screenshot-compared, capped at 3 iterations. Animation parity is judged by above-the-fold `@keyframes` / transition consistency.
