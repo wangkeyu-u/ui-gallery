@@ -100,6 +100,12 @@ body{font-family:var(--font-body);background:var(--paper);color:var(--ink);min-h
 .cprompt{display:block;text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:10px;margin:8px 0 0;border:1px dashed var(--accent);color:var(--accent);background:transparent;cursor:pointer;transition:.18s;font-family:inherit}
 .cprompt:hover{background:var(--accent-soft)}
 .cprompt.done{background:var(--accent);color:#fff;border-style:solid}
+.vrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.vb{font-size:9.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border:1px solid;line-height:1.4}
+.vb.ok{color:#2f7d4f;border-color:#2f7d4f;background:rgba(47,125,79,.08)}
+.vb.anim{color:#9a6b00;border-color:#9a6b00;background:rgba(154,107,0,.08)}
+.vb.fail{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.vb.pend{color:var(--ink-2);border-color:var(--line-2);background:transparent}
 .empty{text-align:center;color:var(--muted);padding:70px 0;font-size:14px;letter-spacing:.04em}
 
 /* ---------- Selection bar ---------- */
@@ -241,6 +247,7 @@ function cardHtml(i,n){
    const chipsArr=isProj?(i.tech||[]):(i.chips||[]);
    const chipsHtml=chipsArr.slice(0,6).map(c=>'<span class="ctag">'+c+'</span>').join('');
    const num=String(n).padStart(2,'0');
+   const vbadge=(!i.prompt)?'':(i.hifiPassed===true?('<span class="vb ok">✓ 复现通过</span>'+(i.animOk===true?'<span class="vb anim">✦ 动画还原</span>':'')):(i.hifiPassed===false?'<span class="vb fail">✕ 未复现</span>':'<span class="vb pend">· 待验证</span>'));
    return '<div class="item '+(selc?'sel':'')+'" data-id="'+i.id+'">'+
      '<div class="frame">'+
        '<span class="kind '+(isProj?'proj':'')+'">'+(isProj?'获奖':'库')+'</span>'+
@@ -253,6 +260,7 @@ function cardHtml(i,n){
      extra+
      (chipsHtml?'<div class="chips2">'+chipsHtml+'</div>':'')+
      (fwTags?'<div class="fw">'+fwTags+'</div>':'')+
+    (vbadge?'<div class="vrow">'+vbadge+'</div>':'')+
     '<a class="open" href="'+i.link+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">打开 ↗</a>'+
      (i.prompt?'<button class="cprompt" data-id="'+i.id+'" onclick="event.stopPropagation();copyPrompt(\''+i.id+'\')">复制提示词 ⧉</button>':'')+
     '</div>'+
