@@ -14,6 +14,10 @@
 [![offline-en](https://img.shields.io/badge/offline-self--contained-lightgrey)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
 [![pages](https://img.shields.io/badge/GitHub%20Pages-已部署-orange)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
 [![pages-en](https://img.shields.io/badge/GitHub%20Pages-deployed-orange)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
+[![HTML](https://img.shields.io/badge/HTML-Vanilla-orange)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-Node.js%2022%2B-F7DF1E)]()
+[![Playwright](https://img.shields.io/badge/Test-Playwright-2EAD33)]()
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
 
@@ -360,6 +364,12 @@ Shallow-clone any award repo into `../source/` and it appears on refresh. API & 
 - 📦 仓库 / Repo：`wangkeyu-u/ui-gallery`（GitHub Pages 自动部署 `main` 分支 / auto-deploys `main` via GitHub Pages）
 
 ---
+
+---
+
+## License / 许可证
+
+MIT
 
 <p align="center">
   <sub>策展式 UI 画廊 · 让 AI 学会「抄」顶级 UI / A curated UI gallery that teaches AI to "copy" top-tier UI</sub>
