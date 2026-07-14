@@ -1,0 +1,1613 @@
+[
+  {
+    "id": "awd-2025-somefolk",
+    "name": "Somefolk®",
+    "url": "https://somefolk.co.uk",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "awd-2025-flowfest",
+    "name": "FlowFest 2025",
+    "url": "https://flowfest.co",
+    "theme": "品牌体验",
+    "source": "Awwwards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-2025-ottografie",
+    "name": "Ottografie 2025",
+    "url": "https://ottografie.nl",
+    "theme": "作品集",
+    "source": "Awwwards SOTD",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "awd-2025-rejouice",
+    "name": "REJOUICE®",
+    "url": "https://rejouice.com",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "awd-2025-burocratik",
+    "name": "Büro Bürocratik",
+    "url": "https://burocratik.com",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "awd-2025-exat",
+    "name": "Exat typeface",
+    "url": "https://exat.xyz",
+    "theme": "品牌",
+    "source": "Awwwards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-2025-filip-felbar",
+    "name": "Filip Felbar Portfolio 2025",
+    "url": "https://filipfelbar.com",
+    "theme": "作品集",
+    "source": "Awwwards SOTD",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "awd-2025-25-residences",
+    "name": "25 Residences",
+    "url": "https://25residences.com",
+    "theme": "建筑",
+    "source": "Awwwards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-2025-gianluca",
+    "name": "Gianluca Gradogna Portfolio",
+    "url": "https://gianlucagradogna.com",
+    "theme": "作品集",
+    "source": "Awwwards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "css-2025-cartapani",
+    "name": "Cartapani",
+    "url": "https://cartapani.it",
+    "theme": "创意机构",
+    "source": "CSS Awards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "css-2025-spylt",
+    "name": "SPYLT Milk",
+    "url": "https://spylt.com",
+    "theme": "产品",
+    "source": "CSS Awards SOTD",
+    "status": 302,
+    "ok": true
+  },
+  {
+    "id": "css-2025-gufram",
+    "name": "Gufram",
+    "url": "https://gufram.it",
+    "theme": "品牌",
+    "source": "CSS Awards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "css-2025-bachoo",
+    "name": "Báchoo Design",
+    "url": "https://bachoodesign.com",
+    "theme": "创意机构",
+    "source": "CSS Awards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "css-2025-tat2",
+    "name": "TAT2 Spirits",
+    "url": "https://tat2spirits.com",
+    "theme": "品牌",
+    "source": "CSS Awards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "css-2025-soren-west",
+    "name": "Soren West",
+    "url": "https://sorenwest.com",
+    "theme": "品牌",
+    "source": "CSS Awards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "css-2025-bijou",
+    "name": "Bijou Wines",
+    "url": "https://bijouwines.com",
+    "theme": "品牌",
+    "source": "CSS Awards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "fwa-2024-foodforfish",
+    "name": "Food for Fish",
+    "url": "https://foodforfish.org",
+    "theme": "3D / WebGL",
+    "source": "FWA of the Year 2024",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "fwa-2024-hatom",
+    "name": "Hatom",
+    "url": "https://www.hatom.com",
+    "theme": "3D / WebGL",
+    "source": "FWA People's Choice 2024",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "fwa-2024-la-petite",
+    "name": "La Petite Jumelle",
+    "url": "https://lapetitejumelle.com",
+    "theme": "品牌",
+    "source": "FWA of the Day",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "webby-2024-suno",
+    "name": "Suno AI",
+    "url": "https://suno.com",
+    "theme": "产品",
+    "source": "Webby Best Home Page",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "webby-2024-metamask",
+    "name": "MetaMask Learn",
+    "url": "https://learn.metamask.io",
+    "theme": "教育",
+    "source": "Webby Best Practices",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "webby-2024-raw-materials",
+    "name": "Raw Materials",
+    "url": "https://therawmaterials.com",
+    "theme": "创意机构",
+    "source": "Webby Best Navigation",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "webby-2024-shopify",
+    "name": "Shopify Winter '24 Edition",
+    "url": "https://www.shopify.com/editions",
+    "theme": "产品",
+    "source": "Webby Business Blog",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-notion",
+    "name": "Notion",
+    "url": "https://www.notion.com",
+    "theme": "产品",
+    "source": "SaaS",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-runway",
+    "name": "Runway",
+    "url": "https://runwayml.com",
+    "theme": "产品",
+    "source": "AI/Creative Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-jasper",
+    "name": "Jasper AI",
+    "url": "https://www.jasper.ai",
+    "theme": "产品",
+    "source": "AI SaaS",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-webflow",
+    "name": "Webflow",
+    "url": "https://webflow.com",
+    "theme": "产品",
+    "source": "SaaS / Website Builder",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-framer",
+    "name": "Framer",
+    "url": "https://www.framer.com",
+    "theme": "产品",
+    "source": "SaaS / Design Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-figma",
+    "name": "Figma",
+    "url": "https://www.figma.com",
+    "theme": "产品",
+    "source": "SaaS / Productivity",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-linear",
+    "name": "Linear",
+    "url": "https://linear.app",
+    "theme": "产品",
+    "source": "SaaS / Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-vercel",
+    "name": "Vercel",
+    "url": "https://vercel.com",
+    "theme": "产品",
+    "source": "SaaS / Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-stripe",
+    "name": "Stripe",
+    "url": "https://stripe.com",
+    "theme": "金融科技",
+    "source": "Fintech",
+    "status": 307,
+    "ok": true
+  },
+  {
+    "id": "prod-loom",
+    "name": "Loom",
+    "url": "https://www.loom.com",
+    "theme": "产品",
+    "source": "SaaS",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-clay",
+    "name": "Clay",
+    "url": "https://www.clay.com",
+    "theme": "产品",
+    "source": "SaaS",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-attio",
+    "name": "Attio",
+    "url": "https://attio.com",
+    "theme": "产品",
+    "source": "SaaS / CRM",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-posthog",
+    "name": "PostHog",
+    "url": "https://posthog.com",
+    "theme": "产品",
+    "source": "SaaS / Analytics",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-beehiiv",
+    "name": "Beehiiv",
+    "url": "https://www.beehiiv.com",
+    "theme": "产品",
+    "source": "SaaS / Newsletter",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-paddle",
+    "name": "Paddle",
+    "url": "https://www.paddle.com",
+    "theme": "金融科技",
+    "source": "Fintech / SaaS",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-deepgram",
+    "name": "Deepgram",
+    "url": "https://deepgram.com",
+    "theme": "产品",
+    "source": "AI / Voice",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-github-copilot",
+    "name": "GitHub Copilot",
+    "url": "https://github.com/features/copilot",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-monday",
+    "name": "Monday.com",
+    "url": "https://monday.com",
+    "theme": "产品",
+    "source": "SaaS / PM",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-asana",
+    "name": "Asana",
+    "url": "https://asana.com",
+    "theme": "产品",
+    "source": "SaaS / PM",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "prod-mixpanel",
+    "name": "Mixpanel",
+    "url": "https://mixpanel.com",
+    "theme": "产品",
+    "source": "SaaS / Analytics",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "prod-glossier",
+    "name": "Glossier",
+    "url": "https://glossier.com",
+    "theme": "电商",
+    "source": "eCommerce / Beauty",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "studio-drool",
+    "name": "Drool Design Studio",
+    "url": "https://drool.studio",
+    "theme": "创意机构",
+    "source": "Web Design Awards",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "studio-now-here",
+    "name": "Now.Here Studio",
+    "url": "https://nowhere.studio",
+    "theme": "创意机构",
+    "source": "Readymag WOTY 2024",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "studio-69pixels",
+    "name": "69 Pixels Studio",
+    "url": "https://69pixels.com",
+    "theme": "创意机构",
+    "source": "Readymag WOTY 2024",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "studio-brittany",
+    "name": "Brittany Chiang",
+    "url": "https://brittanychiang.com",
+    "theme": "作品集",
+    "source": "Developer Portfolio",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "studio-josh-comeau",
+    "name": "Josh Comeau",
+    "url": "https://joshwcomeau.com",
+    "theme": "作品集",
+    "source": "Developer Portfolio",
+    "status": 307,
+    "ok": true
+  },
+  {
+    "id": "studio-emre-arolat",
+    "name": "Emre Arolat",
+    "url": "https://emrearolat.com",
+    "theme": "建筑",
+    "source": "Horizon Awards",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "studio-complex-universe",
+    "name": "Complex Universe",
+    "url": "https://cxuni.com",
+    "theme": "实验",
+    "source": "Horizon Awards",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "studio-stelo",
+    "name": "Stelo",
+    "url": "https://stelo.com",
+    "theme": "产品",
+    "source": "Horizon Awards",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "studio-heavn",
+    "name": "HEAVN One",
+    "url": "https://heavn-one.webflow.io",
+    "theme": "产品",
+    "source": "Awwwards SOTD",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-porsche",
+    "name": "Porsche",
+    "url": "https://www.porsche.com",
+    "theme": "汽车",
+    "source": "Automotive",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-audi",
+    "name": "Audi",
+    "url": "https://www.audi.com",
+    "theme": "汽车",
+    "source": "Automotive",
+    "status": 302,
+    "ok": true
+  },
+  {
+    "id": "extra-nike",
+    "name": "Nike",
+    "url": "https://www.nike.com",
+    "theme": "时尚",
+    "source": "Fashion/Sport",
+    "status": 302,
+    "ok": true
+  },
+  {
+    "id": "extra-airbnb",
+    "name": "Airbnb",
+    "url": "https://www.airbnb.com",
+    "theme": "产品",
+    "source": "Travel",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-spotify",
+    "name": "Spotify",
+    "url": "https://www.spotify.com",
+    "theme": "音乐",
+    "source": "Music",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-netflix",
+    "name": "Netflix",
+    "url": "https://www.netflix.com",
+    "theme": "产品",
+    "source": "Media",
+    "status": 302,
+    "ok": true
+  },
+  {
+    "id": "extra-chanel",
+    "name": "Chanel",
+    "url": "https://www.chanel.com",
+    "theme": "奢侈品牌",
+    "source": "Luxury/Fashion",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-resn",
+    "name": "Resn",
+    "url": "https://resn.co.nz",
+    "theme": "创意机构",
+    "source": "Interactive",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-droga5",
+    "name": "Droga5",
+    "url": "https://droga5.com",
+    "theme": "广告 / 创意",
+    "source": "Agency",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-wieden",
+    "name": "Wieden+Kennedy",
+    "url": "https://www.wk.com",
+    "theme": "广告 / 创意",
+    "source": "Agency",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-active-theory",
+    "name": "Active Theory",
+    "url": "https://activetheory.net",
+    "theme": "互动体验",
+    "source": "Interactive",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-buck",
+    "name": "Buck",
+    "url": "https://buck.co",
+    "theme": "创意",
+    "source": "Design Studio",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-huge",
+    "name": "Huge",
+    "url": "https://huge.co",
+    "theme": "数字代理",
+    "source": "Agency",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-razorfish",
+    "name": "Razorfish",
+    "url": "https://www.razorfish.com",
+    "theme": "数字代理",
+    "source": "Agency",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-github",
+    "name": "GitHub",
+    "url": "https://github.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-vercel-docs",
+    "name": "Vercel Docs",
+    "url": "https://vercel.com/docs",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-tailwind",
+    "name": "Tailwind CSS",
+    "url": "https://tailwindcss.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-supabase",
+    "name": "Supabase",
+    "url": "https://supabase.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-prisma",
+    "name": "Prisma",
+    "url": "https://www.prisma.io",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-clerk",
+    "name": "Clerk",
+    "url": "https://clerk.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-resend",
+    "name": "Resend",
+    "url": "https://resend.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-shadcn",
+    "name": "shadcn/ui",
+    "url": "https://ui.shadcn.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-figma-config",
+    "name": "Figma Config",
+    "url": "https://config.figma.com",
+    "theme": "品牌体验",
+    "source": "Event",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-linear-method",
+    "name": "Linear Method",
+    "url": "https://linear.app/method",
+    "theme": "品牌体验",
+    "source": "Brand",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-stripe-atlas",
+    "name": "Stripe Atlas",
+    "url": "https://stripe.com/atlas",
+    "theme": "产品",
+    "source": "Fintech",
+    "status": 307,
+    "ok": true
+  },
+  {
+    "id": "extra-apple-vision",
+    "name": "Apple Vision Pro",
+    "url": "https://www.apple.com/apple-vision-pro",
+    "theme": "产品",
+    "source": "Tech",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-anthropic",
+    "name": "Anthropic",
+    "url": "https://www.anthropic.com",
+    "theme": "产品",
+    "source": "AI",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-codrops",
+    "name": "Codrops",
+    "url": "https://tympanus.net/codrops",
+    "theme": "实验",
+    "source": "Web Design",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-brutalist",
+    "name": "Brutalist Websites",
+    "url": "https://brutalistwebsites.com",
+    "theme": "粗野主义",
+    "source": "Design",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-hoverstats",
+    "name": "HOVERSTAT.ES",
+    "url": "https://hoverstat.es",
+    "theme": "实验",
+    "source": "Alt Web",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-zara",
+    "name": "Zara",
+    "url": "https://www.zara.com",
+    "theme": "时尚",
+    "source": "Fashion",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-acne",
+    "name": "Acne Studios",
+    "url": "https://www.acnestudios.com",
+    "theme": "时尚",
+    "source": "Fashion",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-offwhite",
+    "name": "Off-White",
+    "url": "https://www.off---white.com",
+    "theme": "时尚",
+    "source": "Fashion",
+    "status": 302,
+    "ok": true
+  },
+  {
+    "id": "extra-noma",
+    "name": "Noma",
+    "url": "https://noma.dk",
+    "theme": "餐饮",
+    "source": "Restaurant",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-eleven-madison",
+    "name": "Eleven Madison Park",
+    "url": "https://www.elevenmadisonpark.com",
+    "theme": "餐饮",
+    "source": "Restaurant",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-driftime",
+    "name": "Driftime®",
+    "url": "https://driftime.com",
+    "theme": "创意机构",
+    "source": "Awwwards HM Sep 2025",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-martin-briceno",
+    "name": "Martin Briceno Portfolio",
+    "url": "https://martinbriceno.com",
+    "theme": "作品集",
+    "source": "Awwwards SOTD Aug 2025",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-better-off",
+    "name": "Better Off®",
+    "url": "https://betteroff.studio",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD Aug 2024",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-humaan",
+    "name": "Humaan",
+    "url": "https://humaan.com",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD Feb 2024",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "awd-alpha-tango",
+    "name": "Alpha Tango",
+    "url": "https://alphatango.com",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD Nov 2023",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-unikorns",
+    "name": "Unikorns Agency",
+    "url": "https://unikorns.com",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD Aug 2023",
+    "status": 307,
+    "ok": true
+  },
+  {
+    "id": "awd-makepill",
+    "name": "Makepill",
+    "url": "https://makepill.com",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD Aug 2023",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-cenitz",
+    "name": "Cenitz Studio",
+    "url": "https://cenitz.studio",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD Oct 2023",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-qude",
+    "name": "Qude",
+    "url": "https://qude.co",
+    "theme": "创意机构",
+    "source": "Awwwards SOTD Jun 2023",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-lightship",
+    "name": "Lightship",
+    "url": "https://lightship.com",
+    "theme": "产品",
+    "source": "Awwwards SOTD Apr 2023",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "awd-resonant-link",
+    "name": "Resonant Link",
+    "url": "https://resonant-link.com",
+    "theme": "产品",
+    "source": "Awwwards SOTD Feb 2023",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "awd-2024-opal",
+    "name": "Opal Tadpole",
+    "url": "https://opal.com",
+    "theme": "产品",
+    "source": "Awwwards E-commerce of the Year",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-2024-dont-board",
+    "name": "Don't Board Me",
+    "url": "https://dontboardme.com",
+    "theme": "品牌体验",
+    "source": "Awwwards Users' Choice",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-adovasio",
+    "name": "Adovasio",
+    "url": "https://adovasio.com",
+    "theme": "文化展览",
+    "source": "Awwwards SOTD Mar 2026",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-afterglo",
+    "name": "Afterglo",
+    "url": "https://afterglo.co",
+    "theme": "品牌",
+    "source": "Awwwards SOTD Jun 2021",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-maxima",
+    "name": "Maxima Therapy",
+    "url": "https://maximatherapy.com",
+    "theme": "产品",
+    "source": "Awwwards SOTD Apr 2026",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-vazzi",
+    "name": "Vazzi",
+    "url": "https://vazzi.com",
+    "theme": "品牌",
+    "source": "Awwwards SOTD Nov 2024",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-c2-montreal",
+    "name": "C2 Montréal",
+    "url": "https://c2montreal.com",
+    "theme": "品牌体验",
+    "source": "Awwwards SOTM May 2023",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-mana-yerba",
+    "name": "Mana Yerba Mate",
+    "url": "https://manayerbamate.com",
+    "theme": "品牌",
+    "source": "Awwwards SOTY 2023",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-ma-saigon",
+    "name": "Má Sài Gòn",
+    "url": "https://masaigon.space",
+    "theme": "品牌",
+    "source": "Awwwards SOTD Apr 2024",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-cleo-ai",
+    "name": "Cleo AI",
+    "url": "https://web.archive.org/web/2024/https://web.meetcleo.com",
+    "theme": "金融科技",
+    "source": "Awwwards",
+    "status": 302,
+    "ok": true
+  },
+  {
+    "id": "awd-la-revoltosa",
+    "name": "La Revoltosa",
+    "url": "https://larevoltosa.com",
+    "theme": "品牌",
+    "source": "Awwwards",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-dennis-snellenberg",
+    "name": "Dennis Snellenberg Portfolio",
+    "url": "https://dennissnellenberg.com",
+    "theme": "作品集",
+    "source": "Developer Portfolio",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-paper-tiger",
+    "name": "Paper Tiger",
+    "url": "https://papertiger.com",
+    "theme": "创意机构",
+    "source": "Studio",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-locus",
+    "name": "Locus",
+    "url": "https://locus.studio",
+    "theme": "创意机构",
+    "source": "Studio",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-richter",
+    "name": "Richter Studio",
+    "url": "https://richterstudio.com",
+    "theme": "创意机构",
+    "source": "Studio",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-hornet",
+    "name": "Hornet",
+    "url": "https://hornet.com",
+    "theme": "创意",
+    "source": "Animation Studio",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-mediamonks",
+    "name": "MediaMonks",
+    "url": "https://www.mediamonks.com",
+    "theme": "数字代理",
+    "source": "Agency",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-hello-monday",
+    "name": "Hello Monday",
+    "url": "https://www.hellomonday.com",
+    "theme": "创意机构",
+    "source": "Agency",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-raycast",
+    "name": "Raycast",
+    "url": "https://www.raycast.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-cursor",
+    "name": "Cursor",
+    "url": "https://cursor.com",
+    "theme": "产品",
+    "source": "AI / Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-v0",
+    "name": "v0 by Vercel",
+    "url": "https://v0.dev",
+    "theme": "产品",
+    "source": "AI / Developer Tools",
+    "status": 307,
+    "ok": true
+  },
+  {
+    "id": "extra-bolt",
+    "name": "Bolt",
+    "url": "https://bolt.new",
+    "theme": "产品",
+    "source": "AI / Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-windsurf",
+    "name": "Windsurf",
+    "url": "https://windsurf.com",
+    "theme": "产品",
+    "source": "AI / Developer Tools",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "extra-lemonsqueezy",
+    "name": "Lemon Squeezy",
+    "url": "https://lemonsqueezy.com",
+    "theme": "产品",
+    "source": "SaaS",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-mux",
+    "name": "Mux",
+    "url": "https://www.mux.com",
+    "theme": "产品",
+    "source": "SaaS / Video",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-dub",
+    "name": "Dub",
+    "url": "https://dub.co",
+    "theme": "产品",
+    "source": "SaaS",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-plain",
+    "name": "Plain",
+    "url": "https://plain.com",
+    "theme": "产品",
+    "source": "SaaS",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "extra-convex",
+    "name": "Convex",
+    "url": "https://convex.dev",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "extra-trigger",
+    "name": "Trigger.dev",
+    "url": "https://trigger.dev",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-inngest",
+    "name": "Inngest",
+    "url": "https://www.inngest.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-allbirds",
+    "name": "Allbirds",
+    "url": "https://www.allbirds.com",
+    "theme": "电商",
+    "source": "eCommerce",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-outdoor-voices",
+    "name": "Outdoor Voices",
+    "url": "https://www.outdoorvoices.com",
+    "theme": "电商",
+    "source": "eCommerce",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-glossier-d",
+    "name": "Glossier (DTC)",
+    "url": "https://glossier.com",
+    "theme": "电商",
+    "source": "eCommerce",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-casper",
+    "name": "Casper",
+    "url": "https://casper.com",
+    "theme": "电商",
+    "source": "eCommerce",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-everlane",
+    "name": "Everlane",
+    "url": "https://everlane.com",
+    "theme": "电商",
+    "source": "eCommerce",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-uniqlo",
+    "name": "Uniqlo",
+    "url": "https://www.uniqlo.com",
+    "theme": "时尚",
+    "source": "Fashion",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-kinfolk",
+    "name": "Kinfolk",
+    "url": "https://kinfolk.com",
+    "theme": "编辑设计",
+    "source": "Magazine",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-dopple-press",
+    "name": "Dopple Press",
+    "url": "https://dopplepress.com",
+    "theme": "品牌",
+    "source": "Design Inspiration",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-supima",
+    "name": "Supima",
+    "url": "https://supima.com",
+    "theme": "品牌",
+    "source": "Design Inspiration",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-superlist",
+    "name": "Superlist",
+    "url": "https://superlist.com",
+    "theme": "产品",
+    "source": "Design Inspiration",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "extra-okalpha",
+    "name": "Okalpha",
+    "url": "https://okalpha.com",
+    "theme": "创意机构",
+    "source": "Design Inspiration",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-cyclemon",
+    "name": "Cyclemon",
+    "url": "https://cyclemon.com",
+    "theme": "品牌体验",
+    "source": "Interactive",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-victoire-douy",
+    "name": "Victoire Douy",
+    "url": "https://victoiredouy.com",
+    "theme": "作品集",
+    "source": "Illustrator Portfolio",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-twice-tv",
+    "name": "Twice",
+    "url": "https://twice.tv",
+    "theme": "创意机构",
+    "source": "Creative Studio",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-grit-pictures",
+    "name": "Grit Pictures",
+    "url": "https://gritpictures.com",
+    "theme": "创意",
+    "source": "Film Studio",
+    "status": 302,
+    "ok": true
+  },
+  {
+    "id": "extra-geex-arts",
+    "name": "Geex Arts",
+    "url": "https://geex-arts.com",
+    "theme": "创意机构",
+    "source": "Branding Agency",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-chipsa",
+    "name": "Chipsa Design",
+    "url": "https://chipsa.design",
+    "theme": "创意机构",
+    "source": "Design Studio",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-dribbble",
+    "name": "Dribbble",
+    "url": "https://dribbble.com",
+    "theme": "产品",
+    "source": "Design Platform",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-cargo",
+    "name": "Cargo",
+    "url": "https://cargo.site",
+    "theme": "产品",
+    "source": "Design Platform",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-readymag",
+    "name": "Readymag",
+    "url": "https://readymag.com",
+    "theme": "产品",
+    "source": "Design Platform",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-arena",
+    "name": "Are.na",
+    "url": "https://www.are.na",
+    "theme": "产品",
+    "source": "Design Platform",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-dyson",
+    "name": "Dyson",
+    "url": "https://www.dyson.com",
+    "theme": "产品",
+    "source": "Tech/Hardware",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-gopro",
+    "name": "GoPro",
+    "url": "https://gopro.com",
+    "theme": "产品",
+    "source": "Tech/Hardware",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-redbull",
+    "name": "Red Bull",
+    "url": "https://www.redbull.com",
+    "theme": "品牌体验",
+    "source": "Brand",
+    "status": 302,
+    "ok": true
+  },
+  {
+    "id": "extra-burberry",
+    "name": "Burberry",
+    "url": "https://www.burberry.com",
+    "theme": "时尚",
+    "source": "Fashion",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-prada",
+    "name": "Prada",
+    "url": "https://www.prada.com",
+    "theme": "奢侈品牌",
+    "source": "Luxury/Fashion",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-ralph-lauren",
+    "name": "Ralph Lauren",
+    "url": "https://www.ralphlauren.com",
+    "theme": "时尚",
+    "source": "Fashion",
+    "status": 307,
+    "ok": true
+  },
+  {
+    "id": "extra-stumptown",
+    "name": "Stumptown Coffee",
+    "url": "https://www.stumptowncoffee.com",
+    "theme": "餐饮",
+    "source": "Coffee",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-sweetgreen",
+    "name": "Sweetgreen",
+    "url": "https://www.sweetgreen.com",
+    "theme": "餐饮",
+    "source": "Restaurant",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-shake-shack",
+    "name": "Shake Shack",
+    "url": "https://www.shakeshack.com",
+    "theme": "餐饮",
+    "source": "Restaurant",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-aman",
+    "name": "Aman Resorts",
+    "url": "https://www.aman.com",
+    "theme": "酒店",
+    "source": "Hospitality",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-airbnb-help",
+    "name": "Airbnb Help Center",
+    "url": "https://www.airbnb.com/help",
+    "theme": "产品",
+    "source": "Travel",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-wired",
+    "name": "Wired",
+    "url": "https://www.wired.com",
+    "theme": "编辑设计",
+    "source": "Media",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-the-verge",
+    "name": "The Verge",
+    "url": "https://www.theverge.com",
+    "theme": "编辑设计",
+    "source": "Media",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-pitchfork",
+    "name": "Pitchfork",
+    "url": "https://pitchfork.com",
+    "theme": "音乐",
+    "source": "Media",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-cosmos",
+    "name": "Cosmos",
+    "url": "https://cosmos.so",
+    "theme": "产品",
+    "source": "Design Platform",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-framer-community",
+    "name": "Framer Community",
+    "url": "https://www.framer.com/community",
+    "theme": "产品",
+    "source": "Design Platform",
+    "status": 308,
+    "ok": true
+  },
+  {
+    "id": "extra-locomotive-ca",
+    "name": "Locomotive CA",
+    "url": "https://locomotive.ca",
+    "theme": "创意机构",
+    "source": "Agency",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-resn-nz",
+    "name": "Resn NZ",
+    "url": "https://resn.co.nz",
+    "theme": "创意机构",
+    "source": "Interactive Agency",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-mediamonks-d",
+    "name": "MediaMonks",
+    "url": "https://www.mediamonks.com",
+    "theme": "数字代理",
+    "source": "Digital Production",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-dogstudio-d",
+    "name": "Dogstudio",
+    "url": "https://dogstudio.co",
+    "theme": "创意机构",
+    "source": "Digital Agency",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-makemepulse-d",
+    "name": "Makemepulse",
+    "url": "https://makemepulse.com",
+    "theme": "创意机构",
+    "source": "Interactive Studio",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-apple-iphone",
+    "name": "Apple iPhone",
+    "url": "https://www.apple.com/iphone",
+    "theme": "产品",
+    "source": "Tech",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-google-pixel",
+    "name": "Google Pixel",
+    "url": "https://store.google.com/category/pixel",
+    "theme": "产品",
+    "source": "Tech",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-samsung",
+    "name": "Samsung",
+    "url": "https://www.samsung.com",
+    "theme": "产品",
+    "source": "Tech",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "extra-nuxt",
+    "name": "Nuxt",
+    "url": "https://nuxt.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-astro",
+    "name": "Astro",
+    "url": "https://astro.build",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-svelte",
+    "name": "Svelte",
+    "url": "https://svelte.dev",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-solidjs",
+    "name": "SolidJS",
+    "url": "https://www.solidjs.com",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "extra-qwik",
+    "name": "Qwik",
+    "url": "https://qwik.dev",
+    "theme": "产品",
+    "source": "Developer Tools",
+    "status": 200,
+    "ok": true
+  }
+]

@@ -1,0 +1,14 @@
+name = "ui-gallery-ai"
+main = "index.js"
+compatibility_date = "2024-09-01"
+
+# Secrets (set via `wrangler secret put`):
+#   LLM_API_KEY   — Your LLM provider API key
+#   LLM_BASE_URL  — (optional) Base URL, default: https://api.openai.com/v1
+#   LLM_MODEL     — (optional) Model name, default: gpt-4o-mini
+
+# Supported providers (any OpenAI-compatible):
+#   OpenAI:    LLM_BASE_URL=https://api.openai.com/v1
+#   DeepSeek:  LLM_BASE_URL=https://api.deepseek.com/v1  LLM_MODEL=deepseek-chat
+#   Claude:    LLM_BASE_URL=https://api.anthropic.com/v1  (via proxy)
+#   Moonshot:  LLM_BASE_URL=https://api.moonshot.cn/v1  LLM_MODEL=moonshot-v1-8k

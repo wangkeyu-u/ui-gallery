@@ -1,19 +1,15 @@
 # 世界级 UI 画廊 · UI Gallery
 
-> 230 个主流 UI 组件库 / 设计系统 + 世界级获奖网站的策展式画廊。每一项都附带**可被 AI 逐帧复现的高保真提示词**——复制提示词丢给任意 AI，就能重建出首屏一致、动画一致的页面。
+> 129 个获奖/精选 UI 项目 + 177 个组件库的策展式画廊。由 AI 担任设计总监，支持自然语言搜索、设计 DNA 提取、主题创建和代码生成。从 Awwwards / FWA / CSS Awards / Webby 等来源策展，覆盖创意机构、3D/WebGL、奢侈品、汽车、SaaS、时尚、编辑设计等 15 个风格家族。
 >
-> A curated gallery of 230 mainstream UI component libraries / design systems + world-class award-winning websites. Every entry ships a **high-fidelity prompt that AI can reproduce frame-by-frame** — paste it into any AI and it rebuilds a page whose above-the-fold and animations match the original.
+> A curated gallery of 129 award-winning UI projects + 177 component libraries. AI-powered design director with natural-language search, design DNA extraction, theme creation, and code generation. Sourced from Awwwards / FWA / CSS Awards / Webby, spanning 15 style families.
 
-[![items](https://img.shields.io/badge/收录-230%20项-blue)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![items-en](https://img.shields.io/badge/entries-230-blue)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![verified](https://img.shields.io/badge/AI%20复现通过-194%2F204-brightgreen)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![verified-en](https://img.shields.io/badge/AI%20repro-passed-194%2F204-brightgreen)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![anim](https://img.shields.io/badge/动画还原-191%2F194-ff69b4)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![anim-en](https://img.shields.io/badge/animations-restored-191%2F194-ff69b4)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![offline](https://img.shields.io/badge/离线自包含-零外部调用-lightgrey)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![offline-en](https://img.shields.io/badge/offline-self--contained-lightgrey)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![pages](https://img.shields.io/badge/GitHub%20Pages-已部署-orange)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
-[![pages-en](https://img.shields.io/badge/GitHub%20Pages-deployed-orange)](https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html)
+[![items](https://img.shields.io/badge/UI%20项目-129%20个-blue)](https://wangkeyu-u.github.io/ui-gallery/)
+[![items-en](https://img.shields.io/badge/UI%20projects-129-blue)](https://wangkeyu-u.github.io/ui-gallery/)
+[![components](https://img.shields.io/badge/组件库-177%20个-green)](https://wangkeyu-u.github.io/ui-gallery/)
+[![components-en](https://img.shields.io/badge/components-177-green)](https://wangkeyu-u.github.io/ui-gallery/)
+[![screenshots](https://img.shields.io/badge/预览图-309%20张-orange)](https://wangkeyu-u.github.io/ui-gallery/)
+[![license](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
 ---
 
@@ -71,12 +67,103 @@ In one line: **it's a prompt library + verification system that teaches AI to "c
 
 ---
 
+## v3.0 新架构 / New Architecture (v3.0)
+
+> v3.0 将项目从单文件 HTML 重构为 Vite + React + TypeScript 应用，新增自然语言搜索、设计 DNA 提取、主题系统和审美偏好记录。
+>
+> v3.0 rebuilds the project from a single-file HTML into a Vite + React + TypeScript application, adding natural-language search, design DNA extraction, a theme system, and aesthetic preference tracking.
+
+### 技术栈 / Stack
+
+- **Vite 5** + **React 18** + **TypeScript 5** — 组件化、类型安全、快速构建
+- **react-router-dom** (HashRouter) — 多页面路由（画廊 / 详情 / 组件库 / 主题）
+- **原生 CSS Variables** — 浅色/深色双模式，无 UI 组件库依赖
+- **localStorage + IndexedDB** — 收藏、偏好、主题本地持久化
+
+### 数据模型 / Data Model
+
+原始 `preview-data.json`（230 项）经 `scripts/migrate-data.cjs` 迁移为 4 个结构化文件：
+
+| 文件 | 内容 | 数量 |
+|------|------|------|
+| `src/data/ui-projects.json` | UI 项目（含风格家族、情绪、材质、颜色、字体、交互等审美标签） | 129 |
+| `src/data/components.json` | 组件库（含框架、分类、组件列表、仓库链接） | 177 |
+| `src/data/style-families.json` | 风格家族分类法 | 15 |
+| `src/data/search-index.json` | 搜索索引（同义词 + 相邻风格映射） | 47 组同义词 |
+
+### 核心能力 / Core Capabilities
+
+1. **杂志式画廊** — 首屏直接看到 UI 预览，卡片大小变化营造策展节奏
+2. **自然语言搜索** — "金属质感的汽车产品页，不要赛博" → 同义词扩展 + 负向约束 + 多样性控制
+3. **设计 DNA 提取** — 从参考 UI 的 prompt 中自动提取颜色、字体、交互、动画等设计事实
+4. **主题系统** — 从选定参考提取 Theme DNA，导出为 JSON / CSS Variables / Tailwind Config / Markdown
+5. **审美偏好记录** — 喜欢的参考、排斥的模式、已锁定决策，跨会话持久化
+
+### 开发命令 / Development
+
+```bash
+npm install          # 安装依赖
+npm run dev          # 启动开发服务器 (localhost:5173)
+npm run build        # 类型检查 + 生产构建 → dist/
+npm run preview      # 预览构建产物
+npm run migrate      # 重新生成 src/data/ 下的数据文件
+npm run audit        # 审计预览图片质量
+npm run serve        # 用静态服务器预览 dist/ (localhost:4173)
+```
+
+### 继续添加更多 UI 项目
+
+```bash
+# 1. 检查候选 URL 可达性
+node scripts/check-urls.cjs
+
+# 2. 批量截图（需要 Playwright + Chrome）
+node scripts/take-screenshots.cjs
+
+# 3. 合并新截图到 preview-data.json
+node scripts/merge-data.cjs
+
+# 4. 重新生成搜索索引和风格标签
+npm run migrate
+
+# 5. 重新构建
+npm run build
+```
+
+候选站点列表在 `scripts/check-urls.cjs` 和 `scripts/candidates-batch2.cjs` 中。已验证 179 个可达站点，已截图 129 个，剩余约 50 个待截图。
+
+### 目录结构 / Directory Structure
+
+```
+ui-gallery/
+├── src/                    # v3.0 新架构源码
+│   ├── components/         # React 组件 (Header, GalleryCard, SearchBar, ...)
+│   ├── pages/              # 页面 (Gallery, Detail, Components, Themes)
+│   ├── hooks/              # 自定义 Hooks (useTheme, useFavorites, usePreference)
+│   ├── utils/              # 工具函数 (search.ts — 自然语言搜索引擎)
+│   ├── data/               # 迁移后的结构化数据 (4 个 JSON)
+│   └── styles/             # 全局样式 (CSS Variables 主题系统)
+├── scripts/                # 数据迁移和审计脚本
+│   ├── migrate-data.cjs    # 数据迁移与富化
+│   ├── audit-previews.cjs  # 预览图片质量审计
+│   └── legacy/             # v2.0 遗留脚本
+├── previews/               # 230 张预览截图
+├── preview-data.json       # 原始数据 (v2.0 兼容)
+├── preview-gallery.html    # v2.0 单文件画廊 (保留为基线)
+├── index.html              # v3.0 Vite 入口
+├── vite.config.ts          # Vite 配置
+└── tsconfig.json           # TypeScript 配置
+```
+
+---
+
 ## 在线预览 / Live Preview
 
-> **GitHub Pages**：<https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html>
+> **v3.0 应用**：<https://wangkeyu-u.github.io/ui-gallery/>（Vite + React 构建）
 >
-> 也可直接克隆后用浏览器打开本地 `preview-gallery.html`（推荐 Chrome / Edge）。
-> Or clone and open local `preview-gallery.html` directly (Chrome / Edge recommended).
+> **v2.0 画廊**：<https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html>（单文件 HTML，保留为基线）
+>
+> 也可克隆后本地运行：`npm install && npm run dev`（推荐 Chrome / Edge）。
 
 ---
 

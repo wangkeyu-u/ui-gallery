@@ -1,0 +1,20 @@
+[
+  {
+    "id": "proj-2021-two-good-co",
+    "url": "https://twogood.co",
+    "status": 200,
+    "ok": true
+  },
+  {
+    "id": "awd-cybernauts",
+    "url": "https://cybernauts.co",
+    "status": 301,
+    "ok": true
+  },
+  {
+    "id": "awd-velvet",
+    "url": "https://velvet.co",
+    "status": 302,
+    "ok": true
+  }
+]

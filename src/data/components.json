@@ -1,0 +1,5639 @@
+[
+  {
+    "id": "antd",
+    "name": "Ant Design",
+    "description": "最成熟的企业级 React 组件库，组件最全、中后台首选。",
+    "framework": [
+      "React"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 数据密集",
+    "vendor": "蚂蚁集团 Ant Group",
+    "documentationUrl": "https://ant.design",
+    "repoUrl": "https://github.com/ant-design/ant-design",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/antd.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ant design 企业级 / 数据密集 蚂蚁集团 ant group 最成熟的企业级 react 组件库，组件最全、中后台首选。 react button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design 3d-rotation scroll-reveal fade-in scale keyframe tween shader"
+  },
+  {
+    "id": "mui",
+    "name": "Material UI (MUI)",
+    "description": "Google Material Design 规范的标杆实现，高度可定制、暗黑模式一流。",
+    "framework": [
+      "React"
+    ],
+    "category": "material",
+    "categoryLabel": "Material Design 3",
+    "vendor": "MUI / Google 规范",
+    "documentationUrl": "https://mui.com",
+    "repoUrl": "https://github.com/mui/material-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/mui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "material ui (mui) material design 3 mui / google 规范 google material design 规范的标杆实现，高度可定制、暗黑模式一流。 react button input select checkbox radio switch slider datepicker form minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle paper automotive technology art-design scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "chakra",
+    "name": "Chakra UI",
+    "description": "组合式 API + Emotion，内置暗黑模式与 a11y，源码易读可二次封装。",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "简洁 / 组合式",
+    "vendor": "Chakra / Segun Adebayo",
+    "documentationUrl": "https://chakra-ui.com",
+    "repoUrl": "https://github.com/chakra-ui/chakra-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Table"
+    ],
+    "previewImage": "previews/chakra.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "chakra ui 简洁 / 组合式 chakra / segun adebayo 组合式 api + emotion，内置暗黑模式与 a11y，源码易读可二次封装。 react button input select checkbox radio switch slider form table minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "mantine",
+    "name": "Mantine",
+    "description": "100+ 组件 + 大量 Hooks，TypeScript 友好，开箱暗色模式，开发体验极佳。",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "现代 / 暗色原生",
+    "vendor": "Mantine",
+    "documentationUrl": "https://mantine.dev",
+    "repoUrl": "https://github.com/mantinedev/mantine",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/mantine.png",
+    "styleFamily": "brand",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "mantine 现代 / 暗色原生 mantine 100+ 组件 + 大量 hooks，typescript 友好，开箱暗色模式，开发体验极佳。 react button input select checkbox radio switch slider datepicker form brand experience 品牌体验 brand experience 品牌 体验 dark bold playful minimal futuristic glass automotive technology art-design scroll-reveal scale marquee keyframe tween"
+  },
+  {
+    "id": "shadcn",
+    "name": "shadcn/ui",
+    "description": "复制即用、100% 代码所有权。基于 Radix 原语 + Tailwind，年度最热仓库。",
+    "framework": [
+      "React"
+    ],
+    "category": "radix-tailwind",
+    "categoryLabel": "Radix + Tailwind 白盒",
+    "vendor": "shadcn",
+    "documentationUrl": "https://ui.shadcn.com",
+    "repoUrl": "https://github.com/shadcn-ui/ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Dialog"
+    ],
+    "previewImage": "previews/shadcn.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "shadcn/ui radix + tailwind 白盒 shadcn 复制即用、100% 代码所有权。基于 radix 原语 + tailwind，年度最热仓库。 react button input select checkbox radio switch slider form dialog minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "radix",
+    "name": "Radix UI",
+    "description": "WAI-ARIA 合规的无样式交互原语，shadcn 的底层内核，可完全掌控样式。",
+    "framework": [
+      "React"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式原语 / a11y",
+    "vendor": "Radix / Modulz",
+    "documentationUrl": "https://www.radix-ui.com",
+    "repoUrl": "https://github.com/radix-ui/primitives",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Dialog",
+      "DropdownMenu",
+      "Select",
+      "Checkbox",
+      "RadioGroup",
+      "Switch",
+      "Tabs",
+      "Accordion",
+      "Tooltip"
+    ],
+    "previewImage": "previews/radix.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "radix ui 无样式原语 / a11y radix / modulz wai-aria 合规的无样式交互原语，shadcn 的底层内核，可完全掌控样式。 react dialog dropdownmenu select checkbox radiogroup switch tabs accordion tooltip minimal 极简 minimal clean simple 极简 简洁 留白 dark elegant bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "headlessui",
+    "name": "Headless UI",
+    "description": "Tailwind 官方无样式组件，React/Vue 双版本，可访问性优先。",
+    "framework": [
+      "React",
+      "Vue"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式 / a11y",
+    "vendor": "Tailwind Labs",
+    "documentationUrl": "https://headlessui.com",
+    "repoUrl": "https://github.com/tailwindlabs/headlessui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Dialog",
+      "Menu",
+      "Listbox",
+      "Combobox",
+      "Switch",
+      "RadioGroup",
+      "Tab",
+      "Disclosure",
+      "Popover"
+    ],
+    "previewImage": "previews/headlessui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "headless ui 无样式 / a11y tailwind labs tailwind 官方无样式组件，react/vue 双版本，可访问性优先。 react vue dialog menu listbox combobox switch radiogroup tab disclosure popover minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic glass automotive finance technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "nextui",
+    "name": "NextUI (HeroUI)",
+    "description": "基于 React Aria + Tailwind，强调高性能与 SSR，组件量 200+。",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "现代 / SSR 友好",
+    "vendor": "NextUI",
+    "documentationUrl": "https://nextui.org",
+    "repoUrl": "https://github.com/nextui-org/nextui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/nextui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "nextui (heroui) 现代 / ssr 友好 nextui 基于 react aria + tailwind，强调高性能与 ssr，组件量 200+。 react button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle concrete automotive technology art-design scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "semi",
+    "name": "Semi Design",
+    "description": "Design Token 与 Figma 插件完善，支持多主题动态切换，含主题商店。",
+    "framework": [
+      "React"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 设计代币",
+    "vendor": "字节跳动 ByteDance",
+    "documentationUrl": "https://semi.design",
+    "repoUrl": "https://github.com/DouyinFE/semi-design",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/semi.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "semi design 企业级 / 设计代币 字节跳动 bytedance design token 与 figma 插件完善，支持多主题动态切换，含主题商店。 react button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "blueprint",
+    "name": "Blueprint",
+    "description": "面向数据密集应用（表格/图表/表单）的 React 组件套件。",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "数据密集型",
+    "vendor": "Palantir",
+    "documentationUrl": "https://blueprintjs.com",
+    "repoUrl": "https://github.com/palantir/blueprint",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "FileUpload"
+    ],
+    "previewImage": "previews/blueprint.png",
+    "styleFamily": "fintech",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "blueprint 数据密集型 palantir 面向数据密集应用（表格/图表/表单）的 react 组件套件。 react button input select checkbox radio switch slider form fileupload fintech / data 金融 / 数据 fintech finance bank data 金融 数据 dark bold futuristic glass particle concrete automotive technology art-design 3d-rotation scroll-reveal scale keyframe shader"
+  },
+  {
+    "id": "grommet",
+    "name": "Grommet",
+    "description": "HPE 出品的响应式 React 组件库，主题系统强大。",
+    "framework": [
+      "React"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 响应式",
+    "vendor": "HPE",
+    "documentationUrl": "https://v2.grommet.io",
+    "repoUrl": "https://github.com/grommet/grommet",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "TextInput",
+      "Select",
+      "CheckBox",
+      "RadioButton",
+      "RangeInput",
+      "Form",
+      "FileInput",
+      "DataTable"
+    ],
+    "previewImage": "previews/grommet.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "grommet 企业级 / 响应式 hpe hpe 出品的响应式 react 组件库，主题系统强大。 react button textinput select checkbox radiobutton rangeinput form fileinput datatable product / saas 产品 / saas product saas landing app 产品 落地页 dark minimal futuristic glass automotive technology art-design 3d-rotation scroll-reveal fade-in scale keyframe tween shader"
+  },
+  {
+    "id": "evergreen",
+    "name": "Evergreen",
+    "description": "Segment 出品的产品级 React UI 套件，开箱即用。",
+    "framework": [
+      "React"
+    ],
+    "category": "product",
+    "categoryLabel": "产品级",
+    "vendor": "Segment",
+    "documentationUrl": "https://evergreen.segment.com",
+    "repoUrl": "https://github.com/segmentio/evergreen",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "TextInput",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "FilePicker"
+    ],
+    "previewImage": "previews/evergreen.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "evergreen 产品级 segment segment 出品的产品级 react ui 套件，开箱即用。 react button textinput select checkbox radio switch slider form filepicker product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "fluent",
+    "name": "Fluent UI (React)",
+    "description": "微软 Fluent Design 的 React 实现，Office/Windows 同款。",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "Microsoft / Fluent",
+    "vendor": "Microsoft",
+    "documentationUrl": "https://react.fluentui.dev",
+    "repoUrl": "https://github.com/microsoft/fluentui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Dropdown",
+      "Form"
+    ],
+    "previewImage": "previews/fluent.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "fluent ui (react) microsoft / fluent microsoft 微软 fluent design 的 react 实现，office/windows 同款。 react button input select checkbox radio switch slider dropdown form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "polaris",
+    "name": "Polaris",
+    "description": "Shopify 管理后台设计系统，电商场景组件齐全。",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "电商 / Shopify",
+    "vendor": "Shopify",
+    "documentationUrl": "https://polaris.shopify.com",
+    "repoUrl": "https://github.com/Shopify/polaris",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "TextField",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "DropZone"
+    ],
+    "previewImage": "previews/polaris.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "polaris 电商 / shopify shopify shopify 管理后台设计系统，电商场景组件齐全。 react button textfield select checkbox radio switch slider form dropzone product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "primer",
+    "name": "Primer",
+    "description": "GitHub 官方设计系统，开发者工具与文档站同款风格。",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "GitHub / 开发者工具",
+    "vendor": "GitHub",
+    "documentationUrl": "https://primer.style",
+    "repoUrl": "https://github.com/primer/react",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "TextInput",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Form",
+      "FileUpload",
+      "Table"
+    ],
+    "previewImage": "previews/primer.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "primer github / 开发者工具 github github 官方设计系统，开发者工具与文档站同款风格。 react button textinput select checkbox radio switch form fileupload table product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic metal glass particle concrete automotive technology art-design scroll-reveal fade-in scale marquee keyframe tween"
+  },
+  {
+    "id": "baseweb",
+    "name": "Base Web",
+    "description": "Uber 基于 Styletron 的 React 组件库，主题可深度定制。",
+    "framework": [
+      "React"
+    ],
+    "category": "product",
+    "categoryLabel": "产品级",
+    "vendor": "Uber",
+    "documentationUrl": "https://baseweb.design",
+    "repoUrl": "https://github.com/uber/baseweb",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Slider",
+      "Form",
+      "FileUploader",
+      "Table"
+    ],
+    "previewImage": "previews/baseweb.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "base web 产品级 uber uber 基于 styletron 的 react 组件库，主题可深度定制。 react button input select checkbox radio slider form fileuploader table product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "gestalt",
+    "name": "Gestalt",
+    "description": "Pinterest 设计系统，强调一致的产品体验。",
+    "framework": [
+      "React"
+    ],
+    "category": "product",
+    "categoryLabel": "产品级",
+    "vendor": "Pinterest",
+    "documentationUrl": "https://gestalt.pinterest.systems",
+    "repoUrl": "https://github.com/pinterest/gestalt",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "TextField",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Form",
+      "FileUploader",
+      "Table"
+    ],
+    "previewImage": "previews/gestalt.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "gestalt 产品级 pinterest pinterest 设计系统，强调一致的产品体验。 react button textfield select checkbox radio switch form fileuploader table product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "antd-mobile",
+    "name": "Ant Design Mobile",
+    "description": "移动端 Ant Design，组件专为拇指操作设计，支持 PWA。",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "移动端 / H5",
+    "vendor": "蚂蚁集团",
+    "documentationUrl": "https://mobile.ant.design",
+    "repoUrl": "https://github.com/ant-design/ant-design-mobile",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "ImagePicker"
+    ],
+    "previewImage": "previews/antd-mobile.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ant design mobile 移动端 / h5 蚂蚁集团 移动端 ant design，组件专为拇指操作设计，支持 pwa。 react button input select checkbox radio switch slider form imagepicker product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "react-bootstrap",
+    "name": "React Bootstrap",
+    "description": "Bootstrap 5 的 React 重写，无 jQuery 依赖。",
+    "framework": [
+      "React"
+    ],
+    "category": "bootstrap",
+    "categoryLabel": "Bootstrap 风格",
+    "vendor": "React Bootstrap",
+    "documentationUrl": "https://react-bootstrap.github.io",
+    "repoUrl": "https://github.com/react-bootstrap/react-bootstrap",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "InputGroup",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Table",
+      "ListGroup"
+    ],
+    "previewImage": "previews/react-bootstrap.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "react bootstrap bootstrap 风格 react bootstrap bootstrap 5 的 react 重写，无 jquery 依赖。 react button form inputgroup select checkbox radio switch table listgroup product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "ariakit",
+    "name": "Ariakit",
+    "description": "低层级无障碍 React 组件原语，键盘导航一流。",
+    "framework": [
+      "React"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式 / a11y",
+    "vendor": "Ariakit",
+    "documentationUrl": "https://ariakit.org",
+    "repoUrl": "https://github.com/ariakit/ariakit",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Form",
+      "Select",
+      "Combobox",
+      "Dialog",
+      "Popover"
+    ],
+    "previewImage": "previews/ariakit.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ariakit 无样式 / a11y ariakit 低层级无障碍 react 组件原语，键盘导航一流。 react button checkbox radio switch form select combobox dialog popover minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "react-aria",
+    "name": "React Aria Components",
+    "description": "Adobe 出品的组件原语，行为/无障碍开箱即用，样式自定。",
+    "framework": [
+      "React"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式 / a11y",
+    "vendor": "Adobe",
+    "documentationUrl": "https://react-spectrum.adobe.com/react-aria",
+    "repoUrl": "https://github.com/adobe/react-spectrum",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "ToggleButton",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "TextField",
+      "Select",
+      "ComboBox",
+      "DatePicker"
+    ],
+    "previewImage": "previews/react-aria.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "react aria components 无样式 / a11y adobe adobe 出品的组件原语，行为/无障碍开箱即用，样式自定。 react button togglebutton checkbox radio switch textfield select combobox datepicker minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "element-plus",
+    "name": "Element Plus",
+    "description": "Vue 3 生态扛把子，国内使用率最高，后台 CRUD 首选。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 后台",
+    "vendor": "饿了么 / Element",
+    "documentationUrl": "https://element-plus.org",
+    "repoUrl": "https://github.com/element-plus/element-plus",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/element-plus.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "element plus 企业级 / 后台 饿了么 / element vue 3 生态扛把子，国内使用率最高，后台 crud 首选。 vue button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design parallax scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "naive-ui",
+    "name": "Naive UI",
+    "description": "全 TS + Composition API，零外部依赖，主题系统基于 CSS 变量。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "现代 / TS 友好",
+    "vendor": "TuSan (尤雨溪推荐)",
+    "documentationUrl": "https://www.naiveui.com",
+    "repoUrl": "https://github.com/tusen-ai/naive-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/naive-ui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "naive ui 现代 / ts 友好 tusan (尤雨溪推荐) 全 ts + composition api，零外部依赖，主题系统基于 css 变量。 vue button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "vuetify",
+    "name": "Vuetify",
+    "description": "Vue 的 Material Design 标杆，生态最成熟，Material You 动态主题。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "material",
+    "categoryLabel": "Material Design 3",
+    "vendor": "Vuetify",
+    "documentationUrl": "https://vuetifyjs.com",
+    "repoUrl": "https://github.com/vuetifyjs/vuetify",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "TextField",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/vuetify.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "vuetify material design 3 vuetify vue 的 material design 标杆，生态最成熟，material you 动态主题。 vue button textfield select checkbox radio switch slider datepicker form minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "quasar",
+    "name": "Quasar",
+    "description": "同一套代码编译 SPA/PWA/SSR/移动端/桌面，CLI 工程化完善。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "跨端 / 全家桶",
+    "vendor": "Quasar",
+    "documentationUrl": "https://quasar.dev",
+    "repoUrl": "https://github.com/quasarframework/quasar",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/quasar.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "quasar 跨端 / 全家桶 quasar 同一套代码编译 spa/pwa/ssr/移动端/桌面，cli 工程化完善。 vue button input select checkbox radio toggle slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe"
+  },
+  {
+    "id": "primevue",
+    "name": "PrimeVue",
+    "description": "80+ 复杂组件，Styled/Unstyled 双模式，带可视化主题工厂。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 30+ 主题",
+    "vendor": "PrimeTek",
+    "documentationUrl": "https://primevue.org",
+    "repoUrl": "https://github.com/primefaces/primevue",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "InputText",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "ToggleSwitch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/primevue.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "primevue 企业级 / 30+ 主题 primetek 80+ 复杂组件，styled/unstyled 双模式，带可视化主题工厂。 vue button inputtext select checkbox radio toggleswitch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful minimal futuristic glass particle automotive technology 3d-rotation scroll-reveal fade-in scale marquee keyframe shader"
+  },
+  {
+    "id": "antdv",
+    "name": "Ant Design Vue",
+    "description": "与 React 版 API 对齐，支持 Vite / Nuxt，含 ProComponents。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 与 React 对齐",
+    "vendor": "阿里系",
+    "documentationUrl": "https://antdv.com",
+    "repoUrl": "https://github.com/vueComponent/ant-design-vue",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/antdv.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ant design vue 企业级 / 与 react 对齐 阿里系 与 react 版 api 对齐，支持 vite / nuxt，含 procomponents。 vue button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "vant",
+    "name": "Vant",
+    "description": "移动端第一选择，Vue 3 + 小程序双端，组件平均 <3kB gzip。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "移动端 / H5",
+    "vendor": "有赞 Youzan",
+    "documentationUrl": "https://vant-ui.github.io",
+    "repoUrl": "https://github.com/youzan/vant",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Field",
+      "Picker",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Uploader"
+    ],
+    "previewImage": "previews/vant.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "vant 移动端 / h5 有赞 youzan 移动端第一选择，vue 3 + 小程序双端，组件平均 <3kb gzip。 vue button field picker checkbox radio switch slider form uploader product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass concrete automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "nuxt-ui",
+    "name": "Nuxt UI",
+    "description": "Nuxt 官方旗舰，基于 Reka UI + Tailwind，全量 a11y、RTL 与暗色。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "Nuxt / SSR 满分",
+    "vendor": "Nuxt",
+    "documentationUrl": "https://ui.nuxt.com",
+    "repoUrl": "https://github.com/nuxt/ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/nuxt-ui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "nuxt ui nuxt / ssr 满分 nuxt nuxt 官方旗舰，基于 reka ui + tailwind，全量 a11y、rtl 与暗色。 vue button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale marquee keyframe"
+  },
+  {
+    "id": "shadcn-vue",
+    "name": "shadcn-vue",
+    "description": "Vue 版的复制即用组件集，基于 Reka UI + Tailwind。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "radix-tailwind",
+    "categoryLabel": "Radix 系 / Tailwind",
+    "vendor": "社区",
+    "documentationUrl": "https://www.shadcn-vue.com",
+    "repoUrl": "https://github.com/radix-vue/shadcn-vue",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Dialog"
+    ],
+    "previewImage": "previews/shadcn-vue.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "shadcn-vue radix 系 / tailwind 社区 vue 版的复制即用组件集，基于 reka ui + tailwind。 vue button input select checkbox radio switch slider form dialog minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic metal glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "reka-ui",
+    "name": "Reka UI",
+    "description": "Vue 官方支持的 Headless 内核，零样式、100% 可定制。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式原语 / a11y",
+    "vendor": "unovue",
+    "documentationUrl": "https://reka-ui.com",
+    "repoUrl": "https://github.com/unovue/reka-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Dialog",
+      "DropdownMenu",
+      "Select",
+      "Checkbox",
+      "RadioGroup",
+      "Switch",
+      "Tabs",
+      "Accordion",
+      "Tooltip"
+    ],
+    "previewImage": "previews/reka-ui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "reka ui 无样式原语 / a11y unovue vue 官方支持的 headless 内核，零样式、100% 可定制。 vue dialog dropdownmenu select checkbox radiogroup switch tabs accordion tooltip minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "arco-vue",
+    "name": "Arco Design",
+    "description": "字节跳动设计系统，配套物料市场与低代码平台，结构清晰。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 设计系统",
+    "vendor": "字节跳动",
+    "documentationUrl": "https://arco.design/vue",
+    "repoUrl": "https://github.com/arco-design/arco-design-vue",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/arco-vue.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "arco design 企业级 / 设计系统 字节跳动 字节跳动设计系统，配套物料市场与低代码平台，结构清晰。 vue button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "tdesign-vue",
+    "name": "TDesign",
+    "description": "腾讯多端统一设计系统（React/Vue/小程序/Flutter）。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "多端统一设计系统",
+    "vendor": "腾讯 Tencent",
+    "documentationUrl": "https://tdesign.tencent.com/vue",
+    "repoUrl": "https://github.com/Tencent/tdesign-vue",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/tdesign-vue.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "tdesign 多端统一设计系统 腾讯 tencent 腾讯多端统一设计系统（react/vue/小程序/flutter）。 vue button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "vuestic",
+    "name": "Vuestic UI",
+    "description": "42 个业务组件，配置简单，响应式高性能。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "现代 / 即装即用",
+    "vendor": "Epicmax",
+    "documentationUrl": "https://vuestic.dev",
+    "repoUrl": "https://github.com/epicmaxco/vuestic-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/vuestic.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "vuestic ui 现代 / 即装即用 epicmax 42 个业务组件，配置简单，响应式高性能。 vue button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic gold glass particle automotive technology art-design drag scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "inkline",
+    "name": "Inkline",
+    "description": "Vue 3 组件库，内置设计系统、暗黑模式与表单验证。",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "现代 / 可定制",
+    "vendor": "Inkline",
+    "documentationUrl": "https://inkline.io",
+    "repoUrl": "https://github.com/inkline/inkline",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Table"
+    ],
+    "previewImage": "previews/inkline.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "inkline 现代 / 可定制 inkline vue 3 组件库，内置设计系统、暗黑模式与表单验证。 vue button input select checkbox radio switch slider form table product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful minimal futuristic organic gold glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "ng-material",
+    "name": "Angular Material",
+    "description": "Google 官方维护，基于 CDK 原语，内置动画与 i18n。",
+    "framework": [
+      "Angular"
+    ],
+    "category": "material",
+    "categoryLabel": "Material Design",
+    "vendor": "Google",
+    "documentationUrl": "https://material.angular.io",
+    "repoUrl": "https://github.com/angular/components",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "SlideToggle",
+      "Slider",
+      "Datepicker",
+      "FormField"
+    ],
+    "previewImage": "previews/ng-material.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "angular material material design google google 官方维护，基于 cdk 原语，内置动画与 i18n。 angular button input select checkbox radio slidetoggle slider datepicker formfield minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass liquid automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "ng-zorro",
+    "name": "NG-ZORRO",
+    "description": "Ant Design 的 Angular 实现，API 与 React 版对齐。",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 (Angular 版 antd)",
+    "vendor": "蚂蚁集团",
+    "documentationUrl": "https://ng.ant.design",
+    "repoUrl": "https://github.com/NG-ZORRO/ng-zorro-antd",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/ng-zorro.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ng-zorro 企业级 (angular 版 antd) 蚂蚁集团 ant design 的 angular 实现，api 与 react 版对齐。 angular button input select checkbox radio switch slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "primeng",
+    "name": "PrimeNG",
+    "description": "Angular 企业级组件套件，主题丰富、企业支持完善。",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 80+ 组件",
+    "vendor": "PrimeTek",
+    "documentationUrl": "https://primeng.org",
+    "repoUrl": "https://github.com/primefaces/primeng",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "InputText",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Slider",
+      "DatePicker",
+      "Form"
+    ],
+    "previewImage": "previews/primeng.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "primeng 企业级 / 80+ 组件 primetek angular 企业级组件套件，主题丰富、企业支持完善。 angular button inputtext select checkbox radio toggle slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design 3d-rotation scroll-reveal scale marquee keyframe tween shader"
+  },
+  {
+    "id": "clarity",
+    "name": "Clarity",
+    "description": "VMware 设计系统，含 Angular 组件与核心 CSS。",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 设计系统",
+    "vendor": "VMware",
+    "documentationUrl": "https://clarity.design",
+    "repoUrl": "https://github.com/vmware-clarity/ng-clarity",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Slider",
+      "Datepicker",
+      "Form"
+    ],
+    "previewImage": "previews/clarity.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "clarity 企业级 / 设计系统 vmware vmware 设计系统，含 angular 组件与核心 css。 angular button input select checkbox radio toggle slider datepicker form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle paper automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "ng-bootstrap",
+    "name": "NG Bootstrap",
+    "description": "Bootstrap 5 的 Angular 实现，无 jQuery 依赖。",
+    "framework": [
+      "Angular"
+    ],
+    "category": "bootstrap",
+    "categoryLabel": "Bootstrap 风格",
+    "vendor": "NG Bootstrap",
+    "documentationUrl": "https://ng-bootstrap.github.io",
+    "repoUrl": "https://github.com/ng-bootstrap/ng-bootstrap",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Input",
+      "Checkbox",
+      "Radio",
+      "Select",
+      "Table",
+      "ListGroup",
+      "Card"
+    ],
+    "previewImage": "previews/ng-bootstrap.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ng bootstrap bootstrap 风格 ng bootstrap bootstrap 5 的 angular 实现，无 jquery 依赖。 angular button form input checkbox radio select table listgroup card product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "taiga-ui",
+    "name": "Taiga UI",
+    "description": "Angular + 设计系统的现代组件库，含编辑器等高级件。",
+    "framework": [
+      "Angular"
+    ],
+    "category": "other",
+    "categoryLabel": "现代 / 设计系统",
+    "vendor": "Tinkoff",
+    "documentationUrl": "https://taiga-ui.dev",
+    "repoUrl": "https://github.com/taiga-family/taiga-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Date",
+      "Form"
+    ],
+    "previewImage": "previews/taiga-ui.png",
+    "styleFamily": "editorial",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "taiga ui 现代 / 设计系统 tinkoff angular + 设计系统的现代组件库，含编辑器等高级件。 angular button input select checkbox radio switch slider date form editorial / magazine 编辑 / 杂志 editorial magazine typography swiss 编辑 杂志 排版 dark bold minimal futuristic organic glass particle automotive creative technology art-design 3d-rotation scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "skeleton",
+    "name": "Skeleton",
+    "description": "基于 Tailwind 的自适应主题 Svelte 设计系统。",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "design-system",
+    "categoryLabel": "设计系统 / Tailwind",
+    "vendor": "Skeleton",
+    "documentationUrl": "https://skeleton.dev",
+    "repoUrl": "https://github.com/skeletonlabs/skeleton",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Table"
+    ],
+    "previewImage": "previews/skeleton.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "skeleton 设计系统 / tailwind skeleton 基于 tailwind 的自适应主题 svelte 设计系统。 svelte button input select checkbox radio switch slider form table product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "shadcn-svelte",
+    "name": "shadcn-svelte",
+    "description": "Svelte 版复制即用组件集，基于 Bits UI + Tailwind。",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Bits UI / Tailwind",
+    "vendor": "社区",
+    "documentationUrl": "https://shadcn-svelte.com",
+    "repoUrl": "https://github.com/huntabyte/shadcn-svelte",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Dialog"
+    ],
+    "previewImage": "previews/shadcn-svelte.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "shadcn-svelte bits ui / tailwind 社区 svelte 版复制即用组件集，基于 bits ui + tailwind。 svelte button input select checkbox radio switch slider form dialog minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "smui",
+    "name": "Svelte Material UI (SMUI)",
+    "description": "Material Design 的 Svelte 实现，组件覆盖全面。",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "material",
+    "categoryLabel": "Material Design",
+    "vendor": "SMUI",
+    "documentationUrl": "https://sveltematerialui.com",
+    "repoUrl": "https://github.com/hperrin/svelte-material-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Textfield",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Table"
+    ],
+    "previewImage": "previews/smui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "svelte material ui (smui) material design smui material design 的 svelte 实现，组件覆盖全面。 svelte button textfield select checkbox radio switch slider form table minimal 极简 minimal clean simple 极简 简洁 留白 dark bold playful minimal futuristic glass automotive technology art-design scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "flowbite-svelte",
+    "name": "Flowbite Svelte",
+    "description": "Tailwind + Svelte 组件，遵循简洁极简的设计原则。",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind / 极简",
+    "vendor": "Flowbite",
+    "documentationUrl": "https://flowbite-svelte.com",
+    "repoUrl": "https://github.com/themesberg/flowbite-svelte",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Range",
+      "Form",
+      "Table"
+    ],
+    "previewImage": "previews/flowbite-svelte.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "flowbite svelte tailwind / 极简 flowbite tailwind + svelte 组件，遵循简洁极简的设计原则。 svelte button input select checkbox radio toggle range form table minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic organic glass automotive music technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "carbon-svelte",
+    "name": "Carbon Components Svelte",
+    "description": "IBM Carbon 设计系统的 Svelte 实现。",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 (Carbon)",
+    "vendor": "IBM",
+    "documentationUrl": "https://carbon-components-svelte.onrender.com",
+    "repoUrl": "https://github.com/carbon-design-system/carbon-components-svelte",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Slider",
+      "Form",
+      "DataTable"
+    ],
+    "previewImage": "previews/carbon-svelte.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "carbon components svelte 企业级 (carbon) ibm ibm carbon 设计系统的 svelte 实现。 svelte button input select checkbox radio toggle slider form datatable product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "ark-ui",
+    "name": "Ark UI",
+    "description": "更轻更快的 Headless 组件库，Solid/Vue 双版本，可 tree-shaking。",
+    "framework": [
+      "Solid",
+      "Vue"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式 / 跨框架",
+    "vendor": "Chakra",
+    "documentationUrl": "https://ark-ui.com",
+    "repoUrl": "https://github.com/chakra-ui/ark",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Dialog",
+      "Dropdown",
+      "Select",
+      "Checkbox",
+      "RadioGroup",
+      "Switch",
+      "Tabs",
+      "Accordion",
+      "Tooltip"
+    ],
+    "previewImage": "previews/ark-ui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ark ui 无样式 / 跨框架 chakra 更轻更快的 headless 组件库，solid/vue 双版本，可 tree-shaking。 solid vue dialog dropdown select checkbox radiogroup switch tabs accordion tooltip minimal 极简 minimal clean simple 极简 简洁 留白 dark bold playful minimal futuristic organic cold glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "kobalte",
+    "name": "Kobalte",
+    "description": "SolidJS 的无样式可访问组件原语。",
+    "framework": [
+      "Solid"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式 / a11y",
+    "vendor": "Kobalte",
+    "documentationUrl": "https://kobalte.dev",
+    "repoUrl": "https://github.com/kobaltedev/kobalte",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Dialog",
+      "DropdownMenu",
+      "Select",
+      "Checkbox",
+      "RadioGroup",
+      "Switch",
+      "Tabs",
+      "Accordion",
+      "Tooltip"
+    ],
+    "previewImage": "previews/kobalte.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "kobalte 无样式 / a11y kobalte solidjs 的无样式可访问组件原语。 solid dialog dropdownmenu select checkbox radiogroup switch tabs accordion tooltip minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "solid-headless",
+    "name": "Solid Bootstrap",
+    "description": "Bootstrap 5 的 Solid 实现，API 贴近 React-Bootstrap。",
+    "framework": [
+      "Solid"
+    ],
+    "category": "bootstrap",
+    "categoryLabel": "Bootstrap 风格",
+    "vendor": "SolidJS",
+    "documentationUrl": "https://www.solid-bootstrap.com",
+    "repoUrl": "https://github.com/solidjs/solid-bootstrap",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "InputGroup",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Table",
+      "ListGroup"
+    ],
+    "previewImage": "previews/solid-headless.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "solid bootstrap bootstrap 风格 solidjs bootstrap 5 的 solid 实现，api 贴近 react-bootstrap。 solid button form inputgroup select checkbox radio switch table listgroup product / saas 产品 / saas product saas landing app 产品 落地页"
+  },
+  {
+    "id": "shoelace",
+    "name": "Shoelace (Web Awesome)",
+    "description": "标准 Web Components，任意框架可用，框架无关首选。",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "框架无关 / 标准化",
+    "vendor": "Web Awesome",
+    "documentationUrl": "https://shoelace.style",
+    "repoUrl": "https://github.com/shoelace-style/shoelace",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Range",
+      "Form",
+      "FileUpload"
+    ],
+    "previewImage": "previews/shoelace.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "shoelace (web awesome) 框架无关 / 标准化 web awesome 标准 web components，任意框架可用，框架无关首选。 web components button input select checkbox radio switch range form fileupload product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "material-web",
+    "name": "Material Web (MWC)",
+    "description": "Google 官方 Material Design 3 的 Web Components。",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "material",
+    "categoryLabel": "Material Design",
+    "vendor": "Google",
+    "documentationUrl": "https://material-web.dev",
+    "repoUrl": "https://github.com/material-components/material-web",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "List"
+    ],
+    "previewImage": "previews/material-web.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "material web (mwc) material design google google 官方 material design 3 的 web components。 web components button input select checkbox radio switch slider form list minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "carbon",
+    "name": "Carbon Design System",
+    "description": "IBM 企业级设计系统，含 React/Vue/Svelte/Web Components 多实现。",
+    "framework": [
+      "Web Components",
+      "React",
+      "Vue",
+      "Svelte"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 (IBM)",
+    "vendor": "IBM",
+    "documentationUrl": "https://carbondesignsystem.com",
+    "repoUrl": "https://github.com/carbon-design-system/carbon",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Slider",
+      "Form",
+      "DataTable"
+    ],
+    "previewImage": "previews/carbon.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "carbon design system 企业级 (ibm) ibm ibm 企业级设计系统，含 react/vue/svelte/web components 多实现。 web components react vue svelte button input select checkbox radio toggle slider form datatable product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "lion",
+    "name": "Lion",
+    "description": "ING 出品的 Web Components 表单原语，无障碍优先。",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式 / 表单原语",
+    "vendor": "ING",
+    "documentationUrl": "https://lion-web.netlify.app",
+    "repoUrl": "https://github.com/ing-bank/lion",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "File"
+    ],
+    "previewImage": "previews/lion.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "lion 无样式 / 表单原语 ing ing 出品的 web components 表单原语，无障碍优先。 web components button input select checkbox radio switch slider form file minimal 极简 minimal clean simple 极简 简洁 留白 dark bold playful minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "fast",
+    "name": "FAST (Microsoft)",
+    "description": "微软 FAST 框架，提供可主题化的 Web Components 与设计系统基础。",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "框架无关 / 可定制",
+    "vendor": "Microsoft",
+    "documentationUrl": "https://www.fast.design",
+    "repoUrl": "https://github.com/microsoft/fast",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Card"
+    ],
+    "previewImage": "previews/fast.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "fast (microsoft) 框架无关 / 可定制 microsoft 微软 fast 框架，提供可主题化的 web components 与设计系统基础。 web components button input select checkbox radio switch slider form card product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "bootstrap",
+    "name": "Bootstrap",
+    "description": "最流行的移动优先 CSS 框架，无 jQuery、CSS 变量主题、暗黑模式。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "经典 / 栅格",
+    "vendor": "Bootstrap",
+    "documentationUrl": "https://getbootstrap.com",
+    "repoUrl": "https://github.com/twbs/bootstrap",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "InputGroup",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Table",
+      "ListGroup"
+    ],
+    "previewImage": "previews/bootstrap.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "bootstrap 经典 / 栅格 bootstrap 最流行的移动优先 css 框架，无 jquery、css 变量主题、暗黑模式。 css button form inputgroup select checkbox radio switch table listgroup product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic organic gold glass automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "tailwind",
+    "name": "Tailwind CSS",
+    "description": "原子化 CSS 引擎，高度定制，作为样式层被众多组件库采用。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "原子化 Utility",
+    "vendor": "Tailwind Labs",
+    "documentationUrl": "https://tailwindcss.com",
+    "repoUrl": "https://github.com/tailwindlabs/tailwindcss",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Utility Classes (Grid/Flex/Spacing/Typography)",
+      "Forms Plugin",
+      "Typography Plugin",
+      "Container",
+      "Divider (Border)",
+      "Badge (via classes)",
+      "Card (via classes)",
+      "Button (via classes)"
+    ],
+    "previewImage": "previews/tailwind.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "tailwind css 原子化 utility tailwind labs 原子化 css 引擎，高度定制，作为样式层被众多组件库采用。 css utility classes (grid/flex/spacing/typography) forms plugin typography plugin container divider (border) badge (via classes) card (via classes) button (via classes) product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful minimal futuristic glass automotive technology scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "tailwindui",
+    "name": "Tailwind UI",
+    "description": "Tailwind 官方付费组件与模板，一次购买终身使用，质量极高。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "官方付费模板",
+    "vendor": "Tailwind Labs",
+    "documentationUrl": "https://tailwindui.com",
+    "repoUrl": "https://github.com/tailwindlabs/tailwindui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Card",
+      "Modal",
+      "Dropdown",
+      "Nav",
+      "Tabs",
+      "Accordion",
+      "Table"
+    ],
+    "previewImage": "previews/tailwindui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "tailwind ui 官方付费模板 tailwind labs tailwind 官方付费组件与模板，一次购买终身使用，质量极高。 css button form card modal dropdown nav tabs accordion table product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "daisyui",
+    "name": "daisyUI",
+    "description": "Tailwind 最流行的组件插件，语义化类名、多主题，零 JS 依赖。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind 插件",
+    "vendor": "daisyUI",
+    "documentationUrl": "https://daisyui.com",
+    "repoUrl": "https://github.com/saadeghi/daisyui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Table",
+      "Card"
+    ],
+    "previewImage": "previews/daisyui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "daisyui tailwind 插件 daisyui tailwind 最流行的组件插件，语义化类名、多主题，零 js 依赖。 css button form input select checkbox radio toggle table card minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass automotive technology art-design scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "bulma",
+    "name": "Bulma",
+    "description": "基于 Flexbox 的纯 CSS 框架，无 JS、轻量。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "纯 CSS / Flexbox",
+    "vendor": "Bulma",
+    "documentationUrl": "https://bulma.io",
+    "repoUrl": "https://github.com/jgthms/bulma",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Table",
+      "Card",
+      "Tag"
+    ],
+    "previewImage": "previews/bulma.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "bulma 纯 css / flexbox bulma 基于 flexbox 的纯 css 框架，无 js、轻量。 css button form input select checkbox radio table card tag product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass particle automotive technology art-design 3d-rotation scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "foundation",
+    "name": "Foundation",
+    "description": "企业级响应式前端框架，XY Grid 灵活，语义化。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 响应式",
+    "vendor": "ZURB / XY Grid",
+    "documentationUrl": "https://get.foundation",
+    "repoUrl": "https://github.com/foundation/foundation-sites",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Table",
+      "Accordion"
+    ],
+    "previewImage": "previews/foundation.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "foundation 企业级 / 响应式 zurb / xy grid 企业级响应式前端框架，xy grid 灵活，语义化。 css button form input select checkbox radio switch table accordion product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "pico",
+    "name": "Pico.css",
+    "description": "超轻量级语义化 CSS 框架，无需写类名，写 HTML 即得样式。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "极简 / 无类",
+    "vendor": "Pico",
+    "documentationUrl": "https://picocss.com",
+    "repoUrl": "https://github.com/picocss/pico",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Table",
+      "Card"
+    ],
+    "previewImage": "previews/pico.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "pico.css 极简 / 无类 pico 超轻量级语义化 css 框架，无需写类名，写 html 即得样式。 css button form input select checkbox radio switch table card minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "semantic-ui",
+    "name": "Semantic UI",
+    "description": "以自然语言类名组织 UI，内容驱动站点友好。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "语义化",
+    "vendor": "Semantic UI",
+    "documentationUrl": "https://semantic-ui.com",
+    "repoUrl": "https://github.com/Semantic-Org/Semantic-UI",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Table",
+      "Card",
+      "Label"
+    ],
+    "previewImage": "previews/semantic-ui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "semantic ui 语义化 semantic ui 以自然语言类名组织 ui，内容驱动站点友好。 css button form input select checkbox radio table card label product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "spectre",
+    "name": "Spectre.css",
+    "description": "轻量级、现代、响应式的 CSS 框架。",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "轻量 / 现代",
+    "vendor": "Spectre",
+    "documentationUrl": "https://picturepan2.github.io/spectre",
+    "repoUrl": "https://github.com/picturepan2/spectre",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Table",
+      "Card"
+    ],
+    "previewImage": "previews/spectre.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "spectre.css 轻量 / 现代 spectre 轻量级、现代、响应式的 css 框架。 css button form input select checkbox radio switch table card product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "atlassian",
+    "name": "Atlassian Design System",
+    "description": "Jira/Confluence 同款设计系统，含 React 组件（AtlasKit）。",
+    "framework": [
+      "React",
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "协作工具 (Jira/Confluence)",
+    "vendor": "Atlassian",
+    "documentationUrl": "https://atlassian.design",
+    "repoUrl": "https://github.com/atlassian/atlaskit",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "TextField",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Form",
+      "Table",
+      "List"
+    ],
+    "previewImage": "previews/atlassian.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "atlassian design system 协作工具 (jira/confluence) atlassian jira/confluence 同款设计系统，含 react 组件（atlaskit）。 react web components button textfield select checkbox radio toggle form table list product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "lightning",
+    "name": "Lightning Design System",
+    "description": "Salesforce 设计系统，CRM 应用组件与规范。",
+    "framework": [
+      "CSS",
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "CRM (Salesforce)",
+    "vendor": "Salesforce",
+    "documentationUrl": "https://www.lightningdesignsystem.com",
+    "repoUrl": "https://github.com/salesforce-ux/design-system",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Form",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Toggle",
+      "Table",
+      "Card"
+    ],
+    "previewImage": "previews/lightning.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "lightning design system crm (salesforce) salesforce salesforce 设计系统，crm 应用组件与规范。 css web components button form input select checkbox radio toggle table card product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "fluent-ds",
+    "name": "Fluent 2 Design",
+    "description": "微软 Fluent 2 跨平台设计语言，含 Web/Win/移动端实现。",
+    "framework": [
+      "Multi"
+    ],
+    "category": "other",
+    "categoryLabel": "Microsoft 全平台",
+    "vendor": "Microsoft",
+    "documentationUrl": "https://fluent2.microsoft.design",
+    "repoUrl": "https://github.com/microsoft/fluentui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Checkbox",
+      "Radio",
+      "Switch",
+      "Slider",
+      "Form",
+      "Table"
+    ],
+    "previewImage": "previews/fluent-ds.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "fluent 2 design microsoft 全平台 microsoft 微软 fluent 2 跨平台设计语言，含 web/win/移动端实现。 multi button input select checkbox radio switch slider form table product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "primereact",
+    "name": "PrimeReact",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 数据密集",
+    "vendor": "PrimeTek",
+    "documentationUrl": "https://primereact.org",
+    "repoUrl": "https://github.com/primefaces/primereact",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "DataTable",
+      "Chart",
+      "Form",
+      "Dialog"
+    ],
+    "previewImage": "previews/primereact.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "primereact 企业级 / 数据密集 primetek react button datatable chart form dialog product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful minimal futuristic glass particle automotive technology art-design 3d-rotation scroll-reveal fade-in scale marquee keyframe tween shader"
+  },
+  {
+    "id": "untitledui",
+    "name": "Untitled UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "design-system",
+    "categoryLabel": "设计系统 / Figma 组件",
+    "vendor": "Untitled UI",
+    "documentationUrl": "https://www.untitledui.com",
+    "repoUrl": "https://www.untitledui.com",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Card",
+      "Dropdown",
+      "Avatar"
+    ],
+    "previewImage": "previews/untitledui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "untitled ui 设计系统 / figma 组件 untitled ui react button input card dropdown avatar product / saas 产品 / saas product saas landing app 产品 落地页"
+  },
+  {
+    "id": "reshaped",
+    "name": "Reshaped",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "design-system",
+    "categoryLabel": "现代产品 UI / 设计系统",
+    "vendor": "Reshaped",
+    "documentationUrl": "https://reshaped.dev",
+    "repoUrl": "https://github.com/reshaped/reshaped",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Modal",
+      "Toast"
+    ],
+    "previewImage": "previews/reshaped.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "reshaped 现代产品 ui / 设计系统 reshaped react button input select modal toast product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "alignui",
+    "name": "AlignUI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "design-system",
+    "categoryLabel": "设计系统组件 / Figma",
+    "vendor": "AlignUI",
+    "documentationUrl": "https://alignui.com",
+    "repoUrl": "https://github.com/align-ui/align-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Card",
+      "Tabs",
+      "Dialog"
+    ],
+    "previewImage": "previews/alignui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "alignui 设计系统组件 / figma alignui react button input card tabs dialog product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "baseui-primitives",
+    "name": "Base UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式原语 / Headless",
+    "vendor": "MUI",
+    "documentationUrl": "https://base-ui.com",
+    "repoUrl": "https://github.com/mui/base-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Menu",
+      "Select",
+      "Dialog",
+      "Popover",
+      "Tooltip"
+    ],
+    "previewImage": "previews/baseui-primitives.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "base ui 无样式原语 / headless mui react menu select dialog popover tooltip minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "kiboui",
+    "name": "Kibo UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "radix-tailwind",
+    "categoryLabel": "shadcn 风格区块",
+    "vendor": "Kibo",
+    "documentationUrl": "https://www.kibo-ui.com",
+    "repoUrl": "https://github.com/kibocode/kibo-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Accordion",
+      "Carousel",
+      "Command",
+      "Calendar"
+    ],
+    "previewImage": "previews/kiboui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "kibo ui shadcn 风格区块 kibo react accordion carousel command calendar minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic metal glass particle concrete automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "tailark",
+    "name": "Tailark",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "营销 / 落地页区块",
+    "vendor": "Tailark",
+    "documentationUrl": "https://tailark.com",
+    "repoUrl": "https://tailark.com",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Hero",
+      "Pricing",
+      "Feature",
+      "CTA"
+    ],
+    "previewImage": "previews/tailark.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "tailark 营销 / 落地页区块 tailark react hero pricing feature cta product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "aceternity",
+    "name": "Aceternity UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "动画组件 / 炫酷",
+    "vendor": "Aceternity",
+    "documentationUrl": "https://ui.aceternity.com",
+    "repoUrl": "https://github.com/aceternity-ai/aceternity-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Card",
+      "Background",
+      "3D",
+      "Carousel"
+    ],
+    "previewImage": "previews/aceternity.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "aceternity ui 动画组件 / 炫酷 aceternity react card background 3d carousel product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass particle automotive technology 3d-rotation scroll-reveal fade-in scale keyframe shader"
+  },
+  {
+    "id": "tremor",
+    "name": "Tremor",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "数据仪表盘 / 图表",
+    "vendor": "Tremor",
+    "documentationUrl": "https://tremor.so",
+    "repoUrl": "https://github.com/tremorlabs/tremor",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Chart",
+      "Metric",
+      "Table",
+      "DatePicker"
+    ],
+    "previewImage": "previews/tremor.png",
+    "styleFamily": "fintech",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "tremor 数据仪表盘 / 图表 tremor react chart metric table datepicker fintech / data 金融 / 数据 fintech finance bank data 金融 数据 dark bold minimal futuristic gold glass particle concrete automotive technology art-design 3d-rotation scroll-reveal scale keyframe shader"
+  },
+  {
+    "id": "parkui",
+    "name": "Park UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "可移植组件 / 多框架",
+    "vendor": "Park UI / Chakra",
+    "documentationUrl": "https://park-ui.com",
+    "repoUrl": "https://github.com/park-ui/park-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Tabs"
+    ],
+    "previewImage": "previews/parkui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "park ui 可移植组件 / 多框架 park ui / chakra react button input select tabs product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive finance technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "magicui",
+    "name": "Magic UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "动画 / 落地页组件",
+    "vendor": "Magic UI",
+    "documentationUrl": "https://magicui.design",
+    "repoUrl": "https://github.com/magicuidesign/magicui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Marquee",
+      "Border",
+      "Blur",
+      "Ripple"
+    ],
+    "previewImage": "previews/magicui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "magic ui 动画 / 落地页组件 magic ui react marquee border blur ripple product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass automotive technology 3d-rotation scroll-reveal scale marquee keyframe"
+  },
+  {
+    "id": "floatui",
+    "name": "Float UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind 组件",
+    "vendor": "Float UI",
+    "documentationUrl": "https://floatui.com",
+    "repoUrl": "https://floatui.com",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Dropdown",
+      "Modal",
+      "Tooltip",
+      "Datepicker"
+    ],
+    "previewImage": "previews/floatui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "float ui tailwind 组件 float ui react dropdown modal tooltip datepicker minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic gold glass automotive technology smooth-scroll scroll-reveal scale keyframe"
+  },
+  {
+    "id": "flowbite-react",
+    "name": "Flowbite React",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind 组件",
+    "vendor": "Flowbite",
+    "documentationUrl": "https://flowbite.com",
+    "repoUrl": "https://github.com/themesberg/flowbite-react",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Card",
+      "Navbar"
+    ],
+    "previewImage": "previews/flowbite-react.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "flowbite react tailwind 组件 flowbite react button input card navbar minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic gold glass automotive technology scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "preline",
+    "name": "Preline UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind 组件 / 设计系统",
+    "vendor": "Preline",
+    "documentationUrl": "https://preline.co",
+    "repoUrl": "https://github.com/htmlstreamofficial/preline",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Modal",
+      "Offcanvas"
+    ],
+    "previewImage": "previews/preline.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "preline ui tailwind 组件 / 设计系统 preline react button input modal offcanvas minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale marquee keyframe tween"
+  },
+  {
+    "id": "keepreact",
+    "name": "Keep React",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind 组件",
+    "vendor": "Keep",
+    "documentationUrl": "https://keepdesign.io",
+    "repoUrl": "https://github.com/Believe-ds/Keep-React",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Card",
+      "Table"
+    ],
+    "previewImage": "previews/keepreact.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "keep react tailwind 组件 keep react button input card table minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic gold glass automotive technology scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "originui",
+    "name": "Origin UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "免费组件 / 现代",
+    "vendor": "Origin UI",
+    "documentationUrl": "https://originui.com",
+    "repoUrl": "https://github.com/origin-space/originui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Select",
+      "Sheet"
+    ],
+    "previewImage": "previews/originui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "origin ui 免费组件 / 现代 origin ui react button input select sheet product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass automotive technology scroll-reveal scale keyframe"
+  },
+  {
+    "id": "react-spectrum",
+    "name": "React Spectrum",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业设计系统",
+    "vendor": "Adobe",
+    "documentationUrl": "https://react-spectrum.adobe.com",
+    "repoUrl": "https://github.com/adobe/react-spectrum",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "TextField",
+      "TableView",
+      "Dialog"
+    ],
+    "previewImage": "previews/react-spectrum.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "react spectrum 企业设计系统 adobe react button textfield tableview dialog product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design pinned-scroll scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "recharts",
+    "name": "Recharts",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "图表 / 数据可视化",
+    "vendor": "Recharts",
+    "documentationUrl": "https://recharts.org",
+    "repoUrl": "https://github.com/recharts/recharts",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Line",
+      "Bar",
+      "Area",
+      "Pie"
+    ],
+    "previewImage": "previews/recharts.png",
+    "styleFamily": "experimental",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "recharts 图表 / 数据可视化 recharts react line bar area pie experimental 实验 experiment experimental art generative 实验 生成 dark bold minimal futuristic gold glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "nivo",
+    "name": "Nivo",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "图表 / 数据可视化",
+    "vendor": "Plouc",
+    "documentationUrl": "https://nivo.rocks",
+    "repoUrl": "https://github.com/plouc/nivo",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Line",
+      "Bar",
+      "Heatmap",
+      "Sankey"
+    ],
+    "previewImage": "previews/nivo.png",
+    "styleFamily": "fintech",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "nivo 图表 / 数据可视化 plouc react line bar heatmap sankey fintech / data 金融 / 数据 fintech finance bank data 金融 数据 dark bold minimal futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "visx",
+    "name": "Visx",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "图表 / D3 底层",
+    "vendor": "Airbnb",
+    "documentationUrl": "https://airbnb.io/visx",
+    "repoUrl": "https://github.com/airbnb/visx",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Axis",
+      "Shape",
+      "Scale",
+      "Tooltip"
+    ],
+    "previewImage": "previews/visx.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "visx 图表 / d3 底层 airbnb react axis shape scale tooltip product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "tanstack-ui",
+    "name": "TanStack UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "headless",
+    "categoryLabel": "Headless / 表格表单",
+    "vendor": "TanStack",
+    "documentationUrl": "https://tanstack.com",
+    "repoUrl": "https://github.com/TanStack/ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Table",
+      "Form",
+      "Query",
+      "Router"
+    ],
+    "previewImage": "previews/tanstack-ui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "tanstack ui headless / 表格表单 tanstack react table form query router minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "cmdk",
+    "name": "cmdk",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "命令面板 / 快捷键",
+    "vendor": "pacocoursey",
+    "documentationUrl": "https://cmdk.paco.me",
+    "repoUrl": "https://github.com/pacocoursey/cmdk",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Command",
+      "Dialog"
+    ],
+    "previewImage": "previews/cmdk.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "cmdk 命令面板 / 快捷键 pacocoursey react command dialog product / saas 产品 / saas product saas landing app 产品 落地页 dark futuristic glass automotive technology scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "sonner",
+    "name": "Sonner",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "Toast 通知",
+    "vendor": "emilkowalski",
+    "documentationUrl": "https://sonner.emilkowalkski.com",
+    "repoUrl": "https://github.com/emilkowalski/sonner",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Toast"
+    ],
+    "previewImage": "previews/sonner.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "sonner toast 通知 emilkowalski react toast product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal particle automotive art-design"
+  },
+  {
+    "id": "plate",
+    "name": "Plate",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "富文本编辑器",
+    "vendor": "Plate",
+    "documentationUrl": "https://platejs.org",
+    "repoUrl": "https://github.com/udecode/plate",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Editor",
+      "Toolbar",
+      "Mention",
+      "Slash"
+    ],
+    "previewImage": "previews/plate.png",
+    "styleFamily": "editorial",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "plate 富文本编辑器 plate react editor toolbar mention slash editorial / magazine 编辑 / 杂志 editorial magazine typography swiss 编辑 杂志 排版 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "mambaui",
+    "name": "Mamba UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind 区块",
+    "vendor": "Mamba",
+    "documentationUrl": "https://mambaui.com",
+    "repoUrl": "https://github.com/MambaUI/MambaUI",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Hero",
+      "Feature",
+      "Pricing",
+      "CTA"
+    ],
+    "previewImage": "previews/mambaui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "mamba ui tailwind 区块 mamba react hero feature pricing cta minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "kokonutui",
+    "name": "Kokonut UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "动画 / 现代组件",
+    "vendor": "Kokonut",
+    "documentationUrl": "https://kokonutui.com",
+    "repoUrl": "https://github.com/KokonutUI/kokonutui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Card",
+      "Chart",
+      "Calendar",
+      "Command"
+    ],
+    "previewImage": "previews/kokonutui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "kokonut ui 动画 / 现代组件 kokonut react card chart calendar command product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle concrete automotive music technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "diceui",
+    "name": "Dice UI",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "radix",
+    "categoryLabel": "Radix 风格组件",
+    "vendor": "Dice",
+    "documentationUrl": "https://diceui.com",
+    "repoUrl": "https://github.com/diceui/dice-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Combobox",
+      "DatePicker",
+      "Tags",
+      "Slider"
+    ],
+    "previewImage": "previews/diceui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "dice ui radix 风格组件 dice react combobox datepicker tags slider minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle concrete automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "paper-rn",
+    "name": "React Native Paper",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "移动端 / 跨端",
+    "vendor": "Callstack",
+    "documentationUrl": "https://reactnativepaper.com",
+    "repoUrl": "https://github.com/callstack/react-native-paper",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "TextInput",
+      "Modal"
+    ],
+    "previewImage": "previews/paper-rn.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "react native paper 移动端 / 跨端 callstack react button card textinput modal product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle paper automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "varlet",
+    "name": "Varlet",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "移动端 / Vue3",
+    "vendor": "Varlet",
+    "documentationUrl": "https://varletjs.org",
+    "repoUrl": "https://github.com/varletjs/varlet",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Picker",
+      "ActionSheet"
+    ],
+    "previewImage": "previews/varlet.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "varlet 移动端 / vue3 varlet vue button input picker actionsheet product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "wave-ui",
+    "name": "Wave UI",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "material",
+    "categoryLabel": "Material 风 / Vue3",
+    "vendor": "Antoniandre",
+    "documentationUrl": "https://antoniandre.github.io/wave-ui",
+    "repoUrl": "https://github.com/antoniandre/wave-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Dialog",
+      "Tabs"
+    ],
+    "previewImage": "previews/wave-ui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "wave ui material 风 / vue3 antoniandre vue button card dialog tabs minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle concrete automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "balmui",
+    "name": "BalmUI",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "material",
+    "categoryLabel": "Material 风 / Vue3",
+    "vendor": "BalmJS",
+    "documentationUrl": "https://next-material.balmjs.com",
+    "repoUrl": "https://github.com/balmjs/balm-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Menu",
+      "Dialog"
+    ],
+    "previewImage": "previews/balmui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "balmui material 风 / vue3 balmjs vue button input menu dialog minimal 极简 minimal clean simple 极简 简洁 留白"
+  },
+  {
+    "id": "vue-final-modal",
+    "name": "Vue Final Modal",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "模态框 / 动画",
+    "vendor": "Vue Final",
+    "documentationUrl": "https://vue-final-modal.org",
+    "repoUrl": "https://github.com/vue-final/vue-final-modal",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Modal",
+      "Drawer",
+      "Teleport"
+    ],
+    "previewImage": "previews/vue-final-modal.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "vue final modal 模态框 / 动画 vue final vue modal drawer teleport product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle concrete automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "veevalidate",
+    "name": "VeeValidate",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "表单校验 / Headless",
+    "vendor": "Logaretm",
+    "documentationUrl": "https://vee-validate.logaretm.com",
+    "repoUrl": "https://github.com/logaretm/vee-validate",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Form",
+      "Field",
+      "ErrorMessage"
+    ],
+    "previewImage": "previews/veevalidate.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "veevalidate 表单校验 / headless logaretm vue form field errormessage product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "tailgrids-vue",
+    "name": "TailGrids Vue",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind 组件",
+    "vendor": "TailGrids",
+    "documentationUrl": "https://tailgrids.com",
+    "repoUrl": "https://github.com/TailGrids/tailgrids-vue",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Hero",
+      "Pricing"
+    ],
+    "previewImage": "previews/tailgrids-vue.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "tailgrids vue tailwind 组件 tailgrids vue button card hero pricing minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic glass particle automotive technology scroll-reveal scale marquee keyframe"
+  },
+  {
+    "id": "volt-vue",
+    "name": "Volt Vue",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "bootstrap",
+    "categoryLabel": "免费 Bootstrap 风",
+    "vendor": "Themesberg",
+    "documentationUrl": "https://demos.creative-tim.com/volt",
+    "repoUrl": "https://github.com/themesberg/volt-bootstrap-5-dashboard",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Table",
+      "Chart"
+    ],
+    "previewImage": "previews/volt-vue.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "volt vue 免费 bootstrap 风 themesberg vue button card table chart product / saas 产品 / saas product saas landing app 产品 落地页 dark minimal futuristic glass automotive creative technology scroll-reveal scale keyframe"
+  },
+  {
+    "id": "flowbite-vue",
+    "name": "Flowbite Vue",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "tailwind",
+    "categoryLabel": "Tailwind 组件",
+    "vendor": "Flowbite",
+    "documentationUrl": "https://flowbite-vue.com",
+    "repoUrl": "https://github.com/themesberg/flowbite-vue",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Card",
+      "Navbar"
+    ],
+    "previewImage": "previews/flowbite-vue.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "flowbite vue tailwind 组件 flowbite vue button input card navbar minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic glass particle automotive technology scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "nebular",
+    "name": "Nebular",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 主题化",
+    "vendor": "Akveo",
+    "documentationUrl": "https://akveo.github.io/nebular",
+    "repoUrl": "https://github.com/akveo/nebular",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Layout",
+      "Auth"
+    ],
+    "previewImage": "previews/nebular.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "nebular 企业级 / 主题化 akveo angular button card layout auth product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful futuristic glass particle automotive technology art-design 3d-rotation scroll-reveal scale keyframe"
+  },
+  {
+    "id": "devextreme",
+    "name": "DevExtreme",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 商业",
+    "vendor": "DevExpress",
+    "documentationUrl": "https://js.devexpress.com/Angular",
+    "repoUrl": "https://github.com/DevExpress/DevExtreme",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "DataGrid",
+      "Charts",
+      "Scheduler",
+      "Form"
+    ],
+    "previewImage": "previews/devextreme.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "devextreme 企业级 / 商业 devexpress angular datagrid charts scheduler form product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "kendo-angular",
+    "name": "Kendo UI for Angular",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 商业",
+    "vendor": "Telerik",
+    "documentationUrl": "https://www.telerik.com/kendo-angular-ui",
+    "repoUrl": "https://www.telerik.com/kendo-angular-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Grid",
+      "Chart",
+      "Editor",
+      "Scheduler"
+    ],
+    "previewImage": "previews/kendo-angular.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "kendo ui for angular 企业级 / 商业 telerik angular grid chart editor scheduler product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "syncfusion-ng",
+    "name": "Syncfusion EJ2",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 商业",
+    "vendor": "Syncfusion",
+    "documentationUrl": "https://www.syncfusion.com/angular-components",
+    "repoUrl": "https://github.com/syncfusion/ej2-angular",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Grid",
+      "Chart",
+      "Diagram",
+      "PDF"
+    ],
+    "previewImage": "previews/syncfusion-ng.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "syncfusion ej2 企业级 / 商业 syncfusion angular grid chart diagram pdf product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "ag-grid",
+    "name": "AG Grid",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "other",
+    "categoryLabel": "数据表格 / 高性能",
+    "vendor": "AG Grid",
+    "documentationUrl": "https://www.ag-grid.com/angular-data-grid",
+    "repoUrl": "https://github.com/ag-grid/ag-grid",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "DataGrid",
+      "Tree",
+      "Pivot",
+      "Charts"
+    ],
+    "previewImage": "previews/ag-grid.png",
+    "styleFamily": "fintech",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ag grid 数据表格 / 高性能 ag grid angular datagrid tree pivot charts fintech / data 金融 / 数据 fintech finance bank data 金融 数据 dark futuristic glass automotive technology scroll-reveal scale keyframe"
+  },
+  {
+    "id": "ionic-ng",
+    "name": "Ionic Angular",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "other",
+    "categoryLabel": "移动 / 混合应用",
+    "vendor": "Ionic",
+    "documentationUrl": "https://ionicframework.com",
+    "repoUrl": "https://github.com/ionic-team/ionic-framework",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "App",
+      "Tabs",
+      "Card",
+      "Modal"
+    ],
+    "previewImage": "previews/ionic-ng.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ionic angular 移动 / 混合应用 ionic angular app tabs card modal product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "covalent",
+    "name": "Covalent",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 数据",
+    "vendor": "Teradata",
+    "documentationUrl": "https://teradata.github.io/covalent",
+    "repoUrl": "https://github.com/Teradata/covalent",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Layout",
+      "DataTable",
+      "Chart",
+      "File"
+    ],
+    "previewImage": "previews/covalent.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "covalent 企业级 / 数据 teradata angular layout datatable chart file product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle concrete automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "fundamental-ngx",
+    "name": "Fundamental NGX",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业设计系统",
+    "vendor": "SAP",
+    "documentationUrl": "https://sap.github.io/fundamental-ngx",
+    "repoUrl": "https://github.com/SAP/fundamental-ngx",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Table",
+      "Modal"
+    ],
+    "previewImage": "previews/fundamental-ngx.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "fundamental ngx 企业设计系统 sap angular button input table modal product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "agnosui",
+    "name": "AgnosUI",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "headless",
+    "categoryLabel": "Headless / 可定制",
+    "vendor": "AgnosUI",
+    "documentationUrl": "https://agnosui.github.io",
+    "repoUrl": "https://github.com/agnosui/agnosui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Accordion",
+      "Datepicker",
+      "Rating",
+      "Slider"
+    ],
+    "previewImage": "previews/agnosui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "agnosui headless / 可定制 agnosui angular accordion datepicker rating slider minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "ng-aquila",
+    "name": "ng-aquila",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "fintech",
+    "categoryLabel": "金融设计系统",
+    "vendor": "Nationwide",
+    "documentationUrl": "https://designsystem.nationwide.com",
+    "repoUrl": "https://github.com/klabrecque/ng-aquila",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Card",
+      "Stepper"
+    ],
+    "previewImage": "previews/ng-aquila.png",
+    "styleFamily": "fintech",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ng-aquila 金融设计系统 nationwide angular button input card stepper fintech / data 金融 / 数据 fintech finance bank data 金融 数据"
+  },
+  {
+    "id": "devui-ng",
+    "name": "DevUI",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 华为",
+    "vendor": "华为 Huawei",
+    "documentationUrl": "https://devui.design",
+    "repoUrl": "https://github.com/DevCloudFE/ng-devui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Table",
+      "Tree"
+    ],
+    "previewImage": "previews/devui-ng.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "devui 企业级 / 华为 华为 huawei angular button input table tree product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "oblique",
+    "name": "Oblique",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "other",
+    "categoryLabel": "政府 / 企业",
+    "vendor": "Swiss Post",
+    "documentationUrl": "https://oblique.obs.ch",
+    "repoUrl": "https://github.com/obliqueOTypescript/oblique",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "MasterLayout",
+      "Nav",
+      "Form",
+      "Notification"
+    ],
+    "previewImage": "previews/oblique.png",
+    "styleFamily": "government",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "oblique 政府 / 企业 swiss post angular masterlayout nav form notification government / public 政府 / 公共 government public gov 政府 公共"
+  },
+  {
+    "id": "sbb-angular",
+    "name": "sbb-angular",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "other",
+    "categoryLabel": "交通 / 公共设计",
+    "vendor": "SBB",
+    "documentationUrl": "https://angular.sbb.ch",
+    "repoUrl": "https://github.com/sbb-design-systems/angular",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Train",
+      "Map",
+      "Form"
+    ],
+    "previewImage": "previews/sbb-angular.png",
+    "styleFamily": "government",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "sbb-angular 交通 / 公共设计 sbb angular button train map form government / public 政府 / 公共 government public gov 政府 公共"
+  },
+  {
+    "id": "ngx-bootstrap",
+    "name": "ngx-bootstrap",
+    "description": "",
+    "framework": [
+      "Angular"
+    ],
+    "category": "bootstrap",
+    "categoryLabel": "Bootstrap 风",
+    "vendor": "ValorSoftware",
+    "documentationUrl": "https://valor-software.com/ngx-bootstrap",
+    "repoUrl": "https://github.com/valor-software/ngx-bootstrap",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Modal",
+      "Tabs",
+      "Tooltip",
+      "Datepicker"
+    ],
+    "previewImage": "previews/ngx-bootstrap.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ngx-bootstrap bootstrap 风 valorsoftware angular modal tabs tooltip datepicker product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "meltui",
+    "name": "Melt UI",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "headless",
+    "categoryLabel": "Headless / 无样式",
+    "vendor": "Melt",
+    "documentationUrl": "https://melt-ui.com",
+    "repoUrl": "https://github.com/melt-ui/melt-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Menu",
+      "Dialog",
+      "Select",
+      "Tooltip"
+    ],
+    "previewImage": "previews/meltui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "melt ui headless / 无样式 melt svelte menu dialog select tooltip minimal 极简 minimal clean simple 极简 简洁 留白"
+  },
+  {
+    "id": "bitsui",
+    "name": "Bits UI",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式 / 可定制",
+    "vendor": "Bits UI",
+    "documentationUrl": "https://www.bits-ui.com",
+    "repoUrl": "https://github.com/huntabyte/bits-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Accordion",
+      "Dialog",
+      "Datepicker",
+      "Toast"
+    ],
+    "previewImage": "previews/bitsui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "bits ui 无样式 / 可定制 bits ui svelte accordion dialog datepicker toast minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "svar",
+    "name": "SVAR",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "other",
+    "categoryLabel": "数据组件 / 表格",
+    "vendor": "SVAR",
+    "documentationUrl": "https://svar.dev",
+    "repoUrl": "https://github.com/svar-widget/svar-svelte",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Grid",
+      "Gantt",
+      "Kanban",
+      "FileManager"
+    ],
+    "previewImage": "previews/svar.png",
+    "styleFamily": "fintech",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "svar 数据组件 / 表格 svar svelte grid gantt kanban filemanager fintech / data 金融 / 数据 fintech finance bank data 金融 数据 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "sveltestrap",
+    "name": "Sveltestrap",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "bootstrap",
+    "categoryLabel": "Bootstrap 风",
+    "vendor": "Sveltestrap",
+    "documentationUrl": "https://sveltestrap.js.org",
+    "repoUrl": "https://github.com/bestguy/sveltestrap",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Navbar"
+    ],
+    "previewImage": "previews/sveltestrap.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "sveltestrap bootstrap 风 sveltestrap svelte button card modal navbar product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "smelte",
+    "name": "Smelte",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "material",
+    "categoryLabel": "Material 风",
+    "vendor": "Smelte",
+    "documentationUrl": "https://smeltejs.com",
+    "repoUrl": "https://github.com/matyunya/smelte",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Input",
+      "DataTable"
+    ],
+    "previewImage": "previews/smelte.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "smelte material 风 smelte svelte button card input datatable minimal 极简 minimal clean simple 极简 简洁 留白 dark bold playful minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "attractions",
+    "name": "Attractions",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "other",
+    "categoryLabel": "现代 / 轻量",
+    "vendor": "illright",
+    "documentationUrl": "https://attractions.scalar.dev",
+    "repoUrl": "https://github.com/illright/attractions",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Tooltip",
+      "Notification"
+    ],
+    "previewImage": "previews/attractions.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "attractions 现代 / 轻量 illright svelte button card tooltip notification product / saas 产品 / saas product saas landing app 产品 落地页"
+  },
+  {
+    "id": "svelteui",
+    "name": "SvelteUI",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "other",
+    "categoryLabel": "现代组件",
+    "vendor": "SvelteUI",
+    "documentationUrl": "https://svelteui.dev",
+    "repoUrl": "https://github.com/svelteuidev/svelteui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "AppShell"
+    ],
+    "previewImage": "previews/svelteui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "svelteui 现代组件 svelteui svelte button card modal appshell product / saas 产品 / saas product saas landing app 产品 落地页 dark bold playful minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "grailui",
+    "name": "Grail UI",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "headless",
+    "categoryLabel": "Headless / 可访问",
+    "vendor": "Grail UI",
+    "documentationUrl": "https://grail-ui.vercel.app",
+    "repoUrl": "https://github.com/grail-ui/grail-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Accordion",
+      "Dialog",
+      "Slider",
+      "Tooltip"
+    ],
+    "previewImage": "previews/grailui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "grail ui headless / 可访问 grail ui svelte accordion dialog slider tooltip minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "atoui",
+    "name": "Ato UI",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "other",
+    "categoryLabel": "现代 / 主题化",
+    "vendor": "Ato UI",
+    "documentationUrl": "https://ato-ui.com",
+    "repoUrl": "https://github.com/ato-ui/ato-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Toast"
+    ],
+    "previewImage": "previews/atoui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ato ui 现代 / 主题化 ato ui svelte button card modal toast product / saas 产品 / saas product saas landing app 产品 落地页"
+  },
+  {
+    "id": "m3-svelte",
+    "name": "M3 Svelte",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "material",
+    "categoryLabel": "Material 3",
+    "vendor": "techniq",
+    "documentationUrl": "https://github.com/techniq/m3-svelte",
+    "repoUrl": "https://github.com/techniq/m3-svelte",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Switch",
+      "Slider"
+    ],
+    "previewImage": "previews/m3-svelte.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "m3 svelte material 3 techniq svelte button card switch slider minimal 极简 minimal clean simple 极简 简洁 留白 dark bold futuristic metal glass automotive technology scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "konsta",
+    "name": "Konsta",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "other",
+    "categoryLabel": "移动 / 原生风",
+    "vendor": "Konsta",
+    "documentationUrl": "https://konsta.io",
+    "repoUrl": "https://github.com/konstaui/konsta",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Navbar",
+      "Card",
+      "Sheet"
+    ],
+    "previewImage": "previews/konsta.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "konsta 移动 / 原生风 konsta svelte button navbar card sheet product / saas 产品 / saas product saas landing app 产品 落地页"
+  },
+  {
+    "id": "yesvelte",
+    "name": "Yesvelte",
+    "description": "",
+    "framework": [
+      "Svelte"
+    ],
+    "category": "other",
+    "categoryLabel": "现代组件",
+    "vendor": "Yesvelte",
+    "documentationUrl": "https://yesvelte.com",
+    "repoUrl": "https://github.com/yesvelte/yesvelte",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Alert"
+    ],
+    "previewImage": "previews/yesvelte.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "yesvelte 现代组件 yesvelte svelte button card modal alert product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "solid-ui",
+    "name": "Solid UI",
+    "description": "",
+    "framework": [
+      "Solid"
+    ],
+    "category": "radix",
+    "categoryLabel": "Radix 风格",
+    "vendor": "Solid UI",
+    "documentationUrl": "https://solid-ui.com",
+    "repoUrl": "https://github.com/solidjs-community/solid-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Dialog",
+      "Dropdown",
+      "Select",
+      "Toast"
+    ],
+    "previewImage": "previews/solid-ui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "solid ui radix 风格 solid ui solid dialog dropdown select toast minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "hope-ui",
+    "name": "Hope UI",
+    "description": "",
+    "framework": [
+      "Solid"
+    ],
+    "category": "other",
+    "categoryLabel": "Chakra 风格",
+    "vendor": "Hope UI",
+    "documentationUrl": "https://hope-ui.com",
+    "repoUrl": "https://github.com/hope-ui/hope-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Input",
+      "Modal"
+    ],
+    "previewImage": "previews/hope-ui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "hope ui chakra 风格 hope ui solid button card input modal product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "solid-headless-ui",
+    "name": "Solid Headless",
+    "description": "",
+    "framework": [
+      "Solid"
+    ],
+    "category": "headless",
+    "categoryLabel": "无样式原语",
+    "vendor": "solidjs",
+    "documentationUrl": "https://github.com/solidjs/solid-headless",
+    "repoUrl": "https://github.com/solidjs/solid-headless",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Disclosure",
+      "Dialog",
+      "Listbox",
+      "Menu"
+    ],
+    "previewImage": "previews/solid-headless-ui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "solid headless 无样式原语 solidjs solid disclosure dialog listbox menu minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass automotive technology scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "qwik-ui",
+    "name": "Qwik UI",
+    "description": "",
+    "framework": [
+      "Qwik"
+    ],
+    "category": "headless",
+    "categoryLabel": "Headless / 可访问",
+    "vendor": "Qwik",
+    "documentationUrl": "https://qwikui.com",
+    "repoUrl": "https://github.com/QwikDev/qwik-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Accordion",
+      "Dialog",
+      "Tabs",
+      "Tooltip"
+    ],
+    "previewImage": "previews/qwik-ui.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "qwik ui headless / 可访问 qwik qwik accordion dialog tabs tooltip minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass automotive creative technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "spectrum-wc",
+    "name": "Spectrum Web Components",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业设计系统",
+    "vendor": "Adobe",
+    "documentationUrl": "https://opensource.adobe.com/spectrum-web-components",
+    "repoUrl": "https://github.com/adobe/spectrum-web-components",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Dialog",
+      "Picker"
+    ],
+    "previewImage": "previews/spectrum-wc.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "spectrum web components 企业设计系统 adobe web components button card dialog picker product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "ui5-wc",
+    "name": "UI5 Web Components",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业设计系统",
+    "vendor": "SAP",
+    "documentationUrl": "https://sap.github.io/ui5-webcomponents",
+    "repoUrl": "https://github.com/SAP/ui5-webcomponents",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Table",
+      "Calendar"
+    ],
+    "previewImage": "previews/ui5-wc.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ui5 web components 企业设计系统 sap web components button card table calendar product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic metal glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "axa-pl",
+    "name": "AXA Pattern Library",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "fintech",
+    "categoryLabel": "金融 / 企业",
+    "vendor": "AXA",
+    "documentationUrl": "https://github.com/axa-ch/patterns-library",
+    "repoUrl": "https://github.com/axa-ch/patterns-library",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Stepper"
+    ],
+    "previewImage": "previews/axa-pl.png",
+    "styleFamily": "fintech",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "axa pattern library 金融 / 企业 axa web components button card modal stepper fintech / data 金融 / 数据 fintech finance bank data 金融 数据 dark bold futuristic metal glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "brightspace-ui",
+    "name": "Brightspace UI",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "教育 / 企业",
+    "vendor": "D2L",
+    "documentationUrl": "https://github.com/BrightspaceUI/core",
+    "repoUrl": "https://github.com/BrightspaceUI/core",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Dialog",
+      "Dropdown"
+    ],
+    "previewImage": "previews/brightspace-ui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "brightspace ui 教育 / 企业 d2l web components button card dialog dropdown product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "clarity-core",
+    "name": "Clarity Core",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业设计系统",
+    "vendor": "VMware",
+    "documentationUrl": "https://clarity.design",
+    "repoUrl": "https://github.com/vmware-clarity/core",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Alert"
+    ],
+    "previewImage": "previews/clarity-core.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "clarity core 企业设计系统 vmware web components button card modal alert product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "kor",
+    "name": "Kor",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "design-system",
+    "categoryLabel": "设计系统",
+    "vendor": "Microfrontend",
+    "documentationUrl": "https://kor-ui.com",
+    "repoUrl": "https://github.com/micro-lc/kor",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Dialog",
+      "Toast"
+    ],
+    "previewImage": "previews/kor.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "kor 设计系统 microfrontend web components button card dialog toast product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "momentum-ui",
+    "name": "Momentum UI",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业设计系统",
+    "vendor": "Cisco",
+    "documentationUrl": "https://momentum.design",
+    "repoUrl": "https://github.com/momentum-design/momentum-ui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Chart"
+    ],
+    "previewImage": "previews/momentum-ui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "momentum ui 企业设计系统 cisco web components button card modal chart product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "pharos",
+    "name": "Pharos",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "学术 / 企业",
+    "vendor": "JSTOR",
+    "documentationUrl": "https://pharos.jstor.org",
+    "repoUrl": "https://github.com/ithaka/pharos",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Dialog",
+      "Tabs"
+    ],
+    "previewImage": "previews/pharos.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "pharos 学术 / 企业 jstor web components button card dialog tabs product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "redhat-ds",
+    "name": "Red Hat Design System",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "企业 / 开源",
+    "vendor": "Red Hat",
+    "documentationUrl": "https://www.redhat.com/designsystem",
+    "repoUrl": "https://github.com/redhat-design-system/red-hat-design-system",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Modal"
+    ],
+    "previewImage": "previews/redhat-ds.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "red hat design system 企业 / 开源 red hat web components button card form modal product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "calcite",
+    "name": "Calcite Components",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "地图 / GIS",
+    "vendor": "Esri",
+    "documentationUrl": "https://developers.arcgis.com/calcite-design-system",
+    "repoUrl": "https://github.com/Esri/calcite-design-system",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Map",
+      "Panel"
+    ],
+    "previewImage": "previews/calcite.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "calcite components 地图 / gis esri web components button card map panel product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "vaadin-wc",
+    "name": "Vaadin Components",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级",
+    "vendor": "Vaadin",
+    "documentationUrl": "https://vaadin.com/components",
+    "repoUrl": "https://github.com/vaadin/web-components",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Grid",
+      "Form",
+      "DatePicker"
+    ],
+    "previewImage": "previews/vaadin-wc.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "vaadin components 企业级 vaadin web components button grid form datepicker product / saas 产品 / saas product saas landing app 产品 落地页 dark bold futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "agnosticui",
+    "name": "AgnosticUI",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "框架无关",
+    "vendor": "AgnosticUI",
+    "documentationUrl": "https://agnosticui.com",
+    "repoUrl": "https://github.com/AgnosticUI/agnosticui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Tabs"
+    ],
+    "previewImage": "previews/agnosticui.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "agnosticui 框架无关 agnosticui web components button card modal tabs product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic metal glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "dile-wc",
+    "name": "Dile Components",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "框架无关",
+    "vendor": "Dile",
+    "documentationUrl": "https://dile.github.io",
+    "repoUrl": "https://github.com/OpenWebComponents/dile-components",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Tabs"
+    ],
+    "previewImage": "previews/dile-wc.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "dile components 框架无关 dile web components button card modal tabs product / saas 产品 / saas product saas landing app 产品 落地页 dark futuristic glass automotive technology scroll-reveal scale keyframe"
+  },
+  {
+    "id": "wired-elements",
+    "name": "wired-elements",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "手绘风 / 趣味",
+    "vendor": "wiredjs",
+    "documentationUrl": "https://wiredjs.com",
+    "repoUrl": "https://github.com/wiredjs/wired-elements",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Input",
+      "Card",
+      "Slider"
+    ],
+    "previewImage": "previews/wired-elements.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "wired-elements 手绘风 / 趣味 wiredjs web components button input card slider product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "unocss",
+    "name": "UnoCSS",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "原子化 CSS 引擎",
+    "vendor": "UnoCSS",
+    "documentationUrl": "https://unocss.dev",
+    "repoUrl": "https://github.com/unocss/unocss",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Utility",
+      "Icon",
+      "Attributify"
+    ],
+    "previewImage": "previews/unocss.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "unocss 原子化 css 引擎 unocss css utility icon attributify product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "open-props",
+    "name": "Open Props",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "CSS 变量 / 设计令牌",
+    "vendor": "Open Props",
+    "documentationUrl": "https://open-props.style",
+    "repoUrl": "https://github.com/argyleink/open-props",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Theme",
+      "Tokens",
+      "Gradients"
+    ],
+    "previewImage": "previews/open-props.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "open props css 变量 / 设计令牌 open props css theme tokens gradients product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "panda-css",
+    "name": "Panda CSS",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "原子化 / 类型安全",
+    "vendor": "Chakra",
+    "documentationUrl": "https://panda-css.com",
+    "repoUrl": "https://github.com/chakra-ui/panda",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Utility",
+      "Recipe",
+      "Tokens"
+    ],
+    "previewImage": "previews/panda-css.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "panda css 原子化 / 类型安全 chakra css utility recipe tokens product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass particle automotive technology art-design scroll-reveal scale marquee keyframe"
+  },
+  {
+    "id": "vanilla-extract",
+    "name": "Vanilla Extract",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "零运行时 / TS",
+    "vendor": "Vanilla Extract",
+    "documentationUrl": "https://vanilla-extract.style",
+    "repoUrl": "https://github.com/vanilla-extract-css/vanilla-extract",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Style",
+      "Theme",
+      "Recipe"
+    ],
+    "previewImage": "previews/vanilla-extract.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "vanilla extract 零运行时 / ts vanilla extract css style theme recipe product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "stylex",
+    "name": "StyleX",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "原子化 / 规模化",
+    "vendor": "Meta",
+    "documentationUrl": "https://stylexjs.dev",
+    "repoUrl": "https://github.com/facebook/stylex",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Style",
+      "Create",
+      "Attrs"
+    ],
+    "previewImage": "previews/stylex.png",
+    "styleFamily": "fashion",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "stylex 原子化 / 规模化 meta css style create attrs fashion 时尚 fashion style trend 时尚 时装 dark futuristic glass automotive technology scroll-reveal scale keyframe"
+  },
+  {
+    "id": "lightning-css",
+    "name": "Lightning CSS",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "CSS 编译器 / 工具",
+    "vendor": "Lightning CSS",
+    "documentationUrl": "https://lightningcss.dev",
+    "repoUrl": "https://github.com/parcel-bundler/lightningcss",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Bundler",
+      "Minify",
+      "Transform"
+    ],
+    "previewImage": "previews/lightning-css.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "lightning css css 编译器 / 工具 lightning css css bundler minify transform product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "halfmoon",
+    "name": "Halfmoon",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "框架 / 暗色",
+    "vendor": "Halfmoon",
+    "documentationUrl": "https://www.gethalfmoon.com",
+    "repoUrl": "https://github.com/halfmoonui/halfmoon",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Navbar"
+    ],
+    "previewImage": "previews/halfmoon.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "halfmoon 框架 / 暗色 halfmoon css button card form navbar product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass particle automotive technology art-design 3d-rotation scroll-reveal scale keyframe"
+  },
+  {
+    "id": "milligram",
+    "name": "Milligram",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "极简 / 轻量",
+    "vendor": "Milligram",
+    "documentationUrl": "https://milligram.io",
+    "repoUrl": "https://github.com/milligram/milligram",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Table"
+    ],
+    "previewImage": "previews/milligram.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "milligram 极简 / 轻量 milligram css button card form table minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic gold glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "beer-css",
+    "name": "Beer CSS",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "material",
+    "categoryLabel": "Material 风",
+    "vendor": "Beer",
+    "documentationUrl": "https://www.beercss.com",
+    "repoUrl": "https://github.com/beercss/beercss",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Dialog",
+      "App"
+    ],
+    "previewImage": "previews/beer-css.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "beer css material 风 beer css button card dialog app minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic gold glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "materialize",
+    "name": "Materialize",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "material",
+    "categoryLabel": "Material 风",
+    "vendor": "Materialize",
+    "documentationUrl": "https://materializecss.com",
+    "repoUrl": "https://github.com/Dogfalo/materialize",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Modal",
+      "Carousel"
+    ],
+    "previewImage": "previews/materialize.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "materialize material 风 materialize css button card modal carousel minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic gold glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "chota",
+    "name": "Chota",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "微框架 / 极简",
+    "vendor": "Chota",
+    "documentationUrl": "https://jenil.github.io/chota",
+    "repoUrl": "https://github.com/jenil/chota",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Grid",
+      "Nav"
+    ],
+    "previewImage": "previews/chota.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "chota 微框架 / 极简 chota css button card grid nav minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "pure-css",
+    "name": "Pure.css",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "极简 / 模块化",
+    "vendor": "Yahoo",
+    "documentationUrl": "https://purecss.io",
+    "repoUrl": "https://github.com/pure-css/pure",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Grid",
+      "Form",
+      "Menu"
+    ],
+    "previewImage": "previews/pure-css.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "pure.css 极简 / 模块化 yahoo css button grid form menu minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "tachyons",
+    "name": "Tachyons",
+    "description": "",
+    "framework": [
+      "CSS"
+    ],
+    "category": "other",
+    "categoryLabel": "原子化 / 古典",
+    "vendor": "Tachyons",
+    "documentationUrl": "https://tachyons.io",
+    "repoUrl": "https://github.com/tachyons-css/tachyons",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Utility",
+      "Layout",
+      "Type"
+    ],
+    "previewImage": "previews/tachyons.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "tachyons 原子化 / 古典 tachyons css utility layout type product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "material-design",
+    "name": "Material Design",
+    "description": "",
+    "framework": [
+      "Multi"
+    ],
+    "category": "design-system",
+    "categoryLabel": "设计语言 / 规范",
+    "vendor": "Google",
+    "documentationUrl": "https://m3.material.io",
+    "repoUrl": "https://m3.material.io",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Color",
+      "Type"
+    ],
+    "previewImage": "previews/material-design.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "material design 设计语言 / 规范 google multi button card color type product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "sap-fiori",
+    "name": "SAP Fiori",
+    "description": "",
+    "framework": [
+      "Multi"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业设计系统",
+    "vendor": "SAP",
+    "documentationUrl": "https://experience.sap.com/fiori-design",
+    "repoUrl": "https://experience.sap.com/fiori-design",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Launchpad",
+      "Card",
+      "List",
+      "Object"
+    ],
+    "previewImage": "previews/sap-fiori.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "sap fiori 企业设计系统 sap multi launchpad card list object product / saas 产品 / saas product saas landing app 产品 落地页 dark futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "sap-fundamental",
+    "name": "SAP Fundamental",
+    "description": "",
+    "framework": [
+      "Multi"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业样式",
+    "vendor": "SAP",
+    "documentationUrl": "https://sap.github.io/fundamental-styles",
+    "repoUrl": "https://github.com/SAP/fundamental-styles",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Table",
+      "Modal"
+    ],
+    "previewImage": "previews/sap-fundamental.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "sap fundamental 企业样式 sap multi button card table modal product / saas 产品 / saas product saas landing app 产品 落地页 dark playful minimal futuristic glass automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "oracle-redwood",
+    "name": "Oracle Redwood",
+    "description": "",
+    "framework": [
+      "Multi"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业设计系统",
+    "vendor": "Oracle",
+    "documentationUrl": "https://www.oracle.com/redwood",
+    "repoUrl": "https://www.oracle.com/redwood",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Page"
+    ],
+    "previewImage": "previews/oracle-redwood.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "oracle redwood 企业设计系统 oracle multi button card form page product / saas 产品 / saas product saas landing app 产品 落地页 dark futuristic glass automotive technology scroll-reveal scale keyframe"
+  },
+  {
+    "id": "twilio-paste",
+    "name": "Twilio Paste",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "通信 / 企业",
+    "vendor": "Twilio",
+    "documentationUrl": "https://paste.twilio.com",
+    "repoUrl": "https://github.com/twilio-labs/paste",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Grid"
+    ],
+    "previewImage": "previews/twilio-paste.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "twilio paste 通信 / 企业 twilio react button card form grid product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design 3d-rotation scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "hubspot-canvas",
+    "name": "HubSpot Canvas",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "营销 / 企业",
+    "vendor": "HubSpot",
+    "documentationUrl": "https://canvas.hubspot.com",
+    "repoUrl": "https://github.com/HubSpot/canvas",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Modal"
+    ],
+    "previewImage": "previews/hubspot-canvas.png",
+    "styleFamily": "3d-webgl",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "hubspot canvas 营销 / 企业 hubspot react button card form modal 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "audi-ui",
+    "name": "Audi UI",
+    "description": "",
+    "framework": [
+      "Multi"
+    ],
+    "category": "automotive",
+    "categoryLabel": "汽车 / 品牌",
+    "vendor": "Audi",
+    "documentationUrl": "https://www.audi.com/ci",
+    "repoUrl": "https://www.audi.com/ci",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Grid",
+      "Type"
+    ],
+    "previewImage": "previews/audi-ui.png",
+    "styleFamily": "automotive",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "audi ui 汽车 / 品牌 audi multi button card grid type automotive 汽车 car auto automotive cupra volvo 汽车 赛车 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "backpack",
+    "name": "Backpack",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "旅行 / 企业",
+    "vendor": "Skyscanner",
+    "documentationUrl": "https://backpack.github.io",
+    "repoUrl": "https://github.com/Skyscanner/backpack",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Breadcrumb",
+      "Dialog"
+    ],
+    "previewImage": "previews/backpack.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "backpack 旅行 / 企业 skyscanner react button card breadcrumb dialog product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe"
+  },
+  {
+    "id": "devui-design",
+    "name": "DevUI Design",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "enterprise",
+    "categoryLabel": "企业级 / 华为",
+    "vendor": "华为 Huawei",
+    "documentationUrl": "https://devui.design",
+    "repoUrl": "https://github.com/DevCloudFE/devui",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Table",
+      "Tree"
+    ],
+    "previewImage": "previews/devui-design.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "devui design 企业级 / 华为 华为 huawei vue button card table tree product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe"
+  },
+  {
+    "id": "mand-mobile",
+    "name": "Mand Mobile",
+    "description": "",
+    "framework": [
+      "Vue"
+    ],
+    "category": "other",
+    "categoryLabel": "移动端 / 滴滴",
+    "vendor": "滴滴 Didi",
+    "documentationUrl": "https://didi.github.io/mand-mobile",
+    "repoUrl": "https://github.com/didi/mand-mobile",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Tab",
+      "Toast",
+      "Popup"
+    ],
+    "previewImage": "previews/mand-mobile.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "mand mobile 移动端 / 滴滴 滴滴 didi vue button tab toast popup product / saas 产品 / saas product saas landing app 产品 落地页 dark minimal futuristic glass particle automotive technology scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "ke-design",
+    "name": "Ke.Design",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "房产 / 企业",
+    "vendor": "贝壳 Beike",
+    "documentationUrl": "https://ke.design",
+    "repoUrl": "https://github.com/ke-cloud/ke-design",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Modal"
+    ],
+    "previewImage": "previews/ke-design.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "ke.design 房产 / 企业 贝壳 beike react button card form modal product / saas 产品 / saas product saas landing app 产品 落地页 art-design"
+  },
+  {
+    "id": "vercel-geist",
+    "name": "Vercel Geist",
+    "description": "",
+    "framework": [
+      "Multi"
+    ],
+    "category": "other",
+    "categoryLabel": "极简 / 开发者",
+    "vendor": "Vercel",
+    "documentationUrl": "https://vercel.com/geist",
+    "repoUrl": "https://github.com/vercel/geist",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Font",
+      "Color"
+    ],
+    "previewImage": "previews/vercel-geist.png",
+    "styleFamily": "minimal",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "vercel geist 极简 / 开发者 vercel multi button card font color minimal 极简 minimal clean simple 极简 简洁 留白 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal fade-in scale keyframe tween"
+  },
+  {
+    "id": "workday-canvas",
+    "name": "Workday Canvas",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "企业 HR",
+    "vendor": "Workday",
+    "documentationUrl": "https://designsystem.workday.com",
+    "repoUrl": "https://github.com/Workday/canvas-kit",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Modal"
+    ],
+    "previewImage": "previews/workday-canvas.png",
+    "styleFamily": "3d-webgl",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "workday canvas 企业 hr workday react button card form modal 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl"
+  },
+  {
+    "id": "zendesk-garden",
+    "name": "Zendesk Garden",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "企业 / 客服",
+    "vendor": "Zendesk",
+    "documentationUrl": "https://garden.zendesk.com",
+    "repoUrl": "https://github.com/zendeskgarden/react-components",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Modal"
+    ],
+    "previewImage": "previews/zendesk-garden.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "zendesk garden 企业 / 客服 zendesk react button card form modal product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "bbc-gel",
+    "name": "BBC GEL",
+    "description": "",
+    "framework": [
+      "Multi"
+    ],
+    "category": "other",
+    "categoryLabel": "媒体 / 公共",
+    "vendor": "BBC",
+    "documentationUrl": "https://www.bbc.co.uk/gel",
+    "repoUrl": "https://www.bbc.co.uk/gel",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Grid",
+      "Type"
+    ],
+    "previewImage": "previews/bbc-gel.png",
+    "styleFamily": "government",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "bbc gel 媒体 / 公共 bbc multi button card grid type government / public 政府 / 公共 government public gov 政府 公共 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "uswds",
+    "name": "U.S. Web Design System",
+    "description": "",
+    "framework": [
+      "Web Components"
+    ],
+    "category": "other",
+    "categoryLabel": "政府 / 公共",
+    "vendor": "U.S. GSA",
+    "documentationUrl": "https://designsystem.digital.gov",
+    "repoUrl": "https://github.com/uswds/uswds",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Banner"
+    ],
+    "previewImage": "previews/uswds.png",
+    "styleFamily": "government",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "u.s. web design system 政府 / 公共 u.s. gsa web components button card form banner government / public 政府 / 公共 government public gov 政府 公共 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "govuk",
+    "name": "GOV.UK Design System",
+    "description": "",
+    "framework": [
+      "Multi"
+    ],
+    "category": "other",
+    "categoryLabel": "政府 / 公共",
+    "vendor": "UK Gov",
+    "documentationUrl": "https://design-system.service.gov.uk",
+    "repoUrl": "https://github.com/alphagov/govuk-frontend",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Footer"
+    ],
+    "previewImage": "previews/govuk.png",
+    "styleFamily": "government",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "gov.uk design system 政府 / 公共 uk gov multi button card form footer government / public 政府 / 公共 government public gov 政府 公共 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale keyframe tween"
+  },
+  {
+    "id": "nord",
+    "name": "Nord Design System",
+    "description": "",
+    "framework": [
+      "React"
+    ],
+    "category": "other",
+    "categoryLabel": "医疗 / 企业",
+    "vendor": "Nordhealth",
+    "documentationUrl": "https://nordhealth.design",
+    "repoUrl": "https://github.com/nordhealth-design/nord",
+    "license": "",
+    "installCommand": "",
+    "components": [
+      "Button",
+      "Card",
+      "Form",
+      "Modal"
+    ],
+    "previewImage": "previews/nord.png",
+    "styleFamily": "product",
+    "codeAvailable": true,
+    "capabilities": [
+      "open-source",
+      "component-library",
+      "component-reference"
+    ],
+    "searchText": "nord design system 医疗 / 企业 nordhealth react button card form modal product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass particle automotive technology art-design scroll-reveal scale marquee keyframe"
+  }
+]

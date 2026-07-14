@@ -1,5 +1,34 @@
 {
+  "name": "ui-gallery",
+  "version": "3.0.0",
+  "description": "AI-driven UI discovery, aesthetic judgment, and theme creation tool",
+  "type": "module",
+  "license": "MIT",
+  "author": "wangkeyu-u",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wangkeyu-u/ui-gallery.git"
+  },
+  "homepage": "https://wangkeyu-u.github.io/ui-gallery/",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "migrate": "node scripts/migrate-data.cjs",
+    "audit": "node scripts/audit-previews.cjs",
+    "serve": "python3 -m http.server 4173 --directory dist",
+    "deploy": "npm run build && gh-pages -d dist"
+  },
   "dependencies": {
-    "playwright": "^1.61.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0"
   }
 }

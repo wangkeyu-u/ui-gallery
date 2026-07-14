@@ -8,4 +8,6 @@ source/
 repro/
 *-proof.png
 redesign-*.png
-
+dist/
+.vite/
+*.timestamp-*.mjs

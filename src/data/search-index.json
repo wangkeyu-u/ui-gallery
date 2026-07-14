@@ -1,0 +1,3249 @@
+{
+  "projects": [
+    {
+      "id": "proj-2021-two-good-co",
+      "text": "two good co 作品集 / 电商 two good co portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "proj-2023-atmos",
+      "text": "atmos 3d / webgl wawa 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark bold minimal futuristic glass automotive creative technology scroll-reveal scale keyframe shader",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "creative",
+        "technology"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "proj-2023-obys",
+      "text": "obys agency 创意机构 obys creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark elegant bold minimal futuristic glass automotive creative technology art-design 3d-rotation scroll-reveal scale keyframe tween shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "elegant",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "creative",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "rich"
+    },
+    {
+      "id": "proj-2024-gentlerain",
+      "text": "gentle rain 3d / webgl manish 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark shader",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark"
+      ],
+      "materials": [
+        "digital-light",
+        "particle",
+        "liquid-metal"
+      ],
+      "industry": [],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "proj-2025-adidas",
+      "text": "adidas (clone) 产品落地页 ali sanati product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic glass automotive technology 3d-rotation scroll-reveal fade-in scale keyframe shader",
+      "styleFamily": "product",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "proj-template-portfolio",
+      "text": "portfolio template 作品集模板 community portfolio 作品集 portfolio personal folio 作品集 个人 dark minimal futuristic glass automotive technology 3d-rotation scroll-reveal fade-in scale keyframe shader",
+      "styleFamily": "portfolio",
+      "mood": [
+        "dark",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "proj-bruno-folio-2019",
+      "text": "bruno simon folio 2019 3d / webgl 标杆 bruno simon 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark bold minimal futuristic metal glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe shader",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "metal",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "proj-bruno-folio-2025",
+      "text": "bruno simon folio 2025 3d / webgl 标杆 bruno simon 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark bold futuristic metal glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe shader",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "metal",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-lusion-oryzo",
+      "text": "lusion — oryzo ai webgl / ai lusion 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark bold playful minimal futuristic glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe tween shader",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark",
+        "bold",
+        "playful",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-immersive-gq",
+      "text": "immersive garden — gq&ap 创意机构 immersive garden 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark bold minimal futuristic metal glass particle automotive technology scroll-reveal scale keyframe",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "metal",
+        "glass",
+        "particle"
+      ],
+      "industry": [
+        "automotive",
+        "technology"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-immersive-cartier",
+      "text": "immersive garden — cartier 奢侈品牌 immersive garden 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark elegant bold minimal futuristic gold glass concrete luxury automotive technology art-design 3d-rotation scroll-reveal scale keyframe tween",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark",
+        "elegant",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass",
+        "concrete"
+      ],
+      "industry": [
+        "luxury",
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-resn-tracing",
+      "text": "resn — tracing art 实验 / webgl resn 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark bold futuristic organic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe tween shader",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic",
+        "organic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-noomo",
+      "text": "noomo agency 机构作品集 noomo creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 creative",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "creative"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-unknown",
+      "text": "the un known 创意机构 the unknown creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-jeton",
+      "text": "jeton 金融科技 bürocratik fintech / data 金融 / 数据 fintech finance bank data 金融 数据 dark elegant bold minimal futuristic organic gold glass concrete automotive finance technology 3d-rotation scroll-reveal scale keyframe shader",
+      "styleFamily": "fintech",
+      "mood": [
+        "dark",
+        "elegant",
+        "bold",
+        "minimal",
+        "futuristic",
+        "organic"
+      ],
+      "materials": [
+        "gold",
+        "glass",
+        "concrete"
+      ],
+      "industry": [
+        "automotive",
+        "finance",
+        "technology"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-activetheory",
+      "text": "active theory 互动体验 active theory brand experience 品牌体验 brand experience 品牌 体验 dark bold futuristic gold glass automotive technology art-design scroll-reveal fade-in scale keyframe shader",
+      "styleFamily": "brand",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-cuberto",
+      "text": "cuberto 创意机构 cuberto creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass automotive technology art-design scroll-reveal scale keyframe tween",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-akqa",
+      "text": "akqa 数字代理 akqa creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass automotive technology art-design scroll-reveal scale keyframe shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-hellomonday",
+      "text": "hello monday 品牌体验 hello monday brand experience 品牌体验 brand experience 品牌 体验 dark bold futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe tween shader",
+      "styleFamily": "brand",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-dogstudio",
+      "text": "dogstudio 创意机构 dogstudio creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass automotive creative technology art-design 3d-rotation scroll-reveal fade-in scale keyframe tween shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "creative",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-makemepulse",
+      "text": "makemepulse 创意机构 makemepulse creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe tween shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-rga",
+      "text": "r/ga 数字代理 r/ga creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass particle automotive technology art-design scroll-reveal fade-in scale keyframe",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass",
+        "particle"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-webflow",
+      "text": "webflow 建站平台 webflow portfolio 作品集 portfolio personal folio 作品集 个人 dark bold futuristic gold glass automotive technology art-design scroll-reveal scale keyframe shader",
+      "styleFamily": "portfolio",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-waaark",
+      "text": "waaark 作品集 waaark portfolio 作品集 portfolio personal folio 作品集 个人 dark bold futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe tween shader",
+      "styleFamily": "portfolio",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-locomotive",
+      "text": "locomotive 作品集 / 平滑滚动 locomotive portfolio 作品集 portfolio personal folio 作品集 个人 dark bold playful minimal futuristic glass concrete automotive creative technology art-design smooth-scroll 3d-rotation scroll-reveal scale keyframe shader",
+      "styleFamily": "portfolio",
+      "mood": [
+        "dark",
+        "bold",
+        "playful",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "glass",
+        "concrete"
+      ],
+      "industry": [
+        "automotive",
+        "creative",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-huge",
+      "text": "huge inc 数字代理 huge creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold minimal futuristic glass automotive technology art-design 3d-rotation scroll-reveal fade-in scale keyframe shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-antinomy",
+      "text": "antinomy 实验 antinomy experimental 实验 experiment experimental art generative 实验 生成 dark bold futuristic gold glass particle automotive creative technology art-design 3d-rotation scroll-reveal scale marquee keyframe shader",
+      "styleFamily": "experimental",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass",
+        "particle"
+      ],
+      "industry": [
+        "automotive",
+        "creative",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-qode",
+      "text": "qode 模板 / 作品集 qode portfolio 作品集 portfolio personal folio 作品集 个人 dark bold minimal futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe tween shader",
+      "styleFamily": "portfolio",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-cleave",
+      "text": "cleave 创意 cleave creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold minimal futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-aristide",
+      "text": "aristide 作品集 aristide portfolio 作品集 portfolio personal folio 作品集 个人 dark bold minimal futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe tween shader",
+      "styleFamily": "portfolio",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-tolus",
+      "text": "tolus 机构 tolus creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-crafted",
+      "text": "crafted 创意 crafted creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold minimal futuristic gold glass automotive technology art-design scroll-reveal fade-in scale marquee keyframe tween",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-hakuhodo",
+      "text": "hakuhodo 广告 / 创意 hakuhodo creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold minimal futuristic gold glass automotive technology art-design scroll-reveal fade-in scale keyframe shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-fashionawards",
+      "text": "fashion awards 时尚 british fashion council fashion 时尚 fashion style trend 时尚 时装 dark bold minimal futuristic gold glass automotive fashion technology art-design 3d-rotation scroll-reveal scale keyframe",
+      "styleFamily": "fashion",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "fashion",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-cupra",
+      "text": "cupra 汽车 cupra automotive 汽车 car auto automotive cupra volvo 汽车 赛车 automotive",
+      "styleFamily": "automotive",
+      "mood": [
+        "powerful",
+        "precise",
+        "cold"
+      ],
+      "materials": [
+        "metal",
+        "carbon-fiber",
+        "glass"
+      ],
+      "industry": [
+        "automotive"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-volvo",
+      "text": "volvo 汽车 volvo automotive 汽车 car auto automotive cupra volvo 汽车 赛车 dark bold minimal futuristic gold glass automotive technology art-design scroll-reveal scale keyframe shader",
+      "styleFamily": "automotive",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-gucci",
+      "text": "gucci 奢侈 gucci luxury 奢华 luxury lux cartier gucci balenciaga louis vuitton 奢侈 珠宝 高端 dark luxury",
+      "styleFamily": "luxury",
+      "mood": [
+        "dark"
+      ],
+      "materials": [
+        "gold",
+        "silk",
+        "marble",
+        "glass"
+      ],
+      "industry": [
+        "luxury"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-balenciaga",
+      "text": "balenciaga 奢侈 balenciaga luxury 奢华 luxury lux cartier gucci balenciaga louis vuitton 奢侈 珠宝 高端 dark bold minimal futuristic gold glass luxury automotive technology art-design scroll-reveal scale keyframe shader",
+      "styleFamily": "luxury",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "luxury",
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-louisvuitton",
+      "text": "louis vuitton 奢侈 louis vuitton luxury 奢华 luxury lux cartier gucci balenciaga louis vuitton 奢侈 珠宝 高端 dark bold minimal futuristic gold glass luxury automotive technology art-design 3d-rotation scroll-reveal scale keyframe",
+      "styleFamily": "luxury",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "luxury",
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-apple",
+      "text": "apple 产品 apple product / saas 产品 / saas product saas landing app 产品 落地页 dark bold minimal futuristic gold glass automotive technology art-design scroll-reveal fade-in scale keyframe tween shader",
+      "styleFamily": "product",
+      "mood": [
+        "dark",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-cybernauts",
+      "text": "cybērnauts 创意 cybernauts creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-instrument",
+      "text": "instrument 数字代理 instrument creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark minimal futuristic gold glass automotive creative technology art-design scroll-reveal scale marquee keyframe shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "creative",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-field",
+      "text": "field.io 创意 field creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark minimal futuristic gold glass automotive creative technology art-design 3d-rotation scroll-reveal scale keyframe shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "creative",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-animade",
+      "text": "animade 创意 animade creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass particle automotive technology art-design 3d-rotation scroll-reveal scale marquee keyframe tween",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass",
+        "particle"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-unseen",
+      "text": "unseen 机构 unseen creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-haus",
+      "text": "haus 品牌 haus brand experience 品牌体验 brand experience 品牌 体验 dark bold futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal scale keyframe shader",
+      "styleFamily": "brand",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-buck",
+      "text": "buck 创意 buck creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass automotive technology art-design scroll-reveal scale keyframe shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-raggededge",
+      "text": "ragged edge 品牌 ragged edge brand experience 品牌体验 brand experience 品牌 体验 dark bold futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal fade-in scale keyframe shader",
+      "styleFamily": "brand",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-velvet",
+      "text": "velvet 创意 velvet creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-bureau-borsche",
+      "text": "bureau borsche 设计 bureau borsche portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-studio-lumio",
+      "text": "studio lumio 工作室 lumio creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 dark bold futuristic gold glass particle automotive creative technology art-design 3d-rotation scroll-reveal fade-in scale keyframe shader",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "dark",
+        "bold",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass",
+        "particle"
+      ],
+      "industry": [
+        "automotive",
+        "creative",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-buzzed",
+      "text": "buzzed 互动 buzzed portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-verve",
+      "text": "verve 音乐 verve music / audio 音乐 / 音频 music audio sound 音乐 音频 dark elegant bold minimal futuristic gold glass automotive technology art-design 3d-rotation scroll-reveal fade-in scale marquee keyframe tween shader",
+      "styleFamily": "music",
+      "mood": [
+        "dark",
+        "elegant",
+        "bold",
+        "minimal",
+        "futuristic"
+      ],
+      "materials": [
+        "gold",
+        "glass"
+      ],
+      "industry": [
+        "automotive",
+        "technology",
+        "art-design"
+      ],
+      "isDark": true,
+      "density": "minimal"
+    },
+    {
+      "id": "awd-2025-somefolk",
+      "text": "somefolk® 创意机构 awwwards sotd awwwards sotd · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-2025-flowfest",
+      "text": "flowfest 2025 品牌体验 awwwards sotd awwwards sotd · 品牌体验 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-2025-ottografie",
+      "text": "ottografie 2025 作品集 awwwards sotd awwwards sotd · 作品集 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-2025-rejouice",
+      "text": "rejouice® 创意机构 awwwards sotd awwwards sotd · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-2025-burocratik",
+      "text": "büro bürocratik 创意机构 awwwards sotd awwwards sotd · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-2025-exat",
+      "text": "exat typeface 品牌 awwwards sotd awwwards sotd · 品牌 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-2025-filip-felbar",
+      "text": "filip felbar portfolio 2025 作品集 awwwards sotd awwwards sotd · 作品集 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-2025-25-residences",
+      "text": "25 residences 建筑 awwwards sotd awwwards sotd · 建筑 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "awd-2025-gianluca",
+      "text": "gianluca gradogna portfolio 作品集 awwwards sotd awwwards sotd · 作品集 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "css-2025-cartapani",
+      "text": "cartapani 创意机构 css awards sotd css awards sotd · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 automotive art-design",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "automotive",
+        "art-design"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "css-2025-spylt",
+      "text": "spylt milk 产品 css awards sotd css awards sotd · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "css-2025-gufram",
+      "text": "gufram 品牌 css awards sotd css awards sotd · 品牌 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "css-2025-bachoo",
+      "text": "báchoo design 创意机构 css awards sotd css awards sotd · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 art-design",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "art-design"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "css-2025-tat2",
+      "text": "tat2 spirits 品牌 css awards sotd css awards sotd · 品牌 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "css-2025-soren-west",
+      "text": "soren west 品牌 css awards sotd css awards sotd · 品牌 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "css-2025-bijou",
+      "text": "bijou wines 品牌 css awards sotd css awards sotd · 品牌 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "fwa-2024-foodforfish",
+      "text": "food for fish 3d / webgl fwa of the year 2024 fwa of the year 2024 · 3d / webgl 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark shader",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark"
+      ],
+      "materials": [
+        "digital-light",
+        "particle",
+        "liquid-metal"
+      ],
+      "industry": [],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "fwa-2024-hatom",
+      "text": "hatom 3d / webgl fwa people's choice 2024 fwa people's choice 2024 · 3d / webgl 3d / webgl 三维 / webgl 3d webgl three.js shader canvas gpu immersive 3d-webgl dark shader",
+      "styleFamily": "3d-webgl",
+      "mood": [
+        "dark"
+      ],
+      "materials": [
+        "digital-light",
+        "particle",
+        "liquid-metal"
+      ],
+      "industry": [],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "fwa-2024-la-petite",
+      "text": "la petite jumelle 品牌 fwa of the day fwa of the day · 品牌 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "webby-2024-suno",
+      "text": "suno ai 产品 webby best home page webby best home page · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "webby-2024-metamask",
+      "text": "metamask learn 教育 webby best practices webby best practices · 教育 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "webby-2024-raw-materials",
+      "text": "raw materials 创意机构 webby best navigation webby best navigation · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 concrete",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "webby-2024-shopify",
+      "text": "shopify winter '24 edition 产品 webby business blog webby business blog · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-notion",
+      "text": "notion 产品 saas saas · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-runway",
+      "text": "runway 产品 ai/creative tools ai/creative tools · 产品 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 creative",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "creative"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-jasper",
+      "text": "jasper ai 产品 ai saas ai saas · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-framer",
+      "text": "framer 产品 saas / design tools saas / design tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology art-design",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology",
+        "art-design"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-figma",
+      "text": "figma 产品 saas / productivity saas / productivity · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-linear",
+      "text": "linear 产品 saas / developer tools saas / developer tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-vercel",
+      "text": "vercel 产品 saas / developer tools saas / developer tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-stripe",
+      "text": "stripe 金融科技 fintech fintech · 金融科技 fintech / data 金融 / 数据 fintech finance bank data 金融 数据 futuristic finance technology",
+      "styleFamily": "fintech",
+      "mood": [
+        "futuristic"
+      ],
+      "materials": [
+        "screen",
+        "data-visualization"
+      ],
+      "industry": [
+        "finance",
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-loom",
+      "text": "loom 产品 saas saas · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-clay",
+      "text": "clay 产品 saas saas · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-attio",
+      "text": "attio 产品 saas / crm saas / crm · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-posthog",
+      "text": "posthog 产品 saas / analytics saas / analytics · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-beehiiv",
+      "text": "beehiiv 产品 saas / newsletter saas / newsletter · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-paddle",
+      "text": "paddle 金融科技 fintech / saas fintech / saas · 金融科技 product / saas 产品 / saas product saas landing app 产品 落地页 futuristic finance technology",
+      "styleFamily": "product",
+      "mood": [
+        "futuristic"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "finance",
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-deepgram",
+      "text": "deepgram 产品 ai / voice ai / voice · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-github-copilot",
+      "text": "github copilot 产品 developer tools developer tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-monday",
+      "text": "monday.com 产品 saas / pm saas / pm · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-asana",
+      "text": "asana 产品 saas / pm saas / pm · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-mixpanel",
+      "text": "mixpanel 产品 saas / analytics saas / analytics · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 technology",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "prod-glossier",
+      "text": "glossier 电商 ecommerce / beauty ecommerce / beauty · 电商 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-drool",
+      "text": "drool design studio 创意机构 web design awards web design awards · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 creative art-design",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "creative",
+        "art-design"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-now-here",
+      "text": "now.here studio 创意机构 readymag woty 2024 readymag woty 2024 · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 creative",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "creative"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-69pixels",
+      "text": "69 pixels studio 创意机构 readymag woty 2024 readymag woty 2024 · 创意机构 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 creative",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "creative"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-brittany",
+      "text": "brittany chiang 作品集 developer portfolio developer portfolio · 作品集 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-josh-comeau",
+      "text": "josh comeau 作品集 developer portfolio developer portfolio · 作品集 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-emre-arolat",
+      "text": "emre arolat 建筑 horizon awards horizon awards · 建筑 portfolio 作品集 portfolio personal folio 作品集 个人",
+      "styleFamily": "portfolio",
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-complex-universe",
+      "text": "complex universe 实验 horizon awards horizon awards · 实验 experimental 实验 experiment experimental art generative 实验 生成",
+      "styleFamily": "experimental",
+      "mood": [
+        "curious",
+        "unexpected",
+        "artistic"
+      ],
+      "materials": [
+        "code",
+        "light",
+        "particle"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-stelo",
+      "text": "stelo 产品 horizon awards horizon awards · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "studio-heavn",
+      "text": "heavn one 产品 awwwards sotd awwwards sotd · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-porsche",
+      "text": "porsche 汽车 automotive automotive · 汽车 automotive 汽车 car auto automotive cupra volvo 汽车 赛车 automotive",
+      "styleFamily": "automotive",
+      "mood": [
+        "powerful",
+        "precise",
+        "cold"
+      ],
+      "materials": [
+        "metal",
+        "carbon-fiber",
+        "glass"
+      ],
+      "industry": [
+        "automotive"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-audi",
+      "text": "audi 汽车 automotive automotive · 汽车 automotive 汽车 car auto automotive cupra volvo 汽车 赛车 automotive",
+      "styleFamily": "automotive",
+      "mood": [
+        "powerful",
+        "precise",
+        "cold"
+      ],
+      "materials": [
+        "metal",
+        "carbon-fiber",
+        "glass"
+      ],
+      "industry": [
+        "automotive"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-nike",
+      "text": "nike 时尚 fashion/sport fashion/sport · 时尚 fashion 时尚 fashion style trend 时尚 时装 fashion",
+      "styleFamily": "fashion",
+      "mood": [
+        "trendy",
+        "aspirational",
+        "editorial"
+      ],
+      "materials": [
+        "fabric",
+        "photography"
+      ],
+      "industry": [
+        "fashion"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-airbnb",
+      "text": "airbnb 产品 travel travel · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-spotify",
+      "text": "spotify 音乐 music music · 音乐 music / audio 音乐 / 音频 music audio sound 音乐 音频 music",
+      "styleFamily": "music",
+      "mood": [
+        "rhythmic",
+        "immersive",
+        "vibrant"
+      ],
+      "materials": [
+        "sound-wave",
+        "light"
+      ],
+      "industry": [
+        "music"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-netflix",
+      "text": "netflix 产品 media media · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-chanel",
+      "text": "chanel 奢侈品牌 luxury/fashion luxury/fashion · 奢侈品牌 luxury 奢华 luxury lux cartier gucci balenciaga louis vuitton 奢侈 珠宝 高端 dark elegant luxury fashion",
+      "styleFamily": "luxury",
+      "mood": [
+        "dark",
+        "elegant"
+      ],
+      "materials": [
+        "gold",
+        "silk",
+        "marble",
+        "glass"
+      ],
+      "industry": [
+        "luxury",
+        "fashion"
+      ],
+      "isDark": true,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-droga5",
+      "text": "droga5 广告 / 创意 agency agency · 广告 / 创意 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 creative",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "creative"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-wieden",
+      "text": "wieden+kennedy 广告 / 创意 agency agency · 广告 / 创意 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 creative",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "creative"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-razorfish",
+      "text": "razorfish 数字代理 agency agency · 数字代理 creative agency 创意机构 creative agency cuberto obys studio 创意 机构 数字代理 creative",
+      "styleFamily": "creative-agency",
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ],
+      "industry": [
+        "creative"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-vercel-docs",
+      "text": "vercel docs 产品 developer tools developer tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-supabase",
+      "text": "supabase 产品 developer tools developer tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-prisma",
+      "text": "prisma 产品 developer tools developer tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-clerk",
+      "text": "clerk 产品 developer tools developer tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-resend",
+      "text": "resend 产品 developer tools developer tools · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-figma-config",
+      "text": "figma config 品牌体验 event event · 品牌体验 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-linear-method",
+      "text": "linear method 品牌体验 brand brand · 品牌体验 brand experience 品牌体验 brand experience 品牌 体验",
+      "styleFamily": "brand",
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-stripe-atlas",
+      "text": "stripe atlas 产品 fintech fintech · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 futuristic finance technology",
+      "styleFamily": "product",
+      "mood": [
+        "futuristic"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "finance",
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-apple-vision",
+      "text": "apple vision pro 产品 tech tech · 产品 product / saas 产品 / saas product saas landing app 产品 落地页 futuristic technology",
+      "styleFamily": "product",
+      "mood": [
+        "futuristic"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [
+        "technology"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-anthropic",
+      "text": "anthropic 产品 ai ai · 产品 product / saas 产品 / saas product saas landing app 产品 落地页",
+      "styleFamily": "product",
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-codrops",
+      "text": "codrops 实验 web design web design · 实验 experimental 实验 experiment experimental art generative 实验 生成 art-design",
+      "styleFamily": "experimental",
+      "mood": [
+        "curious",
+        "unexpected",
+        "artistic"
+      ],
+      "materials": [
+        "code",
+        "light",
+        "particle"
+      ],
+      "industry": [
+        "art-design"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-brutalist",
+      "text": "brutalist websites 粗野主义 design design · 粗野主义 brutalist 粗野主义 brutalist brutalism raw 粗野 裸露 concrete art-design",
+      "styleFamily": "brutalist",
+      "mood": [
+        "raw",
+        "confrontational",
+        "honest"
+      ],
+      "materials": [
+        "concrete"
+      ],
+      "industry": [
+        "art-design"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-hoverstats",
+      "text": "hoverstat.es 实验 alt web alt web · 实验 experimental 实验 experiment experimental art generative 实验 生成",
+      "styleFamily": "experimental",
+      "mood": [
+        "curious",
+        "unexpected",
+        "artistic"
+      ],
+      "materials": [
+        "code",
+        "light",
+        "particle"
+      ],
+      "industry": [],
+      "isDark": false,
+      "density": "moderate"
+    },
+    {
+      "id": "extra-zara",
+      "text": "zara 时尚 fashion fashion · 时尚 fashion 时尚 fashion style trend 时尚 时装 fashion",
+      "styleFamily": "fashion",
+      "mood": [
+        "trendy",
+        "aspirational",
+        "editorial"
+      ],
+      "materials": [
+        "fabric",
+        "photography"
+      ],
+      "industry": [
+        "fashion"
+      ],
+      "isDark": false,
+      "density": "moderate"
+    }
+  ],
+  "synonyms": {
+    "金属": [
+      "metal",
+      "chrome",
+      "steel",
+      "titanium",
+      "gold",
+      "silver",
+      "metallic",
+      "金属",
+      "铬",
+      "钢",
+      "钛",
+      "金",
+      "银"
+    ],
+    "金属质感": [
+      "metal",
+      "metallic",
+      "chrome",
+      "steel",
+      "金属"
+    ],
+    "liquid": [
+      "fluid",
+      "water",
+      "liquid",
+      "液态",
+      "流体",
+      "水"
+    ],
+    "液态": [
+      "liquid",
+      "fluid",
+      "液态",
+      "流体"
+    ],
+    "高端": [
+      "luxury",
+      "premium",
+      "elegant",
+      "refined",
+      "高端",
+      "奢华",
+      "高级",
+      "精致"
+    ],
+    "奢华": [
+      "luxury",
+      "premium",
+      "奢侈",
+      "lux"
+    ],
+    "高级": [
+      "premium",
+      "luxury",
+      "elegant",
+      "refined",
+      "高级",
+      "高端"
+    ],
+    "科技": [
+      "tech",
+      "technology",
+      "future",
+      "futuristic",
+      "digital",
+      "webgl",
+      "3d",
+      "科技",
+      "未来",
+      "数字"
+    ],
+    "未来": [
+      "future",
+      "futuristic",
+      "未来"
+    ],
+    "温暖": [
+      "warm",
+      "organic",
+      "natural",
+      "温暖",
+      "有机",
+      "自然"
+    ],
+    "冷": [
+      "cold",
+      "cool",
+      "industrial",
+      "冷",
+      "工业"
+    ],
+    "工业": [
+      "industrial",
+      "mechanical",
+      "raw",
+      "工业",
+      "机械"
+    ],
+    "机械": [
+      "mechanical",
+      "industrial",
+      "机械"
+    ],
+    "精密": [
+      "precise",
+      "precision",
+      "精密",
+      "精确"
+    ],
+    "克制": [
+      "restrained",
+      "minimal",
+      "clean",
+      "simple",
+      "克制",
+      "极简",
+      "简洁"
+    ],
+    "极简": [
+      "minimal",
+      "clean",
+      "simple",
+      "极简",
+      "简洁",
+      "留白"
+    ],
+    "大胆": [
+      "bold",
+      "strong",
+      "大胆",
+      "强烈"
+    ],
+    "东方": [
+      "eastern",
+      "oriental",
+      "asian",
+      "东方",
+      "亚洲"
+    ],
+    "赛博": [
+      "cyber",
+      "cyberpunk",
+      "neon",
+      "赛博",
+      "霓虹"
+    ],
+    "霓虹": [
+      "neon",
+      "cyber",
+      "霓虹"
+    ],
+    "玻璃": [
+      "glass",
+      "glassmorphism",
+      "transparent",
+      "玻璃",
+      "毛玻璃"
+    ],
+    "纸质": [
+      "paper",
+      "cardboard",
+      "纸质",
+      "纸"
+    ],
+    "暗色": [
+      "dark",
+      "black",
+      "暗色",
+      "黑色",
+      "深色"
+    ],
+    "浅色": [
+      "light",
+      "white",
+      "浅色",
+      "白色",
+      "亮色"
+    ],
+    "动画": [
+      "animation",
+      "animated",
+      "motion",
+      "动效",
+      "动画"
+    ],
+    "滚动": [
+      "scroll",
+      "parallax",
+      "滚动",
+      "视差"
+    ],
+    "创意": [
+      "creative",
+      "agency",
+      "studio",
+      "创意",
+      "机构"
+    ],
+    "汽车": [
+      "car",
+      "automotive",
+      "vehicle",
+      "汽车",
+      "赛车"
+    ],
+    "时尚": [
+      "fashion",
+      "style",
+      "时尚",
+      "时装"
+    ],
+    "音乐": [
+      "music",
+      "audio",
+      "sound",
+      "音乐",
+      "音频"
+    ],
+    "金融": [
+      "finance",
+      "fintech",
+      "bank",
+      "金融"
+    ],
+    "数据": [
+      "data",
+      "chart",
+      "dashboard",
+      "数据",
+      "图表"
+    ],
+    "游戏": [
+      "game",
+      "gaming",
+      "游戏"
+    ],
+    "教育": [
+      "education",
+      "edu",
+      "教育"
+    ],
+    "医疗": [
+      "medical",
+      "health",
+      "医疗",
+      "健康"
+    ],
+    "电商": [
+      "ecommerce",
+      "shop",
+      "store",
+      "电商",
+      "商城"
+    ],
+    "作品集": [
+      "portfolio",
+      "personal",
+      "作品集",
+      "个人"
+    ],
+    "品牌": [
+      "brand",
+      "branding",
+      "品牌"
+    ],
+    "实验": [
+      "experimental",
+      "experiment",
+      "实验"
+    ],
+    "互动": [
+      "interactive",
+      "interaction",
+      "互动",
+      "交互"
+    ],
+    "3d": [
+      "3d",
+      "webgl",
+      "three",
+      "三维"
+    ],
+    "webgl": [
+      "webgl",
+      "3d",
+      "shader",
+      "gpu"
+    ],
+    "产品": [
+      "product",
+      "saas",
+      "landing",
+      "产品",
+      "落地页"
+    ],
+    "落地页": [
+      "landing",
+      "product",
+      "落地页",
+      "产品页"
+    ],
+    "dashboard": [
+      "dashboard",
+      "admin",
+      "panel",
+      "仪表盘",
+      "后台"
+    ],
+    "登录": [
+      "login",
+      "signin",
+      "auth",
+      "登录"
+    ],
+    "移动": [
+      "mobile",
+      "app",
+      "移动",
+      "应用"
+    ]
+  },
+  "adjacentStyles": {
+    "3d-webgl": [
+      "experimental",
+      "creative-agency",
+      "music"
+    ],
+    "luxury": [
+      "fashion",
+      "brand",
+      "editorial"
+    ],
+    "creative-agency": [
+      "experimental",
+      "portfolio",
+      "brand"
+    ],
+    "editorial": [
+      "minimal",
+      "luxury",
+      "portfolio"
+    ],
+    "brutalist": [
+      "experimental",
+      "editorial",
+      "minimal"
+    ],
+    "minimal": [
+      "editorial",
+      "product",
+      "portfolio"
+    ],
+    "product": [
+      "minimal",
+      "fintech",
+      "enterprise"
+    ],
+    "automotive": [
+      "product",
+      "3d-webgl",
+      "experimental"
+    ],
+    "fashion": [
+      "luxury",
+      "editorial",
+      "brand"
+    ],
+    "experimental": [
+      "3d-webgl",
+      "creative-agency",
+      "brutalist"
+    ],
+    "portfolio": [
+      "creative-agency",
+      "minimal",
+      "editorial"
+    ],
+    "music": [
+      "3d-webgl",
+      "experimental",
+      "creative-agency"
+    ],
+    "brand": [
+      "creative-agency",
+      "luxury",
+      "fashion"
+    ],
+    "fintech": [
+      "product",
+      "minimal",
+      "government"
+    ],
+    "government": [
+      "minimal",
+      "fintech",
+      "product"
+    ]
+  },
+  "styleFamilies": [
+    {
+      "key": "3d-webgl",
+      "name": "3D / WebGL",
+      "nameZh": "三维 / WebGL",
+      "description": "沉浸式 3D 场景、WebGL 着色器、物理交互",
+      "keywords": [
+        "3d",
+        "webgl",
+        "three.js",
+        "shader",
+        "canvas",
+        "gpu",
+        "immersive",
+        "3d-webgl"
+      ],
+      "mood": [
+        "futuristic",
+        "immersive",
+        "bold"
+      ],
+      "materials": [
+        "digital-light",
+        "particle",
+        "liquid-metal"
+      ]
+    },
+    {
+      "key": "luxury",
+      "name": "Luxury",
+      "nameZh": "奢华",
+      "description": "金色质感、衬线优雅、克制留白、高端品牌",
+      "keywords": [
+        "luxury",
+        "lux",
+        "cartier",
+        "gucci",
+        "balenciaga",
+        "louis vuitton",
+        "奢侈",
+        "珠宝",
+        "高端"
+      ],
+      "mood": [
+        "elegant",
+        "dark",
+        "refined",
+        "exclusive"
+      ],
+      "materials": [
+        "gold",
+        "silk",
+        "marble",
+        "glass"
+      ]
+    },
+    {
+      "key": "creative-agency",
+      "name": "Creative Agency",
+      "nameZh": "创意机构",
+      "description": "大胆排版、流体动效、实验性交互、品牌叙事",
+      "keywords": [
+        "creative",
+        "agency",
+        "cuberto",
+        "obys",
+        "studio",
+        "创意",
+        "机构",
+        "数字代理"
+      ],
+      "mood": [
+        "bold",
+        "playful",
+        "experimental",
+        "energetic"
+      ],
+      "materials": [
+        "fluid",
+        "organic",
+        "digital-paint"
+      ]
+    },
+    {
+      "key": "editorial",
+      "name": "Editorial / Magazine",
+      "nameZh": "编辑 / 杂志",
+      "description": "瑞士排版、内容驱动、层次分明、阅读优先",
+      "keywords": [
+        "editorial",
+        "magazine",
+        "typography",
+        "swiss",
+        "编辑",
+        "杂志",
+        "排版"
+      ],
+      "mood": [
+        "clean",
+        "structured",
+        "intellectual"
+      ],
+      "materials": [
+        "paper",
+        "ink"
+      ]
+    },
+    {
+      "key": "brutalist",
+      "name": "Brutalist",
+      "nameZh": "粗野主义",
+      "description": "裸露结构、系统字体、强烈对比、反装饰",
+      "keywords": [
+        "brutalist",
+        "brutalism",
+        "raw",
+        "粗野",
+        "裸露"
+      ],
+      "mood": [
+        "raw",
+        "confrontational",
+        "honest"
+      ],
+      "materials": [
+        "concrete",
+        "raw-html"
+      ]
+    },
+    {
+      "key": "minimal",
+      "name": "Minimal",
+      "nameZh": "极简",
+      "description": "大量留白、有限色彩、功能优先、克制动效",
+      "keywords": [
+        "minimal",
+        "clean",
+        "simple",
+        "极简",
+        "简洁",
+        "留白"
+      ],
+      "mood": [
+        "calm",
+        "focused",
+        "pure"
+      ],
+      "materials": [
+        "air",
+        "light"
+      ]
+    },
+    {
+      "key": "product",
+      "name": "Product / SaaS",
+      "nameZh": "产品 / SaaS",
+      "description": "清晰信息架构、功能展示、转化导向",
+      "keywords": [
+        "product",
+        "saas",
+        "landing",
+        "app",
+        "产品",
+        "落地页"
+      ],
+      "mood": [
+        "professional",
+        "clear",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "interface"
+      ]
+    },
+    {
+      "key": "automotive",
+      "name": "Automotive",
+      "nameZh": "汽车",
+      "description": "金属质感、动态视角、机械精密、性能展示",
+      "keywords": [
+        "car",
+        "auto",
+        "automotive",
+        "cupra",
+        "volvo",
+        "汽车",
+        "赛车"
+      ],
+      "mood": [
+        "powerful",
+        "precise",
+        "cold"
+      ],
+      "materials": [
+        "metal",
+        "carbon-fiber",
+        "glass"
+      ]
+    },
+    {
+      "key": "fashion",
+      "name": "Fashion",
+      "nameZh": "时尚",
+      "description": "大片式摄影、季节性色彩、品牌叙事",
+      "keywords": [
+        "fashion",
+        "style",
+        "trend",
+        "时尚",
+        "时装"
+      ],
+      "mood": [
+        "trendy",
+        "aspirational",
+        "editorial"
+      ],
+      "materials": [
+        "fabric",
+        "photography"
+      ]
+    },
+    {
+      "key": "experimental",
+      "name": "Experimental",
+      "nameZh": "实验",
+      "description": "非常规交互、生成艺术、技术探索",
+      "keywords": [
+        "experiment",
+        "experimental",
+        "art",
+        "generative",
+        "实验",
+        "生成"
+      ],
+      "mood": [
+        "curious",
+        "unexpected",
+        "artistic"
+      ],
+      "materials": [
+        "code",
+        "light",
+        "particle"
+      ]
+    },
+    {
+      "key": "portfolio",
+      "name": "Portfolio",
+      "nameZh": "作品集",
+      "description": "个人展示、项目叙事、独特个性",
+      "keywords": [
+        "portfolio",
+        "personal",
+        "folio",
+        "作品集",
+        "个人"
+      ],
+      "mood": [
+        "personal",
+        "distinctive",
+        "curated"
+      ],
+      "materials": [
+        "varies"
+      ]
+    },
+    {
+      "key": "music",
+      "name": "Music / Audio",
+      "nameZh": "音乐 / 音频",
+      "description": "节奏感动效、音频可视化、沉浸式体验",
+      "keywords": [
+        "music",
+        "audio",
+        "sound",
+        "音乐",
+        "音频"
+      ],
+      "mood": [
+        "rhythmic",
+        "immersive",
+        "vibrant"
+      ],
+      "materials": [
+        "sound-wave",
+        "light"
+      ]
+    },
+    {
+      "key": "brand",
+      "name": "Brand Experience",
+      "nameZh": "品牌体验",
+      "description": "品牌世界构建、故事驱动、情感连接",
+      "keywords": [
+        "brand",
+        "experience",
+        "品牌",
+        "体验"
+      ],
+      "mood": [
+        "emotional",
+        "cohesive",
+        "memorable"
+      ],
+      "materials": [
+        "varies"
+      ]
+    },
+    {
+      "key": "fintech",
+      "name": "Fintech / Data",
+      "nameZh": "金融 / 数据",
+      "description": "数据密集、图表驱动、专业可信",
+      "keywords": [
+        "fintech",
+        "finance",
+        "bank",
+        "data",
+        "金融",
+        "数据"
+      ],
+      "mood": [
+        "professional",
+        "precise",
+        "trustworthy"
+      ],
+      "materials": [
+        "screen",
+        "data-visualization"
+      ]
+    },
+    {
+      "key": "government",
+      "name": "Government / Public",
+      "nameZh": "政府 / 公共",
+      "description": "高可访问性、规范排版、服务导向",
+      "keywords": [
+        "government",
+        "public",
+        "gov",
+        "政府",
+        "公共"
+      ],
+      "mood": [
+        "official",
+        "accessible",
+        "structured"
+      ],
+      "materials": [
+        "paper",
+        "screen"
+      ]
+    }
+  ]
+}

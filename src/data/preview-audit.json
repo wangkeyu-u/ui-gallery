@@ -1,0 +1,3325 @@
+{
+  "summary": {
+    "total": 230,
+    "withIssues": 172,
+    "critical": 0,
+    "missingPrompt": 23,
+    "missingDesc": 164,
+    "missingVerification": 36
+  },
+  "criticalIssues": [],
+  "allResults": [
+    {
+      "id": "antd",
+      "name": "Ant Design",
+      "kind": "item",
+      "theme": "企业级 / 数据密集",
+      "imgPath": "previews/antd.png",
+      "issues": [],
+      "fileSize": 196606,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "192.0KB"
+    },
+    {
+      "id": "mui",
+      "name": "Material UI (MUI)",
+      "kind": "item",
+      "theme": "Material Design 3",
+      "imgPath": "previews/mui.png",
+      "issues": [],
+      "fileSize": 183598,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "179.3KB"
+    },
+    {
+      "id": "chakra",
+      "name": "Chakra UI",
+      "kind": "item",
+      "theme": "简洁 / 组合式",
+      "imgPath": "previews/chakra.png",
+      "issues": [],
+      "fileSize": 260224,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "254.1KB"
+    },
+    {
+      "id": "mantine",
+      "name": "Mantine",
+      "kind": "item",
+      "theme": "现代 / 暗色原生",
+      "imgPath": "previews/mantine.png",
+      "issues": [],
+      "fileSize": 179964,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "175.7KB"
+    },
+    {
+      "id": "shadcn",
+      "name": "shadcn/ui",
+      "kind": "item",
+      "theme": "Radix + Tailwind 白盒",
+      "imgPath": "previews/shadcn.png",
+      "issues": [],
+      "fileSize": 97098,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "94.8KB"
+    },
+    {
+      "id": "radix",
+      "name": "Radix UI",
+      "kind": "item",
+      "theme": "无样式原语 / a11y",
+      "imgPath": "previews/radix.png",
+      "issues": [],
+      "fileSize": 395139,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "385.9KB"
+    },
+    {
+      "id": "headlessui",
+      "name": "Headless UI",
+      "kind": "item",
+      "theme": "无样式 / a11y",
+      "imgPath": "previews/headlessui.png",
+      "issues": [],
+      "fileSize": 410124,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "400.5KB"
+    },
+    {
+      "id": "nextui",
+      "name": "NextUI (HeroUI)",
+      "kind": "item",
+      "theme": "现代 / SSR 友好",
+      "imgPath": "previews/nextui.png",
+      "issues": [],
+      "fileSize": 180762,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "176.5KB"
+    },
+    {
+      "id": "semi",
+      "name": "Semi Design",
+      "kind": "item",
+      "theme": "企业级 / 设计代币",
+      "imgPath": "previews/semi.png",
+      "issues": [],
+      "fileSize": 228003,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "222.7KB"
+    },
+    {
+      "id": "blueprint",
+      "name": "Blueprint",
+      "kind": "item",
+      "theme": "数据密集型",
+      "imgPath": "previews/blueprint.png",
+      "issues": [],
+      "fileSize": 531271,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "518.8KB"
+    },
+    {
+      "id": "grommet",
+      "name": "Grommet",
+      "kind": "item",
+      "theme": "企业级 / 响应式",
+      "imgPath": "previews/grommet.png",
+      "issues": [],
+      "fileSize": 47407,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "46.3KB"
+    },
+    {
+      "id": "evergreen",
+      "name": "Evergreen",
+      "kind": "item",
+      "theme": "产品级",
+      "imgPath": "previews/evergreen.png",
+      "issues": [],
+      "fileSize": 73246,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "71.5KB"
+    },
+    {
+      "id": "fluent",
+      "name": "Fluent UI (React)",
+      "kind": "item",
+      "theme": "Microsoft / Fluent",
+      "imgPath": "previews/fluent.png",
+      "issues": [],
+      "fileSize": 259112,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "253.0KB"
+    },
+    {
+      "id": "polaris",
+      "name": "Polaris",
+      "kind": "item",
+      "theme": "电商 / Shopify",
+      "imgPath": "previews/polaris.png",
+      "issues": [],
+      "fileSize": 1829364,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "1786.5KB"
+    },
+    {
+      "id": "primer",
+      "name": "Primer",
+      "kind": "item",
+      "theme": "GitHub / 开发者工具",
+      "imgPath": "previews/primer.png",
+      "issues": [],
+      "fileSize": 156332,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "152.7KB"
+    },
+    {
+      "id": "baseweb",
+      "name": "Base Web",
+      "kind": "item",
+      "theme": "产品级",
+      "imgPath": "previews/baseweb.png",
+      "issues": [],
+      "fileSize": 122414,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "119.5KB"
+    },
+    {
+      "id": "gestalt",
+      "name": "Gestalt",
+      "kind": "item",
+      "theme": "产品级",
+      "imgPath": "previews/gestalt.png",
+      "issues": [],
+      "fileSize": 268413,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "262.1KB"
+    },
+    {
+      "id": "antd-mobile",
+      "name": "Ant Design Mobile",
+      "kind": "item",
+      "theme": "移动端 / H5",
+      "imgPath": "previews/antd-mobile.png",
+      "issues": [],
+      "fileSize": 401683,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "392.3KB"
+    },
+    {
+      "id": "react-bootstrap",
+      "name": "React Bootstrap",
+      "kind": "item",
+      "theme": "Bootstrap 风格",
+      "imgPath": "previews/react-bootstrap.png",
+      "issues": [],
+      "fileSize": 142280,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "138.9KB"
+    },
+    {
+      "id": "ariakit",
+      "name": "Ariakit",
+      "kind": "item",
+      "theme": "无样式 / a11y",
+      "imgPath": "previews/ariakit.png",
+      "issues": [],
+      "fileSize": 84431,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "82.5KB"
+    },
+    {
+      "id": "react-aria",
+      "name": "React Aria Components",
+      "kind": "item",
+      "theme": "无样式 / a11y",
+      "imgPath": "previews/react-aria.png",
+      "issues": [],
+      "fileSize": 32644,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "31.9KB"
+    },
+    {
+      "id": "element-plus",
+      "name": "Element Plus",
+      "kind": "item",
+      "theme": "企业级 / 后台",
+      "imgPath": "previews/element-plus.png",
+      "issues": [],
+      "fileSize": 73654,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "71.9KB"
+    },
+    {
+      "id": "naive-ui",
+      "name": "Naive UI",
+      "kind": "item",
+      "theme": "现代 / TS 友好",
+      "imgPath": "previews/naive-ui.png",
+      "issues": [],
+      "fileSize": 65243,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "63.7KB"
+    },
+    {
+      "id": "vuetify",
+      "name": "Vuetify",
+      "kind": "item",
+      "theme": "Material Design 3",
+      "imgPath": "previews/vuetify.png",
+      "issues": [],
+      "fileSize": 139460,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "136.2KB"
+    },
+    {
+      "id": "quasar",
+      "name": "Quasar",
+      "kind": "item",
+      "theme": "跨端 / 全家桶",
+      "imgPath": "previews/quasar.png",
+      "issues": [],
+      "fileSize": 82323,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "80.4KB"
+    },
+    {
+      "id": "primevue",
+      "name": "PrimeVue",
+      "kind": "item",
+      "theme": "企业级 / 30+ 主题",
+      "imgPath": "previews/primevue.png",
+      "issues": [],
+      "fileSize": 75802,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "74.0KB"
+    },
+    {
+      "id": "antdv",
+      "name": "Ant Design Vue",
+      "kind": "item",
+      "theme": "企业级 / 与 React 对齐",
+      "imgPath": "previews/antdv.png",
+      "issues": [],
+      "fileSize": 103419,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "101.0KB"
+    },
+    {
+      "id": "vant",
+      "name": "Vant",
+      "kind": "item",
+      "theme": "移动端 / H5",
+      "imgPath": "previews/vant.png",
+      "issues": [],
+      "fileSize": 131127,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "128.1KB"
+    },
+    {
+      "id": "nuxt-ui",
+      "name": "Nuxt UI",
+      "kind": "item",
+      "theme": "Nuxt / SSR 满分",
+      "imgPath": "previews/nuxt-ui.png",
+      "issues": [],
+      "fileSize": 193691,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "189.2KB"
+    },
+    {
+      "id": "shadcn-vue",
+      "name": "shadcn-vue",
+      "kind": "item",
+      "theme": "Radix 系 / Tailwind",
+      "imgPath": "previews/shadcn-vue.png",
+      "issues": [],
+      "fileSize": 98778,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "96.5KB"
+    },
+    {
+      "id": "reka-ui",
+      "name": "Reka UI",
+      "kind": "item",
+      "theme": "无样式原语 / a11y",
+      "imgPath": "previews/reka-ui.png",
+      "issues": [],
+      "fileSize": 100379,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "98.0KB"
+    },
+    {
+      "id": "arco-vue",
+      "name": "Arco Design",
+      "kind": "item",
+      "theme": "企业级 / 设计系统",
+      "imgPath": "previews/arco-vue.png",
+      "issues": [],
+      "fileSize": 107061,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "104.6KB"
+    },
+    {
+      "id": "tdesign-vue",
+      "name": "TDesign",
+      "kind": "item",
+      "theme": "多端统一设计系统",
+      "imgPath": "previews/tdesign-vue.png",
+      "issues": [],
+      "fileSize": 66536,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "65.0KB"
+    },
+    {
+      "id": "vuestic",
+      "name": "Vuestic UI",
+      "kind": "item",
+      "theme": "现代 / 即装即用",
+      "imgPath": "previews/vuestic.png",
+      "issues": [],
+      "fileSize": 194221,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "189.7KB"
+    },
+    {
+      "id": "inkline",
+      "name": "Inkline",
+      "kind": "item",
+      "theme": "现代 / 可定制",
+      "imgPath": "previews/inkline.png",
+      "issues": [
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 208865,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "204.0KB"
+    },
+    {
+      "id": "ng-material",
+      "name": "Angular Material",
+      "kind": "item",
+      "theme": "Material Design",
+      "imgPath": "previews/ng-material.png",
+      "issues": [
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 87747,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "85.7KB"
+    },
+    {
+      "id": "ng-zorro",
+      "name": "NG-ZORRO",
+      "kind": "item",
+      "theme": "企业级 (Angular 版 antd)",
+      "imgPath": "previews/ng-zorro.png",
+      "issues": [],
+      "fileSize": 138815,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "135.6KB"
+    },
+    {
+      "id": "primeng",
+      "name": "PrimeNG",
+      "kind": "item",
+      "theme": "企业级 / 80+ 组件",
+      "imgPath": "previews/primeng.png",
+      "issues": [],
+      "fileSize": 77557,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "75.7KB"
+    },
+    {
+      "id": "clarity",
+      "name": "Clarity",
+      "kind": "item",
+      "theme": "企业级 / 设计系统",
+      "imgPath": "previews/clarity.png",
+      "issues": [],
+      "fileSize": 143731,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "140.4KB"
+    },
+    {
+      "id": "ng-bootstrap",
+      "name": "NG Bootstrap",
+      "kind": "item",
+      "theme": "Bootstrap 风格",
+      "imgPath": "previews/ng-bootstrap.png",
+      "issues": [],
+      "fileSize": 196990,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "192.4KB"
+    },
+    {
+      "id": "taiga-ui",
+      "name": "Taiga UI",
+      "kind": "item",
+      "theme": "现代 / 设计系统",
+      "imgPath": "previews/taiga-ui.png",
+      "issues": [],
+      "fileSize": 182612,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "178.3KB"
+    },
+    {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "kind": "item",
+      "theme": "设计系统 / Tailwind",
+      "imgPath": "previews/skeleton.png",
+      "issues": [],
+      "fileSize": 413764,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "404.1KB"
+    },
+    {
+      "id": "shadcn-svelte",
+      "name": "shadcn-svelte",
+      "kind": "item",
+      "theme": "Bits UI / Tailwind",
+      "imgPath": "previews/shadcn-svelte.png",
+      "issues": [],
+      "fileSize": 96156,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "93.9KB"
+    },
+    {
+      "id": "smui",
+      "name": "Svelte Material UI (SMUI)",
+      "kind": "item",
+      "theme": "Material Design",
+      "imgPath": "previews/smui.png",
+      "issues": [
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 144140,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "140.8KB"
+    },
+    {
+      "id": "flowbite-svelte",
+      "name": "Flowbite Svelte",
+      "kind": "item",
+      "theme": "Tailwind / 极简",
+      "imgPath": "previews/flowbite-svelte.png",
+      "issues": [
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 133574,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "130.4KB"
+    },
+    {
+      "id": "carbon-svelte",
+      "name": "Carbon Components Svelte",
+      "kind": "item",
+      "theme": "企业级 (Carbon)",
+      "imgPath": "previews/carbon-svelte.png",
+      "issues": [
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 99786,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "97.4KB"
+    },
+    {
+      "id": "ark-ui",
+      "name": "Ark UI",
+      "kind": "item",
+      "theme": "无样式 / 跨框架",
+      "imgPath": "previews/ark-ui.png",
+      "issues": [
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 147365,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "143.9KB"
+    },
+    {
+      "id": "kobalte",
+      "name": "Kobalte",
+      "kind": "item",
+      "theme": "无样式 / a11y",
+      "imgPath": "previews/kobalte.png",
+      "issues": [
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 129529,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "126.5KB"
+    },
+    {
+      "id": "solid-headless",
+      "name": "Solid Bootstrap",
+      "kind": "item",
+      "theme": "Bootstrap 风格",
+      "imgPath": "previews/solid-headless.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 48527,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "47.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "shoelace",
+      "name": "Shoelace (Web Awesome)",
+      "kind": "item",
+      "theme": "框架无关 / 标准化",
+      "imgPath": "previews/shoelace.png",
+      "issues": [],
+      "fileSize": 51294,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "50.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "material-web",
+      "name": "Material Web (MWC)",
+      "kind": "item",
+      "theme": "Material Design",
+      "imgPath": "previews/material-web.png",
+      "issues": [],
+      "fileSize": 48786,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "47.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "carbon",
+      "name": "Carbon Design System",
+      "kind": "item",
+      "theme": "企业级 (IBM)",
+      "imgPath": "previews/carbon.png",
+      "issues": [],
+      "fileSize": 51192,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "50.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "lion",
+      "name": "Lion",
+      "kind": "item",
+      "theme": "无样式 / 表单原语",
+      "imgPath": "previews/lion.png",
+      "issues": [],
+      "fileSize": 46934,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "fast",
+      "name": "FAST (Microsoft)",
+      "kind": "item",
+      "theme": "框架无关 / 可定制",
+      "imgPath": "previews/fast.png",
+      "issues": [],
+      "fileSize": 60949,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "59.5KB"
+    },
+    {
+      "id": "bootstrap",
+      "name": "Bootstrap",
+      "kind": "item",
+      "theme": "经典 / 栅格",
+      "imgPath": "previews/bootstrap.png",
+      "issues": [],
+      "fileSize": 622337,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "607.8KB"
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind CSS",
+      "kind": "item",
+      "theme": "原子化 Utility",
+      "imgPath": "previews/tailwind.png",
+      "issues": [],
+      "fileSize": 51052,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "49.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "tailwindui",
+      "name": "Tailwind UI",
+      "kind": "item",
+      "theme": "官方付费模板",
+      "imgPath": "previews/tailwindui.png",
+      "issues": [],
+      "fileSize": 46893,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "daisyui",
+      "name": "daisyUI",
+      "kind": "item",
+      "theme": "Tailwind 插件",
+      "imgPath": "previews/daisyui.png",
+      "issues": [],
+      "fileSize": 45657,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "bulma",
+      "name": "Bulma",
+      "kind": "item",
+      "theme": "纯 CSS / Flexbox",
+      "imgPath": "previews/bulma.png",
+      "issues": [],
+      "fileSize": 45848,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "foundation",
+      "name": "Foundation",
+      "kind": "item",
+      "theme": "企业级 / 响应式",
+      "imgPath": "previews/foundation.png",
+      "issues": [],
+      "fileSize": 47431,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "46.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "pico",
+      "name": "Pico.css",
+      "kind": "item",
+      "theme": "极简 / 无类",
+      "imgPath": "previews/pico.png",
+      "issues": [],
+      "fileSize": 46145,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "semantic-ui",
+      "name": "Semantic UI",
+      "kind": "item",
+      "theme": "语义化",
+      "imgPath": "previews/semantic-ui.png",
+      "issues": [],
+      "fileSize": 45881,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "spectre",
+      "name": "Spectre.css",
+      "kind": "item",
+      "theme": "轻量 / 现代",
+      "imgPath": "previews/spectre.png",
+      "issues": [],
+      "fileSize": 46448,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "atlassian",
+      "name": "Atlassian Design System",
+      "kind": "item",
+      "theme": "协作工具 (Jira/Confluence)",
+      "imgPath": "previews/atlassian.png",
+      "issues": [],
+      "fileSize": 51890,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "50.7KB"
+    },
+    {
+      "id": "lightning",
+      "name": "Lightning Design System",
+      "kind": "item",
+      "theme": "CRM (Salesforce)",
+      "imgPath": "previews/lightning.png",
+      "issues": [],
+      "fileSize": 398075,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "388.7KB"
+    },
+    {
+      "id": "fluent-ds",
+      "name": "Fluent 2 Design",
+      "kind": "item",
+      "theme": "Microsoft 全平台",
+      "imgPath": "previews/fluent-ds.png",
+      "issues": [],
+      "fileSize": 47312,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "46.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "primereact",
+      "name": "PrimeReact",
+      "kind": "item",
+      "theme": "企业级 / 数据密集",
+      "imgPath": "previews/primereact.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 79982,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "78.1KB"
+    },
+    {
+      "id": "untitledui",
+      "name": "Untitled UI",
+      "kind": "item",
+      "theme": "设计系统 / Figma 组件",
+      "imgPath": "previews/untitledui.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 46001,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "reshaped",
+      "name": "Reshaped",
+      "kind": "item",
+      "theme": "现代产品 UI / 设计系统",
+      "imgPath": "previews/reshaped.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46092,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "alignui",
+      "name": "AlignUI",
+      "kind": "item",
+      "theme": "设计系统组件 / Figma",
+      "imgPath": "previews/alignui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45207,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "baseui-primitives",
+      "name": "Base UI",
+      "kind": "item",
+      "theme": "无样式原语 / Headless",
+      "imgPath": "previews/baseui-primitives.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45501,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "kiboui",
+      "name": "Kibo UI",
+      "kind": "item",
+      "theme": "shadcn 风格区块",
+      "imgPath": "previews/kiboui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45046,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "tailark",
+      "name": "Tailark",
+      "kind": "item",
+      "theme": "营销 / 落地页区块",
+      "imgPath": "previews/tailark.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 115875,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "113.2KB"
+    },
+    {
+      "id": "aceternity",
+      "name": "Aceternity UI",
+      "kind": "item",
+      "theme": "动画组件 / 炫酷",
+      "imgPath": "previews/aceternity.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45742,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "tremor",
+      "name": "Tremor",
+      "kind": "item",
+      "theme": "数据仪表盘 / 图表",
+      "imgPath": "previews/tremor.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44976,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "parkui",
+      "name": "Park UI",
+      "kind": "item",
+      "theme": "可移植组件 / 多框架",
+      "imgPath": "previews/parkui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 150355,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "146.8KB"
+    },
+    {
+      "id": "magicui",
+      "name": "Magic UI",
+      "kind": "item",
+      "theme": "动画 / 落地页组件",
+      "imgPath": "previews/magicui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44970,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "floatui",
+      "name": "Float UI",
+      "kind": "item",
+      "theme": "Tailwind 组件",
+      "imgPath": "previews/floatui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44387,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "flowbite-react",
+      "name": "Flowbite React",
+      "kind": "item",
+      "theme": "Tailwind 组件",
+      "imgPath": "previews/flowbite-react.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44955,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "preline",
+      "name": "Preline UI",
+      "kind": "item",
+      "theme": "Tailwind 组件 / 设计系统",
+      "imgPath": "previews/preline.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 297285,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "290.3KB"
+    },
+    {
+      "id": "keepreact",
+      "name": "Keep React",
+      "kind": "item",
+      "theme": "Tailwind 组件",
+      "imgPath": "previews/keepreact.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44594,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "originui",
+      "name": "Origin UI",
+      "kind": "item",
+      "theme": "免费组件 / 现代",
+      "imgPath": "previews/originui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44392,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "react-spectrum",
+      "name": "React Spectrum",
+      "kind": "item",
+      "theme": "企业设计系统",
+      "imgPath": "previews/react-spectrum.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 649330,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "634.1KB"
+    },
+    {
+      "id": "recharts",
+      "name": "Recharts",
+      "kind": "item",
+      "theme": "图表 / 数据可视化",
+      "imgPath": "previews/recharts.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44595,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "nivo",
+      "name": "Nivo",
+      "kind": "item",
+      "theme": "图表 / 数据可视化",
+      "imgPath": "previews/nivo.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44288,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "visx",
+      "name": "Visx",
+      "kind": "item",
+      "theme": "图表 / D3 底层",
+      "imgPath": "previews/visx.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 43911,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "tanstack-ui",
+      "name": "TanStack UI",
+      "kind": "item",
+      "theme": "Headless / 表格表单",
+      "imgPath": "previews/tanstack-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45272,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "cmdk",
+      "name": "cmdk",
+      "kind": "item",
+      "theme": "命令面板 / 快捷键",
+      "imgPath": "previews/cmdk.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 151442,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "147.9KB"
+    },
+    {
+      "id": "sonner",
+      "name": "Sonner",
+      "kind": "item",
+      "theme": "Toast 通知",
+      "imgPath": "previews/sonner.png",
+      "issues": [
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 42453,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "41.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "plate",
+      "name": "Plate",
+      "kind": "item",
+      "theme": "富文本编辑器",
+      "imgPath": "previews/plate.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44300,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "mambaui",
+      "name": "Mamba UI",
+      "kind": "item",
+      "theme": "Tailwind 区块",
+      "imgPath": "previews/mambaui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44129,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "kokonutui",
+      "name": "Kokonut UI",
+      "kind": "item",
+      "theme": "动画 / 现代组件",
+      "imgPath": "previews/kokonutui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44920,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "diceui",
+      "name": "Dice UI",
+      "kind": "item",
+      "theme": "Radix 风格组件",
+      "imgPath": "previews/diceui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44684,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "paper-rn",
+      "name": "React Native Paper",
+      "kind": "item",
+      "theme": "移动端 / 跨端",
+      "imgPath": "previews/paper-rn.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46298,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "varlet",
+      "name": "Varlet",
+      "kind": "item",
+      "theme": "移动端 / Vue3",
+      "imgPath": "previews/varlet.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44638,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "wave-ui",
+      "name": "Wave UI",
+      "kind": "item",
+      "theme": "Material 风 / Vue3",
+      "imgPath": "previews/wave-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44408,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "balmui",
+      "name": "BalmUI",
+      "kind": "item",
+      "theme": "Material 风 / Vue3",
+      "imgPath": "previews/balmui.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 43747,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "vue-final-modal",
+      "name": "Vue Final Modal",
+      "kind": "item",
+      "theme": "模态框 / 动画",
+      "imgPath": "previews/vue-final-modal.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44964,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "veevalidate",
+      "name": "VeeValidate",
+      "kind": "item",
+      "theme": "表单校验 / Headless",
+      "imgPath": "previews/veevalidate.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45273,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "tailgrids-vue",
+      "name": "TailGrids Vue",
+      "kind": "item",
+      "theme": "Tailwind 组件",
+      "imgPath": "previews/tailgrids-vue.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44636,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "volt-vue",
+      "name": "Volt Vue",
+      "kind": "item",
+      "theme": "免费 Bootstrap 风",
+      "imgPath": "previews/volt-vue.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 681616,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "665.6KB"
+    },
+    {
+      "id": "flowbite-vue",
+      "name": "Flowbite Vue",
+      "kind": "item",
+      "theme": "Tailwind 组件",
+      "imgPath": "previews/flowbite-vue.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44494,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "nebular",
+      "name": "Nebular",
+      "kind": "item",
+      "theme": "企业级 / 主题化",
+      "imgPath": "previews/nebular.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44264,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "devextreme",
+      "name": "DevExtreme",
+      "kind": "item",
+      "theme": "企业级 / 商业",
+      "imgPath": "previews/devextreme.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45157,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "kendo-angular",
+      "name": "Kendo UI for Angular",
+      "kind": "item",
+      "theme": "企业级 / 商业",
+      "imgPath": "previews/kendo-angular.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45886,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "syncfusion-ng",
+      "name": "Syncfusion EJ2",
+      "kind": "item",
+      "theme": "企业级 / 商业",
+      "imgPath": "previews/syncfusion-ng.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 254606,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "248.6KB"
+    },
+    {
+      "id": "ag-grid",
+      "name": "AG Grid",
+      "kind": "item",
+      "theme": "数据表格 / 高性能",
+      "imgPath": "previews/ag-grid.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45470,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "ionic-ng",
+      "name": "Ionic Angular",
+      "kind": "item",
+      "theme": "移动 / 混合应用",
+      "imgPath": "previews/ionic-ng.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45277,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "covalent",
+      "name": "Covalent",
+      "kind": "item",
+      "theme": "企业级 / 数据",
+      "imgPath": "previews/covalent.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44620,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "fundamental-ngx",
+      "name": "Fundamental NGX",
+      "kind": "item",
+      "theme": "企业设计系统",
+      "imgPath": "previews/fundamental-ngx.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45568,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "agnosui",
+      "name": "AgnosUI",
+      "kind": "item",
+      "theme": "Headless / 可定制",
+      "imgPath": "previews/agnosui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45022,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "ng-aquila",
+      "name": "ng-aquila",
+      "kind": "item",
+      "theme": "金融设计系统",
+      "imgPath": "previews/ng-aquila.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 44851,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "devui-ng",
+      "name": "DevUI",
+      "kind": "item",
+      "theme": "企业级 / 华为",
+      "imgPath": "previews/devui-ng.png",
+      "issues": [
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 43595,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "oblique",
+      "name": "Oblique",
+      "kind": "item",
+      "theme": "政府 / 企业",
+      "imgPath": "previews/oblique.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 44570,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "sbb-angular",
+      "name": "sbb-angular",
+      "kind": "item",
+      "theme": "交通 / 公共设计",
+      "imgPath": "previews/sbb-angular.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 44942,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "ngx-bootstrap",
+      "name": "ngx-bootstrap",
+      "kind": "item",
+      "theme": "Bootstrap 风",
+      "imgPath": "previews/ngx-bootstrap.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 48867,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "47.7KB"
+    },
+    {
+      "id": "meltui",
+      "name": "Melt UI",
+      "kind": "item",
+      "theme": "Headless / 无样式",
+      "imgPath": "previews/meltui.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 44165,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "bitsui",
+      "name": "Bits UI",
+      "kind": "item",
+      "theme": "无样式 / 可定制",
+      "imgPath": "previews/bitsui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44428,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "svar",
+      "name": "SVAR",
+      "kind": "item",
+      "theme": "数据组件 / 表格",
+      "imgPath": "previews/svar.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44933,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "sveltestrap",
+      "name": "Sveltestrap",
+      "kind": "item",
+      "theme": "Bootstrap 风",
+      "imgPath": "previews/sveltestrap.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44897,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "smelte",
+      "name": "Smelte",
+      "kind": "item",
+      "theme": "Material 风",
+      "imgPath": "previews/smelte.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 43626,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "attractions",
+      "name": "Attractions",
+      "kind": "item",
+      "theme": "现代 / 轻量",
+      "imgPath": "previews/attractions.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 44906,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "svelteui",
+      "name": "SvelteUI",
+      "kind": "item",
+      "theme": "现代组件",
+      "imgPath": "previews/svelteui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44232,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "grailui",
+      "name": "Grail UI",
+      "kind": "item",
+      "theme": "Headless / 可访问",
+      "imgPath": "previews/grailui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44401,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "atoui",
+      "name": "Ato UI",
+      "kind": "item",
+      "theme": "现代 / 主题化",
+      "imgPath": "previews/atoui.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 43886,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "m3-svelte",
+      "name": "M3 Svelte",
+      "kind": "item",
+      "theme": "Material 3",
+      "imgPath": "previews/m3-svelte.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 234951,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "229.4KB"
+    },
+    {
+      "id": "konsta",
+      "name": "Konsta",
+      "kind": "item",
+      "theme": "移动 / 原生风",
+      "imgPath": "previews/konsta.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 44354,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "yesvelte",
+      "name": "Yesvelte",
+      "kind": "item",
+      "theme": "现代组件",
+      "imgPath": "previews/yesvelte.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 88680,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "86.6KB"
+    },
+    {
+      "id": "solid-ui",
+      "name": "Solid UI",
+      "kind": "item",
+      "theme": "Radix 风格",
+      "imgPath": "previews/solid-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44223,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "hope-ui",
+      "name": "Hope UI",
+      "kind": "item",
+      "theme": "Chakra 风格",
+      "imgPath": "previews/hope-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 43976,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "solid-headless-ui",
+      "name": "Solid Headless",
+      "kind": "item",
+      "theme": "无样式原语",
+      "imgPath": "previews/solid-headless-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45683,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "qwik-ui",
+      "name": "Qwik UI",
+      "kind": "item",
+      "theme": "Headless / 可访问",
+      "imgPath": "previews/qwik-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 419339,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "409.5KB"
+    },
+    {
+      "id": "spectrum-wc",
+      "name": "Spectrum Web Components",
+      "kind": "item",
+      "theme": "企业设计系统",
+      "imgPath": "previews/spectrum-wc.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 48194,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "47.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "ui5-wc",
+      "name": "UI5 Web Components",
+      "kind": "item",
+      "theme": "企业设计系统",
+      "imgPath": "previews/ui5-wc.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 47557,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "46.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "axa-pl",
+      "name": "AXA Pattern Library",
+      "kind": "item",
+      "theme": "金融 / 企业",
+      "imgPath": "previews/axa-pl.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46926,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "brightspace-ui",
+      "name": "Brightspace UI",
+      "kind": "item",
+      "theme": "教育 / 企业",
+      "imgPath": "previews/brightspace-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46462,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "clarity-core",
+      "name": "Clarity Core",
+      "kind": "item",
+      "theme": "企业设计系统",
+      "imgPath": "previews/clarity-core.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46201,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "kor",
+      "name": "Kor",
+      "kind": "item",
+      "theme": "设计系统",
+      "imgPath": "previews/kor.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44376,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "momentum-ui",
+      "name": "Momentum UI",
+      "kind": "item",
+      "theme": "企业设计系统",
+      "imgPath": "previews/momentum-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45875,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "pharos",
+      "name": "Pharos",
+      "kind": "item",
+      "theme": "学术 / 企业",
+      "imgPath": "previews/pharos.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44981,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "redhat-ds",
+      "name": "Red Hat Design System",
+      "kind": "item",
+      "theme": "企业 / 开源",
+      "imgPath": "previews/redhat-ds.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 47239,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "46.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "calcite",
+      "name": "Calcite Components",
+      "kind": "item",
+      "theme": "地图 / GIS",
+      "imgPath": "previews/calcite.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 166343,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "162.4KB"
+    },
+    {
+      "id": "vaadin-wc",
+      "name": "Vaadin Components",
+      "kind": "item",
+      "theme": "企业级",
+      "imgPath": "previews/vaadin-wc.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46733,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "agnosticui",
+      "name": "AgnosticUI",
+      "kind": "item",
+      "theme": "框架无关",
+      "imgPath": "previews/agnosticui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 147651,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "144.2KB"
+    },
+    {
+      "id": "dile-wc",
+      "name": "Dile Components",
+      "kind": "item",
+      "theme": "框架无关",
+      "imgPath": "previews/dile-wc.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46365,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "wired-elements",
+      "name": "wired-elements",
+      "kind": "item",
+      "theme": "手绘风 / 趣味",
+      "imgPath": "previews/wired-elements.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46399,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "unocss",
+      "name": "UnoCSS",
+      "kind": "item",
+      "theme": "原子化 CSS 引擎",
+      "imgPath": "previews/unocss.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44546,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "open-props",
+      "name": "Open Props",
+      "kind": "item",
+      "theme": "CSS 变量 / 设计令牌",
+      "imgPath": "previews/open-props.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45744,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "panda-css",
+      "name": "Panda CSS",
+      "kind": "item",
+      "theme": "原子化 / 类型安全",
+      "imgPath": "previews/panda-css.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44986,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "vanilla-extract",
+      "name": "Vanilla Extract",
+      "kind": "item",
+      "theme": "零运行时 / TS",
+      "imgPath": "previews/vanilla-extract.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44461,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "stylex",
+      "name": "StyleX",
+      "kind": "item",
+      "theme": "原子化 / 规模化",
+      "imgPath": "previews/stylex.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44406,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "lightning-css",
+      "name": "Lightning CSS",
+      "kind": "item",
+      "theme": "CSS 编译器 / 工具",
+      "imgPath": "previews/lightning-css.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45629,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "halfmoon",
+      "name": "Halfmoon",
+      "kind": "item",
+      "theme": "框架 / 暗色",
+      "imgPath": "previews/halfmoon.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44059,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "milligram",
+      "name": "Milligram",
+      "kind": "item",
+      "theme": "极简 / 轻量",
+      "imgPath": "previews/milligram.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 43858,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "beer-css",
+      "name": "Beer CSS",
+      "kind": "item",
+      "theme": "Material 风",
+      "imgPath": "previews/beer-css.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 43909,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "materialize",
+      "name": "Materialize",
+      "kind": "item",
+      "theme": "Material 风",
+      "imgPath": "previews/materialize.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44217,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "chota",
+      "name": "Chota",
+      "kind": "item",
+      "theme": "微框架 / 极简",
+      "imgPath": "previews/chota.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44292,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "pure-css",
+      "name": "Pure.css",
+      "kind": "item",
+      "theme": "极简 / 模块化",
+      "imgPath": "previews/pure-css.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44457,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "tachyons",
+      "name": "Tachyons",
+      "kind": "item",
+      "theme": "原子化 / 古典",
+      "imgPath": "previews/tachyons.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 43662,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "material-design",
+      "name": "Material Design",
+      "kind": "item",
+      "theme": "设计语言 / 规范",
+      "imgPath": "previews/material-design.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 344011,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "335.9KB"
+    },
+    {
+      "id": "sap-fiori",
+      "name": "SAP Fiori",
+      "kind": "item",
+      "theme": "企业设计系统",
+      "imgPath": "previews/sap-fiori.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44564,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "sap-fundamental",
+      "name": "SAP Fundamental",
+      "kind": "item",
+      "theme": "企业样式",
+      "imgPath": "previews/sap-fundamental.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 149524,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "146.0KB"
+    },
+    {
+      "id": "oracle-redwood",
+      "name": "Oracle Redwood",
+      "kind": "item",
+      "theme": "企业设计系统",
+      "imgPath": "previews/oracle-redwood.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45592,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "twilio-paste",
+      "name": "Twilio Paste",
+      "kind": "item",
+      "theme": "通信 / 企业",
+      "imgPath": "previews/twilio-paste.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44412,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "hubspot-canvas",
+      "name": "HubSpot Canvas",
+      "kind": "item",
+      "theme": "营销 / 企业",
+      "imgPath": "previews/hubspot-canvas.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45494,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "audi-ui",
+      "name": "Audi UI",
+      "kind": "item",
+      "theme": "汽车 / 品牌",
+      "imgPath": "previews/audi-ui.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 43720,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "backpack",
+      "name": "Backpack",
+      "kind": "item",
+      "theme": "旅行 / 企业",
+      "imgPath": "previews/backpack.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44966,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "devui-design",
+      "name": "DevUI Design",
+      "kind": "item",
+      "theme": "企业级 / 华为",
+      "imgPath": "previews/devui-design.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44555,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "mand-mobile",
+      "name": "Mand Mobile",
+      "kind": "item",
+      "theme": "移动端 / 滴滴",
+      "imgPath": "previews/mand-mobile.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45204,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "ke-design",
+      "name": "Ke.Design",
+      "kind": "item",
+      "theme": "房产 / 企业",
+      "imgPath": "previews/ke-design.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 44127,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "vercel-geist",
+      "name": "Vercel Geist",
+      "kind": "item",
+      "theme": "极简 / 开发者",
+      "imgPath": "previews/vercel-geist.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 44763,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "43.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "workday-canvas",
+      "name": "Workday Canvas",
+      "kind": "item",
+      "theme": "企业 HR",
+      "imgPath": "previews/workday-canvas.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 45143,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "zendesk-garden",
+      "name": "Zendesk Garden",
+      "kind": "item",
+      "theme": "企业 / 客服",
+      "imgPath": "previews/zendesk-garden.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 45287,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "44.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "bbc-gel",
+      "name": "BBC GEL",
+      "kind": "item",
+      "theme": "媒体 / 公共",
+      "imgPath": "previews/bbc-gel.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 43945,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "42.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "uswds",
+      "name": "U.S. Web Design System",
+      "kind": "item",
+      "theme": "政府 / 公共",
+      "imgPath": "previews/uswds.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 47646,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "46.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "govuk",
+      "name": "GOV.UK Design System",
+      "kind": "item",
+      "theme": "政府 / 公共",
+      "imgPath": "previews/govuk.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 46140,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "45.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "nord",
+      "name": "Nord Design System",
+      "kind": "item",
+      "theme": "医疗 / 企业",
+      "imgPath": "previews/nord.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 138582,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "135.3KB"
+    },
+    {
+      "id": "proj-2021-two-good-co",
+      "name": "Two Good Co",
+      "kind": "proj",
+      "theme": "作品集 / 电商",
+      "imgPath": "previews/proj-2021-two-good-co.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 131094,
+      "width": 1200,
+      "height": 750,
+      "fileSizeFormatted": "128.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "proj-2023-atmos",
+      "name": "Atmos",
+      "kind": "proj",
+      "theme": "3D / WebGL",
+      "imgPath": "previews/proj-2023-atmos.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 4238,
+      "width": 1200,
+      "height": 750,
+      "fileSizeFormatted": "4.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "proj-2023-obys",
+      "name": "Obys Agency",
+      "kind": "proj",
+      "theme": "创意机构",
+      "imgPath": "previews/proj-2023-obys.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 51546,
+      "width": 1200,
+      "height": 750,
+      "fileSizeFormatted": "50.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "proj-2024-gentlerain",
+      "name": "Gentle Rain",
+      "kind": "proj",
+      "theme": "3D / WebGL",
+      "imgPath": "previews/proj-2024-gentlerain.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 62265,
+      "width": 1200,
+      "height": 750,
+      "fileSizeFormatted": "60.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "proj-2025-adidas",
+      "name": "Adidas (Clone)",
+      "kind": "proj",
+      "theme": "产品落地页",
+      "imgPath": "previews/proj-2025-adidas.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 28344,
+      "width": 1200,
+      "height": 750,
+      "fileSizeFormatted": "27.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "proj-template-portfolio",
+      "name": "Portfolio Template",
+      "kind": "proj",
+      "theme": "作品集模板",
+      "imgPath": "previews/proj-template-portfolio.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 4240,
+      "width": 1200,
+      "height": 750,
+      "fileSizeFormatted": "4.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "proj-bruno-folio-2019",
+      "name": "Bruno Simon Folio 2019",
+      "kind": "proj",
+      "theme": "3D / WebGL 标杆",
+      "imgPath": "previews/proj-bruno-folio-2019.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 50052,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "48.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "proj-bruno-folio-2025",
+      "name": "Bruno Simon Folio 2025",
+      "kind": "proj",
+      "theme": "3D / WebGL 标杆",
+      "imgPath": "previews/proj-bruno-folio-2025.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 50020,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "48.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-lusion-oryzo",
+      "name": "Lusion — Oryzo AI",
+      "kind": "proj",
+      "theme": "WebGL / AI",
+      "imgPath": "previews/awd-lusion-oryzo.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 203667,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "198.9KB"
+    },
+    {
+      "id": "awd-immersive-gq",
+      "name": "Immersive Garden — GQ&AP",
+      "kind": "proj",
+      "theme": "创意机构",
+      "imgPath": "previews/awd-immersive-gq.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 77529,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "75.7KB"
+    },
+    {
+      "id": "awd-immersive-cartier",
+      "name": "Immersive Garden — Cartier",
+      "kind": "proj",
+      "theme": "奢侈品牌",
+      "imgPath": "previews/awd-immersive-cartier.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 66305,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "64.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-resn-tracing",
+      "name": "Resn — Tracing Art",
+      "kind": "proj",
+      "theme": "实验 / WebGL",
+      "imgPath": "previews/awd-resn-tracing.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 58776,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "57.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-noomo",
+      "name": "Noomo Agency",
+      "kind": "proj",
+      "theme": "机构作品集",
+      "imgPath": "previews/awd-noomo.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 65129,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-unknown",
+      "name": "THE UN KNOWN",
+      "kind": "proj",
+      "theme": "创意机构",
+      "imgPath": "previews/awd-unknown.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 66646,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "65.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-jeton",
+      "name": "Jeton",
+      "kind": "proj",
+      "theme": "金融科技",
+      "imgPath": "previews/awd-jeton.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 62585,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "61.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-activetheory",
+      "name": "Active Theory",
+      "kind": "proj",
+      "theme": "互动体验",
+      "imgPath": "previews/awd-activetheory.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 68170,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "66.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-cuberto",
+      "name": "Cuberto",
+      "kind": "proj",
+      "theme": "创意机构",
+      "imgPath": "previews/awd-cuberto.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 63819,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "62.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-akqa",
+      "name": "AKQA",
+      "kind": "proj",
+      "theme": "数字代理",
+      "imgPath": "previews/awd-akqa.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 61102,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "59.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-hellomonday",
+      "name": "Hello Monday",
+      "kind": "proj",
+      "theme": "品牌体验",
+      "imgPath": "previews/awd-hellomonday.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 64087,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "62.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-dogstudio",
+      "name": "Dogstudio",
+      "kind": "proj",
+      "theme": "创意机构",
+      "imgPath": "previews/awd-dogstudio.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 65495,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "64.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-makemepulse",
+      "name": "Makemepulse",
+      "kind": "proj",
+      "theme": "创意机构",
+      "imgPath": "previews/awd-makemepulse.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 66469,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "64.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-rga",
+      "name": "R/GA",
+      "kind": "proj",
+      "theme": "数字代理",
+      "imgPath": "previews/awd-rga.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 62296,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "60.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-webflow",
+      "name": "Webflow",
+      "kind": "proj",
+      "theme": "建站平台",
+      "imgPath": "previews/awd-webflow.png",
+      "issues": [
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 61960,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "60.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-waaark",
+      "name": "Waaark",
+      "kind": "proj",
+      "theme": "作品集",
+      "imgPath": "previews/awd-waaark.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 64650,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-locomotive",
+      "name": "Locomotive",
+      "kind": "proj",
+      "theme": "作品集 / 平滑滚动",
+      "imgPath": "previews/awd-locomotive.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 104696,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "102.2KB"
+    },
+    {
+      "id": "awd-huge",
+      "name": "Huge Inc",
+      "kind": "proj",
+      "theme": "数字代理",
+      "imgPath": "previews/awd-huge.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 41639,
+      "width": 1280,
+      "height": 820,
+      "fileSizeFormatted": "40.7KB"
+    },
+    {
+      "id": "awd-antinomy",
+      "name": "Antinomy",
+      "kind": "proj",
+      "theme": "实验",
+      "imgPath": "previews/awd-antinomy.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 63619,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "62.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-qode",
+      "name": "Qode",
+      "kind": "proj",
+      "theme": "模板 / 作品集",
+      "imgPath": "previews/awd-qode.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 64477,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-cleave",
+      "name": "Cleave",
+      "kind": "proj",
+      "theme": "创意",
+      "imgPath": "previews/awd-cleave.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 61836,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "60.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-aristide",
+      "name": "Aristide",
+      "kind": "proj",
+      "theme": "作品集",
+      "imgPath": "previews/awd-aristide.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 64659,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-tolus",
+      "name": "Tolus",
+      "kind": "proj",
+      "theme": "机构",
+      "imgPath": "previews/awd-tolus.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 64083,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "62.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-crafted",
+      "name": "Crafted",
+      "kind": "proj",
+      "theme": "创意",
+      "imgPath": "previews/awd-crafted.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 63569,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "62.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-hakuhodo",
+      "name": "Hakuhodo",
+      "kind": "proj",
+      "theme": "广告 / 创意",
+      "imgPath": "previews/awd-hakuhodo.png",
+      "issues": [
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 61625,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "60.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-fashionawards",
+      "name": "Fashion Awards",
+      "kind": "proj",
+      "theme": "时尚",
+      "imgPath": "previews/awd-fashionawards.png",
+      "issues": [
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 65911,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "64.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-cupra",
+      "name": "Cupra",
+      "kind": "proj",
+      "theme": "汽车",
+      "imgPath": "previews/awd-cupra.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 61416,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "60.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-volvo",
+      "name": "Volvo",
+      "kind": "proj",
+      "theme": "汽车",
+      "imgPath": "previews/awd-volvo.png",
+      "issues": [
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 63239,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "61.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-gucci",
+      "name": "Gucci",
+      "kind": "proj",
+      "theme": "奢侈",
+      "imgPath": "previews/awd-gucci.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 60560,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "59.1KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-balenciaga",
+      "name": "Balenciaga",
+      "kind": "proj",
+      "theme": "奢侈",
+      "imgPath": "previews/awd-balenciaga.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 61453,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "60.0KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-louisvuitton",
+      "name": "Louis Vuitton",
+      "kind": "proj",
+      "theme": "奢侈",
+      "imgPath": "previews/awd-louisvuitton.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 62898,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "61.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-apple",
+      "name": "Apple",
+      "kind": "proj",
+      "theme": "产品",
+      "imgPath": "previews/awd-apple.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 59898,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "58.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-cybernauts",
+      "name": "cybērnauts",
+      "kind": "proj",
+      "theme": "创意",
+      "imgPath": "previews/awd-cybernauts.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 64368,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "62.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-instrument",
+      "name": "Instrument",
+      "kind": "proj",
+      "theme": "数字代理",
+      "imgPath": "previews/awd-instrument.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 64998,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.5KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-field",
+      "name": "Field.io",
+      "kind": "proj",
+      "theme": "创意",
+      "imgPath": "previews/awd-field.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 62380,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "60.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-animade",
+      "name": "Animade",
+      "kind": "proj",
+      "theme": "创意",
+      "imgPath": "previews/awd-animade.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 65303,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.8KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-unseen",
+      "name": "Unseen",
+      "kind": "proj",
+      "theme": "机构",
+      "imgPath": "previews/awd-unseen.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 64736,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.2KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-haus",
+      "name": "Haus",
+      "kind": "proj",
+      "theme": "品牌",
+      "imgPath": "previews/awd-haus.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 61044,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "59.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-buck",
+      "name": "Buck",
+      "kind": "proj",
+      "theme": "创意",
+      "imgPath": "previews/awd-buck.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 63183,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "61.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-raggededge",
+      "name": "Ragged Edge",
+      "kind": "proj",
+      "theme": "品牌",
+      "imgPath": "previews/awd-raggededge.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 63809,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "62.3KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-velvet",
+      "name": "Velvet",
+      "kind": "proj",
+      "theme": "创意",
+      "imgPath": "previews/awd-velvet.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 63113,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "61.6KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-bureau-borsche",
+      "name": "Bureau Borsche",
+      "kind": "proj",
+      "theme": "设计",
+      "imgPath": "previews/awd-bureau-borsche.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 64242,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "62.7KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-studio-lumio",
+      "name": "Studio Lumio",
+      "kind": "proj",
+      "theme": "工作室",
+      "imgPath": "previews/awd-studio-lumio.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 62376,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "60.9KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-buzzed",
+      "name": "Buzzed",
+      "kind": "proj",
+      "theme": "互动",
+      "imgPath": "previews/awd-buzzed.png",
+      "issues": [
+        "NO_PROMPT",
+        "NO_DESC",
+        "NO_VERIFICATION"
+      ],
+      "fileSize": 64895,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.4KB",
+      "nonStandardDims": true
+    },
+    {
+      "id": "awd-verve",
+      "name": "Verve",
+      "kind": "proj",
+      "theme": "音乐",
+      "imgPath": "previews/awd-verve.png",
+      "issues": [
+        "NO_DESC"
+      ],
+      "fileSize": 64621,
+      "width": 480,
+      "height": 300,
+      "fileSizeFormatted": "63.1KB",
+      "nonStandardDims": true
+    }
+  ]
+}

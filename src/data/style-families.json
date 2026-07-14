@@ -1,0 +1,355 @@
+[
+  {
+    "key": "3d-webgl",
+    "name": "3D / WebGL",
+    "nameZh": "三维 / WebGL",
+    "description": "沉浸式 3D 场景、WebGL 着色器、物理交互",
+    "keywords": [
+      "3d",
+      "webgl",
+      "three.js",
+      "shader",
+      "canvas",
+      "gpu",
+      "immersive",
+      "3d-webgl"
+    ],
+    "mood": [
+      "futuristic",
+      "immersive",
+      "bold"
+    ],
+    "materials": [
+      "digital-light",
+      "particle",
+      "liquid-metal"
+    ]
+  },
+  {
+    "key": "luxury",
+    "name": "Luxury",
+    "nameZh": "奢华",
+    "description": "金色质感、衬线优雅、克制留白、高端品牌",
+    "keywords": [
+      "luxury",
+      "lux",
+      "cartier",
+      "gucci",
+      "balenciaga",
+      "louis vuitton",
+      "奢侈",
+      "珠宝",
+      "高端"
+    ],
+    "mood": [
+      "elegant",
+      "dark",
+      "refined",
+      "exclusive"
+    ],
+    "materials": [
+      "gold",
+      "silk",
+      "marble",
+      "glass"
+    ]
+  },
+  {
+    "key": "creative-agency",
+    "name": "Creative Agency",
+    "nameZh": "创意机构",
+    "description": "大胆排版、流体动效、实验性交互、品牌叙事",
+    "keywords": [
+      "creative",
+      "agency",
+      "cuberto",
+      "obys",
+      "studio",
+      "创意",
+      "机构",
+      "数字代理"
+    ],
+    "mood": [
+      "bold",
+      "playful",
+      "experimental",
+      "energetic"
+    ],
+    "materials": [
+      "fluid",
+      "organic",
+      "digital-paint"
+    ]
+  },
+  {
+    "key": "editorial",
+    "name": "Editorial / Magazine",
+    "nameZh": "编辑 / 杂志",
+    "description": "瑞士排版、内容驱动、层次分明、阅读优先",
+    "keywords": [
+      "editorial",
+      "magazine",
+      "typography",
+      "swiss",
+      "编辑",
+      "杂志",
+      "排版"
+    ],
+    "mood": [
+      "clean",
+      "structured",
+      "intellectual"
+    ],
+    "materials": [
+      "paper",
+      "ink"
+    ]
+  },
+  {
+    "key": "brutalist",
+    "name": "Brutalist",
+    "nameZh": "粗野主义",
+    "description": "裸露结构、系统字体、强烈对比、反装饰",
+    "keywords": [
+      "brutalist",
+      "brutalism",
+      "raw",
+      "粗野",
+      "裸露"
+    ],
+    "mood": [
+      "raw",
+      "confrontational",
+      "honest"
+    ],
+    "materials": [
+      "concrete",
+      "raw-html"
+    ]
+  },
+  {
+    "key": "minimal",
+    "name": "Minimal",
+    "nameZh": "极简",
+    "description": "大量留白、有限色彩、功能优先、克制动效",
+    "keywords": [
+      "minimal",
+      "clean",
+      "simple",
+      "极简",
+      "简洁",
+      "留白"
+    ],
+    "mood": [
+      "calm",
+      "focused",
+      "pure"
+    ],
+    "materials": [
+      "air",
+      "light"
+    ]
+  },
+  {
+    "key": "product",
+    "name": "Product / SaaS",
+    "nameZh": "产品 / SaaS",
+    "description": "清晰信息架构、功能展示、转化导向",
+    "keywords": [
+      "product",
+      "saas",
+      "landing",
+      "app",
+      "产品",
+      "落地页"
+    ],
+    "mood": [
+      "professional",
+      "clear",
+      "trustworthy"
+    ],
+    "materials": [
+      "screen",
+      "interface"
+    ]
+  },
+  {
+    "key": "automotive",
+    "name": "Automotive",
+    "nameZh": "汽车",
+    "description": "金属质感、动态视角、机械精密、性能展示",
+    "keywords": [
+      "car",
+      "auto",
+      "automotive",
+      "cupra",
+      "volvo",
+      "汽车",
+      "赛车"
+    ],
+    "mood": [
+      "powerful",
+      "precise",
+      "cold"
+    ],
+    "materials": [
+      "metal",
+      "carbon-fiber",
+      "glass"
+    ]
+  },
+  {
+    "key": "fashion",
+    "name": "Fashion",
+    "nameZh": "时尚",
+    "description": "大片式摄影、季节性色彩、品牌叙事",
+    "keywords": [
+      "fashion",
+      "style",
+      "trend",
+      "时尚",
+      "时装"
+    ],
+    "mood": [
+      "trendy",
+      "aspirational",
+      "editorial"
+    ],
+    "materials": [
+      "fabric",
+      "photography"
+    ]
+  },
+  {
+    "key": "experimental",
+    "name": "Experimental",
+    "nameZh": "实验",
+    "description": "非常规交互、生成艺术、技术探索",
+    "keywords": [
+      "experiment",
+      "experimental",
+      "art",
+      "generative",
+      "实验",
+      "生成"
+    ],
+    "mood": [
+      "curious",
+      "unexpected",
+      "artistic"
+    ],
+    "materials": [
+      "code",
+      "light",
+      "particle"
+    ]
+  },
+  {
+    "key": "portfolio",
+    "name": "Portfolio",
+    "nameZh": "作品集",
+    "description": "个人展示、项目叙事、独特个性",
+    "keywords": [
+      "portfolio",
+      "personal",
+      "folio",
+      "作品集",
+      "个人"
+    ],
+    "mood": [
+      "personal",
+      "distinctive",
+      "curated"
+    ],
+    "materials": [
+      "varies"
+    ]
+  },
+  {
+    "key": "music",
+    "name": "Music / Audio",
+    "nameZh": "音乐 / 音频",
+    "description": "节奏感动效、音频可视化、沉浸式体验",
+    "keywords": [
+      "music",
+      "audio",
+      "sound",
+      "音乐",
+      "音频"
+    ],
+    "mood": [
+      "rhythmic",
+      "immersive",
+      "vibrant"
+    ],
+    "materials": [
+      "sound-wave",
+      "light"
+    ]
+  },
+  {
+    "key": "brand",
+    "name": "Brand Experience",
+    "nameZh": "品牌体验",
+    "description": "品牌世界构建、故事驱动、情感连接",
+    "keywords": [
+      "brand",
+      "experience",
+      "品牌",
+      "体验"
+    ],
+    "mood": [
+      "emotional",
+      "cohesive",
+      "memorable"
+    ],
+    "materials": [
+      "varies"
+    ]
+  },
+  {
+    "key": "fintech",
+    "name": "Fintech / Data",
+    "nameZh": "金融 / 数据",
+    "description": "数据密集、图表驱动、专业可信",
+    "keywords": [
+      "fintech",
+      "finance",
+      "bank",
+      "data",
+      "金融",
+      "数据"
+    ],
+    "mood": [
+      "professional",
+      "precise",
+      "trustworthy"
+    ],
+    "materials": [
+      "screen",
+      "data-visualization"
+    ]
+  },
+  {
+    "key": "government",
+    "name": "Government / Public",
+    "nameZh": "政府 / 公共",
+    "description": "高可访问性、规范排版、服务导向",
+    "keywords": [
+      "government",
+      "public",
+      "gov",
+      "政府",
+      "公共"
+    ],
+    "mood": [
+      "official",
+      "accessible",
+      "structured"
+    ],
+    "materials": [
+      "paper",
+      "screen"
+    ]
+  }
+]
