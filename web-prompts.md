@@ -28,9 +28,10 @@
 - 强阴影:0 20px 25px -5px rgba(0,0,0,0.1)。
 
 ## 组件细节(写给生成器的具体规格)
-- 按钮:圆角 8px,内边距 12px 24px,字重 500;hover 上浮 2px 并加深背景色;点击缩放 0.98。
-- 卡片:白底,圆角 16–20px,边框 1px solid rgba(0,0,0,0.05);hover 上浮 4px + 阴影加深 + 图片轻微放大 1.02。
-- 输入框:圆角 12px,边框 1px solid #E5E7EB;focus 时边框变主色(2px);placeholder 色 #9CA3AF。
+- 按钮:圆角 8px,内边距 12px 24px,字重 500;:hover 上浮 translateY(-1px) 并加深背景色 5%;:active 缩放 scale(0.98) + 背景再深一级(如 #1677ff → #0958d9);:focus-visible 显示 2px 主色 ring。松开恢复,transition: all 150ms ease。
+- 卡片:白底,圆角 16–20px,边框 1px solid rgba(0,0,0,0.05);hover 上浮 4px + 阴影加深 + 图片轻微放大 1.02;active 可轻微下沉 translateY(1px)。
+- 输入框:圆角 12px,边框 1px solid #E5E7EB;:focus 时边框变主色(2px) + box-shadow ring;placeholder 色 #9CA3AF。
+- 导航链接:hover 时颜色过渡(transition: color 200ms) + 下划线从左滑入(width: 0→100%);active 颜色再深一级。
 - 图标:Feather / Heroicons 风格,20×20,颜色继承文字色;用内联 SVG。
 - 分隔线:1px solid #E5E7EB,或渐变透明线。
 
@@ -40,6 +41,10 @@
 - 悬停反馈:卡片上浮 4px + 阴影加深 + 图片 scale(1.02)。
 - 加载态:骨架屏用 pulse 动画,或简洁旋转指示器。
 - 点击波纹:主色半透明扩散圈(移动端)。
+- **点击反馈(:active):** 按下瞬间缩放 scale(0.96~0.98) + 背景色加深 10~15%(如 #1677ff → #0958d9)。松开恢复原尺寸(transition: transform 100ms)。这是"点击效果"的核心——必须实现,不可省略。
+- **焦点反馈(:focus-visible):** 交互元素获得键盘焦点时,显示 2px 主色 ring(box-shadow: 0 0 0 2px var(--ring) 或 0 0 0 3px rgba(primary,0.3))。鼠标点击不显示 ring(用 :focus-visible 而非 :focus)。
+- **悬停反馈(:hover):** 按钮 hover 时背景色提亮 5~10% + translateY(-1px) + 阴影加深;链接 hover 时颜色变化 + 可选下划线滑入;图标按钮 hover 时背景出现圆形/圆角高亮(如 bg-primary/10)。
+- 若提示词中已给出从真实站点提取的交互状态终态值(见"交互状态规格"段),**以那些真实值为准**,本段仅作默认补充。
 
 ## 风格与氛围关键词(按目标网站气质选用)
 - 现代:玻璃拟物(Glassmorphism)、新拟态(Neumorphism)、极简主义、Bento 网格、暗黑模式。

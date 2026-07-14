@@ -12,6 +12,12 @@ const UNIVERSAL = `# Universal high-fidelity build directives (apply to every ge
 - Use the REAL copy/text provided. Never use lorem ipsum or placeholder text.
 - Replicate animations FRAME-ACCURATELY: paste the real @keyframes and transition values (duration, easing curve, delay) from the "Precise animation spec" section VERBATIM. Do not rewrite or simplify them.
 - Preserve trigger timing: hover, scroll-reveal, and on-load entrance animations must fire at the same moments as the original (card lifts on hover, nav links shift color, hero elements fade+rise on load).
+- **交互反馈是页面"活"的关键——每个可交互元素都必须有明确的 :hover、:active、:focus-visible 反馈:**
+  - 按钮 :hover → 背景色加深 + 上浮 translateY(-1px); :active → 缩放 scale(0.98) + 背景再深一级; :focus-visible → 2px 主色 ring (box-shadow)。
+  - 链接 :hover → 文字变色/下划线滑入; :active → 颜色再深一级。
+  - 输入框 :focus → 边框变主色 + box-shadow ring。
+  - 卡片 :hover → 上浮 4px + 阴影加深 + 图片 scale(1.02)。
+  - 若下方"交互状态规格"提供了从真实站点提取的终态值,**必须以这些真实值为准**,上面的默认规则仅作补充(未列出时使用)。
 - Target a 1280px desktop viewport, desktop-first. Match element sizes, spacing, radii, and layout exactly.
 - Production quality: no console errors, no overflow, no blurry assets. Implement icons as inline SVG or pure CSS.
 - Do not invent sections that are not described. Stay faithful to the specified above-the-fold content.`;
@@ -99,6 +105,25 @@ function buildAnimAppendix(anim) {
     parts.push('');
   }
 
+  // 交互状态终态(:hover/:active/:focus 从真实站点 CDP 提取)
+  const interactions = anim.interactions || [];
+  if (interactions.length) {
+    hasData = true;
+    parts.push('## 交互状态规格(从真实站点提取的 :hover/:active/:focus 终态——必须照此实现)');
+    parts.push('');
+    for (const it of interactions.slice(0, 24)) {
+      const buckets = [];
+      if (Object.keys(it.hover || {}).length) buckets.push('**hover:** ' + Object.entries(it.hover).map(([k, v]) => k + ': ' + v).join('; '));
+      if (Object.keys(it.active || {}).length) buckets.push('**active:** ' + Object.entries(it.active).map(([k, v]) => k + ': ' + v).join('; '));
+      if (Object.keys(it.focus || {}).length) buckets.push('**focus:** ' + Object.entries(it.focus).map(([k, v]) => k + ': ' + v).join('; '));
+      if (it.focusVisible && Object.keys(it.focusVisible).length) buckets.push('**focus-visible:** ' + Object.entries(it.focusVisible).map(([k, v]) => k + ': ' + v).join('; '));
+      if (buckets.length) parts.push('- `' + it.sel + '`:\n  ' + buckets.join('\n  '));
+    }
+    parts.push('');
+    parts.push('> 上述终态值是从真实站点 CSS 中提取的精确声明(已过滤跨域变量与工具类噪声)。请在对应的交互元素上逐条还原这些属性变化。对于未在列表中出现的交互元素,按 UNIVERSAL 指令中的默认规则(按钮点击缩放 0.98、悬停上浮、聚焦 ring 等)补全。');
+    parts.push('');
+  }
+
   // @keyframes 真实代码(去噪 + 限量 + 限长)
   const useful = kfNames.filter(n => !isNoise(n));
   const picked = (useful.length ? useful : kfNames).slice(0, 14);
@@ -119,7 +144,7 @@ function buildAnimAppendix(anim) {
     parts.push('');
   }
 
-  parts.push('实现要求:上述过渡时长/缓动函数/关键帧务必与数值一致;悬停/滚动/进入视口的触发时机也要还原(如卡片 hover 上浮、导航链接变色、首屏元素淡入上移)。');
+  parts.push('实现要求:上述过渡时长/缓动函数/关键帧务必与数值一致;悬停/滚动/进入视口的触发时机也要还原(如卡片 hover 上浮、导航链接变色、首屏元素淡入上移)。交互状态规格中的 :hover/:active/:focus 终态值是真实提取的——必须逐条复刻,确保点击按钮时颜色变深+缩放、悬停时上浮+阴影、聚焦时出现 ring 等反馈与原站一致。');
 
   return { text: parts.join('\n'), hasData };
 }
