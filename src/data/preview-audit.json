@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-15T04:39:55.926Z",
+  "generatedAt": "2026-07-15T05:53:47.726Z",
   "summary": {
-    "totalRecords": 230,
+    "totalRecords": 232,
     "accepted": 152,
-    "quarantined": 78,
+    "quarantined": 80,
     "acceptedWithCriticalIssues": 0,
     "acceptedFamilies": 26
   },
@@ -2335,6 +2335,26 @@
       "width": 1280,
       "height": 820,
       "fileSize": 71797,
+      "issues": []
+    },
+    {
+      "id": "demo-portfolio",
+      "name": "Mira Sato 作品集（验证演示·纯CSS浅色）",
+      "accepted": false,
+      "previewImage": "previews/demo-portfolio.png",
+      "width": 1280,
+      "height": 820,
+      "fileSize": 179000,
+      "issues": []
+    },
+    {
+      "id": "demo-dashboard",
+      "name": "Pulse Analytics 数据看板（验证演示·纯CSS深色）",
+      "accepted": false,
+      "previewImage": "previews/demo-dashboard.png",
+      "width": 1280,
+      "height": 820,
+      "fileSize": 66787,
       "issues": []
     }
   ]

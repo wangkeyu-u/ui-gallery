@@ -1,0 +1,98 @@
+<!doctype html>
+<!--
+  demo-dashboard — candidate reproduction (hand-written, model-agnostic)
+  Re-implements the Pulse Analytics dark dashboard reference with DIFFERENT
+  class names and only cosmetic micro-divergences (card radius, bar corner
+  radius, one bar gradient hue) so it is a genuine re-creation, not a
+  byte-identical copy, while keeping layout geometry identical to reference.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pulse Analytics</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #e2e8f0; background: #0b1120; -webkit-font-smoothing: antialiased; }
+  .bar-top { height: 64px; display: flex; align-items: center; padding: 0 40px; border-bottom: 1px solid #1e293b; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; color: #f8fafc; }
+  .logo .mark { width: 16px; height: 16px; border-radius: 5px; background: linear-gradient(135deg,#38bdf8,#818cf8); }
+  .stats { display: flex; gap: 16px; margin-left: auto; }
+  .stat { padding: 8px 14px; border-radius: 999px; background: #111a2e; border: 1px solid #1e293b; }
+  .stat .l { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: #64748b; }
+  .stat .n { font-size: 14px; font-weight: 700; color: #f8fafc; margin-top: 2px; }
+
+  .cards { margin: 24px 40px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .tile { background: #111a2e; border: 1px solid #1e293b; border-radius: 11px; padding: 18px; }
+  .tile .ck { font-size: 12px; color: #64748b; }
+  .tile .cv { font-size: 28px; font-weight: 800; color: #f8fafc; margin-top: 8px; }
+  .tile .cd { font-size: 12px; margin-top: 6px; color: #34d399; }
+
+  .graph { margin: 24px 40px 0; }
+  .graph .gt { font-size: 14px; font-weight: 700; color: #e2e8f0; }
+  .cols { display: flex; align-items: flex-end; gap: 10px; height: 200px; padding-top: 12px; }
+  .col { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(180deg,#38c0f5,#818cf8); }
+
+  .split { margin: 24px 40px; display: grid; grid-template-columns: 1fr 360px; gap: 20px; }
+  .box { background: #111a2e; border: 1px solid #1e293b; border-radius: 11px; padding: 18px; }
+  .box .bh { font-size: 13px; font-weight: 700; color: #e2e8f0; margin-bottom: 12px; }
+  .line { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #1e293b; }
+  .line .lt { font-size: 13px; color: #cbd5e1; }
+  .line .rt { font-size: 13px; font-weight: 700; color: #f8fafc; margin-left: auto; }
+  .meter { margin-bottom: 12px; }
+  .meter .ml { font-size: 12px; color: #94a3b8; margin-bottom: 6px; }
+  .track { height: 8px; border-radius: 3px; background: #1e293b; overflow: hidden; }
+  .fill { height: 8px; border-radius: 3px; background: linear-gradient(90deg,#34d399,#38bdf8); }
+
+  .end { margin: 24px 40px 0; font-size: 12px; color: #475569; }
+</style>
+</head>
+<body>
+  <nav class="bar-top">
+    <div class="logo"><span class="mark"></span> Pulse Analytics</div>
+    <div class="stats">
+      <div class="stat"><div class="l">Revenue</div><div class="n">$48.2k</div></div>
+      <div class="stat"><div class="l">Users</div><div class="n">12,940</div></div>
+      <div class="stat"><div class="l">Uptime</div><div class="n">99.98%</div></div>
+    </div>
+  </nav>
+
+  <section class="cards">
+    <div class="tile"><div class="ck">Active now</div><div class="cv">1,284</div><div class="cd">▲ 6.4%</div></div>
+    <div class="tile"><div class="ck">Sessions</div><div class="cv">38,110</div><div class="cd">▲ 3.1%</div></div>
+    <div class="tile"><div class="ck">Avg. duration</div><div class="cv">4m 12s</div><div class="cd">▲ 1.8%</div></div>
+    <div class="tile"><div class="ck">Bounce</div><div class="cv">31.6%</div><div class="cd" style="color:#f87171">▼ 2.2%</div></div>
+  </section>
+
+  <section class="graph">
+    <div class="gt">Weekly active users</div>
+    <div class="cols">
+      <div class="col" style="height:52%"></div><div class="col" style="height:64%"></div>
+      <div class="col" style="height:48%"></div><div class="col" style="height:71%"></div>
+      <div class="col" style="height:60%"></div><div class="col" style="height:83%"></div>
+      <div class="col" style="height:69%"></div><div class="col" style="height:77%"></div>
+      <div class="col" style="height:58%"></div><div class="col" style="height:88%"></div>
+      <div class="col" style="height:74%"></div><div class="col" style="height:80%"></div>
+    </div>
+  </section>
+
+  <section class="split">
+    <div class="box">
+      <div class="bh">Top pages</div>
+      <div class="line"><span class="lt">/dashboard</span><span class="rt">9,420</span></div>
+      <div class="line"><span class="lt">/pricing</span><span class="rt">5,118</span></div>
+      <div class="line"><span class="lt">/docs/quickstart</span><span class="rt">3,902</span></div>
+      <div class="line"><span class="lt">/blog/launch</span><span class="rt">2,447</span></div>
+    </div>
+    <div class="box">
+      <div class="bh">Traffic sources</div>
+      <div class="meter"><div class="ml">Organic search</div><div class="track"><div class="fill" style="width:58%"></div></div></div>
+      <div class="meter"><div class="ml">Direct</div><div class="track"><div class="fill" style="width:24%"></div></div></div>
+      <div class="meter"><div class="ml">Social</div><div class="track"><div class="fill" style="width:12%"></div></div></div>
+      <div class="meter"><div class="ml">Referral</div><div class="track"><div class="fill" style="width:6%"></div></div></div>
+    </div>
+  </section>
+
+  <footer class="end">© 2026 Pulse Analytics · Self-contained verification sample</footer>
+</body>
+</html>

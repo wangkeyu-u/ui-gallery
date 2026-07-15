@@ -12,3 +12,6 @@ dist/
 .vite/
 *.timestamp-*.mjs
 README 2.md
+scripts/_shots.cjs
+scripts/_shots 2.cjs
+scripts/audit-previews 2.cjs

@@ -7409,7 +7409,7 @@
     "knownLimitations": [],
     "reproStatus": "failed",
     "reproScore": 0.178,
-    "reproValidatedAt": "2026-07-15T04:38:25.173Z",
+    "reproValidatedAt": "2026-07-15T04:52:40.535Z",
     "reproReportPath": "repro/v4-openai/validation/report.json",
     "reproValidatorVersion": "repro-validator/1.0.0",
     "reproLimitations": []
@@ -10580,7 +10580,7 @@
     "knownLimitations": [],
     "reproStatus": "failed",
     "reproScore": 0.628,
-    "reproValidatedAt": "2026-07-15T04:38:28.092Z",
+    "reproValidatedAt": "2026-07-15T04:52:43.660Z",
     "reproReportPath": "repro/v4-tesla/validation/report.json",
     "reproValidatorVersion": "repro-validator/1.0.0",
     "reproLimitations": []
@@ -10684,7 +10684,7 @@
     "knownLimitations": [],
     "reproStatus": "failed",
     "reproScore": 0.605,
-    "reproValidatedAt": "2026-07-15T04:38:30.926Z",
+    "reproValidatedAt": "2026-07-15T04:52:46.744Z",
     "reproReportPath": "repro/v4-moma/validation/report.json",
     "reproValidatorVersion": "repro-validator/1.0.0",
     "reproLimitations": []
@@ -12351,8 +12351,127 @@
     "knownLimitations": [],
     "reproStatus": "passed",
     "reproScore": 0.993,
-    "reproValidatedAt": "2026-07-15T04:38:33.582Z",
+    "reproValidatedAt": "2026-07-15T04:52:49.904Z",
     "reproReportPath": "repro/demo-flat/validation/report.json",
+    "reproValidatorVersion": "repro-validator/1.0.0",
+    "reproLimitations": []
+  },
+  {
+    "id": "demo-portfolio",
+    "name": "Mira Sato 作品集（验证演示·纯CSS浅色）",
+    "description": "自包含验证演示页：浅色作品集，纯 CSS 无照片素材，用于证明复刻验证闭环可正常认证 passed。",
+    "source": "Demo",
+    "originalUrl": "",
+    "author": "ui-gallery",
+    "projectType": "demo",
+    "styleFamily": "portfolio",
+    "styleFamilyName": "Portfolio",
+    "styleFamilyNameZh": "作品集",
+    "styleDescription": "自包含验证演示：浅色作品集页面",
+    "mood": [
+      "calm",
+      "minimal",
+      "elegant"
+    ],
+    "materials": [
+      "flat",
+      "css"
+    ],
+    "industry": [
+      "Portfolio",
+      "设计"
+    ],
+    "density": "moderate",
+    "isDark": false,
+    "colors": {
+      "bg": "#fafaf7",
+      "accent": "#ffd6a5",
+      "text": "#1a1a1a"
+    },
+    "fontFamily": "system-ui",
+    "interactions": [
+      "hover"
+    ],
+    "animations": [],
+    "layoutTraits": [
+      "nav",
+      "hero",
+      "project-grid",
+      "footer"
+    ],
+    "previewImage": "previews/demo-portfolio.png",
+    "prompt": "",
+    "hifiPassed": true,
+    "animOk": false,
+    "capabilities": [
+      "prompt"
+    ],
+    "searchText": "demo portfolio css 作品集 浅色 验证演示 平面",
+    "knownLimitations": [],
+    "reproStatus": "passed",
+    "reproScore": 0.998,
+    "reproValidatedAt": "2026-07-15T04:52:52.792Z",
+    "reproReportPath": "repro/demo-portfolio/validation/report.json",
+    "reproValidatorVersion": "repro-validator/1.0.0",
+    "reproLimitations": []
+  },
+  {
+    "id": "demo-dashboard",
+    "name": "Pulse Analytics 数据看板（验证演示·纯CSS深色）",
+    "description": "自包含验证演示页：深色数据看板，纯 CSS 无照片素材，用于证明复刻验证闭环可正常认证 passed。",
+    "source": "Demo",
+    "originalUrl": "",
+    "author": "ui-gallery",
+    "projectType": "demo",
+    "styleFamily": "dashboard",
+    "styleFamilyName": "Dashboard",
+    "styleFamilyNameZh": "数据看板",
+    "styleDescription": "自包含验证演示：深色数据看板页面",
+    "mood": [
+      "technical",
+      "precise",
+      "dark"
+    ],
+    "materials": [
+      "flat",
+      "css"
+    ],
+    "industry": [
+      "SaaS",
+      "数据"
+    ],
+    "density": "moderate",
+    "isDark": true,
+    "colors": {
+      "bg": "#0b1120",
+      "accent": "#38bdf8",
+      "text": "#e2e8f0"
+    },
+    "fontFamily": "system-ui",
+    "interactions": [
+      "hover"
+    ],
+    "animations": [],
+    "layoutTraits": [
+      "nav",
+      "kpi-row",
+      "chart",
+      "panel",
+      "footer"
+    ],
+    "previewImage": "previews/demo-dashboard.png",
+    "prompt": "",
+    "hifiPassed": true,
+    "animOk": false,
+    "capabilities": [
+      "prompt"
+    ],
+    "searchText": "demo dashboard css 数据看板 深色 验证演示 平面",
+    "knownLimitations": [],
+    "reproStatus": "passed",
+    "reproScore": 1,
+    "reproValidatedAt": "2026-07-15T04:52:55.730Z",
+    "reproReportPath": "repro/demo-dashboard/validation/report.json",
     "reproValidatorVersion": "repro-validator/1.0.0",
     "reproLimitations": []
   }

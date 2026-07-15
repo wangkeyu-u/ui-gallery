@@ -1,0 +1,32 @@
+{
+  "id": "demo-portfolio",
+  "name": "Mira Sato 作品集（验证演示·纯CSS浅色）",
+  "originalUrl": "",
+  "previewImage": "previews/demo-portfolio.png",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "styleFamily": "portfolio",
+  "styleFamilyName": "Portfolio",
+  "styleFamilyNameZh": "作品集",
+  "mood": [
+    "calm",
+    "minimal",
+    "elegant"
+  ],
+  "materials": [
+    "flat",
+    "css"
+  ],
+  "industry": [
+    "Portfolio",
+    "设计"
+  ],
+  "colors": {
+    "bg": "#fafaf7",
+    "accent": "#ffd6a5",
+    "text": "#1a1a1a"
+  },
+  "knownLimitations": []
+}

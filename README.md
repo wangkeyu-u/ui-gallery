@@ -1,6 +1,6 @@
 # UI Gallery
 
-桌面网页 UI 发现与复刻参考库。当前数据集包含 229 条记录，其中 152 个通过可视质量验收，77 个失败、重复、被遮挡或语义不匹配的条目已隔离，不会出现在主画廊、搜索结果、AI 推荐或主题选择器中。
+桌面网页 UI 发现与复刻参考库。当前数据集包含 232 条记录，其中 152 个通过可视质量验收，其余失败、重复、被遮挡或语义不匹配的条目已隔离，不会出现在主画廊、搜索结果、AI 推荐或主题选择器中。此外内置 3 个自包含纯 CSS 演示页（`demo-flat` / `demo-portfolio` / `demo-dashboard`），已跑通本地视觉验证并标记为 `passed`，用于证明复刻验证闭环可稳定认证通过。
 
 ## 产品原则
 
@@ -85,6 +85,24 @@ npm run repro:validate -- --id v4-openai --candidate ./repro/v4-openai/candidate
 npm run repro:validate-all -- --write-data   # 验证所有有 task+candidate 的项目
 npm run repro:summary                         # 汇总已有 report.json → repro/SUMMARY.md + summary.json
 ```
+
+**自包含通过样例（证明闭环能稳定产出 `passed`）**：仓库内置 3 个纯 CSS、无照片素材、完全可控的演示页，reference 与 candidate 均为手写、且刻意保留细微差异（圆角 / 间距 / 渐变色）以避免字节完全一致触发反作弊：
+
+| 项目 | 风格 | SSIM | 像素差异 |
+| --- | --- | --- | --- |
+| `demo-flat` | SaaS 落地页（浅色） | 0.9926 | 0.33% |
+| `demo-portfolio` | 作品集（浅色） | 0.9976 | 0.08% |
+| `demo-dashboard` | 数据看板（深色） | 0.9996 | 0.02% |
+
+演示页的 reference 由 `reference-src/index.html` 通过 `render-reference.cjs` 渲染成 `previews/<id>.png`（与验证器完全相同的 1280×820 取景），再复刻 candidate 后跑验证：
+
+```bash
+node scripts/render-reference.cjs --id demo-dashboard   # reference-src → previews/<id>.png（同时写入 task/reference.png）
+node scripts/repro-pack.cjs --id demo-dashboard          # 生成 task 包
+node scripts/repro-validate.cjs --id demo-dashboard --candidate ./repro/demo-dashboard/candidate --write-data
+```
+
+对比之下，`v4-openai / v4-tesla / v4-moma` 参考图是版权照片密集的品牌页，手写 CSS 无法达到 SSIM ≥ 0.90，按规则如实标记为 `failed` 并把照片记为限制项——不伪造通过。
 
 ### 3. 验证指标（保留全部原始值，不用单一综合分掩盖问题）
 

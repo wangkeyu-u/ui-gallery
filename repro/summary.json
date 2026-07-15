@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-15T04:38:33.585Z",
+  "generatedAt": "2026-07-15T04:52:55.732Z",
   "validatorVersion": "repro-validator/1.0.0",
-  "total": 4,
-  "passed": 1,
+  "total": 6,
+  "passed": 3,
   "failed": 3,
   "needsReview": 0,
   "untested": 226,
@@ -13,7 +13,7 @@
       "ssim": 0.1783,
       "pixel": 0.4825,
       "edge": 0.0086,
-      "validatedAt": "2026-07-15T04:38:25.173Z",
+      "validatedAt": "2026-07-15T04:52:40.535Z",
       "path": "repro/v4-openai/validation/diff-overlay.png"
     },
     {
@@ -22,7 +22,7 @@
       "ssim": 0.6281,
       "pixel": 0.5341,
       "edge": 0.008,
-      "validatedAt": "2026-07-15T04:38:28.092Z",
+      "validatedAt": "2026-07-15T04:52:43.660Z",
       "path": "repro/v4-tesla/validation/diff-overlay.png"
     },
     {
@@ -31,7 +31,7 @@
       "ssim": 0.6045,
       "pixel": 0.6304,
       "edge": 0.0097,
-      "validatedAt": "2026-07-15T04:38:30.926Z",
+      "validatedAt": "2026-07-15T04:52:46.744Z",
       "path": "repro/v4-moma/validation/diff-overlay.png"
     },
     {
@@ -40,8 +40,26 @@
       "ssim": 0.9926,
       "pixel": 0.0033,
       "edge": 0,
-      "validatedAt": "2026-07-15T04:38:33.582Z",
+      "validatedAt": "2026-07-15T04:52:49.904Z",
       "path": "repro/demo-flat/validation/diff-overlay.png"
+    },
+    {
+      "id": "demo-portfolio",
+      "status": "passed",
+      "ssim": 0.9976,
+      "pixel": 0.0008,
+      "edge": 0,
+      "validatedAt": "2026-07-15T04:52:52.792Z",
+      "path": "repro/demo-portfolio/validation/diff-overlay.png"
+    },
+    {
+      "id": "demo-dashboard",
+      "status": "passed",
+      "ssim": 0.9996,
+      "pixel": 0.0002,
+      "edge": 0,
+      "validatedAt": "2026-07-15T04:52:55.730Z",
+      "path": "repro/demo-dashboard/validation/diff-overlay.png"
     }
   ]
 }

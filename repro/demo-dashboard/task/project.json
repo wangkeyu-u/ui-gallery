@@ -1,0 +1,32 @@
+{
+  "id": "demo-dashboard",
+  "name": "Pulse Analytics 数据看板（验证演示·纯CSS深色）",
+  "originalUrl": "",
+  "previewImage": "previews/demo-dashboard.png",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "styleFamily": "dashboard",
+  "styleFamilyName": "Dashboard",
+  "styleFamilyNameZh": "数据看板",
+  "mood": [
+    "technical",
+    "precise",
+    "dark"
+  ],
+  "materials": [
+    "flat",
+    "css"
+  ],
+  "industry": [
+    "SaaS",
+    "数据"
+  ],
+  "colors": {
+    "bg": "#0b1120",
+    "accent": "#38bdf8",
+    "text": "#e2e8f0"
+  },
+  "knownLimitations": []
+}
