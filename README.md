@@ -1,6 +1,6 @@
 # UI Gallery
 
-桌面网页 UI 发现与复刻参考库。当前数据集包含 232 条记录，其中 152 个通过可视质量验收，其余失败、重复、被遮挡或语义不匹配的条目已隔离，不会出现在主画廊、搜索结果、AI 推荐或主题选择器中。此外内置 3 个自包含纯 CSS 演示页（`demo-flat` / `demo-portfolio` / `demo-dashboard`），已跑通本地视觉验证并标记为 `passed`，用于证明复刻验证闭环可稳定认证通过。
+桌面网页 UI 发现与复刻参考库。当前数据集包含 232 条记录，其中 155 个通过可视质量验收（152 个真实站点快照 + 3 个自包含纯 CSS 演示），其余失败、重复、被遮挡或语义不匹配的条目已隔离，不会出现在主画廊、搜索结果、AI 推荐或主题选择器中。3 个演示页（`demo-flat` / `demo-portfolio` / `demo-dashboard`）已跑通本地视觉验证并标记为 `passed`，用于证明复刻验证闭环可稳定认证通过。
 
 ## 产品原则
 
@@ -15,8 +15,8 @@
 
 | 指标 | 数量 |
 | --- | ---: |
-| 总记录 | 229 |
-| 主画廊已验收 UI | 152 |
+| 总记录 | 232 |
+| 主画廊已验收 UI | 155 |
 | 隔离条目 | 77 |
 | 新一轮真实桌面快照 | 95 |
 | 可见风格/行业分类 | 26 |
@@ -34,17 +34,21 @@ npm run dev
 
 ```bash
 npm run audit                 # 校验已验收截图存在且为有效 PNG
+npm run verify:data           # 校验数据、质量白名单、复刻状态与验证产物一致
 npm run build                 # tsc + vite 生产构建
-npm audit --audit-level=high  # 依赖安全审计（应为 0 高危）
+npm run test:smoke            # 浏览器验证搜索、筛选、预览、路由与响应式
+npm run check:full            # 以上全部 + 全量复刻重验 + 高危依赖审计
 ```
 
 `npm run audit` 会根据当前质量白名单检查所有已验收截图是否存在、是否为有效 PNG，并输出 [preview-audit.json](src/data/preview-audit.json)。
+
+仓库内置 GitHub Actions：所有 push / PR 自动执行全量验证；`main` 通过同样检查后自动发布到 GitHub Pages。首次启用时需在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**（从旧的 branch 发布方式迁移时只需设置一次）。之后也可在 Actions 页面手动运行 Pages，或执行 `npm run deploy` 触发。
 
 ## UI 复刻任务包 + 本地视觉验证（模型无关）
 
 本项目提供一套**与具体 AI 模型无关**的复刻流程：导出任务包 → 交给任意支持看图+写代码的 AI → 本地视觉验证还原度。**不调用任何付费 / OpenAI API**，验证全部在本地用开源工具完成（Playwright + pixelmatch + sharp + 本地 SSIM）。
 
-> 截图渲染使用系统已安装的 **Google Chrome**（`executablePath`），无需下载额外浏览器内核。
+> 本地优先使用系统已安装的 **Google Chrome / Chromium**；CI 使用 Playwright 安装的 Chromium。也可通过 `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` 显式指定浏览器。
 
 ### 1. 导出复刻任务包
 

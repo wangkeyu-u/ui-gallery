@@ -50,6 +50,28 @@ export default function Detail() {
   const [reportData, setReportData] = useState<Record<string, unknown> | null>(null);
 
   const relatedComponents = useMemo(() => project ? libraries.filter(item => item.styleFamily === project.styleFamily).slice(0, 4) : [], [project]);
+  const reportProjectId = project?.id;
+  const hasValidationArtifacts = !!project && project.reproStatus !== 'untested' && !!project.reproReportPath;
+
+  useEffect(() => {
+    if (!hasValidationArtifacts || !reportProjectId) {
+      setReportData(null);
+      return;
+    }
+
+    const controller = new AbortController();
+    fetch(`${valBase(reportProjectId)}/report.json`, { signal: controller.signal })
+      .then(response => {
+        if (!response.ok) throw new Error(`验证报告加载失败: ${response.status}`);
+        return response.json();
+      })
+      .then(setReportData)
+      .catch(error => {
+        if (error instanceof DOMException && error.name === 'AbortError') return;
+        setReportData(null);
+      });
+    return () => controller.abort();
+  }, [hasValidationArtifacts, reportProjectId]);
 
   if (!project) return <main className="container page-shell"><Link className="back-link" to="/"><ArrowLeft size={16} /> 返回画廊</Link><div className="empty-state"><h1>没有找到这个 UI</h1><Link to="/">重新浏览</Link></div></main>;
 
@@ -76,6 +98,7 @@ export default function Detail() {
   ];
   const coverage = evidence.filter(([, value]) => value !== UNKNOWN).length;
   const rs = project.reproStatus;
+  const activeReportData = reportData?.projectId === project.id ? reportData : null;
 
   const copyReference = async () => {
     await navigator.clipboard.writeText(replicaBrief);
@@ -94,21 +117,6 @@ export default function Detail() {
       setExporting(false);
     }
   };
-
-  // whether real validation artifacts exist on disk (best-effort check)
-  const hasValidationArtifacts = rs !== 'untested' && !!project.reproReportPath;
-
-  // fetch report.json for full metrics when validated
-  useEffect(() => {
-    if (hasValidationArtifacts) {
-      fetch(`${valBase(project.id)}/report.json`)
-        .then(r => r.json())
-        .then(setReportData)
-        .catch(() => setReportData(null));
-    } else {
-      setReportData(null);
-    }
-  }, [hasValidationArtifacts, project.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <main className="container detail-page">
@@ -194,49 +202,49 @@ export default function Detail() {
         {hasValidationArtifacts && (
           <div className="repro-results">
             {/* 原始指标（全部保留，不用单一综合分数掩盖问题） */}
-            {reportData && (
+            {activeReportData && (
               <dl className="repro-metrics">
                 <div className="repro-metric-item">
-                  <dt>验证时间</dt><dd>{new Date(String(reportData.validatedAt || project.reproValidatedAt)).toLocaleString('zh-CN')}</dd>
+                  <dt>验证时间</dt><dd>{new Date(String(activeReportData.validatedAt || project.reproValidatedAt)).toLocaleString('zh-CN')}</dd>
                 </div>
                 <div className="repro-metric-item">
                   <dt>SSIM（感知相似度）</dt>
-                  <dd className={(reportData.ssim as number ?? project.reproScore ?? 0) >= 0.9 ? 'metric-good' : (reportData.ssim as number ?? project.reproScore ?? 0) >= 0.6 ? 'metric-warn' : 'metric-bad'}>
-                    {(Number(reportData.ssim || project.reproScore || 0)).toFixed(4)}
+                  <dd className={(activeReportData.ssim as number ?? project.reproScore ?? 0) >= 0.9 ? 'metric-good' : (activeReportData.ssim as number ?? project.reproScore ?? 0) >= 0.6 ? 'metric-warn' : 'metric-bad'}>
+                    {(Number(activeReportData.ssim || project.reproScore || 0)).toFixed(4)}
                   </dd>
                 </div>
                 <div className="repro-metric-item">
                   <dt>像素差异比例</dt>
-                  <dd className={Number(reportData.pixelDifference || 0) <= 0.12 ? 'metric-good' : Number(reportData.pixelDifference || 0) <= 0.4 ? 'metric-warn' : 'metric-bad'}>
-                    {(Number(reportData.pixelDifference || 0) * 100).toFixed(2)}%
+                  <dd className={Number(activeReportData.pixelDifference || 0) <= 0.12 ? 'metric-good' : Number(activeReportData.pixelDifference || 0) <= 0.4 ? 'metric-warn' : 'metric-bad'}>
+                    {(Number(activeReportData.pixelDifference || 0) * 100).toFixed(2)}%
                   </dd>
                 </div>
                 <div className="repro-metric-item">
-                  <dt>主要颜色差异</dt><dd>{Number(reportData.colorDifference || 0).toFixed(4)}</dd>
+                  <dt>主要颜色差异</dt><dd>{Number(activeReportData.colorDifference || 0).toFixed(4)}</dd>
                 </div>
                 <div className="repro-metric-item">
-                  <dt>结构差异（分块均值）</dt><dd>{Number(reportData.structuralDifference || 0).toFixed(4)}</dd>
+                  <dt>结构差异（分块均值）</dt><dd>{Number(activeReportData.structuralDifference || 0).toFixed(4)}</dd>
                 </div>
-                {typeof reportData.edgeDifference === 'number' && (
+                {typeof activeReportData.edgeDifference === 'number' && (
                   <div className="repro-metric-item">
-                    <dt>边缘密度差异</dt><dd>{reportData.edgeDifference.toFixed(4)}</dd>
+                    <dt>边缘密度差异</dt><dd>{activeReportData.edgeDifference.toFixed(4)}</dd>
                   </div>
                 )}
                 <div className="repro-metric-item">
                   <dt>横向溢出</dt>
-                  <dd className={reportData.horizontalOverflow ? 'metric-bad' : 'metric-good'}>
-                    {reportData.horizontalOverflow ? `${reportData.overflowPixels || 0}px ✗` : '无 ✓'}
+                  <dd className={activeReportData.horizontalOverflow ? 'metric-bad' : 'metric-good'}>
+                    {activeReportData.horizontalOverflow ? `${activeReportData.overflowPixels || 0}px ✗` : '无 ✓'}
                   </dd>
                 </div>
                 <div className="repro-metric-item">
                   <dt>画布尺寸</dt>
-                  <dd className={reportData.dimensionsMatch !== false ? 'metric-good' : 'metric-bad'}>
-                    {reportData.dimensionsMatch === false ? '非 1280×820 ✗' : '1280 × 820 ✓'}
+                  <dd className={activeReportData.dimensionsMatch !== false ? 'metric-good' : 'metric-bad'}>
+                    {activeReportData.dimensionsMatch === false ? '非 1280×820 ✗' : '1280 × 820 ✓'}
                   </dd>
                 </div>
-                {Array.isArray(reportData.notes) && reportData.notes.length > 0 && (
+                {Array.isArray(activeReportData.notes) && activeReportData.notes.length > 0 && (
                   <div className="repro-metric-item" style={{ gridColumn: '1 / -1' }}>
-                    <dt>备注</dt><dd><ul>{(reportData.notes as string[]).map((n, i) => <li key={i}>{n}</li>)}</ul></dd>
+                    <dt>备注</dt><dd><ul>{(activeReportData.notes as string[]).map((n, i) => <li key={i}>{n}</li>)}</ul></dd>
                   </div>
                 )}
                 {Array.isArray(project.reproLimitations) && project.reproLimitations.length > 0 && (

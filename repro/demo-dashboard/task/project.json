@@ -7,9 +7,9 @@
     "width": 1280,
     "height": 820
   },
-  "styleFamily": "dashboard",
-  "styleFamilyName": "Dashboard",
-  "styleFamilyNameZh": "数据看板",
+  "styleFamily": "fintech",
+  "styleFamilyName": "Fintech / Data",
+  "styleFamilyNameZh": "金融 / 数据",
   "mood": [
     "technical",
     "precise",

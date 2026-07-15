@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-15T05:53:47.726Z",
+  "generatedAt": "2026-07-15T22:36:11.799Z",
   "summary": {
     "totalRecords": 232,
-    "accepted": 152,
-    "quarantined": 80,
+    "accepted": 155,
+    "quarantined": 77,
     "acceptedWithCriticalIssues": 0,
     "acceptedFamilies": 26
   },
   "familyDistribution": {
-    "product": 42,
+    "product": 43,
     "developer-platform": 20,
     "ai-product": 14,
-    "portfolio": 10,
+    "portfolio": 11,
     "creative-agency": 9,
     "commerce": 6,
     "fintech-new": 5,
@@ -25,9 +25,9 @@
     "public-interest": 3,
     "entertainment": 3,
     "3d-webgl": 2,
+    "fintech": 2,
     "fashion": 2,
     "community": 2,
-    "fintech": 1,
     "brutalist": 1,
     "experimental": 1,
     "editorial-culture": 1,
@@ -2330,7 +2330,7 @@
     {
       "id": "demo-flat",
       "name": "Northwind Analytics（验证演示·纯CSS平面页）",
-      "accepted": false,
+      "accepted": true,
       "previewImage": "previews/demo-flat.png",
       "width": 1280,
       "height": 820,
@@ -2340,7 +2340,7 @@
     {
       "id": "demo-portfolio",
       "name": "Mira Sato 作品集（验证演示·纯CSS浅色）",
-      "accepted": false,
+      "accepted": true,
       "previewImage": "previews/demo-portfolio.png",
       "width": 1280,
       "height": 820,
@@ -2350,7 +2350,7 @@
     {
       "id": "demo-dashboard",
       "name": "Pulse Analytics 数据看板（验证演示·纯CSS深色）",
-      "accepted": false,
+      "accepted": true,
       "previewImage": "previews/demo-dashboard.png",
       "width": 1280,
       "height": 820,

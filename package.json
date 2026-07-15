@@ -10,19 +10,27 @@
     "url": "https://github.com/wangkeyu-u/ui-gallery.git"
   },
   "homepage": "https://wangkeyu-u.github.io/ui-gallery/",
+  "engines": {
+    "node": ">=22.12"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && rm -rf dist && vite build",
     "preview": "vite preview",
     "migrate": "node scripts/migrate-data.cjs",
     "audit": "node scripts/audit-previews.cjs",
+    "verify:data": "node scripts/verify-data.cjs",
+    "test:smoke": "node scripts/smoke-app.cjs",
+    "test": "npm run verify:data && npm run test:smoke",
+    "check": "npm run audit && npm run verify:data && npm run build && npm run test:smoke",
+    "check:full": "npm run check && npm run repro:validate-all && npm audit --audit-level=high",
     "repro:migrate": "node scripts/migrate-repro.cjs",
     "repro:pack": "node scripts/repro-pack.cjs",
     "repro:validate": "node scripts/repro-validate.cjs",
     "repro:validate-all": "node scripts/repro-validate.cjs --all",
     "repro:summary": "node scripts/repro-summary.cjs",
     "serve": "python3 -m http.server 4173 --directory dist",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "gh workflow run pages.yml --ref main"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

@@ -7,9 +7,9 @@
     "width": 1280,
     "height": 820
   },
-  "styleFamily": "saas",
-  "styleFamilyName": "SaaS",
-  "styleFamilyNameZh": "SaaS 产品页",
+  "styleFamily": "product",
+  "styleFamilyName": "Product / SaaS",
+  "styleFamilyNameZh": "产品 / SaaS",
   "mood": [
     "clean",
     "confident",

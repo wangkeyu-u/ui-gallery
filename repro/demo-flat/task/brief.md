@@ -10,7 +10,7 @@
 | 名称 | Northwind Analytics（验证演示·纯CSS平面页） |
 | 原始链接 | 未提供 |
 | 行业 | SaaS、数据 |
-| 风格家族 | SaaS 产品页 |
+| 风格家族 | 产品 / SaaS |
 | 风格描述 | 自包含验证演示：纯 CSS 平面落地页 |
 | 情绪 | clean、confident、minimal |
 | 材质 | flat、css |

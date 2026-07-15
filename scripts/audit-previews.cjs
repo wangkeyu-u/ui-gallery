@@ -3,10 +3,9 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const projects = JSON.parse(fs.readFileSync(path.join(root, 'src/data/ui-projects.json'), 'utf8'));
-const qualitySource = fs.readFileSync(path.join(root, 'src/utils/projectQuality.ts'), 'utf8');
-const verifiedBlock = qualitySource.match(/const VERIFIED_IDS = new Set\(\[([\s\S]*?)\]\);/)?.[1] || '';
-const verifiedIds = new Set([...verifiedBlock.matchAll(/'([^']+)'/g)].map(match => match[1]));
-const quarantinedIds = new Set(['webby-2024-shopify']);
+const quality = require('../src/data/project-quality.json');
+const verifiedIds = new Set(quality.verifiedIds);
+const quarantinedIds = new Set(Object.entries(quality.linkStates).filter(([, state]) => state === 'quarantine').map(([id]) => id));
 
 function isAccepted(project) {
   return (project.id.startsWith('v4-') || verifiedIds.has(project.id)) && !quarantinedIds.has(project.id);

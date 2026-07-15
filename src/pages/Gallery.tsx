@@ -94,7 +94,7 @@ export default function Gallery() {
     if (activeFamily !== 'all') list = list.filter(project => project.styleFamily === activeFamily);
     if (activeRepro !== 'all') list = list.filter(project => project.reproStatus === activeRepro);
     return list;
-  }, [activeFamily, favorites, savedOnly, searchState]);
+  }, [activeFamily, activeRepro, favorites, savedOnly, searchState]);
 
   const resultReasons = useMemo(() => {
     const map = new Map<string, string>();

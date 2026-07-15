@@ -24,8 +24,8 @@ const { chromium } = require('playwright');
 const pixelmatch = require('pixelmatch');
 const sharp = require('sharp');
 const { VALIDATOR_VERSION } = require('./repro-pack-common.cjs');
+const { chromiumLaunchOptions } = require('./browser-launch.cjs');
 
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const VIEWPORT = { width: 1280, height: 820 };
 const root = path.join(__dirname, '..');
 
@@ -227,7 +227,7 @@ async function validateProject(id, candidateArg, writeData, projects) {
   const needles = [...new Set([refBasename, 'reference.png', previewBasename].filter(Boolean))];
   const sourceUsesReference = scanCandidateForReference(localCandPath, needles);
 
-  const browser = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+  const browser = await chromium.launch(chromiumLaunchOptions());
   const page = await browser.newPage({ viewport: VIEWPORT, deviceScaleFactor: 1 });
 
   const notes = [];

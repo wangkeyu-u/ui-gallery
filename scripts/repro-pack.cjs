@@ -15,10 +15,9 @@ const { buildPackage } = require('./repro-pack-common.cjs');
 
 const root = path.join(__dirname, '..');
 const projects = JSON.parse(fs.readFileSync(path.join(root, 'src/data/ui-projects.json'), 'utf8'));
-const qualitySource = fs.readFileSync(path.join(root, 'src/utils/projectQuality.ts'), 'utf8');
-const verifiedBlock = qualitySource.match(/const VERIFIED_IDS = new Set\(\[([\s\S]*?)\]\);/)?.[1] || '';
-const verifiedIds = new Set([...verifiedBlock.matchAll(/'([^']+)'/g)].map((m) => m[1]));
-const quarantined = new Set(['webby-2024-shopify']);
+const quality = require('../src/data/project-quality.json');
+const verifiedIds = new Set(quality.verifiedIds);
+const quarantined = new Set(Object.entries(quality.linkStates).filter(([, state]) => state === 'quarantine').map(([projectId]) => projectId));
 const isAccepted = (p) => (p.id.startsWith('v4-') || verifiedIds.has(p.id)) && !quarantined.has(p.id);
 
 function arg(name, fallback = null) {

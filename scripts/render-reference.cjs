@@ -14,8 +14,8 @@
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
+const { chromiumLaunchOptions } = require('./browser-launch.cjs');
 
-const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const VIEWPORT = { width: 1280, height: 820 };
 const root = path.join(__dirname, '..');
 
@@ -61,7 +61,7 @@ async function renderOne(id, browser) {
 async function main() {
   const id = arg('id');
   const all = process.argv.includes('--all');
-  const browser = await chromium.launch({ executablePath: CHROME, args: ['--no-sandbox'] });
+  const browser = await chromium.launch(chromiumLaunchOptions());
   try {
     if (id) {
       console.log(`Rendering reference for ${id}…`);
