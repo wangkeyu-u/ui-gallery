@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>OpenAI — Candidate</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1280px;height:820px;overflow:hidden;background:#0b0b0b;color:#ececf1;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .nav{display:flex;align-items:center;height:56px;padding:0 28px;border-bottom:1px solid #222}
+  .nav-logo{font-weight:700;font-size:16px;letter-spacing:.5px;margin-right:40px;white-space:nowrap}
+  .nav-links{display:flex;gap:24px;font-size:14.5px;flex:1}
+  .nav-links a{color:#c4c7d1;text-decoration:none;white-space:nowrap}
+  .nav-links a:hover{color:#fff}
+  .nav-right{display:flex;align-items:center;gap:14px;margin-left:auto}
+  .nav-search{color:#888;width:18px;height:18px;display:inline-block;text-align:center;line-height:18px}
+  .btn-ghost{border:1px solid #444;background:transparent;color:#e7e9ee;padding:6px 15px;border-radius:999px;font-size:13px;cursor:pointer;white-space:nowrap}
+  .btn-primary{background:#fff;color:#000;border:none;padding:7px 17px;border-radius:999px;font-size:13px;cursor:pointer;font-weight:500;white-space:nowrap}
+
+  .hero-cards{display:flex;gap:22px;padding:26px 28px}
+  .card-promo{width:210px;height:110px;border-radius:10px;overflow:hidden;flex-shrink:0}
+  .promo-a{background:linear-gradient(135deg,#1a3a2e 0%,#2a6f52 35%,#7ecfa8 70%,#d4f0e0 100%)}
+  .promo-b{background:linear-gradient(135deg,#d45500 0%,#e88a38 30%,#f0c090 60%,#fce4d4 100%)}
+
+  .section-header{display:flex;justify-content:space-between;align-items:center;padding:32px 28px 18px}
+  .section-title{font-size:19px;font-weight:600;letter-spacing:-.02em}
+
+  .cards-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding:0 28px}
+  .case-card{background:#16171b;border-radius:12px;overflow:hidden;border:1px solid #23262e}
+  .case-img{height:240px;background:#2a2d36;position:relative}
+  .case-body{padding:16px 18px}
+  .case-title{font-size:15px;font-weight:600;line-height:1.4}
+  .case-meta{margin-top:8px;font-size:13px;color:#888}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <span class="nav-logo">OpenAI</span>
+  <div class="nav-links">
+    <a href="#">研究</a><a href="#">产品</a><a href="#">Business</a><a href="#">开发人员</a><a href="#">公司</a><a href="#">基金会</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-search">&#128269;</span>
+    <button class="btn-ghost">登录</button>
+    <button class="btn-primary">试用 ChatGPT &#10140;</button>
+  </div>
+</nav>
+
+<div class="hero-cards">
+  <div class="card-promo promo-a"></div>
+  <div class="card-promo promo-b"></div>
+</div>
+
+<div class="section-header">
+  <span class="section-title">客户案例</span>
+  <a href="#" style="font-size:13px;color:#aaa;text-decoration:none">查看全部</a>
+</div>
+
+<div class="cards-grid">
+  <article class="case-card">
+    <div class="case-img" style="background:linear-gradient(180deg,#cfdde8 0%,#eef4f8 50%,#fff 100%);position:relative">
+      <!-- placeholder for arctic cyclist photo -->
+    </div>
+    <div class="case-body">
+      <h3 class="case-title">借助 ChatGPT 训练，骑行穿越南极洲</h3>
+      <p class="case-meta">2026年6月11日</p>
+    </div>
+  </article>
+  <article class="case-card">
+    <div class="case-img" style="background:linear-gradient(180deg,#ddd 0%,#f0ede6 60%,#fff 100%);position:relative">
+      <!-- placeholder for satellite dish photo -->
+    </div>
+    <div class="case-body">
+      <h3 class="case-title">用 Codex 创建新的黑洞模拟</h3>
+      <p class="case-meta">2026年5月11日</p>
+    </div>
+  </article>
+  <article class="case-card">
+    <div class="case-img" style="background:linear-gradient(135deg,#1a2332 0%,#2d3a4a 100%);position:relative">
+      <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:64px;font-weight:700;color:rgba(255,255,255,.85)">R&amp;D</span>
+    </div>
+    <div class="case-body">
+      <h3 class="case-title">Chip Ganassi Racing × OpenAI</h3>
+      <p class="case-meta">API &nbsp;2026年5月28日</p>
+    </div>
+  </article>
+</div>
+</body>
+</html>

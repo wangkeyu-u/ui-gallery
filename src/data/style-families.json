@@ -351,5 +351,149 @@
       "paper",
       "screen"
     ]
+  },
+  {
+    "key": "editorial-culture",
+    "name": "Editorial / Culture",
+    "nameZh": "文化 / 编辑",
+    "description": "展览目录式编排、藏品或内容主导、克制观看节奏",
+    "keywords": ["editorial", "museum", "culture", "art", "文化", "博物馆", "编辑"],
+    "mood": ["cultured", "quiet", "editorial"],
+    "materials": ["artwork", "paper", "photography"]
+  },
+  {
+    "key": "developer-tool",
+    "name": "Developer Tools",
+    "nameZh": "开发者工具",
+    "description": "以真实产品界面和清晰能力表达服务专业用户",
+    "keywords": ["developer", "tool", "productivity", "开发者", "工具", "效率"],
+    "mood": ["focused", "technical", "premium"],
+    "materials": ["interface", "glass", "screen"]
+  },
+  {
+    "key": "tool-catalog",
+    "name": "Tool / Catalog",
+    "nameZh": "工具 / 目录",
+    "description": "可搜索、可筛选、适合高密度比较的内容工具",
+    "keywords": ["catalog", "directory", "search", "filter", "目录", "筛选", "字体"],
+    "mood": ["systematic", "clear", "functional"],
+    "materials": ["type", "grid", "interface"]
+  },
+  {
+    "key": "ai-product",
+    "name": "AI Product",
+    "nameZh": "AI 产品",
+    "description": "人工智能能力、产品演示与使用场景",
+    "keywords": ["ai", "artificial intelligence", "人工智能", "模型"],
+    "mood": ["innovative", "focused"],
+    "materials": ["interface", "light"]
+  },
+  {
+    "key": "developer-platform",
+    "name": "Developer Platform",
+    "nameZh": "开发平台",
+    "description": "开发工具、技术平台和文档型首页",
+    "keywords": ["developer", "platform", "code", "开发", "技术"],
+    "mood": ["technical", "precise"],
+    "materials": ["interface", "code"]
+  },
+  {
+    "key": "fintech-new",
+    "name": "Fintech",
+    "nameZh": "金融科技",
+    "description": "信任、数据和金融产品体验",
+    "keywords": ["finance", "fintech", "bank", "金融", "银行"],
+    "mood": ["trustworthy", "precise"],
+    "materials": ["data", "interface"]
+  },
+  {
+    "key": "commerce",
+    "name": "Commerce / Retail",
+    "nameZh": "商业 / 零售",
+    "description": "产品摄影、品牌表达与购买路径",
+    "keywords": ["commerce", "retail", "shop", "商业", "零售"],
+    "mood": ["aspirational", "editorial"],
+    "materials": ["photography", "product"]
+  },
+  {
+    "key": "culture",
+    "name": "Culture / Museum",
+    "nameZh": "文化 / 博物馆",
+    "description": "藏品、展览和文化内容主导",
+    "keywords": ["museum", "culture", "art", "博物馆", "文化"],
+    "mood": ["cultured", "editorial"],
+    "materials": ["artwork", "paper"]
+  },
+  {
+    "key": "media-editorial",
+    "name": "Editorial / Media",
+    "nameZh": "媒体 / 编辑",
+    "description": "新闻、专题和内容网格",
+    "keywords": ["media", "editorial", "news", "媒体", "编辑"],
+    "mood": ["informative", "editorial"],
+    "materials": ["type", "photography"]
+  },
+  {
+    "key": "education",
+    "name": "Education",
+    "nameZh": "教育",
+    "description": "学习路径、课程与知识获取",
+    "keywords": ["education", "learning", "course", "教育", "学习"],
+    "mood": ["clear", "encouraging"],
+    "materials": ["content", "interface"]
+  },
+  {
+    "key": "public-interest",
+    "name": "Public Interest",
+    "nameZh": "公共服务",
+    "description": "公共知识、公益和任务型信息服务",
+    "keywords": ["public", "nonprofit", "公共", "公益"],
+    "mood": ["accessible", "trustworthy"],
+    "materials": ["content", "paper"]
+  },
+  {
+    "key": "agency-new",
+    "name": "Design Agency",
+    "nameZh": "设计机构",
+    "description": "案例、观点与实验排版",
+    "keywords": ["agency", "studio", "design", "设计", "机构"],
+    "mood": ["bold", "distinctive"],
+    "materials": ["type", "photography"]
+  },
+  {
+    "key": "creative-tool",
+    "name": "Creative Tool",
+    "nameZh": "创意工具",
+    "description": "创作、搜索和灵感发现工具",
+    "keywords": ["creative", "design tool", "创意", "设计工具"],
+    "mood": ["visual", "functional"],
+    "materials": ["grid", "interface"]
+  },
+  {
+    "key": "entertainment",
+    "name": "Entertainment",
+    "nameZh": "娱乐 / 内容",
+    "description": "游戏、影像和声音内容发现",
+    "keywords": ["entertainment", "game", "video", "music", "娱乐", "游戏"],
+    "mood": ["immersive", "expressive"],
+    "materials": ["media", "photography"]
+  },
+  {
+    "key": "community",
+    "name": "Community",
+    "nameZh": "社区 / 发现",
+    "description": "项目、讨论和排行榜驱动的发现体验",
+    "keywords": ["community", "discover", "社区", "发现"],
+    "mood": ["active", "curious"],
+    "materials": ["cards", "interface"]
+  },
+  {
+    "key": "health",
+    "name": "Health / Wellness",
+    "nameZh": "健康",
+    "description": "健康、冥想和支持型产品体验",
+    "keywords": ["health", "wellness", "健康", "冥想"],
+    "mood": ["calm", "supportive"],
+    "materials": ["illustration", "interface"]
   }
 ]

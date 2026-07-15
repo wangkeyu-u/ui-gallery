@@ -1,0 +1,31 @@
+{
+  "id": "v4-openai",
+  "name": "OpenAI",
+  "originalUrl": "https://openai.com/",
+  "previewImage": "previews/v4-openai.png",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "styleFamily": "ai-product",
+  "styleFamilyName": "AI Product",
+  "styleFamilyNameZh": "AI 产品",
+  "mood": [
+    "focused",
+    "innovative"
+  ],
+  "materials": [
+    "interface",
+    "light"
+  ],
+  "industry": [
+    "technology",
+    "artificial-intelligence"
+  ],
+  "colors": {
+    "bg": null,
+    "accent": null,
+    "text": null
+  },
+  "knownLimitations": []
+}

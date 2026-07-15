@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>MoMA — Candidate</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1280px;height:820px;overflow:hidden;background:#fff;color:#000;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+  .nav{display:flex;align-items:center;height:60px;padding:0 36px;border-bottom:1px solid #e5e5e5}
+  .nav-logo{font-weight:900;font-size:20px;letter-spacing:.8px;margin-right:44px;text-transform:uppercase}
+  .nav-links{display:flex;gap:28px;font-size:15px;flex:1}
+  .nav-links a{color:#222;text-decoration:none;font-weight:500}
+  .nav-links a:hover{color:#0066cc}
+  .nav-right{display:flex;align-items:center;gap:14px;margin-left:auto}
+  .btn-outline{background:#fff;color:#000;border:1px solid #ccc;padding:9px 22px;border-radius:4px;font-size:13.5px;cursor:pointer;font-weight:500}
+  .btn-primary{background:#0071c2;color:#fff;border:none;padding:10px 24px;border-radius:4px;font-size:13.5px;cursor:pointer;font-weight:600}
+
+  /* Background bands sampled from reference.png: upper rgb(184,178,174), mid rgb(146,135,128). */
+  .hero{height:420px;
+    background:
+      linear-gradient(180deg, rgb(184,178,174) 0%, rgb(165,156,150) 45%, rgb(146,135,128) 100%);
+    position:relative;overflow:hidden}
+  /* simulate gallery interior with abstract shapes */
+  .hero::before{
+    content:'';position:absolute;top:80px;left:120px;width:320px;height:300px;background:rgba(200,195,188,.45);border-radius:12px;transform:rotate(-2deg);
+    box-shadow:0 2px 16px rgba(0,0,0,.08)}
+  .hero::after{
+    content:'';position:absolute;top:140px;right:180px;width:220px;height:280px;background:rgba(190,185,178,.35);border-radius:10px;transform:rotate(1deg)}
+
+  .welcome-bar{padding:32px 36px;display:flex;justify-content:space-between;align-items:flex-start}
+  .welcome-title{font-size:42px;font-weight:700;letter-spacing:-.02em;line-height:1.08}
+  .welcome-right{text-align:right;padding-top:6px}
+  .welcome-info{font-size:15px;color:#333;margin-bottom:14px;line-height:1.55}
+  .btn-dark{background:#111;color:#fff;border:none;padding:11px 26px;border-radius:4px;font-size:14px;cursor:pointer;font-weight:600}
+
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;padding:18px 36px;display:flex;align-items:center;gap:28px;
+    background:#f5f5f5;border-top:1px solid #e0e0e0;z-index:99}
+  .cookie-text{font-size:13px;color:#444;line-height:1.48;flex:1}
+  .cookie-close{background:none;border:none;font-size:18px;cursor:pointer;color:#888;padding:0 8px}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <span class="nav-logo">MoMA</span>
+  <div class="nav-links">
+    <a href="#">Visit</a><a href="#">Exhibitions and events</a><a href="#">Art and artists</a><a href="#">Store</a>
+  </div>
+  <div class="nav-right">
+    <span style="font-size:17px">&#128269;</span>
+    <button class="btn-outline">Donate</button>
+    <button class="btn-primary">Tickets</button>
+  </div>
+</nav>
+
+<section class="hero"></section>
+
+<div class="welcome-bar">
+  <h1 class="welcome-title">Welcome</h1>
+  <div class="welcome-right">
+    <p class="welcome-info">The museum is open 10:30 a.m.–5:30 p.m. today.</p>
+    <button class="btn-dark">Plan your visit</button>
+  </div>
+</div>
+
+<div class="cookie-banner">
+  <p class="cookie-text">We use our own and third-party cookies to personalize your experience and the promotions you see.<br>By visiting our website or transacting with us, you agree to this.</p>
+  <button class="cookie-close">&#10005;</button>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "projectId": "v4-moma",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "status": "failed",
+  "pixelDifference": 0.6304,
+  "ssim": 0.6045,
+  "colorDifference": 0.1111,
+  "structuralDifference": 52.3397,
+  "edgeDifference": 0.0097,
+  "horizontalOverflow": false,
+  "overflowPixels": 0,
+  "dimensionsMatch": true,
+  "candidateMeanColor": [
+    206,
+    202,
+    199
+  ],
+  "referenceMeanColor": [
+    179,
+    174,
+    170
+  ],
+  "antiCheat": {
+    "identicalToReference": false,
+    "singleImageCover": false,
+    "referenceImageUsed": true
+  },
+  "diffOverlayPath": "repro/v4-moma/validation/diff-overlay.png",
+  "validatedAt": "2026-07-15T02:23:07.479Z",
+  "validatorVersion": "repro-validator/1.0.0",
+  "limitations": [],
+  "notes": [
+    "还原度过低，自动判定为未通过。"
+  ]
+}

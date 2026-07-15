@@ -1,46 +1,29 @@
+import { Heart, Moon, Sun } from '@phosphor-icons/react';
 import { Link, useLocation } from 'react-router-dom';
+import { useFavorites } from '../hooks/useFavorites';
 import { useTheme } from '../hooks/useTheme';
 
 export default function Header() {
+  const { pathname } = useLocation();
   const { theme, toggleTheme } = useTheme();
-  const location = useLocation();
-
-  const isActive = (path: string) => location.pathname === path;
+  const { favorites } = useFavorites();
 
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <Link to="/" className="site-header__logo">
-          UI Gallery®
-        </Link>
-        <nav className="site-header__nav">
-          <Link to="/" className={isActive('/') ? 'active' : ''}>画廊</Link>
-          <Link to="/components" className={isActive('/components') ? 'active' : ''}>组件库</Link>
-          <Link to="/themes" className={isActive('/themes') ? 'active' : ''}>我的主题</Link>
+        <Link to="/" className="wordmark" aria-label="UI Gallery 首页">UI GALLERY</Link>
+        <nav className="site-nav" aria-label="主要导航">
+          <Link to="/" className={pathname === '/' ? 'active' : ''}>浏览</Link>
+          <Link to="/components" className={pathname === '/components' ? 'active' : ''}>组件</Link>
+          <Link to="/themes" className={pathname === '/themes' ? 'active' : ''}>主题</Link>
         </nav>
-        <div className="site-header__actions">
-          <button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            aria-label={theme === 'light' ? '切换到深色模式' : '切换到浅色模式'}
-          >
-            {theme === 'light' ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-              </svg>
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="5" />
-                <line x1="12" y1="1" x2="12" y2="3" />
-                <line x1="12" y1="21" x2="12" y2="23" />
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                <line x1="1" y1="12" x2="3" y2="12" />
-                <line x1="21" y1="12" x2="23" y2="12" />
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-              </svg>
-            )}
+        <div className="site-header__tools">
+          <Link to="/?saved=1" className="header-tool" aria-label={`查看 ${favorites.length} 个收藏`}>
+            <Heart size={17} weight={favorites.length ? 'fill' : 'regular'} aria-hidden="true" />
+            <span>{favorites.length}</span>
+          </Link>
+          <button type="button" className="header-tool header-tool--icon" onClick={toggleTheme} aria-label={theme === 'light' ? '切换到深色模式' : '切换到浅色模式'}>
+            {theme === 'light' ? <Moon size={17} aria-hidden="true" /> : <Sun size={17} aria-hidden="true" />}
           </button>
         </div>
       </div>

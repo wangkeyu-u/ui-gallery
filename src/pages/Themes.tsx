@@ -1,256 +1,136 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useMemo, useState } from 'react';
+import { ArrowDown, ArrowUpRight, CheckCircle, Trash } from '@phosphor-icons/react';
+import { Link, useSearchParams } from 'react-router-dom';
 import projectsData from '../data/ui-projects.json';
-import type { UIProject, SavedTheme, ThemeDNA } from '../types';
 import { usePreference } from '../hooks/usePreference';
+import type { SavedTheme, ThemeDNA, UIProject } from '../types';
+import { isVerifiedProject } from '../utils/projectQuality';
 
-const projects = projectsData as UIProject[];
-
+const projects = (projectsData as UIProject[]).filter(isVerifiedProject);
 const STORAGE_KEY = 'ui-gallery-themes';
+const UNKNOWN = '未从参考中采集';
 
 function loadThemes(): SavedTheme[] {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : [];
-  } catch {
-    return [];
-  }
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch { return []; }
 }
 
-function saveThemes(themes: SavedTheme[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(themes));
+function validFont(value: string | null) {
+  return value && value.length < 80 && !/paste|keyframe|duration|transition/i.test(value) ? value : null;
 }
+
+function extractDNA(project: UIProject, name: string): ThemeDNA {
+  const colors = [
+    project.colors.bg ? `背景 ${project.colors.bg}` : '',
+    project.colors.accent ? `强调 ${project.colors.accent}` : '',
+    project.colors.text ? `文字 ${project.colors.text}` : '',
+  ].filter(Boolean);
+  return {
+    themeName: name.trim() || `${project.name} 拆解`,
+    coreMood: project.mood.join('、') || UNKNOWN,
+    useCase: project.industry.join('、') || UNKNOWN,
+    targetUser: UNKNOWN,
+    colorSystem: colors.join('，') || UNKNOWN,
+    typeHierarchy: validFont(project.fontFamily) || UNKNOWN,
+    spacing: project.density ? `仅采集到密度标注：${project.density}，未采集具体间距` : UNKNOWN,
+    borderRadius: UNKNOWN,
+    borderRules: UNKNOWN,
+    shadowRules: UNKNOWN,
+    materialExpression: project.materials.join('、') || UNKNOWN,
+    artDirection: project.styleDescription || UNKNOWN,
+    pageComposition: project.layoutTraits.join('、') || UNKNOWN,
+    componentForm: UNKNOWN,
+    interactionStates: project.interactions.join('、') || UNKNOWN,
+    animationRhythm: project.animations.join('、') || UNKNOWN,
+    responsiveRules: UNKNOWN,
+    accessibility: UNKNOWN,
+    forbiddenPatterns: UNKNOWN,
+    references: `${project.name} / ${project.originalUrl}`,
+  };
+}
+
+const LABELS: Record<keyof ThemeDNA, string> = {
+  themeName: '主题名', coreMood: '情绪', useCase: '适用行业', targetUser: '目标用户', colorSystem: '颜色',
+  typeHierarchy: '字体', spacing: '间距', borderRadius: '圆角', borderRules: '边框', shadowRules: '阴影',
+  materialExpression: '材质', artDirection: '艺术方向', pageComposition: '页面构成', componentForm: '组件形态',
+  interactionStates: '交互', animationRhythm: '动效', responsiveRules: '响应式', accessibility: '无障碍',
+  forbiddenPatterns: '禁用项', references: '原始参考',
+};
 
 export default function Themes() {
+  const [params] = useSearchParams();
   const [themes, setThemes] = useState<SavedTheme[]>(loadThemes);
-  const [selectedProjectId, setSelectedProjectId] = useState('');
-  const [themeName, setThemeName] = useState('');
+  const [selectedId, setSelectedId] = useState(params.get('ref') || '');
+  const [name, setName] = useState('');
   const { preference } = usePreference();
+  const selected = useMemo(() => projects.find(project => project.id === selectedId), [selectedId]);
 
-  useEffect(() => {
-    saveThemes(themes);
-  }, [themes]);
+  useEffect(() => localStorage.setItem(STORAGE_KEY, JSON.stringify(themes)), [themes]);
 
-  const selectedProject = projects.find(p => p.id === selectedProjectId);
-
-  const generateDNA = (project: UIProject): ThemeDNA => {
-    return {
-      themeName: themeName || `${project.name} 主题`,
-      coreMood: project.mood.join('、') || '未指定',
-      useCase: project.industry.join('、') || '通用',
-      targetUser: '设计师、开发者',
-      colorSystem: [
-        project.colors.bg ? `背景: ${project.colors.bg}` : '',
-        project.colors.accent ? `强调: ${project.colors.accent}` : '',
-        project.isDark ? '暗色模式' : '浅色模式',
-      ].filter(Boolean).join('，'),
-      typeHierarchy: project.fontFamily || '系统默认',
-      spacing: project.density === 'rich' ? '紧凑' : project.density === 'minimal' ? '宽松' : '适中',
-      borderRadius: '4px (可根据参考调整)',
-      borderRules: '1px solid var(--border)',
-      shadowRules: 'sm / md / lg 三级',
-      materialExpression: project.materials.join('、') || '标准',
-      artDirection: project.styleDescription,
-      pageComposition: project.layoutTraits.join('、') || '标准布局',
-      componentForm: '参照原始 UI 的组件形态',
-      interactionStates: project.interactions.join('、') || '标准 hover/focus',
-      animationRhythm: project.animations.join('、') || '标准过渡',
-      responsiveRules: '桌面优先，移动端适配',
-      accessibility: 'WCAG 2.1 AA',
-      forbiddenPatterns: '不使用紫色渐变、模板化 Bento、过度毛玻璃',
-      references: `${project.name} (${project.originalUrl})`,
-    };
+  const create = () => {
+    if (!selected) return;
+    const dna = extractDNA(selected, name);
+    const now = new Date().toISOString();
+    setThemes(current => [{ id: `theme-${Date.now()}`, name: dna.themeName, dna, referenceProjectId: selected.id, createdAt: now, updatedAt: now, version: 1 }, ...current]);
+    setName('');
   };
 
-  const createTheme = () => {
-    if (!selectedProject) return;
-    const dna = generateDNA(selectedProject);
-    const newTheme: SavedTheme = {
-      id: `theme-${Date.now()}`,
-      name: dna.themeName,
-      dna,
-      referenceProjectId: selectedProject.id,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      version: 1,
-    };
-    setThemes(prev => [...prev, newTheme]);
-    setSelectedProjectId('');
-    setThemeName('');
-  };
-
-  const deleteTheme = (id: string) => {
-    setThemes(prev => prev.filter(t => t.id !== id));
-  };
-
-  const exportTheme = (theme: SavedTheme, format: 'json' | 'css' | 'tailwind' | 'markdown') => {
-    let content = '';
-    let filename = `${theme.name}.${format === 'json' ? 'json' : format === 'css' ? 'css' : format === 'tailwind' ? 'ts' : 'md'}`;
-
-    if (format === 'json') {
-      content = JSON.stringify(theme.dna, null, 2);
-    } else if (format === 'css') {
-      content = `:root {\n${Object.entries(theme.dna).map(([k, v]) => `  --${k}: ${v};`).join('\n')}\n}`;
-    } else if (format === 'tailwind') {
-      content = `export default {\n  theme: {\n    extend: {\n${Object.entries(theme.dna).map(([k, v]) => `      ${k}: '${v}',`).join('\n')}\n    }\n  }\n}`;
-    } else {
-      content = `# ${theme.name}\n\n${Object.entries(theme.dna).map(([k, v]) => `## ${k}\n${v}\n`).join('\n')}`;
-    }
-
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    a.click();
+  const download = (theme: SavedTheme) => {
+    const content = `# ${theme.name}\n\n${Object.entries(theme.dna).map(([key, value]) => `## ${LABELS[key as keyof ThemeDNA]}\n${value}`).join('\n\n')}`;
+    const url = URL.createObjectURL(new Blob([content], { type: 'text/markdown' }));
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.download = `${theme.name}.md`;
+    anchor.click();
     URL.revokeObjectURL(url);
   };
 
   return (
-    <div className="container theme-page">
-      <div className="gallery-hero" style={{ paddingBottom: 'var(--space-md)' }}>
-        <div className="gallery-hero__label">主题管理</div>
-        <h1 className="gallery-hero__title" style={{ fontSize: 'clamp(28px, 4vw, 42px)' }}>
-          我的主题
-        </h1>
-        <p className="gallery-hero__desc">
-          从选定的参考 UI 中提取主题规范，导出为设计令牌、CSS 变量或 Tailwind 配置。
-        </p>
-      </div>
+    <main className="container page-shell">
+      <header className="page-heading">
+        <span className="eyebrow">从参考到自己的主题</span>
+        <h1>只拆有证据的部分。</h1>
+        <p>选一个真实 UI。颜色、材质、排版和动效只有在资料中明确存在时才会写入；不知道的地方保留“未采集”，不由系统脑补。</p>
+      </header>
 
-      {/* Create theme */}
-      <section className="detail-section">
-        <h2 className="detail-section__title">从参考 UI 创建主题</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)', maxWidth: 600 }}>
-          <div>
-            <label style={{ display: 'block', fontSize: 13, color: 'var(--text-secondary)', marginBottom: 6 }}>
-              参考项目
-            </label>
-            <select
-              value={selectedProjectId}
-              onChange={e => setSelectedProjectId(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '10px 12px',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--card-radius)',
-                background: 'var(--bg-elevated)',
-                color: 'var(--text)',
-                fontSize: 14,
-              }}
-            >
-              <option value="">选择一个 UI 项目…</option>
-              {projects.map(p => (
-                <option key={p.id} value={p.id}>{p.name} — {p.styleFamilyNameZh}</option>
-              ))}
-            </select>
-          </div>
-          <div>
-            <label style={{ display: 'block', fontSize: 13, color: 'var(--text-secondary)', marginBottom: 6 }}>
-              主题名称（可选）
-            </label>
-            <input
-              type="text"
-              value={themeName}
-              onChange={e => setThemeName(e.target.value)}
-              placeholder="例如：液态铬银"
-              style={{
-                width: '100%',
-                padding: '10px 12px',
-                border: '1px solid var(--border)',
-                borderRadius: 'var(--card-radius)',
-                background: 'var(--bg-elevated)',
-                color: 'var(--text)',
-                fontSize: 14,
-              }}
-            />
-          </div>
+      <section className="theme-builder">
+        <div className="theme-builder__form">
+          <label htmlFor="theme-reference">参考 UI</label>
+          <select id="theme-reference" value={selectedId} onChange={event => setSelectedId(event.target.value)}>
+            <option value="">选择一个已收录界面</option>
+            {projects.map(project => <option key={project.id} value={project.id}>{project.name} / {project.styleFamilyNameZh}</option>)}
+          </select>
+          <label htmlFor="theme-name">给这份拆解命名</label>
+          <input id="theme-name" value={name} onChange={event => setName(event.target.value)} placeholder="例如：Cupra 金属产品页" />
+          <button type="button" className="primary-action" onClick={create} disabled={!selected}>保存这份拆解 <ArrowDown size={17} /></button>
+          <p className="form-note"><CheckCircle size={16} /> 空白项不会自动补成常见 UI 参数。</p>
         </div>
-        {selectedProject && (
-          <div style={{ marginTop: 16 }}>
-            <button className="btn btn-primary" onClick={createTheme}>
-              提取主题 DNA
-            </button>
-            <Link to={`/detail/${selectedProject.id}`} className="btn btn-secondary" style={{ marginLeft: 8 }}>
-              查看参考详情
-            </Link>
+        {selected ? (
+          <div className="theme-builder__reference">
+            <div className="browser-frame">
+              <div className="browser-frame__bar" aria-hidden="true"><span /><span /><span /><div className="browser-frame__address">{selected.name}</div></div>
+              <div className="browser-frame__viewport"><img src={`./${selected.previewImage}`} alt={`${selected.name} 参考 UI`} /></div>
+            </div>
+            <Link to={`/detail/${selected.id}`}>打开完整拆解 <ArrowUpRight size={16} /></Link>
           </div>
-        )}
+        ) : <div className="theme-builder__placeholder">选择参考后，这里会显示它的完整界面。</div>}
       </section>
 
-      {/* Preference summary */}
-      {preference.likedProjectIds.length > 0 && (
-        <section className="detail-section">
-          <h2 className="detail-section__title">偏好档案</h2>
-          <div className="detail-dna-grid">
-            <div className="detail-dna-item">
-              <div className="detail-dna-item__label">已喜欢</div>
-              <div className="detail-dna-item__value">{preference.likedProjectIds.length} 个</div>
-            </div>
-            <div className="detail-dna-item">
-              <div className="detail-dna-item__label">已排除</div>
-              <div className="detail-dna-item__value">{preference.dislikedProjectIds.length} 个</div>
-            </div>
-            {preference.positiveKeywords.length > 0 && (
-              <div className="detail-dna-item">
-                <div className="detail-dna-item__label">正向关键词</div>
-                <div className="detail-dna-item__value">{preference.positiveKeywords.join('、')}</div>
-              </div>
-            )}
-            {preference.negativeKeywords.length > 0 && (
-              <div className="detail-dna-item">
-                <div className="detail-dna-item__label">负向关键词</div>
-                <div className="detail-dna-item__value">{preference.negativeKeywords.join('、')}</div>
-              </div>
-            )}
-            {preference.lockedDecisions.length > 0 && (
-              <div className="detail-dna-item">
-                <div className="detail-dna-item__label">已锁定</div>
-                <div className="detail-dna-item__value">{preference.lockedDecisions.join('、')}</div>
-              </div>
-            )}
-            {preference.rejectedPatterns.length > 0 && (
-              <div className="detail-dna-item">
-                <div className="detail-dna-item__label">已排斥</div>
-                <div className="detail-dna-item__value">{preference.rejectedPatterns.join('、')}</div>
-              </div>
-            )}
-          </div>
+      {(preference.likedProjectIds.length > 0 || preference.lockedDecisions.length > 0) && (
+        <section className="preference-strip">
+          <span>当前偏好</span>
+          <p>喜欢 {preference.likedProjectIds.length} 个方向 / 排除 {preference.dislikedProjectIds.length} 个方向 / 锁定 {preference.lockedDecisions.length} 项决定</p>
         </section>
       )}
 
-      {/* Saved themes */}
-      <section className="detail-section">
-        <h2 className="detail-section__title">已保存主题（{themes.length}）</h2>
-        {themes.length === 0 ? (
-          <div className="theme-empty">
-            <p>还没有保存的主题。</p>
-            <Link to="/" className="btn btn-secondary">去画廊找参考</Link>
-          </div>
-        ) : (
-          themes.map(theme => (
-            <div key={theme.id} className="theme-card">
-              <div className="theme-card__header">
-                <div>
-                  <div className="theme-card__name">{theme.name}</div>
-                  <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 4 }}>
-                    参考来源：{projects.find(p => p.id === theme.referenceProjectId)?.name || '未知'}
-                  </div>
-                </div>
-                <div className="theme-card__version">v{theme.version}</div>
-              </div>
-              <pre className="theme-card__dna">{Object.entries(theme.dna).map(([k, v]) => `${k}: ${v}`).join('\n')}</pre>
-              <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-                <button className="btn btn-secondary" onClick={() => exportTheme(theme, 'json')}>Design Tokens JSON</button>
-                <button className="btn btn-secondary" onClick={() => exportTheme(theme, 'css')}>CSS Variables</button>
-                <button className="btn btn-secondary" onClick={() => exportTheme(theme, 'tailwind')}>Tailwind Config</button>
-                <button className="btn btn-secondary" onClick={() => exportTheme(theme, 'markdown')}>Markdown 规范</button>
-                <button className="btn btn-secondary" style={{ color: 'var(--danger)' }} onClick={() => deleteTheme(theme.id)}>删除</button>
-              </div>
-            </div>
-          ))
-        )}
+      <section className="saved-themes">
+        <div className="section-heading"><span className="eyebrow">已保存</span><h2>{themes.length ? `${themes.length} 份主题拆解` : '还没有主题拆解'}</h2></div>
+        {themes.map(theme => (
+          <article className="saved-theme" key={theme.id}>
+            <header><div><span>v{theme.version}</span><h3>{theme.name}</h3></div><div className="saved-theme__actions"><button onClick={() => download(theme)} aria-label={`下载 ${theme.name}`}><ArrowDown size={18} /></button><button onClick={() => setThemes(current => current.filter(item => item.id !== theme.id))} aria-label={`删除 ${theme.name}`}><Trash size={18} /></button></div></header>
+            <dl>{(Object.entries(theme.dna) as [keyof ThemeDNA, string][]).filter(([key]) => key !== 'themeName').map(([key, value]) => <div key={key} className={value === UNKNOWN ? 'unknown' : ''}><dt>{LABELS[key]}</dt><dd>{value}</dd></div>)}</dl>
+          </article>
+        ))}
       </section>
-    </div>
+    </main>
   );
 }

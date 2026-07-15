@@ -1,11 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { ArrowRight, GearSix } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import { useAI } from '../hooks/useAI';
 import { usePreference } from '../hooks/usePreference';
-import projectsData from '../data/ui-projects.json';
-import type { UIProject } from '../types';
-
-const projects = projectsData as UIProject[];
+import { search } from '../utils/search';
+import { isVerifiedProject } from '../utils/projectQuality';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -22,214 +21,100 @@ export default function ChatPanel() {
   const [endpointInput, setEndpointInput] = useState(endpoint);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Check availability on mount
+  useEffect(() => { checkAvailability(); }, [checkAvailability]);
   useEffect(() => {
-    checkAvailability();
-  }, [checkAvailability]);
-
-  // Auto-scroll to bottom
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messages.length) messagesEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }, [messages]);
 
+  const localAnswer = (message: string): ChatMessage => {
+    const state = search(message);
+    const excluded = new Set(preference.dislikedProjectIds);
+    const eligible = state.results.filter(result => isVerifiedProject(result.project) && !excluded.has(result.project.id));
+    const topScore = eligible[0]?.score || 0;
+    const matches = eligible
+      .filter(result => result.score >= Math.max(10, topScore * .35))
+      .slice(0, 4);
+    return {
+      role: 'assistant',
+      content: matches.length
+        ? `${state.explanation} 先比较下面 ${matches.length} 个真实桌面快照；点进去可拿到截图驱动的复刻包。`
+        : '验收库里还没有足够接近的方向。我没有用低质量截图凑数；可以换成行业、材质、明暗或“不要什么”再描述一次。',
+      recommendations: matches.map(result => ({
+        id: result.project.id,
+        name: result.project.name,
+        reason: result.reasons.slice(0, 2).join('；') || result.project.description,
+        styleFamily: result.project.styleFamilyNameZh,
+      })),
+    };
+  };
+
   const handleSend = async () => {
-    if (!input.trim() || loading) return;
-
     const userMessage = input.trim();
+    if (!userMessage || loading) return;
     setInput('');
+    setMessages(previous => [...previous, { role: 'user', content: userMessage }]);
 
-    // Add user message
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    if (available !== true) {
+      setMessages(previous => [...previous, localAnswer(userMessage)]);
+      return;
+    }
 
-    // Build context from preferences
+    const local = search(userMessage).results.filter(result => isVerifiedProject(result.project)).slice(0, 8);
     const context = [
-      preference.likedProjectIds.length > 0 ? `已喜欢: ${preference.likedProjectIds.join(', ')}` : '',
-      preference.dislikedProjectIds.length > 0 ? `已排除: ${preference.dislikedProjectIds.join(', ')}` : '',
-      preference.positiveKeywords.length > 0 ? `正向偏好: ${preference.positiveKeywords.join(', ')}` : '',
-      preference.negativeKeywords.length > 0 ? `负向偏好: ${preference.negativeKeywords.join(', ')}` : '',
-      preference.lockedDecisions.length > 0 ? `已锁定: ${preference.lockedDecisions.join(', ')}` : '',
+      preference.likedProjectIds.length ? `已喜欢: ${preference.likedProjectIds.join(', ')}` : '',
+      preference.dislikedProjectIds.length ? `已排除: ${preference.dislikedProjectIds.join(', ')}` : '',
+      `最近对话: ${messages.slice(-4).map(item => `${item.role}: ${item.content}`).join(' | ')}`,
     ].filter(Boolean).join('\n');
-
-    // Send project summaries for AI to reference
-    const projectSummaries = projects.map(p => ({
-      id: p.id,
-      name: p.name,
-      styleFamilyNameZh: p.styleFamilyNameZh,
-      mood: p.mood,
-      description: p.description,
-    }));
-
-    const response = await chat(userMessage, context, projectSummaries);
-
-    if (response) {
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: response.reply,
-        recommendations: response.recommendations,
-      }]);
-    }
+    const response = await chat(userMessage, context, local.map(({ project }) => ({
+      id: project.id, name: project.name, styleFamilyNameZh: project.styleFamilyNameZh,
+      mood: project.mood, description: project.description,
+    })));
+    setMessages(previous => [...previous, response ? {
+      role: 'assistant', content: response.reply, recommendations: response.recommendations,
+    } : localAnswer(userMessage)]);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  };
-
-  const handleSaveEndpoint = () => {
+  const saveEndpoint = () => {
     updateEndpoint(endpointInput);
     setShowSettings(false);
-    setTimeout(() => checkAvailability(), 100);
+    window.setTimeout(checkAvailability, 100);
   };
-
-  // Not configured state
-  if (available === false && !endpoint) {
-    return (
-      <div className="chat-panel chat-panel--empty">
-        <div className="chat-panel__header">
-          <span className="chat-panel__title">AI 设计对话</span>
-        </div>
-        <div className="chat-panel__body">
-          <p className="chat-panel__hint">
-            AI 服务未配置。配置后可以：
-          </p>
-          <ul className="chat-panel__features">
-            <li>用自然语言描述你想要的 UI 方向</li>
-            <li>AI 从画廊中推荐最接近的项目</li>
-            <li>从选定参考提取主题 DNA</li>
-            <li>生成可运行的 HTML 页面</li>
-          </ul>
-          <p className="chat-panel__hint">
-            未配置时，本地搜索和浏览功能仍然可用。
-          </p>
-          <button className="btn btn-secondary" onClick={() => setShowSettings(true)}>
-            配置 AI 服务
-          </button>
-        </div>
-        {showSettings && (
-          <div className="chat-panel__settings">
-            <label className="chat-panel__label">Worker 地址</label>
-            <input
-              type="text"
-              className="chat-panel__input"
-              placeholder="https://your-worker.workers.dev"
-              value={endpointInput}
-              onChange={e => setEndpointInput(e.target.value)}
-            />
-            <p className="chat-panel__help">
-              部署 Cloudflare Worker 后，将地址填入此处。详见 worker/README.md
-            </p>
-            <div className="chat-panel__actions">
-              <button className="btn btn-primary" onClick={handleSaveEndpoint}>保存</button>
-              <button className="btn btn-secondary" onClick={() => setShowSettings(false)}>取消</button>
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
 
   return (
     <div className="chat-panel">
       <div className="chat-panel__header">
-        <span className="chat-panel__title">AI 设计对话</span>
-        <span className={`chat-panel__status ${available ? 'chat-panel__status--ok' : 'chat-panel__status--off'}`}>
-          {available ? '● 在线' : '○ 离线'}
+        <span className="chat-panel__title">设计方向助手</span>
+        <span className={`chat-panel__status ${available ? 'chat-panel__status--ok' : ''}`}>
+          {available ? '云端增强已连接' : '本地匹配可用'}
         </span>
-        <button
-          className="chat-panel__settings-btn"
-          onClick={() => setShowSettings(!showSettings)}
-          aria-label="设置"
-        >
-          ⚙
-        </button>
+        <button className="chat-panel__settings-btn" type="button" onClick={() => setShowSettings(value => !value)} aria-label="AI 设置"><GearSix size={18} /></button>
       </div>
 
-      {showSettings && (
-        <div className="chat-panel__settings">
-          <label className="chat-panel__label">Worker 地址</label>
-          <input
-            type="text"
-            className="chat-panel__input"
-            placeholder="https://your-worker.workers.dev"
-            value={endpointInput}
-            onChange={e => setEndpointInput(e.target.value)}
-          />
-          <div className="chat-panel__actions">
-            <button className="btn btn-primary" onClick={handleSaveEndpoint}>保存</button>
-            <button className="btn btn-secondary" onClick={() => setShowSettings(false)}>取消</button>
-          </div>
-        </div>
-      )}
+      {showSettings && <div className="chat-panel__settings">
+        <label className="chat-panel__label" htmlFor="ai-endpoint">可选：云端 AI Worker 地址</label>
+        <input id="ai-endpoint" className="chat-panel__input" placeholder="https://your-worker.workers.dev" value={endpointInput} onChange={event => setEndpointInput(event.target.value)} />
+        <p className="chat-panel__help">留空也能本地选图。这里只为接入你自己的云端对话服务。</p>
+        <div className="chat-panel__actions"><button className="btn btn-primary" type="button" onClick={saveEndpoint}>保存</button><button className="btn btn-secondary" type="button" onClick={() => setShowSettings(false)}>取消</button></div>
+      </div>}
 
       <div className="chat-panel__body">
-        {messages.length === 0 && (
-          <div className="chat-panel__welcome">
-            <p>描述你想要的 UI 方向，例如：</p>
-            <div className="chat-panel__examples">
-              <button onClick={() => setInput('金属质感的汽车产品页，但不要太赛博')}>金属质感的汽车产品页</button>
-              <button onClick={() => setInput('高端茶品牌，东方但不要古风')}>高端茶品牌，东方但不要古风</button>
-              <button onClick={() => setInput('创意机构作品集，暗色，有3D元素')}>创意机构作品集</button>
-            </div>
+        {!messages.length && <div className="chat-panel__welcome">
+          <p>描述行业、材质、气质，或者明确说“不要什么”：</p>
+          <div className="chat-panel__examples">
+            {['金属质感的汽车产品页，但不要太赛博', '文化机构，像展览目录，有大量留白', '专业的 AI 产品，但不要紫色渐变'].map(example => <button type="button" key={example} onClick={() => setInput(example)}>{example}</button>)}
           </div>
-        )}
-
-        {messages.map((msg, i) => (
-          <div key={i} className={`chat-message chat-message--${msg.role}`}>
-            <div className="chat-message__content">{msg.content}</div>
-            {msg.recommendations && msg.recommendations.length > 0 && (
-              <div className="chat-recommendations">
-                {msg.recommendations.map(rec => (
-                  <Link
-                    key={rec.id}
-                    to={`/detail/${rec.id}`}
-                    className="chat-recommendation"
-                  >
-                    <span className="chat-recommendation__name">{rec.name}</span>
-                    <span className="chat-recommendation__style">{rec.styleFamily}</span>
-                    <span className="chat-recommendation__reason">{rec.reason}</span>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-
-        {loading && (
-          <div className="chat-message chat-message--assistant">
-            <div className="chat-message__content chat-message__loading">
-              <span className="chat-dot" /> <span className="chat-dot" /> <span className="chat-dot" />
-            </div>
-          </div>
-        )}
-
-        {error && (
-          <div className="chat-message chat-message--error">
-            <div className="chat-message__content">{error}</div>
-          </div>
-        )}
-
+        </div>}
+        {messages.map((message, index) => <div key={`${message.role}-${index}`} className={`chat-message chat-message--${message.role}`}>
+          <div className="chat-message__content">{message.content}</div>
+          {!!message.recommendations?.length && <div className="chat-recommendations">{message.recommendations.map(item => <Link key={item.id} to={`/detail/${item.id}`} className="chat-recommendation"><span><strong>{item.name}</strong><small>{item.styleFamily}</small></span><span>{item.reason}</span><ArrowRight size={16} /></Link>)}</div>}
+        </div>)}
+        {loading && <div className="chat-message chat-message--assistant"><div className="chat-message__content">正在结合偏好收敛方向…</div></div>}
+        {error && endpoint && <div className="chat-inline-note">云端连接失败，已自动回到本地匹配。</div>}
         <div ref={messagesEndRef} />
       </div>
-
       <div className="chat-panel__input-area">
-        <textarea
-          className="chat-panel__textarea"
-          placeholder="描述你想要的 UI 方向…"
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          rows={1}
-          disabled={loading}
-        />
-        <button
-          className="btn btn-primary chat-panel__send"
-          onClick={handleSend}
-          disabled={loading || !input.trim()}
-        >
-          发送
-        </button>
+        <textarea className="chat-panel__textarea" placeholder="例如：黑白摄影的建筑事务所，不要大字滚动…" value={input} onChange={event => setInput(event.target.value)} onKeyDown={event => { if (event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); handleSend(); } }} rows={2} disabled={loading} />
+        <button className="btn btn-primary chat-panel__send" type="button" onClick={handleSend} disabled={loading || !input.trim()}>匹配 UI <ArrowRight size={16} /></button>
       </div>
     </div>
   );

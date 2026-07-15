@@ -1,453 +1,137 @@
-# 世界级 UI 画廊 · UI Gallery
+# UI Gallery
 
-> 129 个获奖/精选 UI 项目 + 177 个组件库的策展式画廊。由 AI 担任设计总监，支持自然语言搜索、设计 DNA 提取、主题创建和代码生成。从 Awwwards / FWA / CSS Awards / Webby 等来源策展，覆盖创意机构、3D/WebGL、奢侈品、汽车、SaaS、时尚、编辑设计等 15 个风格家族。
->
-> A curated gallery of 129 award-winning UI projects + 177 component libraries. AI-powered design director with natural-language search, design DNA extraction, theme creation, and code generation. Sourced from Awwwards / FWA / CSS Awards / Webby, spanning 15 style families.
+桌面网页 UI 发现与复刻参考库。当前数据集包含 229 条记录，其中 152 个通过可视质量验收，77 个失败、重复、被遮挡或语义不匹配的条目已隔离，不会出现在主画廊、搜索结果、AI 推荐或主题选择器中。
 
-[![items](https://img.shields.io/badge/UI%20项目-129%20个-blue)](https://wangkeyu-u.github.io/ui-gallery/)
-[![items-en](https://img.shields.io/badge/UI%20projects-129-blue)](https://wangkeyu-u.github.io/ui-gallery/)
-[![components](https://img.shields.io/badge/组件库-177%20个-green)](https://wangkeyu-u.github.io/ui-gallery/)
-[![components-en](https://img.shields.io/badge/components-177-green)](https://wangkeyu-u.github.io/ui-gallery/)
-[![screenshots](https://img.shields.io/badge/预览图-309%20张-orange)](https://wangkeyu-u.github.io/ui-gallery/)
-[![license](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+## 产品原则
 
----
+- 只做桌面网页参考，标准采集画布为 1280 × 820。
+- 截图必须能直接判断页面结构；Cookie 遮挡、登录墙、空白页、加载页和错误页不能进入主库。
+- 原站链接区分可访问、跳转、限制访问、已失效和待复核。
+- 不承诺文字提示词能够 1:1 复刻网页。
+- 每个验收条目提供“参考截图 + 已确认事实 + 桌面约束 + 截图差异验收”的复刻包。
+- 首页 AI 助手默认使用本地搜索，无需部署 Worker；云端 AI 仅为可选增强。
 
-## 目录 / Table of Contents
+## 当前规模
 
-- [项目简介 / Project Overview](#项目简介--project-overview)
-- [核心特性 / Key Features](#核心特性--key-features)
-- [在线预览 / Live Preview](#在线预览--live-preview)
-- [整体架构 / Architecture](#整体架构--architecture)
-- [项目结构 / Project Structure](#项目结构--project-structure)
-- [数据集 / The Dataset](#数据集--the-dataset)
-- [AI 高保真复现验证（项目灵魂）/ AI High-Fidelity Reproduction Verification](#ai-高保真复现验证项目灵魂--ai-high-fidelity-reproduction-verification)
-  - [1. 提示词是怎么炼成的 / How prompts are forged](#1-提示词是怎么炼成的--how-prompts-are-forged)
-  - [2. 验证闭环 / The verification loop](#2-验证闭环--the-verification-loop)
-  - [3. 结果聚合 / Result aggregation](#3-结果聚合--result-aggregation)
-- [使用指南 / Usage Guide](#使用指南--usage-guide)
-- [验证结果 / Verification Results](#验证结果--verification-results)
-- [脚本参考 / Script Reference](#脚本参考--script-reference)
-- [如何扩展数据集 / How to extend the dataset](#如何扩展数据集--how-to-extend-the-dataset)
-- [本地源码浏览器（hub）/ Local source browser (hub)](#本地源码浏览器hub--local-source-browser-hub)
-- [说明与限制 / Notes & Limitations](#说明与限制--notes--limitations)
-- [相关链接 / Links](#相关链接--links)
+| 指标 | 数量 |
+| --- | ---: |
+| 总记录 | 229 |
+| 主画廊已验收 UI | 152 |
+| 隔离条目 | 77 |
+| 新一轮真实桌面快照 | 95 |
+| 可见风格/行业分类 | 26 |
 
----
+新增覆盖 AI 产品、开发平台、金融科技、商业零售、汽车、文化博物馆、媒体编辑、教育、公共服务、设计机构、创意工具、娱乐内容、社区发现和健康等方向。
 
-## 项目简介 / Project Overview
-
-这个项目把「浏览优秀 UI」和「用 AI 重建优秀 UI」两件事合在了一起：
-
-This project combines two things — *browsing great UI* and *rebuilding great UI with AI*:
-
-1. **画廊 / Gallery**：230 个站点的策展式浏览，分区、框架/主题筛选、点选收藏、一键复制。完全自包含，双击 `preview-gallery.html` 即用，运行时零外部 CDN / API 调用。
-   A curated browse of 230 sites with sections, framework/theme filters, selection, and one-click copy. Fully self-contained — double-click `preview-gallery.html` to use; zero external CDN / API calls at runtime.
-2. **高保真提示词 / High-fidelity prompts**：每个站点都生成了一份**混合提示词**——自然语言首屏描述 + 站点**真实的动画代码**（`@keyframes`、transition 缓动/时长、动画库名）。提示词里还叠加了从社区扒来的「高质量 UI 生成提示词」技巧。
-   Each site gets a **hybrid prompt** — a natural-language above-the-fold description plus the site's **real animation code** (`@keyframes`, transition easing/duration, animation-library names). Community "high-quality UI prompt" techniques are layered in as well.
-3. **AI 实机验证 / AI verification**：用 AI agent 把提示词重新生成单文件 HTML，与原始预览图逐帧对比，最多迭代 3 次，确认「首屏一致 + 动画一致」才标为通过。
-   An AI agent regenerates the prompt into a single-file HTML, compares it frame-by-frame against the original preview, and iterates up to 3 times until "above-the-fold matches + animations match" before marking it passed.
-
-一句话：**这是一个让 AI 能学会「抄」顶级 UI 的提示词库 + 验证体系。**
-In one line: **it's a prompt library + verification system that teaches AI to "copy" top-tier UI.**
-
----
-
-## 核心特性 / Key Features
-
-- **离线自包含 / Offline & self-contained** — 画廊 HTML 内嵌数据 JSON，预览图放本地 `previews/`，无需服务器、无需联网。The gallery HTML embeds the data JSON; preview images live in local `previews/`; no server, no network needed.
-- **暗色高级风 UI / Dark premium UI** — 近黑背景 `#1b1b1f` + 径向渐变、金色 `#D4AF37` 强调、SF Pro 字体；卡片画框、毛玻璃 sticky 控制栏、滚动淡入上滑动效（缓动 `cubic-bezier(0.4,0,0.6,1)`）。Near-black `#1b1b1f` radial-gradient background, gold `#D4AF37` accent, SF Pro type; framed cards, frosted sticky controls, fade-and-rise scroll reveals (Apple easing).
-- **画廊自身即用生成提示词改造 / The gallery eats its own dog food** — 本画廊的 UI 正是用其中一份获奖站高保真提示词（`awd-apple`）驱动重设计的。The gallery's own UI was restyled using one of its generated high-fidelity prompts (`awd-apple`).
-- **分区浏览 / Sectioned browsing** — 组件库（177）与获奖项目（53）分块独立区域，默认全量摊开，纯滚动查看。Component libraries (177) and award projects (53) in separate areas, fully expanded by default, pure scroll.
-- **多维筛选 / Multi-dimensional filters** — 类型切换（全部 / 组件库 / 获奖项目）、框架下拉、主题下拉，均显示各组卡片数量。Type switch (all / libraries / awards), framework dropdown, theme dropdown — each shows per-group card counts.
-- **点选 + 持久化 / Select & persist** — 点击卡片选中（高亮 + ✓），选择存 localStorage，刷新不丢；右下角浮标显示已选数量。Click to select (highlight + ✓); selection persists in localStorage; bottom-right badge shows count.
-- **复制提示词 / Copy prompt** — 每张卡片一键复制该站点高保真提示词，可直接丢给任意 AI UI 生成器。One click copies that site's high-fidelity prompt, ready to hand to any AI UI generator.
-- **验证徽章 / Verification badges** — 每张卡片显示 AI 复现状态——`✓ 复现通过` / `✦ 动画还原` / `✕ 未复现` / `· 待验证`。Each card shows AI reproduction status — `✓ reproduced` / `✦ animation restored` / `✕ failed` / `· pending`.
-- **动画感知 / Animation-aware** — 提示词直接包含站点真实动画规格，AI 生成结果经视觉对比核验动画一致。Prompts embed the site's real animation spec; generated results are visually checked for animation parity.
-
----
-
-## v3.0 新架构 / New Architecture (v3.0)
-
-> v3.0 将项目从单文件 HTML 重构为 Vite + React + TypeScript 应用，新增自然语言搜索、设计 DNA 提取、主题系统和审美偏好记录。
->
-> v3.0 rebuilds the project from a single-file HTML into a Vite + React + TypeScript application, adding natural-language search, design DNA extraction, a theme system, and aesthetic preference tracking.
-
-### 技术栈 / Stack
-
-- **Vite 5** + **React 18** + **TypeScript 5** — 组件化、类型安全、快速构建
-- **react-router-dom** (HashRouter) — 多页面路由（画廊 / 详情 / 组件库 / 主题）
-- **原生 CSS Variables** — 浅色/深色双模式，无 UI 组件库依赖
-- **localStorage + IndexedDB** — 收藏、偏好、主题本地持久化
-
-### 数据模型 / Data Model
-
-原始 `preview-data.json`（230 项）经 `scripts/migrate-data.cjs` 迁移为 4 个结构化文件：
-
-| 文件 | 内容 | 数量 |
-|------|------|------|
-| `src/data/ui-projects.json` | UI 项目（含风格家族、情绪、材质、颜色、字体、交互等审美标签） | 129 |
-| `src/data/components.json` | 组件库（含框架、分类、组件列表、仓库链接） | 177 |
-| `src/data/style-families.json` | 风格家族分类法 | 15 |
-| `src/data/search-index.json` | 搜索索引（同义词 + 相邻风格映射） | 47 组同义词 |
-
-### 核心能力 / Core Capabilities
-
-1. **杂志式画廊** — 首屏直接看到 UI 预览，卡片大小变化营造策展节奏
-2. **自然语言搜索** — "金属质感的汽车产品页，不要赛博" → 同义词扩展 + 负向约束 + 多样性控制
-3. **设计 DNA 提取** — 从参考 UI 的 prompt 中自动提取颜色、字体、交互、动画等设计事实
-4. **主题系统** — 从选定参考提取 Theme DNA，导出为 JSON / CSS Variables / Tailwind Config / Markdown
-5. **审美偏好记录** — 喜欢的参考、排斥的模式、已锁定决策，跨会话持久化
-
-### 开发命令 / Development
+## 使用
 
 ```bash
-npm install          # 安装依赖
-npm run dev          # 启动开发服务器 (localhost:5173)
-npm run build        # 类型检查 + 生产构建 → dist/
-npm run preview      # 预览构建产物
-npm run migrate      # 重新生成 src/data/ 下的数据文件
-npm run audit        # 审计预览图片质量
-npm run serve        # 用静态服务器预览 dist/ (localhost:4173)
+npm install
+npm run dev
 ```
 
-### 继续添加更多 UI 项目
+生产构建与质量检查：
 
 ```bash
-# 1. 检查候选 URL 可达性
-node scripts/check-urls.cjs
-
-# 2. 批量截图（需要 Playwright + Chrome）
-node scripts/take-screenshots.cjs
-
-# 3. 合并新截图到 preview-data.json
-node scripts/merge-data.cjs
-
-# 4. 重新生成搜索索引和风格标签
-npm run migrate
-
-# 5. 重新构建
-npm run build
+npm run audit                 # 校验已验收截图存在且为有效 PNG
+npm run build                 # tsc + vite 生产构建
+npm audit --audit-level=high  # 依赖安全审计（应为 0 高危）
 ```
 
-候选站点列表在 `scripts/check-urls.cjs` 和 `scripts/candidates-batch2.cjs` 中。已验证 179 个可达站点，已截图 129 个，剩余约 50 个待截图。
+`npm run audit` 会根据当前质量白名单检查所有已验收截图是否存在、是否为有效 PNG，并输出 [preview-audit.json](src/data/preview-audit.json)。
 
-### 目录结构 / Directory Structure
+## UI 复刻任务包 + 本地视觉验证（模型无关）
 
-```
-ui-gallery/
-├── src/                    # v3.0 新架构源码
-│   ├── components/         # React 组件 (Header, GalleryCard, SearchBar, ...)
-│   ├── pages/              # 页面 (Gallery, Detail, Components, Themes)
-│   ├── hooks/              # 自定义 Hooks (useTheme, useFavorites, usePreference)
-│   ├── utils/              # 工具函数 (search.ts — 自然语言搜索引擎)
-│   ├── data/               # 迁移后的结构化数据 (4 个 JSON)
-│   └── styles/             # 全局样式 (CSS Variables 主题系统)
-├── scripts/                # 数据迁移和审计脚本
-│   ├── migrate-data.cjs    # 数据迁移与富化
-│   ├── audit-previews.cjs  # 预览图片质量审计
-│   └── legacy/             # v2.0 遗留脚本
-├── previews/               # 230 张预览截图
-├── preview-data.json       # 原始数据 (v2.0 兼容)
-├── preview-gallery.html    # v2.0 单文件画廊 (保留为基线)
-├── index.html              # v3.0 Vite 入口
-├── vite.config.ts          # Vite 配置
-└── tsconfig.json           # TypeScript 配置
-```
+本项目提供一套**与具体 AI 模型无关**的复刻流程：导出任务包 → 交给任意支持看图+写代码的 AI → 本地视觉验证还原度。**不调用任何付费 / OpenAI API**，验证全部在本地用开源工具完成（Playwright + pixelmatch + sharp + 本地 SSIM）。
 
----
+> 截图渲染使用系统已安装的 **Google Chrome**（`executablePath`），无需下载额外浏览器内核。
 
-## 在线预览 / Live Preview
-
-> **v3.0 应用**：<https://wangkeyu-u.github.io/ui-gallery/>（Vite + React 构建）
->
-> **v2.0 画廊**：<https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html>（单文件 HTML，保留为基线）
->
-> 也可克隆后本地运行：`npm install && npm run dev`（推荐 Chrome / Edge）。
-
----
-
-## 整体架构 / Architecture
-
-```
-                         ┌─────────────────────────────────────────┐
-   真实站点 / 获奖源码     │           数据集与提示词管线             │
-   (url / source/)        │           Dataset & prompt pipeline      │
-          │               │                                         │
-          ▼               │  build-dataset.js                       │
-   ┌────────────┐         │   └─ 66 旧库 + 新增库 + 获奖项目         │
-   │ 读取器      │         │       └─► preview-data.json (230 项)    │
-   │ repro-read │────────►│  repro-read2.js (动画感知)               │
-   │ repro-read2│  anim.json        └─► 提取真实 @keyframes/transition│
-   └────────────┘         │                                         │
-          │               │  assemble-hifi.js                        │
-          │               │   UNIVERSAL + 站点NL + 动画附录          │
-          │               │   + web-prompts.md(WEB_EXTRA)            │
-          │               │       └─► repro/<id>/prompt.hifi.md      │
-          │               │                                         │
-          │               │  merge-hifi.js ─► 写回 preview-data.json │
-          ▼               └─────────────────────────────────────────┘
-   previews/<id>.png                            │
-          ▲                              gen-gallery.js
-          │                                     │
-   ┌────────────┐         ┌─────────────────────▼──────────────────┐
-   │ repro-shot │◄────────│  AI 验证闭环 (agent × N)                │
-   │ (本地截图)  │  对比    │  prompt.hifi.md → 单文件HTML → 截图     │
-   └────────────┘         │   → 与 previews/<id>.png 视觉对比        │
-          ▲               │   → ≤3 次迭代 → result.hifi.json        │
-          │               └─────────────────────┬──────────────────┘
-          │                                     │
-          └─────────────────────────────────────┘
-                                    agg-hifi.js ─► 写回 hifiPassed/animOk
-                                                    └─► gen-gallery.js 重建 + 徽章
-```
-
----
-
-## 项目结构 / Project Structure
-
-```
-ui-gallery/
-├── preview-gallery.html      # 主画廊（自包含，数据内嵌 JSON + 本地预览图）
-│                               # Main gallery (self-contained, embedded JSON + local previews)
-├── preview-data.json         # 统一数据源（230 项，含 hifi 提示词与验证结果）
-│                               # Unified data source (230 entries, with hifi prompts & results)
-├── gallery.template.html     # 画廊模板，含 /*ITEMS*/ 占位符（卡片/徽章逻辑在此）
-│                               # Gallery template with /*ITEMS*/ placeholder (card/badge logic)
-├── build-dataset.js          # 数据集构建：旧库 + 新增库 + 获奖项目 → preview-data.json
-│                               # Dataset build: legacy + new libs + awards → preview-data.json
-├── gen-gallery.js            # 模板 + preview-data.json → 重建 preview-gallery.html
-│                               # Template + data → rebuild preview-gallery.html
-│
-├── # —— AI 高保真复现管线 / AI high-fidelity reproduction pipeline ——
-├── assemble-hifi.js          # 组装混合高保真提示词（UNIVERSAL + NL + 动画附录 + WEB_EXTRA）
-│                               # Assemble hybrid hifi prompt (UNIVERSAL + NL + anim appendix + WEB_EXTRA)
-├── merge-hifi.js             # 把 prompt.hifi.md 合并写回 preview-data.json 的 prompt 字段
-│                               # Merge prompt.hifi.md back into preview-data.json's prompt field
-├── gen-hifi-batches.js       # 把高保真站点分 12 个/批，供并行验证
-│                               # Split hifi sites into batches of 12 for parallel verification
-├── agg-hifi.js               # 聚合所有 result.hifi.json 写回 preview-data.json（hifiPassed/animOk）
-│                               # Aggregate all result.hifi.json back into preview-data.json
-├── repro-read2.js            # 动画感知读取器：抓真实 @keyframes / 首屏动画计算样式 / 动画库
-│                               # Animation-aware reader: real @keyframes / computed styles / libs
-├── repro-shot.js             # 把本地 HTML 按 1280×820 视口截图成 PNG（与参考图同视口）
-│                               # Screenshot local HTML at 1280×820 (same viewport as reference)
-├── web-prompts.md            # 社区优质 UI 生成提示词技巧（作为 WEB_EXTRA 注入每个提示词）
-│                               # Community UI-prompt techniques (injected as WEB_EXTRA)
-├── hifi-agent-prompt.md      # 验证 agent 的执行指令模板
-│                               # Verification agent instruction template
-│
-├── # —— 辅助 / 报告 / Aux & reports ——
-├── test-functional.js        # 端到端功能测试（Playwright + 系统 Chrome）
-│                               # End-to-end functional test (Playwright + system Chrome)
-├── verify-gallery.js         # 画廊验证脚本 / Gallery verification script
-├── ui-components-hub.html    # 66 库组件交叉索引（单文件）/ 66-lib cross-index (single file)
-├── ui-awards-report.html     # 获奖作品调研报告 + 提示词 / Awards research report + prompts
-├── advanced-demo.html        # Three.js + GSAP 高级 Demo / Advanced Three.js + GSAP demo
-├── awards-source-index.html  # 各届获奖源码索引 / Awards source index
-├── repro-report.html         # 早期「读→写提示词→重建→对比」闭环报告 / Early read→prompt→rebuild→compare report
-│
-├── previews/                 # 230 张 PNG 预览图（与 HTML 同级）/ 230 PNG previews
-├── repro/                    # 每站一个目录（细节见下）/ Per-site directory (details below)
-│   ├── <id>/
-│   │   ├── read.json         # 结构化首屏读取（230 站全有）/ Structured above-the-fold read
-│   │   ├── anim.json         # 动画感知数据（206 站）/ Animation data
-│   │   ├── prompt.hifi.md    # 混合高保真提示词（206 站）/ Hybrid hifi prompt
-│   │   ├── build.vN.html     # AI 生成的单文件重建版（验证产物）/ AI-built single-file rebuild
-│   │   ├── build.vN.png      # 重建版截图（与参考图对比用）/ Rebuild screenshot
-│   │   └── result.hifi.json  # 验证结果 {passed, animOk, attempts, notes}
-│   └── hifi-batches.json     # 17 批并行验证批次 / 17 parallel verification batches
-├── hub/                      # 零依赖 Node 服务（自动收录 source/ 获奖源码）/ Zero-dep Node service
-│   ├── server.js             # 静态服务 + 源码浏览器 API / Static server + source-browser API
-│   ├── index.html
-│   └── README.md
-├── source/                   # 6 个可运行获奖项目克隆（~632MB，未纳入仓库）/ 6 cloned award projects (~632MB, not in repo)
-└── node_modules/             # 仅 playwright（运行截图/读取器需要）/ playwright only
-```
-
----
-
-## 数据集 / The Dataset
-
-`preview-data.json`（230 项）由 `build-dataset.js` 汇总生成：
-`preview-data.json` (230 entries) is assembled by `build-dataset.js`:
-
-| 分区 / Section | 数量 / Count | 说明 / Description |
-|---|---|---|
-| 📦 UI 组件库与设计系统 / UI component libraries & design systems | 177 | React / Vue / Angular / Svelte / Solid / Qwik / Web Components / CSS / 大厂设计系统 / major-vendor design systems |
-| 🏆 世界级获奖项目 / World-class award projects | 53 | Awwwards / FWA / CSSDA 等获奖网站，含可运行源码与真实预览 / award sites with runnable source & real previews |
-
-每条记录含：`id`、`name`、`vendor`、`fw`（框架 / framework）、`theme`（主题 / theme）、`link`、`repo`、`kind`（`item` / `proj`）、`img`（预览图路径 / preview path）、`chips`（组件标签 / component tags）、`prompt`（高保真提示词，207 项非空 / hifi prompt, 207 non-empty）、`hifiPassed` / `animOk`（验证结果 / verification results）。
-
----
-
-## AI 高保真复现验证（项目灵魂）/ AI High-Fidelity Reproduction Verification
-
-普通「提示词库」给出的是自然语言描述，AI 生成结果往往「神似形不似」，动画更是对不上。本项目的关键差异在于：**提示词里直接塞了站点真实的动画代码，并且每一份提示词都经过 AI 实机复现验证。**
-A typical "prompt library" gives natural-language descriptions; AI output is often "similar in spirit, not in form," and animations rarely match. The key difference here: **prompts embed the site's real animation code, and every prompt is verified by an AI reproducing it for real.**
-
-### 1. 提示词是怎么炼成的 / How prompts are forged
-
-`assemble-hifi.js` 把四部分拼成 `repro/<id>/prompt.hifi.md`：
-`assemble-hifi.js` combines four parts into `repro/<id>/prompt.hifi.md`:
-
-1. **UNIVERSAL 指令（始终生效）/ UNIVERSAL directives (always on)**：单文件 HTML、真实 hex 颜色、真实文案禁占位、逐字抄动画、1280px 桌面优先、生产级质量等硬约束。Single-file HTML, exact hex colors, real copy (no placeholders), verbatim animation copying, 1280px desktop-first, production quality — hard constraints.
-2. **站点自然语言提示词（bestNL）/ Site natural-language prompt**：首屏布局/配色/文案的 NL 描述。NL description of layout/color/copy.
-3. **精确动画规格附录（`buildAnimAppendix`）/ Precise animation spec appendix**：来自 `repro-read2.js` 抓取的**真实** `@keyframes` 规则、首屏元素的 `animation` / `transition` 计算样式、检测到的动画库（GSAP / Framer / AOS / Lottie / Swiper / Canvas）。噪声 keyframe（加载圈、nprogress 等）会被 `isNoise()` 过滤。The **real** `@keyframes`, computed `animation`/`transition` styles, and detected libs (GSAP / Framer / AOS / Lottie / Swiper / Canvas) pulled by `repro-read2.js`. Noise keyframes (spinners, nprogress, …) are filtered by `isNoise()`.
-4. **WEB_EXTRA**：从 `web-prompts.md` 注入——社区「AI 生成高保真 UI」提示词技巧（数值化约束、色彩系统、排版、间距、阴影、组件细节、动效、风格关键词、反模式）。Injected from `web-prompts.md` — community techniques for high-fidelity AI UI generation (numeric constraints, color systems, typography, spacing, shadows, component detail, motion, style keywords, anti-patterns).
-
-### 2. 验证闭环 / The verification loop
-
-每一份 `prompt.hifi.md` 交给 AI agent 执行：
-Each `prompt.hifi.md` is handed to an AI agent:
-
-```
-读 prompt.hifi.md
-  → 写单文件 build.vN.html（CSS/JS 全内联）/ write single-file build.vN.html (inline CSS/JS)
-  → repro-shot.js 按 1280×820 截图 / screenshot at 1280×820 via repro-shot.js
-  → 与 previews/<id>.png 视觉对比（首屏 + 动画）/ compare vs previews/<id>.png (above-the-fold + animation)
-  → 不一致则修改 build.vN.html，最多迭代 3 次 / fix & re-iterate up to 3 times
-  → 写 repro/<id>/result.hifi.json { passed, animOk, attempts, lastBuild, notes }
-```
-
-`gen-hifi-batches.js` 把带真实动画规格且本地有参考图的站点分成 12 个/批（共 17 批），供多个 agent 并行跑，验证幂等（已有 `result.hifi.json` 则跳过）。
-`gen-hifi-batches.js` splits sites with real animation specs and local references into batches of 12 (17 batches total) for parallel agents; verification is idempotent (skips if `result.hifi.json` exists).
-
-### 3. 结果聚合 / Result aggregation
-
-`agg-hifi.js` 读取全部 `result.hifi.json`，把 `hifiPassed` / `animOk` 写回 `preview-data.json`，随后 `gen-gallery.js` 重建画廊，卡片上即显示验证徽章。未参与验证的站点字段留空，画廊显示「待验证」，**不会误标失败**。
-`agg-hifi.js` reads all `result.hifi.json` and writes `hifiPassed` / `animOk` back into `preview-data.json`; `gen-gallery.js` then rebuilds the gallery with verification badges. Sites not yet verified leave the field empty and show "pending" — **never falsely marked failed.**
-
----
-
-## 使用指南 / Usage Guide
-
-### 浏览画廊 / Browse the gallery
-
-直接用浏览器打开 `preview-gallery.html`（推荐 Chrome / Edge）。预览图位于 `previews/`，与 HTML 同级。
-Open `preview-gallery.html` directly in a browser (Chrome / Edge recommended). Previews live in `previews/`, alongside the HTML.
-
-### 用提示词让 AI 重建某个 UI / Rebuild a UI from its prompt with AI
-
-1. 在画廊里找到目标卡片，点「复制提示词」。/ Find the target card and click "Copy prompt".
-2. 把提示词丢给任意 AI UI 生成器（要求输出单文件 HTML）。/ Paste it into any AI UI generator (ask for a single-file HTML).
-3. 生成结果的首屏与动画应与原站一致（动画规格是逐字抄的真实代码）。/ The result's above-the-fold and animations should match the original (animation spec is verbatim real code).
-
-### 运行管线脚本 / Run the pipeline
-
-环境要求：Node.js 22+，且安装 `playwright` + 系统 Chrome（读取器/截图器使用系统 Chrome 路径）。
-Requirements: Node.js 22+, `playwright` installed, and system Chrome (reader/screenshotter use the system Chrome path).
+### 1. 导出复刻任务包
 
 ```bash
-# 1) 重新构建数据集（改完 build-dataset.js 后）
-# 1) Rebuild the dataset (after editing build-dataset.js)
-node build-dataset.js
-
-# 2) 组装高保真提示词（依赖 repro/<id>/anim.json 与 web-prompts.md）
-# 2) Assemble hifi prompts (needs repro/<id>/anim.json and web-prompts.md)
-node assemble-hifi.js
-node merge-hifi.js          # 合并写回 preview-data.json / merge back into preview-data.json
-
-# 3) 重建画廊 / Rebuild the gallery
-node gen-gallery.js
-
-# 4) 分批 + 跑 AI 验证闭环（每批交给 agent 执行 hifi-agent-prompt.md）
-# 4) Batch + run AI verification loop (each batch run by an agent per hifi-agent-prompt.md)
-node gen-hifi-batches.js    # 生成 repro/hifi-batches.json / produces repro/hifi-batches.json
-#    → 由 agent 读取 repro/<id>/prompt.hifi.md 执行闭环（见上文）/ agent reads prompt.hifi.md and runs the loop
-
-# 5) 聚合验证结果并重建带徽章的画廊
-# 5) Aggregate results and rebuild the badged gallery
-node agg-hifi.js
-node gen-gallery.js
+npm run repro:pack -- --id v4-openai   # 单个项目
+npm run repro:pack -- --all            # 全部已验收项目
 ```
 
----
+产物写入 `repro/<project-id>/task/`：
 
-## 验证结果 / Verification Results
+| 文件 | 内容 |
+| --- | --- |
+| `reference.png` | 1280 × 820 参考截图（唯一视觉事实来源） |
+| `brief.md` | 项目画像、硬性范围、执行步骤、验收标准、已知限制 |
+| `project.json` | 结构化画像（id / name / viewport / styleFamily / colors / knownLimitations…） |
+| `acceptance.json` | 机器可读验收规则、阈值与硬性失败项 |
 
-| 指标 / Metric | 数值 / Value |
-|---|---|
-| 进入高保真复现验证的站点 / Sites entering hifi verification | 204 |
-| AI 实机复现通过（`hifiPassed`）/ AI reproduction passed | **194 / 204（100%）** |
-| 动画逐帧还原（`animOk`）/ Animation frame-restored | **191 / 194（98.5%）** |
-| 复现失败 / Reproduction failures | **0** |
-| 带高保真提示词的站点 / Sites with hifi prompt | 207 / 230 |
-| 标注「待验证」/ Marked "pending" | 36（含尚未复现的站点，未误标失败 / includes not-yet-reproduced, not falsely failed） |
+详情页的「导出复刻包（ZIP）」按钮生成同样内容的 ZIP（含 `reference.png`）。
 
-画廊卡片徽章含义 / Badge meanings：`✓ 复现通过`（绿 / green）、`✦ 动画还原`（金 / gold）、`✕ 未复现`（红 / red）、`· 待验证`（灰 / grey）。
-
-> 注：验证由 AI agent 在本地以系统 Chrome 实机截图对比完成，迭代上限 3 次。动画还原判定以首屏 `@keyframes` / transition 一致性为准。
-> Note: verification is done by AI agents locally with system Chrome, screenshot-compared, capped at 3 iterations. Animation parity is judged by above-the-fold `@keyframes` / transition consistency.
-
----
-
-## 脚本参考 / Script Reference
-
-| 脚本 / Script | 用途 / Purpose |
-|---|---|
-| `build-dataset.js` | 汇总组件库 + 获奖项目 → `preview-data.json` / Aggregate libs + awards → `preview-data.json` |
-| `gen-gallery.js` | 模板 + 数据 → 重建自包含 `preview-gallery.html` / Template + data → rebuild self-contained gallery |
-| `assemble-hifi.js` | 组装混合高保真提示词 → `repro/<id>/prompt.hifi.md` / Assemble hybrid hifi prompt |
-| `merge-hifi.js` | 把 `prompt.hifi.md` 合并回 `preview-data.json` 的 `prompt` 字段 / Merge prompt back into data |
-| `gen-hifi-batches.js` | 把高保真站点分 12/批供并行验证 → `repro/hifi-batches.json` / Batch hifi sites for parallel verify |
-| `agg-hifi.js` | 聚合 `result.hifi.json` 写回 `hifiPassed` / `animOk` / Aggregate results back |
-| `repro-read2.js` | 动画感知读取器：抓真实 `@keyframes` / 首屏动画 / 动画库 → `anim.json` / Animation-aware reader |
-| `repro-shot.js` | 本地 HTML 按 1280×820 截图 → PNG / Screenshot local HTML at 1280×820 |
-| `web-prompts.md` | 社区优质 UI 生成提示词技巧（WEB_EXTRA 注入位）/ Community UI-prompt techniques (WEB_EXTRA) |
-| `hifi-agent-prompt.md` | 验证 agent 执行指令模板 / Verification agent instruction template |
-| `test-functional.js` | Playwright 端到端功能测试 / Playwright e2e functional test |
-| `verify-gallery.js` | 画廊渲染验证 / Gallery render verification |
-
----
-
-## 如何扩展数据集 / How to extend the dataset
-
-1. 在 `build-dataset.js` 的 `NEW` 数组（或获奖项目数组）追加条目，元组格式：
-   Append an entry to the `NEW` array (or awards array) in `build-dataset.js`, tuple format:
-   `[id, name, vendor, fw, theme, link, repo, license, chips]`
-2. 运行 `node build-dataset.js` 重建 `preview-data.json`。/ Run `node build-dataset.js` to rebuild the data.
-3. 生成该站预览图（`previews/<id>.png`），并确保本地有可访问 URL 供读取器抓取动画。/ Generate its preview (`previews/<id>.png`) and ensure a reachable URL for the animation reader.
-4. 跑 `assemble-hifi.js` → `merge-hifi.js` → 把新站纳入 `gen-hifi-batches.js` 批次 → 交 agent 验证 → `agg-hifi.js` → `gen-gallery.js`。/ Run assemble → merge → include in batches → agent verify → aggregate → rebuild.
-
----
-
-## 本地源码浏览器（hub）/ Local source browser (hub)
-
-`hub/` 是一个零依赖 Node 服务，自动扫描 `source/` 里克隆的获奖源码，提供**真实代码预览**与**源码浏览器**（内容逐字节一致，不做改写）。
-`hub/` is a zero-dependency Node service that auto-scans cloned award source in `source/`, offering **real-code preview** and a **source browser** (byte-identical, unmodified).
+### 2. 本地视觉验证
 
 ```bash
-cd hub
-node server.js        # 默认端口 8200，可用 PORT=xxxx 覆盖 / default port 8200, override with PORT=xxxx
-# 打开 http://127.0.0.1:8200 / open http://127.0.0.1:8200
+npm run repro:validate -- --id v4-openai --candidate ./repro/v4-openai/candidate
+# 加 --write-data 把结果写回 ui-projects.json
 ```
 
-把任意获奖仓库浅克隆进 `../source/`，刷新页面即自动出现。接口与说明见 `hub/README.md`。
-Shallow-clone any award repo into `../source/` and it appears on refresh. API & details in `hub/README.md`.
+`--candidate` 支持三种形式：
 
----
+- 单个 `.html` 文件（`file://` 打开）；
+- 含可启动网页的目录（内置静态服务器托管）；
+- `http(s)://` 本地 URL。
 
-## 说明与限制 / Notes & Limitations
+验证流程：固定视口 1280 × 820 → 等字体/图片加载 → 截 `candidate.png` → 与 `reference.png` 逐项对比 → 输出 `diff.png` 热力图 + `diff-overlay.png` 差异叠加热力图（暗化参考 + 红标不同处）+ `report.json` + `report.html`，全部写入 `repro/<project-id>/validation/`。
 
-- **`source/` 目录（约 632MB，含 6 个可运行获奖项目克隆）未纳入本仓库**（`.gitignore` 已排除）。如需本地源码浏览，按 `awards-source-index.html` 中的链接自行克隆。
-  The `source/` directory (~632MB, 6 cloned award projects) is **not in this repo** (excluded by `.gitignore`). To browse source locally, clone per links in `awards-source-index.html`.
-- 画廊运行时**完全离线**：数据内嵌、预览图本地、零 CDN / 外部 API 调用。
-  The gallery is **fully offline at runtime**: embedded data, local previews, zero CDN / external API calls.
-- 动画还原验证以首屏可见动画为准；部分站点需交互（悬停 / 滚动）才触发的动画，验证以「触发条件与表现一致」判定。
-  Animation parity covers above-the-fold visible motion; interaction-triggered (hover/scroll) animations are judged by "same trigger + same behavior."
-- 验证结果由 AI 在本地以系统 Chrome 实机生成对比，属尽力而为（best-effort），非像素级强制相等。
-  Verification is AI-driven, locally screenshot-compared, best-effort — not pixel-enforced equality.
+**批量与汇总**（无需逐个跑）：
 
----
+```bash
+npm run repro:validate-all -- --write-data   # 验证所有有 task+candidate 的项目
+npm run repro:summary                         # 汇总已有 report.json → repro/SUMMARY.md + summary.json
+```
 
-## 相关链接 / Links
+### 3. 验证指标（保留全部原始值，不用单一综合分掩盖问题）
 
-- 🌐 在线画廊 / Live gallery：<https://wangkeyu-u.github.io/ui-gallery/preview-gallery.html>
-- 📦 仓库 / Repo：`wangkeyu-u/ui-gallery`（GitHub Pages 自动部署 `main` 分支 / auto-deploys `main` via GitHub Pages）
+- 尺寸是否为 1280 × 820；
+- 横向溢出（px）；
+- 像素差异比例（pixelmatch）；
+- SSIM 感知相似度（本地实现）；
+- 主要颜色差异 + 结构差异（分块均值）+ 边缘密度差异（Sobel）；
+- 反作弊：候选是否与参考字节一致 / 是否整页用参考截图（`img` 或 `background-image`）冒充复刻——命中直接 `failed`，即使 SSIM=1。
 
----
+### 4. 通过规则（只有真跑过验证且产物存在才可标记）
 
-<p align="center">
-  <sub>策展式 UI 画廊 · 让 AI 学会「抄」顶级 UI / A curated UI gallery that teaches AI to "copy" top-tier UI</sub>
-</p>
+| 状态 | 含义 |
+| --- | --- |
+| `截图已验收` | 仅表示参考快照可用，**不代表可 1:1 还原** |
+| `复刻未验证`（untested） | 默认状态，尚未做任何本地比对 |
+| `复刻已验证`（passed） | 截图 1280×820、无横向溢出、SSIM ≥ 0.90、像素差异 ≤ 12% |
+| `未通过`（failed） | 尺寸错误 / 横向溢出 / 还原度过低 / 反作弊命中 |
+| `需人工复核`（needs-review） | 自动指标接近但主布局或视觉重心仍存疑 |
+
+字体抗锯齿、视频帧、无法取得的品牌图片允许有限容差并记录为限制项。**绝不因为 reference 与 candidate 是同一张静态图片就判定通过**；页面必须是真实 HTML/CSS/React 渲染。
+
+## 主要文件
+
+| 文件 | 作用 |
+| --- | --- |
+| `src/data/ui-projects.json` | UI 元数据与截图路径 |
+| `src/data/style-families.json` | 分类与搜索词 |
+| `src/utils/projectQuality.ts` | 质量准入与链接状态 |
+| `src/utils/replicaBrief.ts` | 截图驱动的复刻任务文案 |
+| `src/utils/reproPack.ts` | 前端 ZIP 复刻包导出 |
+| `scripts/repro-pack-common.cjs` | brief/project/acceptance 单一事实来源（前后端共用） |
+| `scripts/repro-pack.cjs` | 导出 `repro/<id>/task/` 任务包 |
+| `scripts/repro-validate.cjs` | 本地视觉验证（无 AI API） |
+| `scripts/migrate-repro.cjs` | 为所有项目补充 repro 字段（默认 untested） |
+| `src/components/QuickPreview.tsx` | 完整桌面截图预览 |
+| `src/components/ChatPanel.tsx` | 本地优先的选图助手 |
+| `src/pages/Detail.tsx` | 证据拆解、复刻包导出、验证状态与报告入口 |
+
+## 关于复刻
+
+文字描述只负责约束，不负责替代截图。正确流程是：
+
+1. 在画廊打开完整 UI 预览。
+2. 进入详情页下载 1280 × 820 参考截图。
+3. 复制复刻任务，并与截图一起交给支持图像输入的模型。
+4. 在相同画布尺寸截图，与参考图叠加比较。
+5. 至少修正一轮布局、间距、字号、取色和图片裁切。
+
+字体、视频、3D、原始品牌资产和受版权保护的内容可能无法完全复现，详情页会把未知信息保留为“未采集”，不会用常见参数补齐。

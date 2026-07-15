@@ -1,4 +1,5 @@
 import type { UIProject, SearchResult } from '../types';
+import { isVerifiedProject } from './projectQuality';
 
 // ============================================================
 // Natural Language Search Engine
@@ -29,23 +30,6 @@ interface SearchIndex {
   }>;
 }
 
-let cachedIndex: SearchIndex | null = null;
-let cachedProjects: UIProject[] | null = null;
-
-async function loadIndex(): Promise<{ index: SearchIndex; projects: UIProject[] }> {
-  if (cachedIndex && cachedProjects) {
-    return { index: cachedIndex, projects: cachedProjects };
-  }
-  const [indexRes, projectsRes] = await Promise.all([
-    fetch('./src/data/search-index.json').then(r => r.json()),
-    fetch('./src/data/ui-projects.json').then(r => r.json()),
-  ]);
-  cachedIndex = indexRes;
-  cachedProjects = projectsRes;
-  return { index: indexRes, projects: projectsRes };
-}
-
-// Also try loading from the bundled data (Vite will handle this)
 import indexData from '../data/search-index.json';
 import projectsData from '../data/ui-projects.json';
 
@@ -98,6 +82,13 @@ const INTENSITY_MAP: Record<string, string> = {
   'future': 'futuristic',
 };
 
+const LOCAL_SYNONYMS: Record<string, string[]> = {
+  '纸': ['paper', '纸', '纸张', '纸质'],
+  '纸张': ['paper', '纸', '纸张', '纸质'],
+  '教育': ['education', 'edu', '教育'],
+  '文化': ['culture', 'cultural', 'art', '文化', '艺术'],
+};
+
 export function parseQuery(query: string): ParsedQuery {
   const lower = query.toLowerCase().trim();
   const result: ParsedQuery = {
@@ -141,10 +132,16 @@ export function parseQuery(query: string): ParsedQuery {
   }
 
   const { index } = getIndex();
-  const synonyms = index.synonyms;
+  const synonyms = { ...LOCAL_SYNONYMS, ...index.synonyms };
 
   for (const part of parts) {
-    const words = part.text.split(/[\s,，、]+/).filter(Boolean);
+    const phraseMatches = Object.keys(synonyms)
+      .filter(key => key.length > 1 && part.text.includes(key.toLowerCase()))
+      .sort((a, b) => b.length - a.length);
+    const words = [...new Set([
+      ...phraseMatches,
+      ...part.text.split(/[\s,，、的]+/).filter(Boolean),
+    ])];
     for (const word of words) {
       // Expand synonyms
       const expanded = synonyms[word] || synonyms[word.toLowerCase()] || [word];
@@ -167,6 +164,14 @@ export function parseQuery(query: string): ParsedQuery {
     }
   }
 
+
+  result.positive = [...new Set(result.positive)];
+  result.negative = [...new Set(result.negative)];
+  result.materials = [...new Set(result.materials)];
+  result.mood = [...new Set(result.mood)];
+  result.industry = [...new Set(result.industry)];
+  result.pageType = [...new Set(result.pageType)];
+
   // Detect dark/light preference
   if (lower.includes('暗') || lower.includes('dark') || lower.includes('黑')) {
     result.isDark = true;
@@ -185,7 +190,7 @@ export function parseQuery(query: string): ParsedQuery {
 }
 
 function isMaterial(term: string): boolean {
-  const materials = ['metal', 'gold', 'glass', 'liquid', 'paper', 'concrete', 'marble', 'fabric', 'particle', 'chrome', 'steel', 'titanium', '金属', '金', '玻璃', '液态', '纸质', '大理石'];
+  const materials = ['metal', 'gold', 'glass', 'liquid', 'paper', 'concrete', 'marble', 'fabric', 'particle', 'chrome', 'steel', 'titanium', '金属', '金', '玻璃', '液态', '纸', '大理石'];
   return materials.some(m => term.toLowerCase().includes(m));
 }
 
@@ -215,8 +220,33 @@ function scoreProject(
 ): { score: number; reasons: string[] } {
   let score = 0;
   const reasons: string[] = [];
-  const searchText = project.searchText;
+  const searchText = [
+    project.searchText,
+    project.name,
+    project.description,
+    project.styleDescription,
+    project.styleFamilyName,
+    project.styleFamilyNameZh,
+    ...project.mood,
+    ...project.materials,
+    ...project.industry,
+    ...project.layoutTraits,
+    ...project.interactions,
+  ].join(' ').toLowerCase();
   const projectIndex = index.projects.find(p => p.id === project.id);
+  const raw = parsed.raw.toLowerCase();
+
+  // Explicit intent outranks noisy imported tags. This keeps a request for an
+  // automotive page anchored in actual automotive references.
+  if ((raw.includes('汽车') || raw.includes('automotive') || raw.includes('car')) && project.styleFamily === 'automotive') {
+    score += 80;
+    reasons.push('页面方向匹配：汽车产品页');
+  }
+  if ((raw.includes('金属') || raw.includes('metal') || raw.includes('chrome')) &&
+      project.materials.some(material => ['metal', 'chrome', 'steel', 'titanium', 'carbon-fiber'].includes(material.toLowerCase()))) {
+    score += 30;
+    reasons.push('材质匹配：金属与机械质感');
+  }
 
   // Positive matches
   for (const term of parsed.positive) {
@@ -229,17 +259,17 @@ function scoreProject(
         score += 15;
         reasons.push(`风格匹配：${project.styleFamilyNameZh}`);
       }
-      if (project.mood.some(m => m.includes(termLower))) {
+      if (project.mood.some(m => m.toLowerCase() === termLower)) {
         score += 8;
         reasons.push(`情绪匹配：${term}`);
       }
-      if (project.materials.some(m => m.includes(termLower))) {
+      if (project.materials.some(m => m.toLowerCase() === termLower)) {
         score += 8;
-        reasons.push(`材质匹配：${term}`);
+        if (!reasons.some(reason => reason.startsWith('材质匹配：金属'))) reasons.push(`材质匹配：${term}`);
       }
-      if (project.industry.some(i => i.includes(termLower))) {
+      if (project.industry.some(i => i.toLowerCase() === termLower)) {
         score += 8;
-        reasons.push(`行业匹配：${term}`);
+        reasons.push(`行业匹配：${term === 'automotive' ? '汽车' : term}`);
       }
       if (project.interactions.some(i => i.includes(termLower))) {
         score += 5;
@@ -342,7 +372,10 @@ export function search(query: string): {
   }
 
   // Score all projects
-  const scored = projects.map(project => {
+  // Quality admission happens before ranking/diversity. Filtering after the
+  // diversity pass could let three quarantined items consume a whole family
+  // slot and hide the one usable reference.
+  const scored = projects.filter(isVerifiedProject).map(project => {
     const { score, reasons } = scoreProject(project, parsed, index);
     return { project, score, reasons } as SearchResult;
   });
@@ -363,22 +396,32 @@ function buildExplanation(parsed: ParsedQuery, resultCount: number): string {
   const parts: string[] = [];
 
   if (parsed.positive.length > 0) {
-    parts.push(`寻找包含 <strong>${parsed.positive.join('、')}</strong> 的 UI`);
+    const visibleTerms = parsed.positive
+      .filter(term => term.length > 1 && /[\u4e00-\u9fff]/.test(term) && parsed.raw.includes(term))
+      .sort((a, b) => b.length - a.length)
+      .filter((term, index, list) => !list.slice(0, index).some(existing => existing.includes(term)))
+      .slice(0, 3);
+    parts.push(`按 ${visibleTerms.length ? visibleTerms.join('、') : parsed.positive.slice(0, 5).join('、')} 查找`);
   }
   if (parsed.negative.length > 0) {
-    parts.push(`排除 <strong>${parsed.negative.join('、')}</strong>`);
+    const visibleTerms = parsed.negative
+      .filter(term => term.length > 1 && /[\u4e00-\u9fff]/.test(term) && parsed.raw.includes(term))
+      .sort((a, b) => b.length - a.length)
+      .filter((term, index, list) => !list.slice(0, index).some(existing => existing.includes(term)))
+      .slice(0, 3);
+    parts.push(`排除 ${visibleTerms.length ? visibleTerms.join('、') : parsed.negative.slice(0, 4).join('、')}`);
   }
   if (parsed.isDark !== null) {
-    parts.push(parsed.isDark ? '偏好<strong>暗色</strong>' : '偏好<strong>浅色</strong>');
+    parts.push(parsed.isDark ? '偏好暗色' : '偏好浅色');
   }
   if (parsed.density) {
-    parts.push(`偏好<strong>${parsed.density === 'rich' ? '高密度' : '低密度'}</strong>`);
+    parts.push(`偏好${parsed.density === 'rich' ? '高密度' : '低密度'}`);
   }
 
   const base = parts.length > 0 ? parts.join('，') + '。' : '';
   const count = resultCount > 0
-    ? `找到 ${resultCount} 个匹配方向，已按风格多样性排序。`
-    : '没有找到完全匹配的结果，以下是最接近的方向。';
+    ? `找到 ${resultCount} 个方向，已避免同类结果连续堆叠。`
+    : '暂时没有足够证据支持这个方向。';
 
   return base + count;
 }
@@ -412,17 +455,6 @@ export function findSimilar(projectId: string): UIProject[] {
 
   return projects
     .filter(p => p.id !== projectId && p.styleFamily === project.styleFamily)
-    .slice(0, 6);
-}
-
-export function findDifferent(projectId: string): UIProject[] {
-  const { projects } = getIndex();
-  const project = projects.find(p => p.id === projectId);
-  if (!project) return [];
-
-  return projects
-    .filter(p => p.id !== projectId && p.styleFamily !== project.styleFamily)
-    .sort(() => Math.random() - 0.5)
     .slice(0, 6);
 }
 

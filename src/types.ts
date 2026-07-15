@@ -30,7 +30,17 @@ export interface UIProject {
   animOk: boolean;
   capabilities: string[];
   searchText: string;
+  // --- UI 复刻验证（模型无关，本地视觉验证） ---
+  knownLimitations: string[];
+  reproStatus: 'untested' | 'passed' | 'failed' | 'needs-review';
+  reproScore: number | null;
+  reproValidatedAt: string | null;
+  reproReportPath: string | null;
+  reproValidatorVersion: string | null;
+  reproLimitations: string[];
 }
+
+export type ReproStatus = UIProject['reproStatus'];
 
 export interface ComponentLibrary {
   id: string;

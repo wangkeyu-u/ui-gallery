@@ -5,9 +5,10 @@ source/
 *.zip
 *.log
 /tmp/
-repro/
+repro/**/candidate/node_modules/
 *-proof.png
 redesign-*.png
 dist/
 .vite/
 *.timestamp-*.mjs
+README 2.md

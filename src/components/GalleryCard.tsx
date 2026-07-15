@@ -1,73 +1,79 @@
-import { Link } from 'react-router-dom';
-import type { UIProject } from '../types';
+import { ArrowsOut, ArrowUpRight, Check, Heart, WarningCircle } from '@phosphor-icons/react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFavorites } from '../hooks/useFavorites';
+import type { ReproStatus, UIProject } from '../types';
 
-const CARD_SIZES = ['card-size-large', 'card-size-medium', 'card-size-small', 'card-size-tall', 'card-size-wide', 'card-size-full'];
+interface GalleryCardProps {
+  project: UIProject;
+  reason?: string;
+  featured?: boolean;
+  onPreview?: (project: UIProject) => void;
+}
 
-export default function GalleryCard({ project, index }: { project: UIProject; index: number }) {
+function previewPath(path: string) {
+  return path.startsWith('previews/') ? `./${path}` : path;
+}
+
+const REPRO_LABEL: Record<ReproStatus, string> = {
+  untested: '复刻未验证',
+  passed: '复刻已验证',
+  failed: '未通过',
+  'needs-review': '需复核',
+};
+
+const REPRO_CLASS: Record<ReproStatus, string> = {
+  untested: 'card-repro--untested',
+  passed: 'card-repro--passed',
+  failed: 'card-repro--failed',
+  'needs-review': 'card-repro--review',
+};
+
+export default function GalleryCard({ project, reason, featured = false, onPreview }: GalleryCardProps) {
   const { isFavorite, toggleFavorite } = useFavorites();
-  const fav = isFavorite(project.id);
-
-  // Assign card size based on index for magazine rhythm
-  const sizeClass = (() => {
-    const pattern = [
-      'card-size-large',   // 0: hero
-      'card-size-medium',  // 1
-      'card-size-tall',    // 2: tall mobile shot
-      'card-size-medium',  // 3
-      'card-size-medium',  // 4
-      'card-size-wide',    // 5: wide editorial
-      'card-size-small',   // 6
-      'card-size-small',   // 7
-      'card-size-small',   // 8
-      'card-size-full',    // 9: full-width feature
-      'card-size-medium',  // 10
-      'card-size-medium',  // 11
-    ];
-    return pattern[index % pattern.length];
-  })();
+  const navigate = useNavigate();
+  const favorite = isFavorite(project.id);
+  const rs = project.reproStatus;
 
   return (
-    <article className={`gallery-card ${sizeClass}`}>
-      <Link to={`/detail/${project.id}`}>
-        <div className="gallery-card__image-wrap">
-          {project.projectType === 'award' && (
-            <span className="gallery-card__badge">获奖</span>
-          )}
-          <button
-            className={`gallery-card__favorite ${fav ? 'active' : ''}`}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              toggleFavorite(project.id);
-            }}
-            aria-label={fav ? '取消收藏' : '收藏'}
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill={fav ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-            </svg>
-          </button>
-          <img
-            className="gallery-card__image"
-            src={project.previewImage.replace('previews/', './previews/')}
-            alt={`${project.name} — ${project.styleFamilyNameZh}`}
-            loading="lazy"
-            onError={(e) => {
-              (e.target as HTMLImageElement).src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250"><rect width="400" height="250" fill="%23eeede9"/><text x="50%" y="50%" text-anchor="middle" dy=".3em" fill="%239b9b9b" font-size="14">预览加载失败</text></svg>';
-            }}
-          />
-          <div className="gallery-card__overlay">
-            <span className="gallery-card__overlay-text">查看详情 →</span>
-          </div>
+    <article className={`gallery-entry${featured ? ' gallery-entry--featured' : ''}`}>
+      <button type="button" className="browser-frame browser-frame--button" aria-label={`放大预览 ${project.name}`} onClick={() => onPreview ? onPreview(project) : navigate(`/detail/${project.id}`)}>
+        <div className="browser-frame__bar" aria-hidden="true">
+          <span /><span /><span />
+          <div className="browser-frame__address">{project.name.toLowerCase().replace(/\s+/g, '-')}.ui</div>
         </div>
-      </Link>
-      <div className="gallery-card__info">
-        <h3 className="gallery-card__name">{project.name}</h3>
-        <div className="gallery-card__tags">
-          <span className="gallery-card__tag">{project.styleFamilyNameZh}</span>
-          {project.mood.slice(0, 2).map(m => (
-            <span key={m} className="gallery-card__tag">{m}</span>
-          ))}
+        <div className="browser-frame__viewport">
+          <img
+            src={previewPath(project.previewImage)}
+            alt={`${project.name} 的 UI 全貌`}
+            loading={featured ? 'eager' : 'lazy'}
+          />
+          <span className="browser-frame__expand"><ArrowsOut size={16} /> 放大看完整 UI</span>
+        </div>
+      </button>
+      <div className="gallery-entry__meta">
+        <div className="gallery-entry__line">
+          <span className={`card-repro ${REPRO_CLASS[rs]}`}>
+            {rs === 'passed' ? <Check size={13} weight="bold" /> : rs === 'failed' || rs === 'needs-review' ? null : <WarningCircle size={13} />}
+            {' '}{REPRO_LABEL[rs]}
+          </span>
+          <span>{project.styleFamilyNameZh}</span>
+        </div>
+        <Link to={`/detail/${project.id}`} className="gallery-entry__title">
+          {project.name}
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
+        <p>{reason || project.description || project.styleDescription}</p>
+        <div className="gallery-entry__footer">
+          <span>{[...project.materials, ...project.mood].filter(Boolean).slice(0, 3).join(' · ') || '尚未拆解标签'}</span>
+          <button
+            type="button"
+            className="save-button"
+            onClick={() => toggleFavorite(project.id)}
+            aria-label={favorite ? `取消收藏 ${project.name}` : `收藏 ${project.name}`}
+          >
+            <Heart size={18} weight={favorite ? 'fill' : 'regular'} aria-hidden="true" />
+            {favorite ? '已收藏' : '收藏'}
+          </button>
         </div>
       </div>
     </article>

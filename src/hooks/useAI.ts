@@ -61,8 +61,9 @@ export function useAI() {
 
   // Update endpoint
   const updateEndpoint = useCallback((url: string) => {
-    setEndpoint(url);
-    localStorage.setItem(AI_ENDPOINT_KEY, url);
+    const normalized = url.trim().replace(/\/+$/, '');
+    setEndpoint(normalized);
+    localStorage.setItem(AI_ENDPOINT_KEY, normalized);
     setAvailable(null);
   }, []);
 

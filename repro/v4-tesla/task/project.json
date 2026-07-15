@@ -1,0 +1,30 @@
+{
+  "id": "v4-tesla",
+  "name": "Tesla",
+  "originalUrl": "https://www.tesla.com/",
+  "previewImage": "previews/v4-tesla.png",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "styleFamily": "automotive",
+  "styleFamilyName": "Automotive",
+  "styleFamilyNameZh": "汽车",
+  "mood": [
+    "precise",
+    "cinematic"
+  ],
+  "materials": [
+    "metal",
+    "photography"
+  ],
+  "industry": [
+    "automotive"
+  ],
+  "colors": {
+    "bg": null,
+    "accent": null,
+    "text": null
+  },
+  "knownLimitations": []
+}

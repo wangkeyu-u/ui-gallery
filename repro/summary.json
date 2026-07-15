@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-07-15T02:23:07.481Z",
+  "validatorVersion": "repro-validator/1.0.0",
+  "total": 3,
+  "passed": 0,
+  "failed": 3,
+  "needsReview": 0,
+  "untested": 226,
+  "projects": [
+    {
+      "id": "v4-openai",
+      "status": "failed",
+      "ssim": 0.1783,
+      "pixel": 0.4825,
+      "edge": 0.0086,
+      "validatedAt": "2026-07-15T02:23:02.885Z",
+      "path": "repro/v4-openai/validation/diff-overlay.png"
+    },
+    {
+      "id": "v4-tesla",
+      "status": "failed",
+      "ssim": 0.6281,
+      "pixel": 0.5341,
+      "edge": 0.008,
+      "validatedAt": "2026-07-15T02:23:05.152Z",
+      "path": "repro/v4-tesla/validation/diff-overlay.png"
+    },
+    {
+      "id": "v4-moma",
+      "status": "failed",
+      "ssim": 0.6045,
+      "pixel": 0.6304,
+      "edge": 0.0097,
+      "validatedAt": "2026-07-15T02:23:07.479Z",
+      "path": "repro/v4-moma/validation/diff-overlay.png"
+    }
+  ]
+}

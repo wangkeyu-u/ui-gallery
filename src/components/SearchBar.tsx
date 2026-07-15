@@ -1,79 +1,69 @@
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ArrowRight, MagnifyingGlass } from '@phosphor-icons/react';
 import { getSuggestions } from '../utils/search';
 
-export default function SearchBar() {
-  const [query, setQuery] = useState('');
-  const [suggestions, setSuggestions] = useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
+interface SearchBarProps {
+  initialValue?: string;
+}
+
+export default function SearchBar({ initialValue = '' }: SearchBarProps) {
+  const [query, setQuery] = useState(initialValue);
+  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
-  const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const listId = useId();
+
+  useEffect(() => setQuery(initialValue), [initialValue]);
 
   useEffect(() => {
-    if (query.length > 0) {
-      setSuggestions(getSuggestions(query));
-      setShowSuggestions(true);
-    } else {
-      setSuggestions(getSuggestions(''));
-      setShowSuggestions(false);
-    }
-  }, [query]);
-
-  useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setShowSuggestions(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    const close = (event: MouseEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) setOpen(false);
+    };
+    document.addEventListener('mousedown', close);
+    return () => document.removeEventListener('mousedown', close);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (query.trim()) {
-      navigate(`/?q=${encodeURIComponent(query.trim())}`);
-      setShowSuggestions(false);
-    }
+  const submit = (value: string) => {
+    const next = value.trim();
+    if (!next) return;
+    navigate(`/?q=${encodeURIComponent(next)}`);
+    setOpen(false);
   };
 
-  const handleSuggestionClick = (s: string) => {
-    setQuery(s);
-    navigate(`/?q=${encodeURIComponent(s)}`);
-    setShowSuggestions(false);
-  };
+  const suggestions = getSuggestions(query);
 
   return (
-    <div className="search-bar" ref={containerRef}>
-      <form onSubmit={handleSubmit}>
+    <div className="search-box" ref={containerRef}>
+      <form className="search-box__form" onSubmit={event => { event.preventDefault(); submit(query); }}>
+        <MagnifyingGlass size={20} weight="regular" aria-hidden="true" />
         <input
-          ref={inputRef}
-          type="text"
-          className="search-bar__input"
-          placeholder="描述你想要的 UI 方向…  例如：金属质感的汽车产品页"
+          type="search"
           value={query}
-          onChange={e => setQuery(e.target.value)}
-          onFocus={() => query.length > 0 && setShowSuggestions(true)}
-          aria-label="自然语言搜索"
+          onChange={event => { setQuery(event.target.value); setOpen(true); }}
+          onFocus={() => setOpen(true)}
+          placeholder="比如：金属质感的汽车产品页，但不要太赛博"
+          aria-label="描述你想找的 UI"
+          aria-controls={listId}
+          aria-expanded={open && suggestions.length > 0}
         />
-        <div className="search-bar__icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-        </div>
+        <button type="submit" className="icon-button icon-button--dark" aria-label="开始查找">
+          <ArrowRight size={19} weight="bold" aria-hidden="true" />
+        </button>
       </form>
-      {showSuggestions && suggestions.length > 0 && (
-        <div className="search-bar__suggestions">
-          {suggestions.map((s, i) => (
-            <div
-              key={i}
-              className="search-bar__suggestion"
-              onClick={() => handleSuggestionClick(s)}
+      {open && suggestions.length > 0 && (
+        <div className="search-box__suggestions" id={listId} role="listbox" aria-label="搜索建议">
+          {suggestions.slice(0, 6).map(suggestion => (
+            <button
+              type="button"
+              role="option"
+              aria-selected="false"
+              key={suggestion}
+              onClick={() => { setQuery(suggestion); submit(suggestion); }}
             >
-              <span>{s}</span>
-            </div>
+              {suggestion}
+              <ArrowRight size={15} aria-hidden="true" />
+            </button>
           ))}
         </div>
       )}

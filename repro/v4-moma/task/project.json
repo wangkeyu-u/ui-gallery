@@ -1,0 +1,32 @@
+{
+  "id": "v4-moma",
+  "name": "MoMA",
+  "originalUrl": "https://www.moma.org/",
+  "previewImage": "previews/v4-moma.png",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "styleFamily": "culture",
+  "styleFamilyName": "Culture / Museum",
+  "styleFamilyNameZh": "文化 / 博物馆",
+  "mood": [
+    "cultured",
+    "editorial"
+  ],
+  "materials": [
+    "artwork",
+    "paper"
+  ],
+  "industry": [
+    "museum",
+    "culture",
+    "art"
+  ],
+  "colors": {
+    "bg": null,
+    "accent": null,
+    "text": null
+  },
+  "knownLimitations": []
+}
