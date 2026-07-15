@@ -1,0 +1,32 @@
+{
+  "id": "demo-flat",
+  "name": "Northwind Analytics（验证演示·纯CSS平面页）",
+  "originalUrl": "",
+  "previewImage": "previews/demo-flat.png",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "styleFamily": "saas",
+  "styleFamilyName": "SaaS",
+  "styleFamilyNameZh": "SaaS 产品页",
+  "mood": [
+    "clean",
+    "confident",
+    "minimal"
+  ],
+  "materials": [
+    "flat",
+    "css"
+  ],
+  "industry": [
+    "SaaS",
+    "数据"
+  ],
+  "colors": {
+    "bg": "#f7f8fa",
+    "accent": "#4f46e5",
+    "text": "#0f172a"
+  },
+  "knownLimitations": []
+}

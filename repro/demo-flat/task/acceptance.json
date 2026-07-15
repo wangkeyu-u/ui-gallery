@@ -1,0 +1,29 @@
+{
+  "projectId": "demo-flat",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "rules": [
+    "画布必须为 1280 × 820，不得横向或纵向溢出 viewport。",
+    "主要区块的数量和垂直顺序必须与参考截图一致。",
+    "导航、标题、主图、按钮等关键元素的位置应接近参考截图。",
+    "字号、间距、颜色和图片裁切必须经过截图对比修正，不能凭感觉。",
+    "动态内容、原站字体、视频、3D 和版权资产允许记录为限制项，但不能假装已经还原。",
+    "页面必须是真实 HTML/CSS/React 渲染，不能把参考截图直接作为整页背景或 img 冒充复刻。"
+  ],
+  "thresholds": {
+    "ssimMin": 0.9,
+    "pixelDifferenceMax": 0.12,
+    "allowHorizontalOverflow": false
+  },
+  "allowedTolerance": [
+    "字体抗锯齿在不同系统下的细微差异。",
+    "无法取得的品牌图片可用等比例占位，但须保持尺寸与位置。",
+    "视频首帧或 3D 画面的单帧差异。"
+  ],
+  "hardFail": [
+    "candidate.png 与 reference.png 是同一张静态图片（未真正复刻）。",
+    "整页只用一张图片覆盖，没有真实 DOM 结构。"
+  ]
+}

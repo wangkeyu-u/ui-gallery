@@ -1,0 +1,38 @@
+{
+  "projectId": "demo-flat",
+  "viewport": {
+    "width": 1280,
+    "height": 820
+  },
+  "status": "passed",
+  "pixelDifference": 0.0033,
+  "ssim": 0.9926,
+  "colorDifference": 0,
+  "structuralDifference": 0.1913,
+  "edgeDifference": 0,
+  "horizontalOverflow": false,
+  "overflowPixels": 0,
+  "dimensionsMatch": true,
+  "candidateMeanColor": [
+    239,
+    241,
+    248
+  ],
+  "referenceMeanColor": [
+    239,
+    241,
+    248
+  ],
+  "antiCheat": {
+    "identicalToReference": false,
+    "singleImageCover": false,
+    "referenceImageUsed": false
+  },
+  "diffOverlayPath": "repro/demo-flat/validation/diff-overlay.png",
+  "validatedAt": "2026-07-15T04:38:33.582Z",
+  "validatorVersion": "repro-validator/1.0.0",
+  "limitations": [],
+  "notes": [
+    "自动指标达到通过线（SSIM≥0.90 且 像素差异≤12% 且无横向溢出）。"
+  ]
+}

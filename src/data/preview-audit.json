@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-15T01:02:27.101Z",
+  "generatedAt": "2026-07-15T04:39:55.926Z",
   "summary": {
-    "totalRecords": 229,
+    "totalRecords": 230,
     "accepted": 152,
-    "quarantined": 77,
+    "quarantined": 78,
     "acceptedWithCriticalIssues": 0,
     "acceptedFamilies": 26
   },
@@ -2325,6 +2325,16 @@
       "width": 1280,
       "height": 820,
       "fileSize": 497711,
+      "issues": []
+    },
+    {
+      "id": "demo-flat",
+      "name": "Northwind Analytics（验证演示·纯CSS平面页）",
+      "accepted": false,
+      "previewImage": "previews/demo-flat.png",
+      "width": 1280,
+      "height": 820,
+      "fileSize": 71797,
       "issues": []
     }
   ]

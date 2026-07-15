@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1280" />
+<title>Northwind Analytics — reference</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #0f172a; background: #f7f8fa; -webkit-font-smoothing: antialiased;
+  }
+  .nav { height: 64px; display: flex; align-items: center; padding: 0 48px; border-bottom: 1px solid #e5e7eb; background: #ffffff; }
+  .logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; }
+  .logo .mark { width: 18px; height: 18px; border-radius: 5px; background: #4f46e5; }
+  .nav .links { display: flex; gap: 26px; margin-left: 44px; font-size: 14px; color: #475569; }
+  .nav .spacer { flex: 1; }
+  .btn { font-size: 14px; padding: 9px 16px; border-radius: 8px; font-weight: 600; cursor: default; }
+  .btn-ghost { color: #334155; background: transparent; }
+  .btn-solid { color: #fff; background: #4f46e5; border: 1px solid #4f46e5; }
+
+  .hero { text-align: center; padding: 56px 48px 28px; }
+  .hero h1 { font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; }
+  .hero p { margin: 16px auto 0; max-width: 620px; font-size: 17px; color: #475569; line-height: 1.5; }
+  .hero .cta { margin-top: 24px; display: flex; gap: 12px; justify-content: center; }
+
+  .mock { width: 920px; margin: 8px auto 0; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; box-shadow: 0 10px 30px rgba(15,23,42,0.08); overflow: hidden; }
+  .mock .bar { height: 38px; display: flex; align-items: center; gap: 6px; padding: 0 14px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; }
+  .mock .bar .dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; }
+  .mock .body { display: flex; height: 240px; }
+  .mock .side { width: 180px; background: #f8fafc; border-right: 1px solid #eef2f7; padding: 16px; }
+  .mock .side .s { height: 10px; border-radius: 5px; background: #e2e8f0; margin-bottom: 12px; }
+  .mock .side .s.active { background: #c7d2fe; }
+  .mock .main { flex: 1; padding: 18px 20px; }
+  .mock .stats { display: flex; gap: 14px; margin-bottom: 16px; }
+  .mock .stat { flex: 1; height: 64px; border: 1px solid #eef2f7; border-radius: 10px; padding: 12px; }
+  .mock .stat .k { height: 8px; width: 50%; border-radius: 4px; background: #e2e8f0; margin-bottom: 10px; }
+  .mock .stat .v { height: 16px; width: 70%; border-radius: 5px; background: #c7d2fe; }
+  .mock .chart { display: flex; align-items: flex-end; gap: 10px; height: 96px; padding: 0 4px; }
+  .mock .chart .col { flex: 1; border-radius: 6px 6px 0 0; background: linear-gradient(180deg,#6366f1,#a5b4fc); }
+
+  .features { display: flex; gap: 20px; justify-content: center; padding: 36px 48px 12px; }
+  .card { width: 300px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 22px; background: #fff; }
+  .card .ic { width: 36px; height: 36px; border-radius: 9px; background: #eef2ff; margin-bottom: 14px; }
+  .card h3 { font-size: 16px; margin-bottom: 8px; }
+  .card p { font-size: 13px; color: #64748b; line-height: 1.5; }
+
+  .footer { text-align: center; color: #94a3b8; font-size: 13px; padding: 18px 0 26px; }
+</style>
+</head>
+<body>
+  <div class="nav">
+    <div class="logo"><span class="mark"></span> Northwind</div>
+    <div class="links"><span>Product</span><span>Pricing</span><span>Docs</span><span>Company</span></div>
+    <div class="spacer"></div>
+    <span class="btn btn-ghost">Sign in</span>
+    <span class="btn btn-solid">Get started</span>
+  </div>
+
+  <div class="hero">
+    <h1>Analytics that explain themselves.</h1>
+    <p>Northwind turns raw events into plain-language answers your whole team can act on — no SQL, no dashboards to babysit.</p>
+    <div class="cta">
+      <span class="btn btn-solid">Start free</span>
+      <span class="btn btn-ghost" style="border:1px solid #cbd5e1">Book a demo</span>
+    </div>
+  </div>
+
+  <div class="mock">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <div class="body">
+      <div class="side">
+        <div class="s active"></div><div class="s"></div><div class="s"></div><div class="s"></div><div class="s"></div>
+      </div>
+      <div class="main">
+        <div class="stats">
+          <div class="stat"><div class="k"></div><div class="v"></div></div>
+          <div class="stat"><div class="k"></div><div class="v"></div></div>
+          <div class="stat"><div class="k"></div><div class="v"></div></div>
+        </div>
+        <div class="chart">
+          <div class="col" style="height:40%"></div><div class="col" style="height:62%"></div>
+          <div class="col" style="height:48%"></div><div class="col" style="height:78%"></div>
+          <div class="col" style="height:55%"></div><div class="col" style="height:88%"></div>
+          <div class="col" style="height:66%"></div><div class="col" style="height:72%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="features">
+    <div class="card"><div class="ic"></div><h3>Plain-language insights</h3><p>Ask in English, get a chart and a sentence that explains the why.</p></div>
+    <div class="card"><div class="ic"></div><h3>Live without plumbing</h3><p>Connect a warehouse and watch metrics populate in minutes.</p></div>
+    <div class="card"><div class="ic"></div><h3>Share in one click</h3><p>Send a board-ready view to anyone — no license required.</p></div>
+  </div>
+
+  <div class="footer">© 2026 Northwind Analytics · A self-contained verification sample</div>
+</body>
+</html>

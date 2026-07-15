@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=1280" />
+<title>Northwind Analytics — candidate</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; width: 1280px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #0f172a; background: #f7f8fa; -webkit-font-smoothing: antialiased;
+  }
+  .nw-nav { height: 64px; display: flex; align-items: center; padding: 0 48px; border-bottom: 1px solid #e5e7eb; background: #ffffff; }
+  .nw-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; }
+  .nw-logo .nw-mark { width: 18px; height: 18px; border-radius: 5px; background: #4f46e5; }
+  .nw-links { display: flex; gap: 22px; margin-left: 44px; font-size: 14px; color: #475569; }
+  .nw-nav .nw-grow { flex: 1; }
+  .nw-btn { font-size: 14px; padding: 9px 16px; border-radius: 9px; font-weight: 600; }
+  .nw-ghost { color: #334155; background: transparent; }
+  .nw-solid { color: #fff; background: #4f46e5; border: 1px solid #4f46e5; }
+
+  .nw-hero { text-align: center; padding: 56px 48px 28px; }
+  .nw-hero h1 { font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; font-weight: 800; margin: 0; }
+  .nw-hero p { margin: 16px auto 0; max-width: 620px; font-size: 17px; color: #475569; line-height: 1.5; }
+  .nw-cta { margin-top: 24px; display: flex; gap: 12px; justify-content: center; }
+
+  .nw-mock { width: 920px; margin: 8px auto 0; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 10px 30px rgba(15,23,42,0.08); overflow: hidden; }
+  .nw-bar { height: 38px; display: flex; align-items: center; gap: 6px; padding: 0 14px; background: #f1f5f9; border-bottom: 1px solid #e2e8f0; }
+  .nw-bar .nw-dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; }
+  .nw-body { display: flex; height: 240px; }
+  .nw-side { width: 180px; background: #f8fafc; border-right: 1px solid #eef2f7; padding: 16px; }
+  .nw-side .nw-s { height: 10px; border-radius: 5px; background: #e2e8f0; margin-bottom: 12px; }
+  .nw-side .nw-s.on { background: #c7d2fe; }
+  .nw-main { flex: 1; padding: 18px 20px; }
+  .nw-stats { display: flex; gap: 14px; margin-bottom: 16px; }
+  .nw-stat { flex: 1; height: 64px; border: 1px solid #eef2f7; border-radius: 10px; padding: 12px; }
+  .nw-stat .nw-k { height: 8px; width: 50%; border-radius: 4px; background: #e2e8f0; margin-bottom: 10px; }
+  .nw-stat .nw-v { height: 16px; width: 70%; border-radius: 5px; background: #c7d2fe; }
+  .nw-chart { display: flex; align-items: flex-end; gap: 10px; height: 96px; padding: 0 4px; }
+  .nw-chart .nw-col { flex: 1; border-radius: 6px 6px 0 0; background: linear-gradient(180deg,#6366f1,#a5b4fc); }
+
+  .nw-features { display: flex; gap: 20px; justify-content: center; padding: 36px 48px 12px; }
+  .nw-card { width: 300px; border: 1px solid #e5e7eb; border-radius: 10px; padding: 22px; background: #fff; }
+  .nw-card .nw-ic { width: 36px; height: 36px; border-radius: 9px; background: #eef2ff; margin-bottom: 14px; }
+  .nw-card h3 { font-size: 16px; margin: 0 0 8px; }
+  .nw-card p { font-size: 13px; color: #64748b; line-height: 1.5; margin: 0; }
+
+  .nw-footer { text-align: center; color: #94a3b8; font-size: 13px; padding: 18px 0 26px; }
+</style>
+</head>
+<body>
+  <header class="nw-nav">
+    <div class="nw-logo"><span class="nw-mark"></span> Northwind</div>
+    <nav class="nw-links"><span>Product</span><span>Pricing</span><span>Docs</span><span>Company</span></nav>
+    <div class="nw-grow"></div>
+    <span class="nw-btn nw-ghost">Sign in</span>
+    <span class="nw-btn nw-solid">Get started</span>
+  </header>
+
+  <section class="nw-hero">
+    <h1>Analytics that explain themselves.</h1>
+    <p>Northwind turns raw events into plain-language answers your whole team can act on — no SQL, no dashboards to babysit.</p>
+    <div class="nw-cta">
+      <span class="nw-btn nw-solid">Start free</span>
+      <span class="nw-btn nw-ghost" style="border:1px solid #cbd5e1">Book a demo</span>
+    </div>
+  </section>
+
+  <section class="nw-mock">
+    <div class="nw-bar"><span class="nw-dot"></span><span class="nw-dot"></span><span class="nw-dot"></span></div>
+    <div class="nw-body">
+      <aside class="nw-side">
+        <div class="nw-s on"></div><div class="nw-s"></div><div class="nw-s"></div><div class="nw-s"></div><div class="nw-s"></div>
+      </aside>
+      <div class="nw-main">
+        <div class="nw-stats">
+          <div class="nw-stat"><div class="nw-k"></div><div class="nw-v"></div></div>
+          <div class="nw-stat"><div class="nw-k"></div><div class="nw-v"></div></div>
+          <div class="nw-stat"><div class="nw-k"></div><div class="nw-v"></div></div>
+        </div>
+        <div class="nw-chart">
+          <div class="nw-col" style="height:44%"></div><div class="nw-col" style="height:58%"></div>
+          <div class="nw-col" style="height:52%"></div><div class="nw-col" style="height:74%"></div>
+          <div class="nw-col" style="height:60%"></div><div class="nw-col" style="height:84%"></div>
+          <div class="nw-col" style="height:70%"></div><div class="nw-col" style="height:68%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="nw-features">
+    <article class="nw-card"><div class="nw-ic"></div><h3>Plain-language insights</h3><p>Ask in English, get a chart and a sentence that explains the why.</p></article>
+    <article class="nw-card"><div class="nw-ic"></div><h3>Live without plumbing</h3><p>Connect a warehouse and watch metrics populate in minutes.</p></article>
+    <article class="nw-card"><div class="nw-ic"></div><h3>Share in one click</h3><p>Send a board-ready view to anyone — no license required.</p></article>
+  </section>
+
+  <footer class="nw-footer">© 2026 Northwind Analytics · A self-contained verification sample</footer>
+</body>
+</html>

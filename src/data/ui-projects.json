@@ -7409,7 +7409,7 @@
     "knownLimitations": [],
     "reproStatus": "failed",
     "reproScore": 0.178,
-    "reproValidatedAt": "2026-07-15T02:23:02.885Z",
+    "reproValidatedAt": "2026-07-15T04:38:25.173Z",
     "reproReportPath": "repro/v4-openai/validation/report.json",
     "reproValidatorVersion": "repro-validator/1.0.0",
     "reproLimitations": []
@@ -10580,7 +10580,7 @@
     "knownLimitations": [],
     "reproStatus": "failed",
     "reproScore": 0.628,
-    "reproValidatedAt": "2026-07-15T02:23:05.152Z",
+    "reproValidatedAt": "2026-07-15T04:38:28.092Z",
     "reproReportPath": "repro/v4-tesla/validation/report.json",
     "reproValidatorVersion": "repro-validator/1.0.0",
     "reproLimitations": []
@@ -10684,7 +10684,7 @@
     "knownLimitations": [],
     "reproStatus": "failed",
     "reproScore": 0.605,
-    "reproValidatedAt": "2026-07-15T02:23:07.479Z",
+    "reproValidatedAt": "2026-07-15T04:38:30.926Z",
     "reproReportPath": "repro/v4-moma/validation/report.json",
     "reproValidatorVersion": "repro-validator/1.0.0",
     "reproLimitations": []
@@ -12294,6 +12294,66 @@
     "reproValidatedAt": null,
     "reproReportPath": null,
     "reproValidatorVersion": null,
+    "reproLimitations": []
+  },
+  {
+    "id": "demo-flat",
+    "name": "Northwind Analytics（验证演示·纯CSS平面页）",
+    "description": "自包含验证演示页：纯 CSS 平面落地页，无照片素材，用于证明复刻验证闭环可正常认证 passed。",
+    "source": "Demo",
+    "originalUrl": "",
+    "author": "ui-gallery",
+    "projectType": "demo",
+    "styleFamily": "saas",
+    "styleFamilyName": "SaaS",
+    "styleFamilyNameZh": "SaaS 产品页",
+    "styleDescription": "自包含验证演示：纯 CSS 平面落地页",
+    "mood": [
+      "clean",
+      "confident",
+      "minimal"
+    ],
+    "materials": [
+      "flat",
+      "css"
+    ],
+    "industry": [
+      "SaaS",
+      "数据"
+    ],
+    "density": "moderate",
+    "isDark": false,
+    "colors": {
+      "bg": "#f7f8fa",
+      "accent": "#4f46e5",
+      "text": "#0f172a"
+    },
+    "fontFamily": "system-ui",
+    "interactions": [
+      "hover"
+    ],
+    "animations": [],
+    "layoutTraits": [
+      "nav",
+      "hero",
+      "product-mockup",
+      "feature-row",
+      "footer"
+    ],
+    "previewImage": "previews/demo-flat.png",
+    "prompt": "",
+    "hifiPassed": true,
+    "animOk": false,
+    "capabilities": [
+      "prompt"
+    ],
+    "searchText": "demo flat css saas analytics 验证演示 平面 落地页",
+    "knownLimitations": [],
+    "reproStatus": "passed",
+    "reproScore": 0.993,
+    "reproValidatedAt": "2026-07-15T04:38:33.582Z",
+    "reproReportPath": "repro/demo-flat/validation/report.json",
+    "reproValidatorVersion": "repro-validator/1.0.0",
     "reproLimitations": []
   }
 ]
