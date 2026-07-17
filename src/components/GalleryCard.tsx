@@ -2,6 +2,7 @@ import { ArrowsOut, ArrowUpRight, Check, Heart, WarningCircle } from '@phosphor-
 import { Link, useNavigate } from 'react-router-dom';
 import { useFavorites } from '../hooks/useFavorites';
 import type { ReproStatus, UIProject } from '../types';
+import { getLinkState } from '../utils/projectQuality';
 
 interface GalleryCardProps {
   project: UIProject;
@@ -17,8 +18,8 @@ function previewPath(path: string) {
 const REPRO_LABEL: Record<ReproStatus, string> = {
   untested: '复刻未验证',
   passed: '复刻已验证',
-  failed: '未通过',
-  'needs-review': '需复核',
+  failed: '复刻未通过',
+  'needs-review': '复刻需复核',
 };
 
 const REPRO_CLASS: Record<ReproStatus, string> = {
@@ -33,6 +34,8 @@ export default function GalleryCard({ project, reason, featured = false, onPrevi
   const navigate = useNavigate();
   const favorite = isFavorite(project.id);
   const rs = project.reproStatus;
+  const sourceState = project.projectType === 'demo' ? 'demo' : getLinkState(project);
+  const sourceCopy = sourceState === 'demo' ? '自包含演示' : sourceState === 'redirected' ? '来源可访问 · 已跳转' : '来源可访问';
 
   return (
     <article className={`gallery-entry${featured ? ' gallery-entry--featured' : ''}`}>
@@ -52,11 +55,12 @@ export default function GalleryCard({ project, reason, featured = false, onPrevi
       </button>
       <div className="gallery-entry__meta">
         <div className="gallery-entry__line">
+          <span className={`source-state source-state--${sourceState}`}>{sourceCopy}</span>
           <span className={`card-repro ${REPRO_CLASS[rs]}`}>
             {rs === 'passed' ? <Check size={13} weight="bold" /> : rs === 'failed' || rs === 'needs-review' ? null : <WarningCircle size={13} />}
             {' '}{REPRO_LABEL[rs]}
           </span>
-          <span>{project.styleFamilyNameZh}</span>
+          <span className="gallery-entry__family">{project.styleFamilyNameZh}</span>
         </div>
         <Link to={`/detail/${project.id}`} className="gallery-entry__title">
           {project.name}

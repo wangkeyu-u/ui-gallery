@@ -23,7 +23,7 @@ const http = require('http');
 const { chromium } = require('playwright');
 const pixelmatch = require('pixelmatch');
 const sharp = require('sharp');
-const { VALIDATOR_VERSION } = require('./repro-pack-common.cjs');
+const { VALIDATOR_VERSION } = require('./repro-version.cjs');
 const { chromiumLaunchOptions } = require('./browser-launch.cjs');
 
 const VIEWPORT = { width: 1280, height: 820 };

@@ -1,14 +1,17 @@
 # UI Gallery
 
-桌面网页 UI 发现与复刻参考库。当前数据集包含 232 条记录，其中 155 个通过可视质量验收（152 个真实站点快照 + 3 个自包含纯 CSS 演示），其余失败、重复、被遮挡或语义不匹配的条目已隔离，不会出现在主画廊、搜索结果、AI 推荐或主题选择器中。3 个演示页（`demo-flat` / `demo-portfolio` / `demo-dashboard`）已跑通本地视觉验证并标记为 `passed`，用于证明复刻验证闭环可稳定认证通过。
+桌面网页 UI 发现与复刻参考库。当前数据集包含 232 条记录，其中 152 个进入主库（149 个来源可访问的真实站点快照 + 3 个自包含纯 CSS 演示），其余失败、重复、受限、失效、被遮挡或语义不匹配的条目已隔离，不会出现在主画廊、搜索结果、AI 推荐或主题选择器中。3 个演示页（`demo-flat` / `demo-portfolio` / `demo-dashboard`）已跑通本地视觉验证并标记为 `passed`，用于证明复刻验证闭环可稳定认证通过。
 
 ## 产品原则
 
 - 只做桌面网页参考，标准采集画布为 1280 × 820。
+- 移动端设计、移动端复刻与移动端响应式验收不在产品范围内。
 - 截图必须能直接判断页面结构；Cookie 遮挡、登录墙、空白页、加载页和错误页不能进入主库。
 - 原站链接区分可访问、跳转、限制访问、已失效和待复核。
+- 主库采用严格来源准入：仅 `ok` / `redirected` 状态可展示，`blocked` / `dead` / `quarantine` 自动排除。
 - 不承诺文字提示词能够 1:1 复刻网页。
 - 每个验收条目提供“参考截图 + 已确认事实 + 桌面约束 + 截图差异验收”的复刻包。
+- 首页使用真实验收快照轮播，并提供暂停控制与 `prefers-reduced-motion` 降级，不以概念动效冒充案例。
 - 首页 AI 助手默认使用本地搜索，无需部署 Worker；云端 AI 仅为可选增强。
 
 ## 当前规模
@@ -16,10 +19,10 @@
 | 指标 | 数量 |
 | --- | ---: |
 | 总记录 | 232 |
-| 主画廊已验收 UI | 155 |
-| 隔离条目 | 77 |
+| 主画廊已验收 UI | 152 |
+| 隔离条目 | 80 |
 | 新一轮真实桌面快照 | 95 |
-| 可见风格/行业分类 | 26 |
+| 可见风格/行业分类 | 25 |
 
 新增覆盖 AI 产品、开发平台、金融科技、商业零售、汽车、文化博物馆、媒体编辑、教育、公共服务、设计机构、创意工具、娱乐内容、社区发现和健康等方向。
 
@@ -36,7 +39,7 @@ npm run dev
 npm run audit                 # 校验已验收截图存在且为有效 PNG
 npm run verify:data           # 校验数据、质量白名单、复刻状态与验证产物一致
 npm run build                 # tsc + vite 生产构建
-npm run test:smoke            # 浏览器验证搜索、筛选、预览、路由与响应式
+npm run test:smoke            # 浏览器验证 1280 × 820 桌面端搜索、筛选、预览与路由
 npm run check:full            # 以上全部 + 全量复刻重验 + 高危依赖审计
 ```
 
@@ -124,7 +127,7 @@ node scripts/repro-validate.cjs --id demo-dashboard --candidate ./repro/demo-das
 | `截图已验收` | 仅表示参考快照可用，**不代表可 1:1 还原** |
 | `复刻未验证`（untested） | 默认状态，尚未做任何本地比对 |
 | `复刻已验证`（passed） | 截图 1280×820、无横向溢出、SSIM ≥ 0.90、像素差异 ≤ 12% |
-| `未通过`（failed） | 尺寸错误 / 横向溢出 / 还原度过低 / 反作弊命中 |
+| `复刻未通过`（failed） | 尺寸错误 / 横向溢出 / 还原度过低 / 反作弊命中 |
 | `需人工复核`（needs-review） | 自动指标接近但主布局或视觉重心仍存疑 |
 
 字体抗锯齿、视频帧、无法取得的品牌图片允许有限容差并记录为限制项。**绝不因为 reference 与 candidate 是同一张静态图片就判定通过**；页面必须是真实 HTML/CSS/React 渲染。
@@ -138,7 +141,7 @@ node scripts/repro-validate.cjs --id demo-dashboard --candidate ./repro/demo-das
 | `src/utils/projectQuality.ts` | 质量准入与链接状态 |
 | `src/utils/replicaBrief.ts` | 截图驱动的复刻任务文案 |
 | `src/utils/reproPack.ts` | 前端 ZIP 复刻包导出 |
-| `scripts/repro-pack-common.cjs` | brief/project/acceptance 单一事实来源（前后端共用） |
+| `scripts/repro-pack-common.mjs` | brief/project/acceptance 单一事实来源（前后端共用） |
 | `scripts/repro-pack.cjs` | 导出 `repro/<id>/task/` 任务包 |
 | `scripts/repro-validate.cjs` | 本地视觉验证（无 AI API） |
 | `scripts/migrate-repro.cjs` | 为所有项目补充 repro 字段（默认 untested） |
@@ -154,6 +157,6 @@ node scripts/repro-validate.cjs --id demo-dashboard --candidate ./repro/demo-das
 2. 进入详情页下载 1280 × 820 参考截图。
 3. 复制复刻任务，并与截图一起交给支持图像输入的模型。
 4. 在相同画布尺寸截图，与参考图叠加比较。
-5. 至少修正一轮布局、间距、字号、取色和图片裁切。
+5. 至少完成两轮“截图 → 对比 → 修正”，按整体几何、字体换行、色彩边框、图片裁切的顺序收敛差异。
 
 字体、视频、3D、原始品牌资产和受版权保护的内容可能无法完全复现，详情页会把未知信息保留为“未采集”，不会用常见参数补齐。

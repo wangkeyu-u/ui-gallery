@@ -1,14 +1,14 @@
 {
-  "generatedAt": "2026-07-15T22:36:11.799Z",
+  "generatedAt": "2026-07-17T12:06:26.105Z",
   "summary": {
     "totalRecords": 232,
-    "accepted": 155,
-    "quarantined": 77,
+    "accepted": 152,
+    "quarantined": 80,
     "acceptedWithCriticalIssues": 0,
-    "acceptedFamilies": 26
+    "acceptedFamilies": 25
   },
   "familyDistribution": {
-    "product": 43,
+    "product": 42,
     "developer-platform": 20,
     "ai-product": 14,
     "portfolio": 11,
@@ -24,7 +24,6 @@
     "culture": 3,
     "public-interest": 3,
     "entertainment": 3,
-    "3d-webgl": 2,
     "fintech": 2,
     "fashion": 2,
     "community": 2,
@@ -70,7 +69,7 @@
     {
       "id": "proj-2024-gentlerain",
       "name": "Gentle Rain",
-      "accepted": true,
+      "accepted": false,
       "previewImage": "previews/proj-2024-gentlerain.png",
       "width": 1200,
       "height": 750,
@@ -120,7 +119,7 @@
     {
       "id": "awd-lusion-oryzo",
       "name": "Lusion — Oryzo AI",
-      "accepted": true,
+      "accepted": false,
       "previewImage": "previews/awd-lusion-oryzo.png",
       "width": 1280,
       "height": 820,
@@ -670,7 +669,7 @@
     {
       "id": "css-2025-spylt",
       "name": "SPYLT Milk",
-      "accepted": true,
+      "accepted": false,
       "previewImage": "previews/css-2025-spylt.png",
       "width": 1280,
       "height": 820,

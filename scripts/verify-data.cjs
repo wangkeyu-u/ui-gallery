@@ -6,9 +6,16 @@ const projects = require('../src/data/ui-projects.json');
 const styleFamilies = require('../src/data/style-families.json');
 const quality = require('../src/data/project-quality.json');
 const validStatuses = new Set(['untested', 'passed', 'failed', 'needs-review']);
+const validLinkStates = new Set(['ok', 'redirected', 'blocked', 'dead', 'quarantine']);
 const styleKeys = new Set(styleFamilies.map(family => family.key));
 const verifiedIds = new Set(quality.verifiedIds);
 const errors = [];
+
+function isAcceptedProject(project) {
+  const listed = verifiedIds.has(project.id) || project.id.startsWith('v4-');
+  const state = quality.linkStates[project.id] || (quality.redirectedIds.includes(project.id) ? 'redirected' : 'ok');
+  return listed && (state === 'ok' || state === 'redirected');
+}
 
 function fail(message) {
   errors.push(message);
@@ -61,6 +68,12 @@ for (const id of quality.verifiedIds) {
 for (const id of [...Object.keys(quality.linkStates), ...quality.redirectedIds]) {
   if (!projectIds.has(id)) fail(`链接状态引用不存在的项目: ${id}`);
 }
+for (const [id, state] of Object.entries(quality.linkStates)) {
+  if (!validLinkStates.has(state)) fail(`${id}: 未知链接状态 ${state}`);
+}
+for (const project of projects.filter(isAcceptedProject)) {
+  if (project.projectType !== 'demo' && !project.originalUrl) fail(`${project.id}: 主库真实项目缺少 originalUrl`);
+}
 for (const id of ['demo-flat', 'demo-portfolio', 'demo-dashboard']) {
   const project = projects.find(item => item.id === id);
   if (!project || project.reproStatus !== 'passed' || !verifiedIds.has(id)) fail(`${id}: 通过演示必须同时为 passed 且进入质量白名单`);
@@ -72,5 +85,5 @@ if (errors.length) {
   process.exit(1);
 }
 
-const accepted = projects.filter(project => (verifiedIds.has(project.id) || project.id.startsWith('v4-')) && quality.linkStates[project.id] !== 'quarantine');
+const accepted = projects.filter(isAcceptedProject);
 console.log(`数据一致性通过：${projects.length} 条记录，${accepted.length} 条准入，${projects.filter(project => project.reproStatus === 'passed').length} 条复刻通过。`);

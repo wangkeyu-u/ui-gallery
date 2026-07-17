@@ -8,7 +8,7 @@
 const fs = require('fs');
 const path = require('path');
 const root = path.join(__dirname, '..');
-const { VALIDATOR_VERSION } = require('./repro-pack-common.cjs');
+const { VALIDATOR_VERSION } = require('./repro-version.cjs');
 
 function main() {
   const reproDir = path.join(root, 'repro');

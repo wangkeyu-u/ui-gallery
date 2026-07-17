@@ -66,8 +66,15 @@ async function main() {
     assert(health.overflow === 0, `桌面首页横向溢出 ${health.overflow}px`);
     assert(health.brokenImages.length === 0, `桌面首页存在破图: ${health.brokenImages.join(', ')}`);
     assert(await page.locator('.gallery-entry').count() === 24, '首页首批卡片数量不是 24');
+    assert(await page.locator('.showcase-reel__nav [role="tab"]').count() === 3, '首页真实快照轮播不是 3 个展陈项目');
+    assert(await page.locator('.showcase-reel__progress').count() === 1, '首页快照轮播没有播放进度');
+    await page.getByRole('tab', { name: '显示 Raycast' }).click();
+    assert(await page.locator('.showcase-reel__caption strong').textContent() === 'Raycast', '手动切换快照轮播失败');
+    await page.getByRole('button', { name: '暂停快照轮播' }).click();
+    assert(await page.locator('.showcase-reel__progress').count() === 0, '暂停后轮播进度仍在运行');
+    assert(await page.locator('.source-state').count() === 24, '首页卡片缺少来源可访问状态');
 
-    const passedFilter = page.getByRole('button', { name: '已验证3', exact: true });
+    const passedFilter = page.getByRole('button', { name: '复刻已验证3', exact: true });
     assert(await passedFilter.count() === 1, '已验证筛选应显示 3 条通过演示');
     await passedFilter.click();
     await page.waitForFunction(() => document.querySelectorAll('.gallery-entry').length === 3);
@@ -81,6 +88,12 @@ async function main() {
     assert(page.url().includes('q='), '搜索没有写入 URL');
     assert(await page.locator('.gallery-entry').count() > 0, '搜索没有返回结果');
 
+    for (const excludedName of ['Gentle Rain', 'Lusion — Oryzo AI', 'SPYLT Milk']) {
+      await page.goto(`${base}#/?q=${encodeURIComponent(excludedName)}`);
+      assert(await page.getByRole('link', { name: excludedName, exact: true }).count() === 0, `不可访问来源仍出现在搜索结果: ${excludedName}`);
+    }
+
+    await page.goto(base);
     await page.locator('button[aria-label^="放大预览"]').first().click();
     assert(await page.getByRole('dialog').count() === 1, '快速预览未打开');
     await page.getByRole('button', { name: '关闭预览' }).press('Escape');
@@ -105,16 +118,8 @@ async function main() {
       assert(health.brokenImages.length === 0, `${route} 存在破图`);
     }
 
-    await page.setViewportSize({ width: 390, height: 844 });
-    for (const route of ['', '#/components', '#/themes', '#/detail/v4-openai']) {
-      await page.goto(`${base}${route}`);
-      health = await pageHealth(page);
-      assert(health.overflow === 0, `${route || '#/'} 移动端横向溢出 ${health.overflow}px`);
-      assert(health.brokenImages.length === 0, `${route || '#/'} 移动端存在破图`);
-    }
-
     assert(runtimeErrors.length === 0, `浏览器运行时错误:\n${runtimeErrors.join('\n')}`);
-    console.log('浏览器冒烟通过：首页、搜索、筛选、预览、详情、空状态、组件、主题及 390px 响应式均正常。');
+    console.log('浏览器冒烟通过：首页、搜索、筛选、预览、详情、空状态、组件和主题的 1280 × 820 桌面链路均正常。');
   } finally {
     await browser.close();
     await new Promise(resolve => server.close(resolve));

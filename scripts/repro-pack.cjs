@@ -11,14 +11,12 @@
 // ============================================================
 const fs = require('fs');
 const path = require('path');
-const { buildPackage } = require('./repro-pack-common.cjs');
-
 const root = path.join(__dirname, '..');
 const projects = JSON.parse(fs.readFileSync(path.join(root, 'src/data/ui-projects.json'), 'utf8'));
 const quality = require('../src/data/project-quality.json');
-const verifiedIds = new Set(quality.verifiedIds);
-const quarantined = new Set(Object.entries(quality.linkStates).filter(([, state]) => state === 'quarantine').map(([projectId]) => projectId));
-const isAccepted = (p) => (p.id.startsWith('v4-') || verifiedIds.has(p.id)) && !quarantined.has(p.id);
+let buildPackage;
+let isAcceptedProject;
+const isAccepted = (project) => isAcceptedProject(project, quality);
 
 function arg(name, fallback = null) {
   const i = process.argv.indexOf(`--${name}`);
@@ -52,21 +50,30 @@ function exportOne(project) {
   return true;
 }
 
-const id = arg('id');
-const all = process.argv.includes('--all');
+async function main() {
+  ({ buildPackage, isAcceptedProject } = await import('./repro-pack-common.mjs'));
+  const id = arg('id');
+  const all = process.argv.includes('--all');
 
-if (id) {
-  const project = projects.find((p) => p.id === id);
-  if (!project) { console.error(`Project not found: ${id}`); process.exit(1); }
-  console.log(`Exporting task package for ${id}…`);
-  exportOne(project);
-} else if (all) {
-  const accepted = projects.filter(isAccepted);
-  console.log(`Exporting task packages for ${accepted.length} accepted projects…`);
-  let ok = 0;
-  for (const p of accepted) if (exportOne(p)) ok += 1;
-  console.log(`Done: ${ok}/${accepted.length} packages written.`);
-} else {
-  console.log('Usage: node scripts/repro-pack.cjs --id <id> | --all');
-  process.exit(1);
+  if (id) {
+    const project = projects.find((p) => p.id === id);
+    if (!project) { console.error(`Project not found: ${id}`); process.exit(1); }
+    if (!isAccepted(project)) { console.error(`Project is not in the accessible accepted library: ${id}`); process.exit(1); }
+    console.log(`Exporting task package for ${id}…`);
+    exportOne(project);
+  } else if (all) {
+    const accepted = projects.filter(isAccepted);
+    console.log(`Exporting task packages for ${accepted.length} accepted projects…`);
+    let ok = 0;
+    for (const p of accepted) if (exportOne(p)) ok += 1;
+    console.log(`Done: ${ok}/${accepted.length} packages written.`);
+  } else {
+    console.log('Usage: node scripts/repro-pack.cjs --id <id> | --all');
+    process.exit(1);
+  }
 }
+
+main().catch((error) => {
+  console.error(error.stack || error.message);
+  process.exit(1);
+});

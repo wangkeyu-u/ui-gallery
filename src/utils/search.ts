@@ -205,7 +205,7 @@ function isIndustry(term: string): boolean {
 }
 
 function isPageType(term: string): boolean {
-  const types = ['landing', 'dashboard', 'portfolio', 'product', 'login', 'mobile', '落地页', '仪表盘', '作品集', '产品', '登录', '移动'];
+  const types = ['landing', 'dashboard', 'portfolio', 'product', 'login', '落地页', '仪表盘', '作品集', '产品', '登录'];
   return types.some(t => term.toLowerCase().includes(t));
 }
 

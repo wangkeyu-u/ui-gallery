@@ -9,7 +9,8 @@ const REDIRECTED_IDS = new Set(qualityData.redirectedIds);
 
 export function isVerifiedProject(project: UIProject | string) {
   const id = typeof project === 'string' ? project : project.id;
-  return (VERIFIED_IDS.has(id) || id.startsWith('v4-')) && LINK_STATES[id] !== 'quarantine';
+  const state = getLinkState(id);
+  return (VERIFIED_IDS.has(id) || id.startsWith('v4-')) && (state === 'ok' || state === 'redirected');
 }
 
 export function getLinkState(project: UIProject | string): LinkState {

@@ -1,10 +1,10 @@
 /**
- * Frontend wrapper around repro-pack-common.cjs (single source of truth).
+ * Frontend wrapper around repro-pack-common.mjs (single source of truth).
  * Generates task-package payloads for ZIP download in the detail page.
  */
 import type { UIProject } from '../types';
-// @ts-ignore CJS interop — repro-pack-common.cjs is pure JS, no types
-import { buildBrief, buildProjectJson, buildAcceptanceJson } from '../../scripts/repro-pack-common.cjs';
+// @ts-ignore Shared ESM module is pure JS and intentionally has no separate types
+import { buildBrief, buildProjectJson, buildAcceptanceJson } from '../../scripts/repro-pack-common.mjs';
 
 export interface ReproPackageFiles {
   'reference.png': Blob;

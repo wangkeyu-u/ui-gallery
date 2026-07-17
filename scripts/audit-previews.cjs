@@ -4,11 +4,12 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const projects = JSON.parse(fs.readFileSync(path.join(root, 'src/data/ui-projects.json'), 'utf8'));
 const quality = require('../src/data/project-quality.json');
-const verifiedIds = new Set(quality.verifiedIds);
-const quarantinedIds = new Set(Object.entries(quality.linkStates).filter(([, state]) => state === 'quarantine').map(([id]) => id));
+const acceptedLinkStates = new Set(['ok', 'redirected']);
 
 function isAccepted(project) {
-  return (project.id.startsWith('v4-') || verifiedIds.has(project.id)) && !quarantinedIds.has(project.id);
+  const listed = project.id.startsWith('v4-') || quality.verifiedIds.includes(project.id);
+  const state = quality.linkStates[project.id] || (quality.redirectedIds.includes(project.id) ? 'redirected' : 'ok');
+  return listed && acceptedLinkStates.has(state);
 }
 
 function pngDimensions(file) {

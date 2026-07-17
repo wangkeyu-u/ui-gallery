@@ -5,6 +5,7 @@ import ChatPanel from '../components/ChatPanel';
 import GalleryCard from '../components/GalleryCard';
 import QuickPreview from '../components/QuickPreview';
 import SearchBar from '../components/SearchBar';
+import ShowcaseReel from '../components/ShowcaseReel';
 import projectsData from '../data/ui-projects.json';
 import styleFamiliesData from '../data/style-families.json';
 import { useFavorites } from '../hooks/useFavorites';
@@ -18,17 +19,17 @@ const styleFamilies = styleFamiliesData as StyleFamily[];
 const PAGE_SIZE = 24;
 
 const CURATED_IDS = [
-  'v4-tesla',
-  'v4-openai',
-  'v4-moma',
+  'demo-dashboard',
+  'demo-portfolio',
+  'demo-flat',
+  'new-raycast',
+  'new-rijksmuseum',
   'v4-nintendo',
   'v4-pentagram',
   'v4-mercury',
   'v4-wikipedia',
   'v4-headspace',
   'new-rivian',
-  'new-rijksmuseum',
-  'new-raycast',
   'new-dropbox-brand',
   'new-google-fonts',
   'prod-linear',
@@ -111,16 +112,18 @@ export default function Gallery() {
     <main>
       <section className="discovery-intro container">
         <div className="discovery-intro__copy">
-          <span className="eyebrow">UI 发现与复刻档案</span>
-          <h1>先看见，<br />再决定。</h1>
-          <p>不要求你会说设计术语。描述感觉、材质、行业或“不想要什么”，我们用真实界面帮你缩小方向。</p>
-        </div>
-        <div className="discovery-intro__search">
-          <SearchBar initialValue={query} />
-          <div className="brief-examples" aria-label="搜索示例">
-            {EXAMPLES.map(example => <Link key={example} to={`/?q=${encodeURIComponent(example)}`}>{example}</Link>)}
+          <span className="discovery-proofline"><ShieldCheck size={17} weight="fill" /> 来源可访问 · 快照已验收</span>
+          <h1>先看真实界面，<br />再决定怎么做。</h1>
+          <p>默认只展示来源可访问、截图足以判断的桌面 UI。失效、受限和待复核条目不会进入主库。</p>
+          <div className="discovery-intro__search">
+            <SearchBar initialValue={query} />
+            <div className="brief-examples" aria-label="搜索示例">
+              {EXAMPLES.map(example => <Link key={example} to={`/?q=${encodeURIComponent(example)}`}>{example}</Link>)}
+            </div>
           </div>
+          <p className="discovery-trust-note">当前主库：{verifiedProjects.filter(project => project.originalUrl).length} 个可访问来源 + {verifiedProjects.filter(project => project.projectType === 'demo').length} 个自包含验证演示。</p>
         </div>
+        <ShowcaseReel />
       </section>
 
       <section className="assistant-dock container" id="assistant">
@@ -154,7 +157,7 @@ export default function Gallery() {
               className={activeRepro === s ? 'active' : ''}
               onClick={() => setActiveRepro(s)}
             >
-              {s === 'all' ? '全部' : s === 'passed' ? '已验证' : s === 'failed' ? '未通过' : s === 'needs-review' ? '需复核' : '未验证'}
+              {s === 'all' ? '全部' : s === 'passed' ? '复刻已验证' : s === 'failed' ? '复刻未通过' : s === 'needs-review' ? '复刻需复核' : '复刻未验证'}
               <span>{reproCounts[s]}</span>
             </button>
           ))}
