@@ -122,7 +122,7 @@ html[data-visual-test="true"] .item { opacity: 1; }
   .controls-in { flex-wrap: wrap; padding: 12px 18px; gap: 14px; }
   .seg { gap: 14px; }
   .filters { width: 100%; margin-left: 0; flex-wrap: wrap; gap: 8px; }
-  .filters label { flex: 1 1 140px; min-width: 0; }
+  .filters label { flex: 1 1 140px; min-width: 0; align-items: stretch; flex-direction: column; gap: 6px; }
   .filters select { width: 100%; min-width: 0; }
   .ctxbar { align-items: flex-start; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 14px; }
