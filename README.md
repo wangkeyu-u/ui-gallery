@@ -50,7 +50,7 @@ npm run test:visual:review
 
 Review the changed PNGs and `visual-report/report.json`, then commit baseline changes separately or as an explicitly reviewed part of the UI change. The gate allows at most 0.5% Pixelmatch changed pixels and requires SSIM ≥ 0.99; PNG difference images and JSON metrics are emitted under `test-results/` and `visual-report/`.
 
-The reproducible local run used to establish this migration produced Pixelmatch 0.0000% and SSIM 1.000000 for both desktop and mobile on an immediate baseline verification run. These are comparison-to-approved-baseline measurements, not claims about AI reproductions. The previously proposed résumé range `0.9926–0.9996` is not recorded because the measured results did not fall in that range.
+The reproducible local run used to establish this migration produced Pixelmatch 0.0000% and SSIM 1.000000 for both desktop and mobile on an immediate baseline verification run. These are comparison-to-approved-baseline measurements, not claims about AI reproductions. The previously proposed résumé range is omitted because the measured results did not support it.
 
 ## Data and project structure
 
