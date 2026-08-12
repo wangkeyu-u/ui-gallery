@@ -18,7 +18,9 @@
     "test:visual": "playwright test --project=visual-chromium tests/visual.spec.ts",
     "test:visual:update": "UPDATE_VISUAL_BASELINES=1 playwright test --project=visual-chromium tests/visual.spec.ts",
     "test:visual:review": "tsx scripts/review-visual-report.ts",
-    "ci": "npm run build && npm run test && npm run test:e2e && npm run test:visual"
+    "test:reconstructions": "playwright test --project=visual-chromium tests/reconstruction.spec.ts",
+    "test:reconstructions:review": "tsx scripts/check-reconstruction-report.ts",
+    "ci": "npm run quality:data:check && npm run build && npm run test && npm run test:e2e && npm run test:visual && npm run test:reconstructions"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.8",

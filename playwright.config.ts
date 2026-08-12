@@ -27,6 +27,6 @@ export default defineConfig({
   projects: [
     { name: 'desktop-chromium', use: { ...devices['Desktop Chrome'], ...localChrome, viewport: { width: 1280, height: 820 } }, testIgnore: /visual\.spec\.ts/ },
     { name: 'mobile-chromium', use: { ...devices['Pixel 7'], ...localChrome }, testIgnore: /visual\.spec\.ts/ },
-    { name: 'visual-chromium', use: { ...devices['Desktop Chrome'], ...localChrome, viewport: { width: 1280, height: 820 }, deviceScaleFactor: 1 }, testMatch: /visual\.spec\.ts/ },
+    { name: 'visual-chromium', use: { ...devices['Desktop Chrome'], ...localChrome, viewport: { width: 1280, height: 820 }, deviceScaleFactor: 1 }, testMatch: /(?:visual|reconstruction)\.spec\.ts/ },
   ],
 });

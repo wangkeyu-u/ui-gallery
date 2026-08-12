@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "id": "ledger",
+      "reference": "public/reference-cases/ledger.html",
+      "candidateRoute": "/reconstructions/ledger",
+      "candidateComponent": "src/reconstructions/ReconstructionApp.tsx#Ledger",
+      "independence": "Reference is standalone HTML/CSS; candidate is separately authored React/TSX with scoped CSS. No code or asset import crosses paths."
+    },
+    {
+      "id": "orbit",
+      "reference": "public/reference-cases/orbit.html",
+      "candidateRoute": "/reconstructions/orbit",
+      "candidateComponent": "src/reconstructions/ReconstructionApp.tsx#Orbit",
+      "independence": "Reference is standalone HTML/CSS; candidate is separately authored React/TSX with scoped CSS. No code or asset import crosses paths."
+    },
+    {
+      "id": "fieldnotes",
+      "reference": "public/reference-cases/fieldnotes.html",
+      "candidateRoute": "/reconstructions/fieldnotes",
+      "candidateComponent": "src/reconstructions/ReconstructionApp.tsx#Fieldnotes",
+      "independence": "Reference is standalone HTML/CSS; candidate is separately authored React/TSX with scoped CSS. No code or asset import crosses paths."
+    }
+  ]
+}
