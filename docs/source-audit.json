@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-08-13T00:00:00.000Z",
+  "method": "Official website HTTP response plus GitHub REST repository metadata",
+  "additions": [
+    {
+      "id": "once-ui",
+      "officialSite": "https://once-ui.com",
+      "officialRepository": "https://github.com/once-ui-system/core",
+      "licenseSpdx": "MIT",
+      "archived": false,
+      "description": "AI-native design system for Next.js apps and landing pages",
+      "preview": "previews/once-ui.png",
+      "viewport": { "width": 1280, "height": 820 }
+    },
+    {
+      "id": "basecoat",
+      "officialSite": "https://basecoatui.com",
+      "officialRepository": "https://github.com/hunvreus/basecoat",
+      "licenseSpdx": "MIT",
+      "archived": false,
+      "description": "A components library built with Tailwind CSS that works with any web stack.",
+      "preview": "previews/basecoat.png",
+      "viewport": { "width": 1280, "height": 820 }
+    }
+  ]
+}

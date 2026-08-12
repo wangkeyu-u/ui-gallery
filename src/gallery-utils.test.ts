@@ -4,8 +4,8 @@ import { DEFAULT_FILTERS, filterItems, readStoredSelection } from './gallery-uti
 
 describe('gallery data and filters', () => {
   it('retains the full curated collection', () => {
-    expect(galleryItems).toHaveLength(230);
-    expect(galleryItems.filter((item) => item.kind === 'item')).toHaveLength(177);
+    expect(galleryItems).toHaveLength(232);
+    expect(galleryItems.filter((item) => item.kind === 'item')).toHaveLength(179);
     expect(galleryItems.filter((item) => item.kind === 'proj')).toHaveLength(53);
   });
 

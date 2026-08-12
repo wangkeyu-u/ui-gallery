@@ -16,6 +16,12 @@ const common = z.object({
   animOk: z.boolean().optional(),
   hifiAttempts: z.number().int().nonnegative().optional(),
   hifiNotes: z.string().optional(),
+  provenance: z.object({
+    sourceType: z.enum(['official_site', 'official_repository', 'original']),
+    sourceUrl: httpUrl,
+    verifiedAt: z.string().datetime(),
+    license: z.string().optional(),
+  }).optional(),
 });
 
 const libraryItem = common.extend({
@@ -36,7 +42,7 @@ const projectItem = common.extend({
 });
 
 export const galleryItemSchema = z.discriminatedUnion('kind', [libraryItem, projectItem]);
-export const gallerySchema = z.array(galleryItemSchema).length(230).superRefine((items, ctx) => {
+export const gallerySchema = z.array(galleryItemSchema).length(232).superRefine((items, ctx) => {
   const ids = new Set<string>();
   for (const [index, item] of items.entries()) {
     if (ids.has(item.id)) ctx.addIssue({ code: 'custom', path: [index, 'id'], message: 'duplicate id' });
