@@ -11,6 +11,8 @@
     "build": "npm run validate:data && tsc -b && vite build",
     "preview": "vite preview",
     "validate:data": "tsx scripts/validate-data.ts",
+    "quality:data": "tsx scripts/quality-data.ts",
+    "quality:data:check": "tsx scripts/quality-data.ts --check",
     "test": "vitest run src",
     "test:e2e": "playwright test --project=desktop-chromium --project=mobile-chromium",
     "test:visual": "playwright test --project=visual-chromium tests/visual.spec.ts",

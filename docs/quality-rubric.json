@@ -1,0 +1,16 @@
+{
+  "id": "ui-gallery-quality-rubric",
+  "version": "2.0.0",
+  "effectiveDate": "2026-08-13",
+  "description": "A source-first, target-count-independent admission rubric. There is no desired pass count in this model.",
+  "gates": [
+    { "id": "asset_exists", "description": "The referenced local PNG exists and decodes." },
+    { "id": "readable_dimensions", "description": "Preview is at least 480 x 300 pixels." },
+    { "id": "source_and_rights", "description": "Libraries have an official repository and explicit license; editorial award references identify agency, award, year and source URL." },
+    { "id": "unique_id", "description": "ID occurs exactly once." },
+    { "id": "unique_link", "description": "Canonical source link occurs exactly once." },
+    { "id": "unique_asset", "description": "Preview SHA-256 occurs exactly once." },
+    { "id": "complete_metadata", "description": "Name, theme, vendor, tags and kind-specific metadata are non-empty." },
+    { "id": "usable_target", "description": "Target is an HTTP(S) URL and the item exposes at least one classification or technology tag." }
+  ]
+}
