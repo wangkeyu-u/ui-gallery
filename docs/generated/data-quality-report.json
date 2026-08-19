@@ -1,0 +1,5042 @@
+{
+  "schemaVersion": 1,
+  "model": {
+    "id": "ui-gallery-quality-rubric",
+    "version": "2.0.0",
+    "rubricSha256": "db4899efb65049c224adad414b14a00094fccef4f780e3f0369453b7fc35d99b",
+    "dataSha256": "ca57797c76b719bcf960d88a9ca5e8d8d7cd4121e96fe78d5ed8580f47a94945"
+  },
+  "summary": {
+    "total": 232,
+    "passed": 161,
+    "failed": 71,
+    "passRate": 0.6939655172413793,
+    "failureReasons": [
+      [
+        "source_and_rights",
+        66
+      ],
+      [
+        "unique_link",
+        6
+      ]
+    ]
+  },
+  "items": [
+    {
+      "id": "antd",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/antd.png",
+        "sha256": "66d203961249b5938f9a731259f0dd20c32d15420a67490d22bb8d47ad5ac892",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "mui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/mui.png",
+        "sha256": "d48229884e28b8719b96ef98715011bdf7d7b3cc6fbae8d85385d5d95f468405",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "chakra",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/chakra.png",
+        "sha256": "f23919fb9b0e3b4507c2044850262ebf13c0c1e391cfbd28268d75f1f4a93e7e",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "mantine",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/mantine.png",
+        "sha256": "d1ef9cedf33ac788bb27bf1f6e398569d4a705a7e1f624381394109c9296e27b",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "shadcn",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/shadcn.png",
+        "sha256": "b896d6f48f42fce832546af23afbcd7c5442406561b2ea037b5cfc7c5e3bb183",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "radix",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/radix.png",
+        "sha256": "dbf5885c14b73d8ef00d1e20cb10d2e22ddcf04ba2da54fa0c740a8903af39ee",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "headlessui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/headlessui.png",
+        "sha256": "bea9f4d1f6ff239c8ee088c1f7fbbfdedf15695003a973e832f9f6c734a4e4b6",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "nextui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/nextui.png",
+        "sha256": "9b6a7323bb7c77e8988f431747421e57561d2e90b892b119e04507dbf39bb871",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "semi",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/semi.png",
+        "sha256": "02cd6fdcf9514b01c76dbfb87d506319d4b936356e8c3f4c539a5960d3960313",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "blueprint",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/blueprint.png",
+        "sha256": "43d23e576219540a54a63d613aea9c7ff89108ddb57d139c51e7f4c3bcc0a3e3",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "grommet",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/grommet.png",
+        "sha256": "7c529c5e8f9acf6f4d479b5310873040ed40cc564723a0d62f81f1ea59f8c749",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "evergreen",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/evergreen.png",
+        "sha256": "ca25a0c982d640a6c4a8846dadea449d98b20b06f70d3ed2f6afc2d74f3b33dc",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "fluent",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/fluent.png",
+        "sha256": "5e8319f3184d52d328913701f3fce8ad2d599ca8bba363620c39dc6a063cd70b",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "polaris",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/polaris.png",
+        "sha256": "6360cdac8f86b8875f51243347e2185ef29d96d8505c90911a634079aba2a12f",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "primer",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/primer.png",
+        "sha256": "71a3012dbe29f0311b2de42c3e31c94305e35dad136d374a75e0ba8aecd96938",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "baseweb",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/baseweb.png",
+        "sha256": "feb5b156a388a8e531da0b2c040606b03f6c7819b8751687a49442ab927282fa",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "gestalt",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/gestalt.png",
+        "sha256": "71b1bf3cb3f0980fc53afde5717cc1a0356507d3969e25bc133504fc1a07f8b2",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "antd-mobile",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/antd-mobile.png",
+        "sha256": "286b41730da4538e66fe8c317561ec2bd10e56395d93fd0d11069b354833848e",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "react-bootstrap",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/react-bootstrap.png",
+        "sha256": "3c2b5b580cf989b421baf81adf786d936445459d514807e1a971553445d4606d",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "ariakit",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ariakit.png",
+        "sha256": "ee32850365a144ccf42ec9458909fd2b59b0f8abe0c4c08e351e09eecd0e1066",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "react-aria",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/react-aria.png",
+        "sha256": "0eb5a6792b4b1db346e71b6b1b940569f77d0b95ed27e1de621ad1eb48979907",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "element-plus",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/element-plus.png",
+        "sha256": "b7bd0411c323cbc2ce9dccac5f31e3770834d4d6379a5d6ff778c1da4584c75e",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "naive-ui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/naive-ui.png",
+        "sha256": "6a1adc4199609cbd51e0eac949aace0dce87d79c2ca43bb2d5bcec95346db17e",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "vuetify",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/vuetify.png",
+        "sha256": "6af52b597932b77950d62af51085cfd08ceb846147172cdff4a2513fc8e9f0c6",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "quasar",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/quasar.png",
+        "sha256": "bfc8055e8db1eef48e2518513db19a9f5840388e22b18823c2fc0d530c16caf6",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "primevue",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/primevue.png",
+        "sha256": "a49429ac709bb71f97668816f7947ae16591dba66cc90c4dacd83f55f078883f",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "antdv",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/antdv.png",
+        "sha256": "31926cf0193ff0eb1f2b162aee99bf017cda6189b1a1830c72a973dd480f74d9",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "vant",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/vant.png",
+        "sha256": "f4dc8238fc311e6c5074030d05f6fcaca699a05047dfad2beca1d17dfe82b5e7",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "nuxt-ui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/nuxt-ui.png",
+        "sha256": "ba32dde4a58d46f9a9d2aaf07ef148fd16e88b8de06716a023fe3cdd05c4c61d",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "shadcn-vue",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/shadcn-vue.png",
+        "sha256": "5ef3f11c0e3be7cb9c1d8c926bef7b155055cfe802f52405d6f22dbf4022494b",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "reka-ui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/reka-ui.png",
+        "sha256": "705790baa2e9afeb0ed357cc7ddc96ee017f9a034c399669ef8c2617e21f171c",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "arco-vue",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/arco-vue.png",
+        "sha256": "3d090b6c003b13b3a803947701d609071ba319e36d3dd1efdd3d94201b6726bc",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "tdesign-vue",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/tdesign-vue.png",
+        "sha256": "82ec8e5b51a8e6f174239d4f31a5f8d8fcfc8ebfe2026fd25d981a3e658bb2f2",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "vuestic",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/vuestic.png",
+        "sha256": "a1d29103715facd6335d93eaf02c9bf70621f817e9e63b427ea98d7bc279ec77",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "inkline",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/inkline.png",
+        "sha256": "2f8c6320b0d202a3178764825e6b313576f033b0031d1cb12bb42228d52a811a",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "ng-material",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ng-material.png",
+        "sha256": "65ea7663de3e3e6c5e6412b762acda2825d153b59ce69e79afcdeca70ed8ff97",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "ng-zorro",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ng-zorro.png",
+        "sha256": "4392aaae1386fd237c04ca5176a26d2133319b0abd784eb7639dc1d03523c8a8",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "primeng",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/primeng.png",
+        "sha256": "585572e69a161b7ecf9d5e5c4c88f0ce21146d3f25770de30e6823f15e519afd",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "clarity",
+      "passed": false,
+      "reasons": [
+        "source_and_rights",
+        "unique_link"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": false,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/clarity.png",
+        "sha256": "02a61dff055c2826a760fc7ebff227c5aa0f2c586b77cd80a85304c43a101b3d",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "ng-bootstrap",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ng-bootstrap.png",
+        "sha256": "625a1ac30272281420e85a3c8b1c7ad45ce1a452a28edaa713a160b709a8ce65",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "taiga-ui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/taiga-ui.png",
+        "sha256": "39da4b7f5b5d2802ccd35a3ec180764c0731f417e6cd4762058ac7303336b4fe",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "skeleton",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/skeleton.png",
+        "sha256": "fbd77086918a29d1de95d6770b65c3c1562f890c5a71e026644cc892ff016c79",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "shadcn-svelte",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/shadcn-svelte.png",
+        "sha256": "c407afae1031b88750981b9545cf8cc41d951134ecab5220a780048399d402a5",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "smui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/smui.png",
+        "sha256": "121dfa3fed18dd6df3fcd662335009ea144b7eb404b69016248f8cc1dfdf2b85",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "flowbite-svelte",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/flowbite-svelte.png",
+        "sha256": "3fdd21fac7afc04efb63bccc854ff46a3197b422f3a6a6cd4e86d810835080ff",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "carbon-svelte",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/carbon-svelte.png",
+        "sha256": "66563e56d7d4a232a68b8e914bd0f1c27351cd73a6cb6fecc3b66955a9aeee8c",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "ark-ui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ark-ui.png",
+        "sha256": "183299d9e1a8c4001076ffcfd10d3247eaf026aacdb22696555c0904290edacc",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "kobalte",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/kobalte.png",
+        "sha256": "f552717c645ef70b9f63422bd8d9b889ae2edc74bc778b44e8134ab52801f1bf",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "solid-headless",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/solid-headless.png",
+        "sha256": "3d490934e38b7f3270bdaad24dc9499082977da90545262328ab0bbb3af48ec6",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "shoelace",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/shoelace.png",
+        "sha256": "6c407e6bc1d04b6ae06179adc66bf6f36c88d2b4c6a8361b4fec4a61bb14121e",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "material-web",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/material-web.png",
+        "sha256": "dfbc73440dd39226120e78d90e106251a8bd51427c4f3de3df4167e6e4a44b9c",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "carbon",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/carbon.png",
+        "sha256": "fb0c685de5067465e7f49d059eac2895f9e60322df7291247b7bbfa1ee6ef58f",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "lion",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/lion.png",
+        "sha256": "4c213d3550a86c9bbbe7e064f77b1acce86b6139a40e554acf0e7e5b674afcf8",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "fast",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/fast.png",
+        "sha256": "92d3436e87d9f1132f6b6999ea843af31bf8afdccd5912b025637f43e8b9cdf2",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "bootstrap",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/bootstrap.png",
+        "sha256": "3d08d6858ab920adf05f0a4562740ef1812044b435662675f17dab1bc7514e88",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "tailwind",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/tailwind.png",
+        "sha256": "6fadaa67d2d3f10e8b8ce37c804d4cd0db5e340a07aabb56c1a6620536f81a53",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "tailwindui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/tailwindui.png",
+        "sha256": "4c99b884accd0fbb55e74d7b6a5b1dfaf882cf5e56d1a779f82be0e79afeaa6e",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "daisyui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/daisyui.png",
+        "sha256": "70244778d92d532c04bb9df03535a3fbd8cb3d5cae53c23834e02ab98ffa05a0",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "bulma",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/bulma.png",
+        "sha256": "5aff8a8a2998e27d8f6da03e5eacf4eedc134b0754e07b6b068dfb8df7c944a8",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "foundation",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/foundation.png",
+        "sha256": "77df354bf746c7d29f7a446cc6cfa91713cb5745b16853321a09b029ba254017",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "pico",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/pico.png",
+        "sha256": "0647bd1c35ce94e9d8cfd44760c92d17b0b973fe1f8f2a74d0ee987eda4ca7b2",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "semantic-ui",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/semantic-ui.png",
+        "sha256": "631985ff3de975509efd9cd036303b7765cba6b6745ef4a04c4ae89947d1a05b",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "spectre",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/spectre.png",
+        "sha256": "12b6b0300c9026821679d92acd9e0ea9cdf916407fce560439a2845894b9b6e0",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "atlassian",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/atlassian.png",
+        "sha256": "00aec8e87d94c2c04da17bd61e9ffdd51be58af8c80fed0a15e1c9869811c37a",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "lightning",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/lightning.png",
+        "sha256": "93946a1b6241fd3840dfe3b7ac22ccfcccca1fc4bb06f9cfc25152b984940c15",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "fluent-ds",
+      "passed": false,
+      "reasons": [
+        "source_and_rights"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": false,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/fluent-ds.png",
+        "sha256": "fca15544e80b964ccf0e19db6deead40cdd9b8a23e11be6a01b8dbfe5ff49f99",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "primereact",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/primereact.png",
+        "sha256": "f9d559b5b4ad40b1586494c0ef8b778f5cbac5d5c64f35f6d2fc70d6d3ecb1be",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "untitledui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/untitledui.png",
+        "sha256": "92d70ee31f55024eee8c23956b4356bf8047ef520b3b4c35e46fbe46798b3f6c",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "reshaped",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/reshaped.png",
+        "sha256": "395db8221f028815a9a0301103381f91dfff159e9c6b44f003082f3f4c60cc66",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "alignui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/alignui.png",
+        "sha256": "b155566a6ea35a3f800ac1b25bfdac9d0be8f1212b41dad0f3e6c00b96dd9a45",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "baseui-primitives",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/baseui-primitives.png",
+        "sha256": "d0b6a16b52809f822719c25b07313ca923c39609dc59cbaf06d825baad898bb4",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "kiboui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/kiboui.png",
+        "sha256": "f2cf5f07ce9ce08410dce7a381f4b66fe40ef9cea6603ac5dadb2a591db86979",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "tailark",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/tailark.png",
+        "sha256": "7d059310b1d7370a73ef41e357bac2a32f6cb58761b6f5f4e98fd11e0047f6fe",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "aceternity",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/aceternity.png",
+        "sha256": "99037a3db127598bc1b1362eff4f3f3ca6742a21a25f2d6993a40a40c628bb5a",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "tremor",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/tremor.png",
+        "sha256": "ed0a671ccfb76e99a9fa0b7184e659055b93c77a6d659c644494006cb6820175",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "parkui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/parkui.png",
+        "sha256": "59added3bf5454b4471f82e8f150397fcdf77fac5998f5401698803d7793e9ea",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "magicui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/magicui.png",
+        "sha256": "186e18a8460a4264de92b1a0bc2e613b78e5f1f8de2a46544c81bac22c43ecf6",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "floatui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/floatui.png",
+        "sha256": "321aec2afe1cf51ba322497b6df20c2516efaba37f3b9447d8be27ea4d4a5b22",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "flowbite-react",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/flowbite-react.png",
+        "sha256": "a6491a76c5dd098fb39a38fd2384c9651fbe2692cf94a4763ba9ab3d5a2acc05",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "preline",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/preline.png",
+        "sha256": "888055baeaa1d2a82a97ab2545c90776d6bbbf250f01c5759eb7610c1647db43",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "keepreact",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/keepreact.png",
+        "sha256": "ab8a738c83644f5574c02af6d8b6343b2f10d97584812680153b3160088b3b36",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "originui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/originui.png",
+        "sha256": "09eea644b980a845490e6486d310801a9c5f5525197df8e79de862e42bf5819b",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "react-spectrum",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/react-spectrum.png",
+        "sha256": "08c433a8d86f758cfe13f6214a23196fa39951347565faaf26e76fdb067cebc8",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "recharts",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/recharts.png",
+        "sha256": "f892a381d3a7e96db1dedd2401f8f7b24f340e76e293a07d57e48cf1490479fe",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "nivo",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/nivo.png",
+        "sha256": "059ea1895106963be0ecd125eb9f646cc0ef026c256314ce0d19f567bb97ba76",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "visx",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/visx.png",
+        "sha256": "ae082404d76522bdd17534795091e041266bc804ad099737d9def4346f3ddd24",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "tanstack-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/tanstack-ui.png",
+        "sha256": "3409159107156538d7beb9bb2d4c9238447bfae7e41c5face4f920c157f0212d",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "cmdk",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/cmdk.png",
+        "sha256": "9304acbda318edb1ea954d3e9bd6eaaf60df14e8613f33428beaecdc1d68b57f",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "sonner",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/sonner.png",
+        "sha256": "2e88642b3b9f31b6334134cf7c425315c443e2a03b382f48561fbf681aca624c",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "plate",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/plate.png",
+        "sha256": "7da45821ee9e05be43a8f8a1f54d6af4b627e61135d1f35bcdfe8333cdb0a3e4",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "mambaui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/mambaui.png",
+        "sha256": "d45e6cd4c947d47201b0e572a0fb79c88a00ddec8bcbf0f1e6787c741cbece11",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "kokonutui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/kokonutui.png",
+        "sha256": "1b7e844b56ac85db5f19cca3114902e8c42a4d6f797a3306477fabfdb2ef8e57",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "diceui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/diceui.png",
+        "sha256": "0710af01f558445660c453a735150816f90c1b73e115c706a92059e5dcc9b40f",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "paper-rn",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/paper-rn.png",
+        "sha256": "27811714b97e2e762ddb584c48602b2500cc2409ed870736b5cb4da960231f82",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "varlet",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/varlet.png",
+        "sha256": "12aa85f98f301f362e10fa292c887ea40cb571bfdd07ac030534800b3bcb909e",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "wave-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/wave-ui.png",
+        "sha256": "6fc834c71490e58d5cf269263e97a9e5e7d8a0b238cbd0081ff0aa1268bb6d19",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "balmui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/balmui.png",
+        "sha256": "ff95c1cb2747adb9f83727fff61676fe1e19d610a1477f37ad5d438fc278e4ab",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "vue-final-modal",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/vue-final-modal.png",
+        "sha256": "99efa85a8d991c183bbf2a89a414672286ac3968ca0cb38053c6179bad755f4e",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "veevalidate",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/veevalidate.png",
+        "sha256": "3975eb6c121d1fe0d0464d997535bc9c121b94dc15f7361f6f7c0e9aa7c9ab03",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "tailgrids-vue",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/tailgrids-vue.png",
+        "sha256": "b60fd3aa594f9f62aa12c67186c76b01f44e9b821ea808e3cb1347b35040b5aa",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "volt-vue",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/volt-vue.png",
+        "sha256": "55bfbeecf9a42f41ff5f3b5a35b34fbb9dd8b3a0efc8c4d82ea3630b6d5411b8",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "flowbite-vue",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/flowbite-vue.png",
+        "sha256": "089e1043eb51195e3d2fab24bc502d87cafa2f8bd4e659353c3694208071dd84",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "nebular",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/nebular.png",
+        "sha256": "2dfd1beae398408937a7fc584bfa67236349a0dfd936d4b5c0419d464b911674",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "devextreme",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/devextreme.png",
+        "sha256": "51d8cae7c2943486e91a968a7762f5abad6fea5b9ee060f7a47f342f40586a3c",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "kendo-angular",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/kendo-angular.png",
+        "sha256": "f6a76ea14823d392134dbf8e113f0769224c1b63f509f33858d4a95806d1b9cd",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "syncfusion-ng",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/syncfusion-ng.png",
+        "sha256": "4c27fbe8db0df50f81d9c91669fec721e4c6571c8c06ac014e933482bfbd64cc",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "ag-grid",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ag-grid.png",
+        "sha256": "b00e654edf650b91f8ec33725a85dbea8147a86770c64cfa94fc76bd1a7444ce",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "ionic-ng",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ionic-ng.png",
+        "sha256": "d92f80f5332582d798814bb75344710740ef77a4937063a469282affc2e6c4c3",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "covalent",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/covalent.png",
+        "sha256": "9cd77296c51cb8211125a95a49fbcdd8940f28b492c7adcdec4a60677d97b562",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "fundamental-ngx",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/fundamental-ngx.png",
+        "sha256": "74b146ff590f8629824a19846c6540819dded17dee4ef81d794813280ed55ad6",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "agnosui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/agnosui.png",
+        "sha256": "7f99189ba1b2035c3a57d39b1658705683a9a8e4ade65210cf6c05198a1ade67",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "ng-aquila",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ng-aquila.png",
+        "sha256": "c9fededfd38edf0aa2f2e8cc6cba498d49c48a9746073fc1241f80efc7657429",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "devui-ng",
+      "passed": false,
+      "reasons": [
+        "unique_link"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": false,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/devui-ng.png",
+        "sha256": "2ccb2b2befadd63a2f1aa87debce46dfd6ff6ce0fa27657612dde91dc7a7b02f",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "oblique",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/oblique.png",
+        "sha256": "c57861bfb9202be55369d16d13f5bbb8ccc03768b5f77936bf30a103e9d2d06e",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "sbb-angular",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/sbb-angular.png",
+        "sha256": "9289272cc36e1cf5a6023b134dd2b1b8b63153291f972ec5139fb2249fac1a6a",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "ngx-bootstrap",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ngx-bootstrap.png",
+        "sha256": "b383054136d0935c9c6937262b87e3b5f818f81d5b18c12ce9f8347905d66067",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "meltui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/meltui.png",
+        "sha256": "cdd0994e5e14f87f2dc5f58e369def679bccfad769c0350a295bc53d0e35d10b",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "bitsui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/bitsui.png",
+        "sha256": "bdda38a8249c5299ec914d09c4053c83ef3744003e955225ef5975186e05e0ab",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "svar",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/svar.png",
+        "sha256": "0ce1e6b1ee9c36e357a60d7a0b07c0940d53b1a3c9c814c95630aa841bdd5be7",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "sveltestrap",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/sveltestrap.png",
+        "sha256": "7a81a3546d07cc8c6c39ef09e15ca204e1061ac8714e2018ce1c0550ec9e37f1",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "smelte",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/smelte.png",
+        "sha256": "c6418a923e8b3504d4d3ca57286e188644419beaa565ff32ba833482c73bb600",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "attractions",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/attractions.png",
+        "sha256": "aa0ebbbc3cd65acd2e330b249a0cdd010c3b7735fb0360bb0da8bc5092688b80",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "svelteui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/svelteui.png",
+        "sha256": "4dbbf2194fd30e9c977350e98d7b427b54999e9d8920d0136732e7cbcbfc615f",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "grailui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/grailui.png",
+        "sha256": "6926f5093057a67d29d16f9013ca77df7e0e957c04b28310385e06d6441a870d",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "atoui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/atoui.png",
+        "sha256": "e2bc263fec015decc4418cb38f4f27da5fa85d065d5d181b6b88797229aef87d",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "m3-svelte",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/m3-svelte.png",
+        "sha256": "a871c04e1637d8ec5895287389aef036de27555cb5f1200c946d44cc44c8ddda",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "konsta",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/konsta.png",
+        "sha256": "cbca6963b9b49dc75825d656b2ff2b8532cf545ca3f63384dc4c8fdab759502e",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "yesvelte",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/yesvelte.png",
+        "sha256": "b02ec6af78dd648b4f78f76da9635f1ded673f714de954dba5d4d92bbb941823",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "solid-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/solid-ui.png",
+        "sha256": "77b4f3799dd91f0b0c27f84165dead0e7935d0d8d420e9fcbe564bdbc69e4b66",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "hope-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/hope-ui.png",
+        "sha256": "f62455d93572431e30c7b1f47254660b2f9ee6bfca72c1012f0e5b5d171c43f0",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "solid-headless-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/solid-headless-ui.png",
+        "sha256": "c93cb3e6c26a1dcb9fcde0258dc13ba98b389247c47fe41bc5caaf0f37374a81",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "qwik-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/qwik-ui.png",
+        "sha256": "2837e0ac0ddbf2defe86fe1eeb7a041ffd61315be5ac3ca06949e3a0d1e7b234",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "spectrum-wc",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/spectrum-wc.png",
+        "sha256": "7e2ed4944a17ee67da4b1ac0596d23e9bf6c0b641c4b93bbb6ef95db202e72de",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "ui5-wc",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ui5-wc.png",
+        "sha256": "c2ea04860f5cf445361816900e520e3539c2ff5e6174b16157742202894c9420",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "axa-pl",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/axa-pl.png",
+        "sha256": "96952ce4dc53cf673b0d0c0e9125e6923bc42a0cf91093d98ebc335474dabe91",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "brightspace-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/brightspace-ui.png",
+        "sha256": "f3f0cfda4e2ce02ef7375a7683bcf775064e8b333099006bc9339e2c4170b246",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "clarity-core",
+      "passed": false,
+      "reasons": [
+        "unique_link"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": false,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/clarity-core.png",
+        "sha256": "423e123ba21264b415cd75e7f7d760bb1955625b3a6e017b3b12139a4a55900c",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "kor",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/kor.png",
+        "sha256": "6e4be75b3d2da8c2843635183305ca0e2284b4bc6043ab6d1a89c7ac7b09d041",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "momentum-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/momentum-ui.png",
+        "sha256": "4d8994825cf8f90693a4cba5eb07151e15f8a1fcdaaba088156682ce00656c99",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "pharos",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/pharos.png",
+        "sha256": "bc33b7cf92fb144ceca6726d5be1901686dae3bbe3eb827c0e5bd4f26a420120",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "redhat-ds",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/redhat-ds.png",
+        "sha256": "0e70238b5373b4806afd174d290927df4ed31565990316461d43bc1efcfb7ee0",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "calcite",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/calcite.png",
+        "sha256": "34f42b22471c747d2f879eb76010d3888c6cac6ef24506e6002088ebc6f44ea7",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "vaadin-wc",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/vaadin-wc.png",
+        "sha256": "bbf0d3ac2f425b636b193caf33dd9c61ff6bda1338ae409e2ff1683c6c8a02b2",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "agnosticui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/agnosticui.png",
+        "sha256": "1d83b3603b7f3a9e85eaaa27bf4cae0c9467dd82f0968bd08d240e5415bfdf29",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "dile-wc",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/dile-wc.png",
+        "sha256": "5fed29802da9cf1321dc347abbcb0eed0e8fae575f375e451b5e347ee045fdfa",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "wired-elements",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/wired-elements.png",
+        "sha256": "756f49129dec5b2b46748bf4162297963b5c8d5b50a0c295fcd3bfa438fb76d4",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "unocss",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/unocss.png",
+        "sha256": "0e3fb43b987abe4cebc28930ed5cd41313639e69b6f492749b9b1de9abd36164",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "open-props",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/open-props.png",
+        "sha256": "6f792ab93aa22a5a0c7359fa1c3d9b201381a49c0940dd3ebbd039d58c259443",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "panda-css",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/panda-css.png",
+        "sha256": "3b7b54df1bf35451fc717ffa2c62a7511607153fa2b942a1bb0817b8b3742c99",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "vanilla-extract",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/vanilla-extract.png",
+        "sha256": "9c467b81b20af4293c2bd63d461659313449dce209b47aa36cd342726e605006",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "stylex",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/stylex.png",
+        "sha256": "ec0bb5b4cf4eed7039e12f6992d8b7a15b948908a421bf4332fb6a83982e5589",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "lightning-css",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/lightning-css.png",
+        "sha256": "00c5bbce306b0a38e1dc363a78568f38db578a3d061fa0f17f2bc899f6eaf3a6",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "halfmoon",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/halfmoon.png",
+        "sha256": "ece5b574c5eb6df720c7cfbf69e1b5c2b7f923553a6c445c68cd61149ecdeaa4",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "milligram",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/milligram.png",
+        "sha256": "1764f82a085efd3aa0c3a04816aaa0d142b61884b7f4be76545633fe6ff92730",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "beer-css",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/beer-css.png",
+        "sha256": "7156a1518a300c7df0ccd7799b0e6c87667cc80d015f82f225023359fa15f5c6",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "materialize",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/materialize.png",
+        "sha256": "070aad27fef6728039c91b8dae23fa0c7c88e6302280e6361dcc685eb4f9860f",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "chota",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/chota.png",
+        "sha256": "614db579451b07ee993b88d9ad34fdedf33a5323a1364b80d0c0c18eca83ca33",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "pure-css",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/pure-css.png",
+        "sha256": "e1cc0d2dc225f1c1c883fb7b569ec47af66fc201db264fef44b6729662aebce5",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "tachyons",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/tachyons.png",
+        "sha256": "beb0e5ccffda43fbfb5cf60c62ad28d178a946baa98c41346010cf265890f51c",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "material-design",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/material-design.png",
+        "sha256": "38323be0f7ab1d9d890904da003f830cc13b59c245376ba399cd2ae84d071d41",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "sap-fiori",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/sap-fiori.png",
+        "sha256": "008a3904065e4a9362dbe562a48216fa1f6664b494a6834f9fa3dc6f2909f11f",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "sap-fundamental",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/sap-fundamental.png",
+        "sha256": "05196036e69f0e6344d42504c2b5dbbdb35e94ee6318c18c79d0ab0ffdfd44f3",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "oracle-redwood",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/oracle-redwood.png",
+        "sha256": "f56509c75d0e4bbcd87f2545644d450b1e06809a8573b9cced74fc21f7e5b1a2",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "twilio-paste",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/twilio-paste.png",
+        "sha256": "7afb04139145bae0b927193d7d0dea619457c7e33d9f918512e35cf5dc1ba2d3",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "hubspot-canvas",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/hubspot-canvas.png",
+        "sha256": "195d892d68211dca69725d0c9a3a2c462107f44576d8a459e2d74aca76652306",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "audi-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/audi-ui.png",
+        "sha256": "49c804539ac10a3e3f74cf8710efc5c84382f627e766ddcf4cd8fc27de72ff06",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "backpack",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/backpack.png",
+        "sha256": "1222b98bb64c492d737ec0c233b3c1d7a0ed6975599b450a76e3f26143d907ac",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "devui-design",
+      "passed": false,
+      "reasons": [
+        "unique_link"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": false,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/devui-design.png",
+        "sha256": "8e20094a2236d37d6499791d8f0c0db5762e0106ac72279e8eee3af9075e6ff2",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "mand-mobile",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/mand-mobile.png",
+        "sha256": "555396d177a314219f43af198fca7e78acb70e76f201ebba0bb7659b9cff9fb4",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "ke-design",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/ke-design.png",
+        "sha256": "9c74e673d3255f82a42356db4d8036097c603983ed7d35a56c6475100bde74ae",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "vercel-geist",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/vercel-geist.png",
+        "sha256": "647c0ff8a79798c6d046c22f4ef0a3f039fb6fb6b1cb7626e06fe4863d968fd7",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "workday-canvas",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/workday-canvas.png",
+        "sha256": "5e48ff345a802e0ce498037f053bdd9ee85ebd56b03e92346a13547ca6c1f50a",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "zendesk-garden",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/zendesk-garden.png",
+        "sha256": "0faa647d6330f0b9faa9bd2a0fb35c47b294d0c11490a174ea8c35ce19acd0a1",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "bbc-gel",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/bbc-gel.png",
+        "sha256": "0ea83435c601c2a097223751bbae20ba7a0b199b126c57bdcb4202f50ea8fbd6",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "uswds",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/uswds.png",
+        "sha256": "508593dc1a4d1da7f6f7995c58d9bf332f8e5ed69beb8963feb4ca907ddc8938",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "govuk",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/govuk.png",
+        "sha256": "b55204b595293560d4a1ab8a4930e3e2f9355fa8840651af35e99ff3f23999f3",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "nord",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/nord.png",
+        "sha256": "7c14d4b89e94c00fd351f560bbee4d7037b9805bdb054b1c6ef91892e10913b4",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "proj-2021-two-good-co",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/proj-2021-two-good-co.png",
+        "sha256": "edeb0ffa2f6b5da7385ad187c1d0a068b5da86f11ae75986ce6e29893d0617c0",
+        "width": 1200,
+        "height": 750
+      }
+    },
+    {
+      "id": "proj-2023-atmos",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/proj-2023-atmos.png",
+        "sha256": "d524faad7a6d1947613519a139f8abb42c7c55492224b41b4fc4d4f0a4d1cf82",
+        "width": 1200,
+        "height": 750
+      }
+    },
+    {
+      "id": "proj-2023-obys",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/proj-2023-obys.png",
+        "sha256": "8b15b448686ce93948abf17ff764fa0739d74cae74a9827e617dab2aa54a9c21",
+        "width": 1200,
+        "height": 750
+      }
+    },
+    {
+      "id": "proj-2024-gentlerain",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/proj-2024-gentlerain.png",
+        "sha256": "9de4a5632b9c28f763835e0b892ebd03957f2f4a306906e69ed93030970ec484",
+        "width": 1200,
+        "height": 750
+      }
+    },
+    {
+      "id": "proj-2025-adidas",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/proj-2025-adidas.png",
+        "sha256": "7d9861eb35997b6239a73df9468efb52258a7917b196d3cc19a903047be558ae",
+        "width": 1200,
+        "height": 750
+      }
+    },
+    {
+      "id": "proj-template-portfolio",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/proj-template-portfolio.png",
+        "sha256": "11054271d13b6fad3313f96db30d29a3fe4d889c9da6b9071c9965147a9bf94e",
+        "width": 1200,
+        "height": 750
+      }
+    },
+    {
+      "id": "proj-bruno-folio-2019",
+      "passed": false,
+      "reasons": [
+        "unique_link"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": false,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/proj-bruno-folio-2019.png",
+        "sha256": "f117706f9fca80a59f06940e95762d672336ed7281b5d28e23fead0fa138f72b",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "proj-bruno-folio-2025",
+      "passed": false,
+      "reasons": [
+        "unique_link"
+      ],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": false,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/proj-bruno-folio-2025.png",
+        "sha256": "261deaf9c387c1eb3928d2c335c9d096c591cbbc7e1e3f1dafd59ca566dd32e9",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-lusion-oryzo",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-lusion-oryzo.png",
+        "sha256": "8fdd18a76b5dd788e80b7909514b551c9d2e7d804d4e54beda2b8310ad8bd13e",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "awd-immersive-gq",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-immersive-gq.png",
+        "sha256": "6349c5f48a0f83d9e2675e886ce390f875baa22f9af8b7d8c1236b374379b9b9",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "awd-immersive-cartier",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-immersive-cartier.png",
+        "sha256": "024ead45ff1483b0e6d09ab6d90287cd241e40352513ca68e7b4fe76eb9ea154",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-resn-tracing",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-resn-tracing.png",
+        "sha256": "956e41a976bd9f2fc2e5a506019e29f2e06ac011dae353f1d5edd02bbdb0fba4",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-noomo",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-noomo.png",
+        "sha256": "bc43cfd312bc6acead871712d4b6bd01c390e02b414915c8c6ac2ef0ffa06dad",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-unknown",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-unknown.png",
+        "sha256": "94fd8cf15b2af692d7359da9bf6cdedb925792f6073ef12e44abcd58a4450f43",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-jeton",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-jeton.png",
+        "sha256": "59748625e8161c5fc0af04951d7d9477e2d477992b79525596c68a82940f4671",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-activetheory",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-activetheory.png",
+        "sha256": "93bbfab26a2e7eb23557d91387622d9a71c1621d8a8ddcfb8d4478136ae94198",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-cuberto",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-cuberto.png",
+        "sha256": "893475aa22e56c432331fcadf12381b318c29c56bfc9048870147f5335fae12f",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-akqa",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-akqa.png",
+        "sha256": "ca3244e40cbb630c13b4b4f4673a72e3f5e19d250faed0e65e2b089169adf9d1",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-hellomonday",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-hellomonday.png",
+        "sha256": "a744228d1942124496700428b11f0f704c83db08b22d55ccefa7535c744df2d4",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-dogstudio",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-dogstudio.png",
+        "sha256": "345a97f21f37bff9a339ea371043db4748f3afc91c8237338fa9f1abb3ebf6cb",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-makemepulse",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-makemepulse.png",
+        "sha256": "019cb1b6d24230dd10f0b992708dc63b2a84ffe6102d4371ca7a46159a03604a",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-rga",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-rga.png",
+        "sha256": "273fb36c4b27589592072075929f3145d915812710332cc054071f0f041a7aff",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-webflow",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-webflow.png",
+        "sha256": "e58b8dbb1c93853c806a93fd6cb1d60457cded7a99685b50073fab9e90db53d3",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-waaark",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-waaark.png",
+        "sha256": "2926671ff94b6e6db18e69d0b35b226c71a3e705b23cb1abc579e0ab8661bf65",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-locomotive",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-locomotive.png",
+        "sha256": "bf626a4308184a7dae0ea395e9bf83987fea619631ee15f1257e6f5233fc4a87",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "awd-huge",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-huge.png",
+        "sha256": "b29e60c477f65f53dd6613c3777c878a512640c42c1baa61d0d51f6c2ce348f5",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "awd-antinomy",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-antinomy.png",
+        "sha256": "e5e2d2049549f9d97e980802103246e6a220fb49a72c8777101eae71b87b8c8b",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-qode",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-qode.png",
+        "sha256": "be06908c8dd51e0c54d917ec70e762e3e7bf175046514b3ad7dbc2d56c5d2343",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-cleave",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-cleave.png",
+        "sha256": "e7fea40630603c99a8bc77176719d0f5573470afc648b082993190b76bc208e0",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-aristide",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-aristide.png",
+        "sha256": "00fe0a5ae8edc4c1e6985c1ec5f92a9ee228c456fd6b5fa7e4dc1e3c7b35b45b",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-tolus",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-tolus.png",
+        "sha256": "722800708c3177ddf097d1c99c1a905be95c8561fabcd3f89dcfae69e4b36520",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-crafted",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-crafted.png",
+        "sha256": "8b38e901d59a773044098d358f7281826894077f0ff7df4b30953ffb399ab66a",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-hakuhodo",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-hakuhodo.png",
+        "sha256": "9c1dc68b0e70b0e7cb371b181d99c60d18941edb4065436ed65ccc6d2581d33c",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-fashionawards",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-fashionawards.png",
+        "sha256": "ba7f8fea394412209626e7ea9a15cbac32580274b8b432798c5a7b063138841c",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-cupra",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-cupra.png",
+        "sha256": "5ded4488f0a1270ba261ad6b8ca27a8f1d2be1e55f709c614ff6262bafc3a7d3",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-volvo",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-volvo.png",
+        "sha256": "854fcadf0e5638ff354eaa79094fcaead6fdcb2f92022a626500413e0f1f83b7",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-gucci",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-gucci.png",
+        "sha256": "6f33b775b8e1a00fd2829fa360f9c74912d24e1de7f79881a069157a34ce5f7a",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-balenciaga",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-balenciaga.png",
+        "sha256": "7be7b663ec2c9d3d181679653449824f76a9370512d5d99bda336d9604d5fd9b",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-louisvuitton",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-louisvuitton.png",
+        "sha256": "4ae41f048b5db6970d8f40012f2eb3572b48c24ae86ec0852cdfbe665ce92d95",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-apple",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-apple.png",
+        "sha256": "37037ca123ee6b0917e131aad0ce5a3284b6fea1093c9512295dbbbf394d664d",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-cybernauts",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-cybernauts.png",
+        "sha256": "1396e41772c09b623bf2ad08a6a0594fe9cbc16f75b0c34bbca5cc23e99abdc0",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-instrument",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-instrument.png",
+        "sha256": "b1ef4dafac922d88cd16b6bd56045c7fc856e95a8ce42f3330c541b4ebf2ccf9",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-field",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-field.png",
+        "sha256": "eb3c908e01131fea2cd63e3c223a2a8e719f7214d6a511ce01f29ac6a36dd818",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-animade",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-animade.png",
+        "sha256": "e5cd218374aac11a411423db6a5743053a450a1fa38aeb97f8c796078e7f8d21",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-unseen",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-unseen.png",
+        "sha256": "2e9f249af03097ca98f0f808cf3b2ecabb9514f9a13b3df6fae950b611c45fe5",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-haus",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-haus.png",
+        "sha256": "8f8fe4395a108abee79b7a15fc325692ed13ea2c3a185e96f1caa4cdea1b0967",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-buck",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-buck.png",
+        "sha256": "f9c8184bc95f37a38371325a4a6d6cca47162ca264c992cfaff5437e8a797adc",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-raggededge",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-raggededge.png",
+        "sha256": "60195cd2aceab683a9f158481d04ddca8d7effbf13978dea2e39c73561714e4d",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-velvet",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-velvet.png",
+        "sha256": "fc80473ac614fe38b93a7b852e128c7ee324055fa38e3bb226254d9908369ff7",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-bureau-borsche",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-bureau-borsche.png",
+        "sha256": "7572072583d22b1af21f0948fecbc108ae96e5cf01078876cc70f1b35062cc73",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-studio-lumio",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-studio-lumio.png",
+        "sha256": "48cc7b50874664e0581d5425bb2c72dcbf6872ca88e37bf46e1ca6d9f872c705",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-buzzed",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-buzzed.png",
+        "sha256": "ce99b118841e906403377c9ded7fda220170884b7f58fd92e6838ac46a75bac4",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "awd-verve",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/awd-verve.png",
+        "sha256": "4ab3d3eb2f9ff7cfdba9937bed569a002037ff2a0b4fc71474825bc5caf0a0ac",
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "id": "once-ui",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/once-ui.png",
+        "sha256": "4f9e4bbcc9e81e698323a01d10af6cce31cfafa1f81e32dcb6f4d3351c869056",
+        "width": 1280,
+        "height": 820
+      }
+    },
+    {
+      "id": "basecoat",
+      "passed": true,
+      "reasons": [],
+      "checks": {
+        "asset_exists": true,
+        "readable_dimensions": true,
+        "source_and_rights": true,
+        "unique_id": true,
+        "unique_link": true,
+        "unique_asset": true,
+        "complete_metadata": true,
+        "usable_target": true
+      },
+      "asset": {
+        "path": "previews/basecoat.png",
+        "sha256": "8ec423effe6ca6993e172ed7347a9d7d10c42b31d96ab7ee499b46e7b8bd169b",
+        "width": 1280,
+        "height": 820
+      }
+    }
+  ]
+}

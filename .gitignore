@@ -1,4 +1,8 @@
 node_modules/
+dist/
+test-results/
+playwright-report/
+visual-report/
 source/
 .workbuddy/
 .DS_Store
@@ -8,4 +12,3 @@ source/
 repro/
 *-proof.png
 redesign-*.png
-
