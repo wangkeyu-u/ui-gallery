@@ -19,8 +19,11 @@
     "test:visual:update": "UPDATE_VISUAL_BASELINES=1 playwright test --project=visual-chromium tests/visual.spec.ts",
     "test:visual:review": "tsx scripts/review-visual-report.ts",
     "test:reconstructions": "playwright test --project=visual-chromium tests/reconstruction.spec.ts",
+    "test:reconstructions:update-evidence": "UPDATE_RECONSTRUCTION_EVIDENCE=1 playwright test --project=visual-chromium tests/reconstruction.spec.ts",
     "test:reconstructions:review": "tsx scripts/check-reconstruction-report.ts",
-    "ci": "npm run quality:data:check && npm run build && npm run test && npm run test:e2e && npm run test:visual && npm run test:reconstructions"
+    "test:reconstructions:check-evidence": "tsx scripts/check-reconstruction-report.ts --compare-transient",
+    "evidence:update": "npm run quality:data && npm run test:reconstructions:update-evidence && tsx scripts/generate-resume-evidence.ts",
+    "ci": "npm run quality:data:check && npm run build && npm run test && npm run test:e2e && npm run test:visual && npm run test:reconstructions && npm run test:reconstructions:check-evidence"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.8",

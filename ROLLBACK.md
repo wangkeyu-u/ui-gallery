@@ -9,7 +9,7 @@ This migration is isolated from the repository's original default branch.
 - Round 1 completion tag: `codex/round1-complete`
 - Round 1 HEAD: `20f3c175e4be80fde9a00d633e2c847a1d19e819`
 
-No force push or remote push is part of this work.
+The migration branch may be published for review, but no force push or rewrite of `main` / `origin/main` is part of this work.
 
 ## Return to the untouched original branch
 

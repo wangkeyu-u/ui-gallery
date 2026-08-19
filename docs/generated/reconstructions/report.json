@@ -46,7 +46,7 @@
       "overflow": {
         "reference": {
           "x": false,
-          "y": true
+          "y": false
         },
         "candidate": {
           "x": false,

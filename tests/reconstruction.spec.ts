@@ -6,7 +6,9 @@ import { scanCandidateSources } from './reconstruction/anti-cheat';
 import { compareImages, compareStructure, type DomSnapshot } from './reconstruction/metrics';
 
 const cases = ['ledger', 'orbit', 'fieldnotes'] as const;
-const generatedDir = path.resolve('docs/generated/reconstructions');
+const generatedDir = process.env.UPDATE_RECONSTRUCTION_EVIDENCE === '1'
+  ? path.resolve('docs/generated/reconstructions')
+  : path.resolve('test-results/reconstructions');
 const results: unknown[] = [];
 
 test.describe.configure({ mode: 'serial' });
@@ -67,8 +69,11 @@ for (const id of cases) test(`${id}: independent reference to React reconstructi
     antiCheat: runtimeAntiCheat,
     artifacts: [`${id}.reference.png`,`${id}.candidate.png`,`${id}.diff.png`,`${id}.edge-diff.png`],
   });
-  expect(image.ssim).toBeGreaterThan(0.7);
-  expect(structure.tagCosineSimilarity).toBeGreaterThan(0.8);
+  expect(image.ssim).toBeGreaterThanOrEqual(0.99);
+  expect(image.pixelDiffRatio).toBeLessThanOrEqual(0.005);
+  expect(image.edgeDiffRatio).toBeLessThanOrEqual(0.01);
+  expect(structure.tagCosineSimilarity).toBeGreaterThanOrEqual(0.98);
+  expect(image.color.dominantMeanDelta).toBeLessThanOrEqual(5);
 });
 
 async function domSnapshot(page: Page): Promise<DomSnapshot> {

@@ -20,6 +20,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run validate:data
+      - run: npm run quality:data:check
       - run: npm run build
       - run: npm run test
       - uses: actions/upload-artifact@v4
@@ -41,6 +42,8 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - run: npm run test:visual
+      - run: npm run test:reconstructions
+      - run: npm run test:reconstructions:check-evidence
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -50,3 +53,30 @@ jobs:
             test-results
             playwright-report
           if-no-files-found: warn
+
+  deploy-pages:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [build-and-test, browser-and-visual]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

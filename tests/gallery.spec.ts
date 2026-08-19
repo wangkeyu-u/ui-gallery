@@ -9,10 +9,10 @@ test.beforeEach(async ({ page }) => {
 
 test('renders the complete collection and filters by kind and framework', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'UI Gallery' })).toBeVisible();
-  await expect(page.getByTestId('visible-count')).toHaveText('230');
+  await expect(page.getByTestId('visible-count')).toHaveText('232');
 
   await page.getByRole('button', { name: '组件库', exact: true }).click();
-  await expect(page.getByTestId('visible-count')).toHaveText('177');
+  await expect(page.getByTestId('visible-count')).toHaveText('179');
 
   await page.getByLabel('框架').selectOption('React');
   const reactCount = await page.locator('option[value="React"]').textContent();
