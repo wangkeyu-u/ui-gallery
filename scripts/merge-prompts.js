@@ -1,5 +1,6 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // merge-prompts.js — 把 repro 闭环生成的最终提示词合并进 preview-data.json 的 `prompt` 字段
-// 用法: node merge-prompts.js
+// 用法: node scripts/merge-prompts.js
 const fs = require('fs');
 const path = require('path');
 

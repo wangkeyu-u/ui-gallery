@@ -1,3 +1,4 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // gen-real-shots.js — 逐个访问每个条目的真实网址，把真实网站截图存到 previews/<id>.png
 // 覆盖原先的合成风格卡。跳过本地已克隆的 8 个(proj-*.png，本就是真实运行截图)。
 // 若实拍截图接近空白(纯 WebGL/动画站在无头下常渲染成黑屏)，回退为信息卡(名称/机构/奖项/技术)以便辨认。
@@ -75,7 +76,7 @@ if (process.env.TEST) {
 
 async function run(list) {
   const browser = await chromium.launch({
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    executablePath: process.env.CHROME_PATH || undefined,
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-gl=swiftshader', '--enable-webgl', '--hide-scrollbars', '--disable-blink-features=AutomationControlled']
   });
   let done = 0, ok = 0, blank = 0, fail = 0;

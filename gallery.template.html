@@ -265,7 +265,7 @@ function cardHtml(i,n){
    const chipsArr=isProj?(i.tech||[]):(i.chips||[]);
    const chipsHtml=chipsArr.slice(0,6).map(c=>'<span class="ctag">'+c+'</span>').join('');
    const num=String(n).padStart(2,'0');
-   const vbadge=(!i.prompt)?'':(i.hifiPassed===true?('<span class="vb ok">✓ 复现通过</span>'+(i.animOk===true?'<span class="vb anim">✦ 动画还原</span>':'')):(i.hifiPassed===false?'<span class="vb fail">✕ 未复现</span>':'<span class="vb pend">· 待验证</span>'));
+   const vbadge=(!i.prompt)?'':(i.hifiPassed===true?('<span class="vb ok">✓ 历史：通过</span>'+(i.animOk===true?'<span class="vb anim">✦ 历史：动画</span>':'')):(i.hifiPassed===false?'<span class="vb fail">✕ 历史：失败</span>':'<span class="vb pend">· 待验证</span>'));
    return '<div class="item '+(selc?'sel':'')+'" data-id="'+i.id+'" role="button" tabindex="0" aria-label="'+i.name+'" aria-pressed="'+(selc?'true':'false')+'">'+
      '<div class="frame">'+
        '<span class="kind '+(isProj?'proj':'')+'">'+(isProj?'获奖':'库')+'</span>'+

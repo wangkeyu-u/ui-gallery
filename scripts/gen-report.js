@@ -1,3 +1,4 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 const fs = require("fs");
 const rows = JSON.parse(fs.readFileSync("repro/_rows.json", "utf8"));
 const total = rows.length;
@@ -101,5 +102,5 @@ document.getElementById("samples").innerHTML=SAMPLES.map(s=>'<div class="cmp"><f
 render();
 </script></body></html>`;
 
-fs.writeFileSync("repro-report.html", html);
+fs.writeFileSync("reports/repro-report.html", html);
 console.log("report bytes:", html.length);

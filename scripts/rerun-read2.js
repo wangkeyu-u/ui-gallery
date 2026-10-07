@@ -1,7 +1,8 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // rerun-read2.js — 全量安全重跑交互提取
 // 单浏览器 + 4 并发页池;对全部已有 anim.json 的站点重跑 read2-core 提取(含 interactions),
 // 安全合并:新跑成功则整体覆盖(含 interactions 字段);新跑失败但原文件 ok:true 则保留原文件不覆盖。
-// 用法: node rerun-read2.js
+// 用法: node scripts/rerun-read2.js
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -11,14 +12,15 @@ const DATA = 'preview-data.json';
 const items = JSON.parse(fs.readFileSync(DATA, 'utf8'));
 const targets = items.filter(it => fs.existsSync(path.join('repro', it.id, 'anim.json')) && it.link);
 const CONC = 4;
-const LOG = '/tmp/rerun-read2.log';
+fs.mkdirSync('repro', { recursive: true });
+const LOG = 'repro/rerun-read2.log';
 const log = [];
 function logLine(s) { log.push(s); fs.writeFileSync(LOG, log.join('\n') + '\n'); }
 
 (async () => {
   logLine('START ' + new Date().toISOString() + ' targets=' + targets.length);
   const browser = await chromium.launch({
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    executablePath: process.env.CHROME_PATH || undefined,
     args: LAUNCH_ARGS
   });
   let done = 0;

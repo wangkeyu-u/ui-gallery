@@ -1,6 +1,7 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // gen-hifi-batches.js
 // 把所有「高保真(hifi)提示词」站点分区，供后台子代理并行跑「提示词→AI 生成→对比」验证。
-// 运行(工具恢复后): node gen-hifi-batches.js
+// 运行: node scripts/gen-hifi-batches.js
 const fs = require('fs');
 const B = 12; // 每批站点数
 
@@ -22,5 +23,6 @@ const batches = [];
 for (let i = 0; i < sites.length; i += B) {
   batches.push({ index: batches.length, sites: sites.slice(i, i + B) });
 }
+fs.mkdirSync('repro', { recursive: true });
 fs.writeFileSync('repro/hifi-batches.json', JSON.stringify(batches, null, 0));
 console.log('hifi sites:', sites.length, '| batches:', batches.length, '(size ' + B + ')');

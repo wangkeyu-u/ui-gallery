@@ -1,5 +1,6 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // repro-read.js — 读取一个真实网站的源码/结构，输出结构化 read.json + 渲染后的 source.html
-// 用法: node repro-read.js "<url>" "repro/<id>/read.json"
+// 用法: node scripts/repro-read.js "<url>" "repro/<id>/read.json"
 const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
@@ -10,7 +11,7 @@ const VIEWPORT = { width: 1280, height: 820 };
 
 (async () => {
   const browser = await chromium.launch({
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    executablePath: process.env.CHROME_PATH || undefined,
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-gl=swiftshader', '--enable-webgl', '--hide-scrollbars', '--disable-blink-features=AutomationControlled']
   });
   const page = await browser.newPage({ viewport: VIEWPORT });

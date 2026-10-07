@@ -1,9 +1,10 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 const { chromium } = require('playwright');
 const path = require('path');
 
 (async () => {
   const browser = await chromium.launch({
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    executablePath: process.env.CHROME_PATH || undefined,
     args: ['--no-sandbox', '--disable-gpu']
   });
   const page = await browser.newPage({ viewport: { width: 1400, height: 1000 } });
@@ -108,8 +109,9 @@ const path = require('path');
   const afterClear = await page.$$eval('.item.sel', els => els.length);
   console.log('11) 清空后选中数 (应=0) =', afterClear);
 
-  await page.screenshot({ path: 'test-functional-proof.png', fullPage: false });
-  console.log('12) 截图已保存 test-functional-proof.png');
+  require('fs').mkdirSync('.artifacts', { recursive: true });
+  await page.screenshot({ path: '.artifacts/functional.png', fullPage: false });
+  console.log('12) 截图已保存 .artifacts/functional.png');
   // 12b) selection bar is a small bottom-right pill (not covering grid)
   await page.$eval('.item', e => e.dispatchEvent(new MouseEvent('click', { bubbles: true })));
   await page.waitForTimeout(200);
@@ -121,6 +123,12 @@ const path = require('path');
   console.log('13) 控制台错误数 =', errors.length, errors.slice(0, 3));
 
   await browser.close();
-  const ok = total === 230 && broken.length === 0 && selectedCount === 3 && afterReload === 3 && afterClear === 0 && errors.length === 0;
+  const ok = total === 230 && secInfo.length === 2 && broken.length === 0
+    && selectedCount === 3 && stored && JSON.parse(stored).length === 3
+    && String(clipboard).split('\n').length === 3 && afterReload === 3
+    && reactN > 0 && reactN < total && projN === 53
+    && hasOptgroups.fwOptgroups > 0 && hasOptgroups.themeOptgroups > 0
+    && afterClear === 0 && errors.length === 0;
+  process.exitCode = ok ? 0 : 1;
   console.log('\n=== RESULT:', ok ? 'PASS ✅ 全部可用' : 'CHECK ⚠️', '===');
-})();
+})().catch(error => { console.error(error); process.exitCode = 1; });

@@ -1,5 +1,6 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 const { chromium } = require('playwright');
-const EXEC = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+const EXEC = process.env.CHROME_PATH || undefined;
 (async () => {
   const errs = [];
   const b = await chromium.launch({ executablePath: EXEC, args: ['--no-sandbox', '--use-gl=swiftshader'] });
@@ -15,4 +16,5 @@ const EXEC = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
   console.log('cprompt buttons:', btns, '| click ok:', ok, '| textAfter:', JSON.stringify(txt));
   console.log('console errors:', errs.length ? errs.slice(0, 5) : 'none');
   await b.close();
+  process.exitCode = btns > 0 && ok && errs.length === 0 ? 0 : 1;
 })().catch(e => { console.error('FATAL', e.message); process.exit(1); });

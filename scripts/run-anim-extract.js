@@ -1,10 +1,11 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // run-anim-extract.js — 并发跑 repro-read2.js 生成所有可访问站的 anim.json
-// 用法: node run-anim-extract.js [concurrency]
+// 用法: node scripts/run-anim-extract.js [concurrency]
 const fs = require('fs');
 const { spawn } = require('child_process');
 
 const NODE = process.execPath;
-const accessible = JSON.parse(fs.readFileSync('/tmp/accessible.json', 'utf8'));
+const accessible = JSON.parse(fs.readFileSync(process.argv[3] || 'repro/accessible.json', 'utf8'));
 const CONC = parseInt(process.argv[2] || '4', 10);
 
 // skip-if-done: anim.json 存在且 ok:true 则跳过
@@ -24,7 +25,7 @@ function next() {
   const s = todo[idx++];
   return new Promise(resolve => {
     const out = 'repro/' + s.id + '/anim.json';
-    const child = spawn(NODE, ['repro-read2.js', s.url, out], {
+    const child = spawn(NODE, [require('path').join(__dirname, 'repro-read2.js'), s.url, out], {
       env: { ...process.env, NODE_PATH: process.cwd() + '/node_modules' },
       stdio: 'ignore'
     });

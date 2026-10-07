@@ -1,11 +1,11 @@
 // gen-gallery.js — 用模板 + preview-data.json 重建自包含画廊 preview-gallery.html
-// 用法: node gen-gallery.js
+// 用法: npm run build
 const fs = require('fs');
 const path = require('path');
 
-const TEMPLATE = path.join(__dirname, 'gallery.template.html');
-const DATA = path.join(__dirname, 'preview-data.json');
-const OUT = path.join(__dirname, 'preview-gallery.html');
+const TEMPLATE = path.join(__dirname, '..', 'gallery.template.html');
+const DATA = path.join(__dirname, '..', 'preview-data.json');
+const OUT = path.join(__dirname, '..', 'preview-gallery.html');
 
 const tpl = fs.readFileSync(TEMPLATE, 'utf8');
 

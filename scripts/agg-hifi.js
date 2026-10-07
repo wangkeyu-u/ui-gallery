@@ -1,6 +1,7 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // agg-hifi.js
 // 聚合所有 repro/<id>/result.hifi.json,输出统计,并把 hifi 验证结果写回 preview-data.json(新增 hifiPassed / animOk 字段)。
-// 运行(工具恢复后,所有批次跑完): node agg-hifi.js
+// 所有输入记录准备后运行: node scripts/agg-hifi.js
 const fs = require('fs');
 const path = require('path');
 

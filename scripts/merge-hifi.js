@@ -1,3 +1,4 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // merge-hifi.js — 把混合高保真提示词(prompt.hifi.md)写入 preview-data.json 的 prompt 字段
 // 优先用 hifi;若 hifi 缺失则保留已有 prompt(向后兼容)
 const fs = require('fs');
