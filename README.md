@@ -27,6 +27,7 @@ Node.js 22+。从仓库根目录执行：
 npm ci
 npm run build
 npx playwright install chromium
+npm run test:embedded-data
 npm test
 npm run test:copy
 ```
@@ -34,6 +35,8 @@ npm run test:copy
 也可设置 `CHROME_PATH` 使用已安装的 Chrome。构建只读取模板与已提交数据；不需要访问第三方站点。修改条目后，检查数据差异并重新生成页面。
 
 功能检查覆盖卡片、图片、筛选、选择、持久化和复制。测试截图写入被忽略的 `.artifacts/`。它不评估提示词生成页面与原网站的视觉或动画一致程度。
+
+`npm run test:embedded-data` 用 Chromium 解析真实模板生成的临时页面，检查提示词中的 `</script>`、HTML 注释、替换符号和 Unicode 分隔符能完整恢复为数据，且附加脚本不会执行。临时页面在测试结束后删除。
 
 ## 维护与记录
 

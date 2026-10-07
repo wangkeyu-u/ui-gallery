@@ -2,6 +2,8 @@
 
 所有命令从仓库根目录运行。`npm run build` 是日常构建入口；不会重抓页面或更改条目。
 
+画廊构建器在嵌入 JSON 时转义 `<` 和 Unicode 行/段分隔符，并用回调填入模板占位符。提示词中的脚本结束标签、HTML 注释与 `$&` 等替换符号因此保留为普通数据；浏览器读取后的内容与原 JSON 一致。维护模板或构建器后运行 `npm run test:embedded-data`：真实 Chromium 回归使用临时数据与页面，不访问条目网站，也不修改 `preview-data.json`。
+
 | 工具 | 输入 | 输出/影响 |
 | --- | --- | --- |
 | `scripts/gen-gallery.js` | 模板、preview-data.json | preview-gallery.html |
