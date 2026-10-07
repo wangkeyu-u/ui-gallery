@@ -1,6 +1,7 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // repro-read2.js — 动画 + 交互感知读取器(单站点,命令行版)
 // 复用 read2-core.js 的提取逻辑,额外写入 :hover/:active/:focus 终态到 anim.json.interactions。
-// 用法: node repro-read2.js "<url>" "repro/<id>/anim.json"
+// 用法: node scripts/repro-read2.js "<url>" "repro/<id>/anim.json"
 const fs = require('fs');
 const { chromium } = require('playwright');
 const { LAUNCH_ARGS, extract, navigate } = require('./read2-core');
@@ -10,7 +11,7 @@ const outJson = process.argv[3];
 
 (async () => {
   const browser = await chromium.launch({
-    executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    executablePath: process.env.CHROME_PATH || undefined,
     args: LAUNCH_ARGS
   });
   const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });

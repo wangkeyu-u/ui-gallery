@@ -1,10 +1,11 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // build-dataset.js — 汇总「组件库 + 获奖项目」总清单 -> preview-data.json
 // 复用: 66 个旧库(从 ui-components-hub.html 提取) + 大量新增 + 获奖项目
 const fs = require('fs');
 const path = require('path');
 
 // ---------- 1) 提取已有 66 个库 ----------
-const hub = fs.readFileSync('ui-components-hub.html', 'utf8');
+const hub = fs.readFileSync('reports/ui-components-hub.html', 'utf8');
 const m = hub.match(/const LIBRARIES = (\[[\s\S]*?\n\];)/);
 const EXIST = eval('(' + m[1].replace(/;\s*$/, '') + ')');
 const existingItems = EXIST.map(l => ({

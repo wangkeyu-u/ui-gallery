@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "playwright": "^1.61.1"
+  },
+  "name": "ui-gallery",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/gen-gallery.js",
+    "test": "node tests/functional.js",
+    "test:copy": "node tests/smoke-copy.js"
   }
 }

@@ -1,11 +1,12 @@
+process.chdir(require('path').resolve(__dirname, '..'));
 // assemble-hifi.js — 组装混合高保真提示词
 // prompt.hifi.md = 已有自然语言首屏提示词 + 从 anim.json 提取的真实动画代码块
-// 用法: node assemble-hifi.js
+// 用法: node scripts/assemble-hifi.js
 const fs = require('fs');
 const path = require('path');
 
 // ===== 通用高保真生成指令（始终生效，写给任意 AI UI 生成器都能用）=====
-// 提炼自业界高质量 UI 生成提示词的共性要求；web-prompts.md 会叠加从网上找到的「牛逼提示词」。
+// 提炼自业界高质量 UI 生成提示词的共性要求；docs/prompt-guidelines.md 会叠加从网上找到的「牛逼提示词」。
 const UNIVERSAL = `# Universal high-fidelity build directives (apply to every generator)
 - Output a SINGLE self-contained HTML file with inline CSS and JS. No build step, no external dependencies, opens directly in a browser.
 - Use the EXACT hex colors and font stack given below. Never approximate or substitute a color.
@@ -22,14 +23,14 @@ const UNIVERSAL = `# Universal high-fidelity build directives (apply to every ge
 - Production quality: no console errors, no overflow, no blurry assets. Implement icons as inline SVG or pure CSS.
 - Do not invent sections that are not described. Stay faithful to the specified above-the-fold content.`;
 
-// 从网上找到的「牛逼 UI 提示词」注入位：把抓取到的优质指令/范例写进 web-prompts.md 即可自动合并
+// 从网上找到的「牛逼 UI 提示词」注入位：把抓取到的优质指令/范例写进 docs/prompt-guidelines.md 即可自动合并
 let WEB_EXTRA = '';
 try {
-  const wp = fs.readFileSync('web-prompts.md', 'utf8').trim();
+  const wp = fs.readFileSync('docs/prompt-guidelines.md', 'utf8').trim();
   if (wp) WEB_EXTRA = '# Curated community UI-prompt techniques (sourced from the web)\n' + wp;
-} catch (e) { /* web-prompts.md 不存在时跳过 */ }
+} catch (e) { /* docs/prompt-guidelines.md 不存在时跳过 */ }
 
-const accessible = JSON.parse(fs.readFileSync('/tmp/accessible.json', 'utf8'));
+const accessible = JSON.parse(fs.readFileSync(process.argv[2] || 'repro/accessible.json', 'utf8'));
 
 // 找一个站点已有的最佳 NL 提示词
 function bestNL(id) {
@@ -167,7 +168,7 @@ for (const s of accessible) {
   fs.writeFileSync('repro/' + id + '/prompt.hifi.md', full);
   assembled++;
 }
-fs.writeFileSync('/tmp/need-nl.json', JSON.stringify(needNL));
+fs.writeFileSync('repro/need-nl.json', JSON.stringify(needNL));
 console.log('assembled prompt.hifi.md:', assembled);
 console.log('  had NO base NL prompt (need LLM):', noNL, needNL.length ? '=> ' + needNL.join(' ') : '');
 console.log('  had NO usable anim data:', noAnim);
