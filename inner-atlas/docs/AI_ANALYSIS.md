@@ -139,3 +139,7 @@ docker run --rm --env-file .env -p 4173:4173 inner-atlas
 网络必须使用系统代理时，可在支持该选项的Node版本中执行`node --use-env-proxy scripts/evaluate-live.mjs`；普通服务器有直接出站能力时不需要。更多方法依据见[综合评估方法](ASSESSMENT_METHOD.md)。
 
 第二轮复核使用同一份已授权的逐题回答、计分、背景和知识库，以核对对题意与具体自报的转述；不会新增未授权健康题。两轮仍都是同一模型处理同一人的自述，不是独立证据。
+
+## 免费临时演示
+
+可显式设置`PUBLIC_ANALYSIS=true`开放朋友演示入口；服务状态返回`accessRequired=false`，访客不需填写口令。小时额度与并发仍生效，Key仍不离开后端。支持`X-Analysis-Keepalive: 1`的JSON前导空白保活；开始响应后的失败以`code`／`message`对象识别。见[分享说明](FREE_SHARE.md)。本次新增虚拟人盲测含2次真实调用，见[对照记录](PERSONA_CHECK.md)。

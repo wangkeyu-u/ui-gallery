@@ -481,7 +481,7 @@ export function configureAI(config) {
     let endpoint;
     try {
       endpoint = endpointURL(state.endpoint);
-      if (!state.code.trim())
+      if (service.accessRequired !== false && !state.code.trim())
         throw Error(
           "请先展开“分析服务与访问设置”，填写站点维护者提供的分析口令。",
         );
@@ -503,7 +503,8 @@ export function configureAI(config) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + state.code,
+          ...(state.code ? { Authorization: "Bearer " + state.code } : {}),
+          "X-Analysis-Keepalive": "1",
         },
         body: JSON.stringify(request),
         signal: AbortSignal.any([
@@ -522,7 +523,7 @@ export function configureAI(config) {
           "分析服务未正确返回 JSON。GitHub Pages 需要先配置独立 DeepSeek 后端。",
         );
       }
-      if (!response.ok) {
+      if (!response.ok || data.code) {
         if (data.code === "AI_NOT_CONFIGURED") {
           service = {
             state: "unconfigured",

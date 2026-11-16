@@ -68,3 +68,7 @@ npm run doctor  # 发布前检查后端配置，不输出密钥、不调用DeepS
 综合分析增加持续时间、生活影响、具体互动和反例背景；区分自述事实与AI假设。专业工具方法对照、具体实现和验证缺口见[综合评估方法](docs/ASSESSMENT_METHOD.md)。
 
 服务端密钥只使用Git忽略的`.env`或托管平台的秘密变量；不会放入前端或GitHub。真实模型检查与发现见[记录](docs/LIVE_EVALUATION.md)。`npm run eval:live`会调用付费API，不属于自动测试。
+
+## 手机分享与虚拟人核对
+
+支持同源后端的朋友演示模式，无需访客填写API配置；慢请求保活避免免费开发通道过早断开。见[免费分享](docs/FREE_SHARE.md)和[虚拟人盲测／实际对照](docs/PERSONA_CHECK.md)。

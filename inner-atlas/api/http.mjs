@@ -5,6 +5,7 @@ import { createHash, timingSafeEqual } from "node:crypto";
 import { generateAnalysis } from "./deepseek.mjs";
 import { serverConfiguration, DEEPSEEK_MODELS } from "./config.mjs";
 import { AnalysisError } from "../src/ai-contract.js";
+import { prepareAnalysis } from "./analysis.mjs";
 const types = {
   ".html": "text/html; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
@@ -54,6 +55,7 @@ export function createApp({
   );
   const { access, apiKey, model, review, configured } =
     serverConfiguration(env);
+  const publicAnalysis = env.PUBLIC_ANALYSIS === "true";
   const maxHourly = Math.max(
     1,
     Math.min(100, Number(env.AI_REQUESTS_PER_HOUR) || 6),
@@ -96,7 +98,7 @@ export function createApp({
         res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
         res.setHeader(
           "Access-Control-Allow-Headers",
-          "Content-Type, Authorization",
+          "Content-Type, Authorization, X-Analysis-Keepalive",
         );
         res.writeHead(204);
         res.end();
@@ -108,6 +110,7 @@ export function createApp({
           provider: "DeepSeek",
           reviewEnabled: review,
           model: DEEPSEEK_MODELS.includes(model) ? model : null,
+          accessRequired: !publicAnalysis,
         });
       if (path !== "/api/analyze" || req.method !== "POST")
         return json(404, { code: "NOT_FOUND", message: "接口不存在。" });
@@ -117,7 +120,10 @@ export function createApp({
           message: "DeepSeek 后端尚未配置完成，普通结果仍可使用。",
         });
       const auth = req.headers.authorization || "";
-      if (!timingSafeEqual(hash(auth), hash("Bearer " + access)))
+      if (
+        !publicAnalysis &&
+        !timingSafeEqual(hash(auth), hash("Bearer " + access))
+      )
         return json(401, {
           code: "ACCESS_REQUIRED",
           message: "分析口令不正确，或此站点尚未提供访问权限。",
@@ -149,11 +155,26 @@ export function createApp({
       }
       inflight++;
       const controller = new AbortController();
+      let heartbeat;
       res.on("close", () => {
         if (!res.writableEnded) controller.abort();
       });
       try {
         const input = await readJSON(req);
+        if (req.headers["x-analysis-keepalive"] === "1") {
+          prepareAnalysis(input);
+          res.writeHead(200, {
+            "Content-Type": "application/json; charset=utf-8",
+            "Cache-Control": "no-store, no-transform",
+            "X-Accel-Buffering": "no",
+          });
+          // Leading JSON whitespace keeps free proxies from idling out during two model passes.
+          res.write("\n");
+          heartbeat = setInterval(() => {
+            if (!res.destroyed) res.write("\n");
+          }, 10000);
+          heartbeat.unref();
+        }
         used++;
         const result = await generateAnalysis(input, {
           apiKey,
@@ -162,18 +183,25 @@ export function createApp({
           fetchImpl,
           signal: controller.signal,
         });
-        if (!res.destroyed) json(200, result);
+        if (!res.destroyed) {
+          if (res.headersSent) res.end(JSON.stringify(result));
+          else json(200, result);
+        }
       } catch (error) {
-        if (!res.destroyed)
-          json(error instanceof AnalysisError ? error.status : 500, {
+        if (!res.destroyed) {
+          const body = {
             code:
               error instanceof AnalysisError ? error.code : "ANALYSIS_FAILED",
             message:
               error instanceof AnalysisError
                 ? error.message
                 : "分析暂时失败，未生成有效报告。",
-          });
+          };
+          if (res.headersSent) res.end(JSON.stringify(body));
+          else json(error instanceof AnalysisError ? error.status : 500, body);
+        }
       } finally {
+        clearInterval(heartbeat);
         inflight--;
       }
       return;

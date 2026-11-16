@@ -75,6 +75,7 @@ export async function probeAnalysisService(
     state: status.configured ? "ready" : "unconfigured",
     model: status.configured ? status.model : null,
     reviewEnabled: status.reviewEnabled === true,
+    accessRequired: status.accessRequired !== false,
     message: status.configured
       ? "分析服务已配置，可在确认发送范围后提交。"
       : "分析服务尚未完成配置，暂不能生成 AI 综合报告。本地计分结果仍可查看。",
