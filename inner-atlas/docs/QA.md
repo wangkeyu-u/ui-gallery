@@ -58,3 +58,10 @@ python tests/ui_ai.py
 ## 服务配置诊断
 
 `tests/service.test.mjs`覆盖HTTPS／本机地址、代理路径、禁止URL内秘密、只读GET状态、未配置／404／非法返回／断网，以及诊断不输出密钥或口令。后端与命令行共用配置判定。当前实际运行`npm run doctor`按预期以退出码1报告缺少密钥和独立访问口令；这是部署缺项，不是功能测试失败。
+
+
+## 2026-11-16 线上验证
+
+源码发布提交：`43afe1bcd3ddf81adb09b8a1a09ce006ce3b71fe`。既有Gallery checks和Pages build and deployment均为success，Pages状态built；线上地址返回HTTP 200。
+
+[正式网站](https://wangkeyu-u.github.io/ui-gallery/inner-atlas/)已使用真实HTTPS浏览器验证首页、配置预检、开始答题及选择答案。在390和1440像素视口无横向溢出，没有页面脚本错误，答题上传请求为0。线上AI后端未配置的提示正常显示；没有真实DeepSeek调用。

@@ -1,6 +1,10 @@
 # 发布状态与恢复步骤
 
-截至2026-11-15，网站实现、计分检查、完整浏览器流程已完成，**尚未发布到互联网**。
+**当前状态（2026-11-16）：前端已上线**：[打开见己](https://wangkeyu-u.github.io/ui-gallery/inner-atlas/)。完整源码提交`43afe1bcd3ddf81adb09b8a1a09ce006ce3b71fe`已通过现有仓库检查及Pages构建。线上浏览器验证了开始答题、作答、本地处理及手机／电脑布局。DeepSeek后端仍未配置，综合AI报告尚未启用。
+
+## 历史阻塞（2026-11-15）
+
+2026-11-15时，代码完成，但GitHub集成拒绝写入：
 
 阻塞证据：
 
@@ -8,7 +12,7 @@
 - 现有`wangkeyu-u/ui-gallery`仓库Git推送：403 Permission denied。
 - 已连接GitHub工具上传blob：403 `Resource not accessible by integration`。
 
-这些是GitHub集成授权范围的拒绝，不是代码测试失败。用户账号的仓库角色显示admin，但这不代表当前集成拥有该仓库写入权限。没有更改远程分支、线上页面、现有仓库文件或Pages设置。
+这些是GitHub集成授权范围的拒绝，不是代码测试失败。用户账号的仓库角色显示admin，但这不代表当前集成拥有该仓库写入权限。当时没有更改远程分支、线上页面、现有仓库文件或Pages设置。该阻塞现已通过GitHub文件／Git数据接口解除。
 
 恢复具有仓库Contents读写权限的GitHub连接后：
 
@@ -32,4 +36,4 @@
 
 ## 2026-11-16 GitHub写入恢复
 
-GitHub文件接口已成功写入项目README，Git数据接口亦已接受源码树创建；此前403属于历史阻塞。完整项目将以单次提交加入现有ui-gallery仓库的inner-atlas目录，使用现有Pages发布；前端发布不代表DeepSeek后端已启用。
+GitHub文件接口已成功写入项目README，Git数据接口亦已接受源码树创建；此前403属于历史阻塞。完整项目已以单次提交加入现有ui-gallery仓库的inner-atlas目录，使用现有Pages发布，原有画廊文件不变；前端发布不代表DeepSeek后端已启用。
