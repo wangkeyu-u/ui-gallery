@@ -3936,3 +3936,6 @@ p {
   margin: -10px 0 24px;
   font-size: 11px;
 }
+
+/* Test-aware follow-up conversation kept only in page memory. */
+.ai-chat-panel{margin-top:24px;min-width:0}.ai-chat-panel>summary{cursor:pointer}.ai-chat-panel>summary h3{display:inline}.ai-chat-messages{display:grid;gap:14px;margin:20px 0}.ai-chat-message{padding:18px;border-radius:14px;min-width:0;background:#f1f3ec}.ai-chat-message.user{background:#f7f0e6}.ai-chat-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.85;margin-top:8px}.ai-chat-suggestions{display:flex;flex-wrap:wrap;gap:10px}.ai-chat-references{font-size:.85rem;margin-top:12px;overflow-wrap:anywhere}.ai-chat-panel textarea{width:100%;box-sizing:border-box}

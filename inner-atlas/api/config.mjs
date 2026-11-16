@@ -73,6 +73,12 @@ export function configurationReport(env = {}) {
     ok: Number.isInteger(hourly) && hourly >= 1 && hourly <= 100,
     message: "每小时分析尝试额度为1–100的整数",
   });
+  const chatHourly = Number(env.AI_CHAT_REQUESTS_PER_HOUR || 24);
+  checks.push({
+    id: "chat_hourly_limit",
+    ok: Number.isInteger(chatHourly) && chatHourly >= 1 && chatHourly <= 100,
+    message: "每小时追问尝试额度为1–100的整数",
+  });
   return {
     configured: config.configured,
     ready: checks.every((c) => c.ok),

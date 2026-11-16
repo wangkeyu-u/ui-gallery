@@ -2,6 +2,7 @@ import { createServer } from "node:http";
 import { readFile, realpath } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 import { createHash, timingSafeEqual } from "node:crypto";
+import { generateChat, prepareChat } from "./chat.mjs";
 import { generateAnalysis } from "./deepseek.mjs";
 import { serverConfiguration, DEEPSEEK_MODELS } from "./config.mjs";
 import { AnalysisError } from "../src/ai-contract.js";
@@ -15,14 +16,14 @@ const types = {
   ".md": "text/plain; charset=utf-8",
 };
 const hash = (value) => createHash("sha256").update(value).digest();
-function readJSON(req) {
+function readJSON(req, maxBytes = 65536) {
   return new Promise((resolve, reject) => {
     let size = 0,
       oversized = false;
     const chunks = [];
     req.on("data", (c) => {
       size += c.length;
-      if (size > 65536) {
+      if (size > maxBytes) {
         oversized = true;
         chunks.length = 0;
       } else if (!oversized) chunks.push(c);
@@ -60,6 +61,11 @@ export function createApp({
     1,
     Math.min(100, Number(env.AI_REQUESTS_PER_HOUR) || 6),
   );
+  const maxChatHourly = Math.max(
+    1,
+    Math.min(100, Number(env.AI_CHAT_REQUESTS_PER_HOUR) || 24),
+  );
+  let usedChat = 0;
   let windowStart = now(),
     used = 0,
     inflight = 0;
@@ -112,7 +118,11 @@ export function createApp({
           model: DEEPSEEK_MODELS.includes(model) ? model : null,
           accessRequired: !publicAnalysis,
         });
-      if (path !== "/api/analyze" || req.method !== "POST")
+      const isChat = path === "/api/chat";
+      if (
+        !["/api/analyze", "/api/chat"].includes(path) ||
+        req.method !== "POST"
+      )
         return json(404, { code: "NOT_FOUND", message: "接口不存在。" });
       if (!configured)
         return json(503, {
@@ -136,8 +146,12 @@ export function createApp({
       if (now() - windowStart >= 3600000) {
         windowStart = now();
         used = 0;
+        usedChat = 0;
       }
-      if (inflight >= 1 || used >= maxHourly) {
+      if (
+        inflight >= 1 ||
+        (isChat ? usedChat >= maxChatHourly : used >= maxHourly)
+      ) {
         res.setHeader(
           "Retry-After",
           inflight
@@ -150,7 +164,9 @@ export function createApp({
           code: "RATE_LIMIT",
           message: inflight
             ? "已有分析正在生成，请稍后再试。"
-            : "此站点本小时分析额度已用完，请稍后再试。",
+            : isChat
+              ? "此站点本小时追问额度已用完，请稍后再试。"
+              : "此站点本小时分析额度已用完，请稍后再试。",
         });
       }
       inflight++;
@@ -160,9 +176,10 @@ export function createApp({
         if (!res.writableEnded) controller.abort();
       });
       try {
-        const input = await readJSON(req);
+        const input = await readJSON(req, isChat ? 393216 : 65536);
         if (req.headers["x-analysis-keepalive"] === "1") {
-          prepareAnalysis(input);
+          if (isChat) prepareChat(input);
+          else prepareAnalysis(input);
           res.writeHead(200, {
             "Content-Type": "application/json; charset=utf-8",
             "Cache-Control": "no-store, no-transform",
@@ -175,8 +192,9 @@ export function createApp({
           }, 10000);
           heartbeat.unref();
         }
-        used++;
-        const result = await generateAnalysis(input, {
+        if (isChat) usedChat++;
+        else used++;
+        const result = await (isChat ? generateChat : generateAnalysis)(input, {
           apiKey,
           model,
           review,

@@ -212,6 +212,19 @@ export function fixtureReport(prepared) {
 export function fixtureCompletion(init) {
   const request = JSON.parse(init.body),
     user = JSON.parse(request.messages[1].content);
+  if (user.current_question)
+    return {
+      answer:
+        "模拟续聊：我会参考本次测试和你的补充。你刚提供的是：" +
+        user.current_question +
+        (user.conversation.length
+          ? "。此前你说过：" +
+            user.conversation.filter((m) => m.role === "user").at(-1).content
+          : "") +
+        "。这不代表病因或固定人格，具体差异可以继续核实。",
+      evidenceIds: ["trait:E", "chat:question"],
+      knowledgeIds: ["kb-holistic-portrait"],
+    };
   return user.mode === "review"
     ? { decision: "accept", revisions: [], report: null }
     : fixtureReport({ packet: user.assessment_packet });
