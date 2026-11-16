@@ -1,0 +1,6 @@
+import { JUNG_BOUNDARY } from "./jung.js";
+import { THEORY_LENSES } from "./theories.js";
+export function jungSection(result, enabled, demo = false) {
+  const dimensions = Object.values(result.jung);
+  return `<section class="report-section" id="report-jung"><div class="section-heading"><div><span class="eyebrow">JUNG / DIFFERENT PERSPECTIVES</span><h2>你关注什么，怎样作判断。</h2><p>${JUNG_BOUNDARY}</p></div></div>${enabled ? `<div class="detail-grid">${dimensions.map((d) => `<article class="panel jung-function" data-function="${d.id}"><span class="badge">${d.answered} / 3 题</span><h3>${d.id} · ${d.name}</h3><h4>${d.focus}</h4><p>${d.description}</p><p>${d.complete ? `本组认同均值 ${d.mean.toFixed(2)} / 5` : "题目未完整，不补分或排序。"}</p><a href="#/sources/jung-iaap">查看理论出处与局限</a></article>`).join("")}</div>` : '<div class="notice"><p>这份答卷没有开启八维探索，不能从大五或依恋分数补推八项结果。</p></div>'}${!demo && (!enabled || dimensions.some((d) => !d.complete)) ? '<button class="button primary" data-action="add-jung">补充八维题，保留已有回答</button>' : ""}<div class="panel"><h3>和其他视角放在一起理解</h3><p>AI综合报告会根据实际资料选择相关视角，说明相符、差异和待核实的解释。同一份自述的多种解释不算独立验证。</p><div class="detail-grid">${THEORY_LENSES.map((t) => `<article><h4>${t.name}</h4><p>${t.question}</p><p class="caption">${t.boundary}</p></article>`).join("")}</div></div></section>`;
+}

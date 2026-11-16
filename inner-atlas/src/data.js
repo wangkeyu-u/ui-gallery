@@ -1,3 +1,4 @@
+import { JUNG_FUNCTIONS } from "./jung.js";
 export const VERSION = "1.0.0";
 export const OPTIONS = {
   trait: ["很不符合", "不太符合", "不确定／居中", "比较符合", "非常符合"],
@@ -611,6 +612,18 @@ export const MODULES = [
     count: 8,
   },
   {
+    id: "jung",
+    name: "荣格八维探索",
+    short: "荣格八维",
+    icon: "sparkles",
+    description: "从关注信息与判断依据理解自己，与大五和关系资料一起核实。",
+    source: "24道原创题 · 理论启发／未经验证",
+    period:
+      "以近半年通常的自己作答；不同场合可以不同。这里问倾向，不测能力，也不要求选出一种类型。",
+    type: "trait",
+    count: 24,
+  },
+  {
     id: "phq",
     name: "最近的情绪状态",
     short: "抑郁筛查",
@@ -699,6 +712,19 @@ export const QUESTIONS = [
     options: s.options,
     source: "original",
   })),
+  ...Object.entries(JUNG_FUNCTIONS).flatMap(([dimension, d]) =>
+    d.items.map(([text, reverse], i) => ({
+      id: `jung-${dimension}-${i + 1}`,
+      module: "jung",
+      dimension,
+      text,
+      reverse: !!reverse,
+      type: "trait",
+      min: 1,
+      max: 5,
+      source: "jung-iaap",
+    })),
+  ),
   ...phq.map(([text, en], i) => ({
     id: `phq-${i + 1}`,
     module: "phq",
@@ -734,6 +760,7 @@ export const QUESTIONS = [
   })),
 ];
 export const DEFAULT_CONFIG = {
+  jung: true,
   partner: true,
   friend: true,
   family: true,
@@ -747,6 +774,7 @@ export function activeQuestions(config) {
       !(q.module === "partner" && !config.partner) &&
       !(q.module === "friend" && !config.friend) &&
       !(q.module === "family" && !config.family) &&
+      !(q.module === "jung" && !config.jung) &&
       !(["phq", "gad"].includes(q.module) && !config.health) &&
       !(q.module === "pcl" && !config.trauma),
   );

@@ -171,6 +171,7 @@ export async function generateAnalysis(
           ["overall", candidate.overall],
           ...[
             "themes",
+            "perspectives",
             "formulations",
             "sections",
             "cycles",

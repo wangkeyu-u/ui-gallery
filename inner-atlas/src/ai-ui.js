@@ -1,3 +1,4 @@
+import { THEORY_LENSES } from "./theories.js";
 import {
   AI_SECTIONS,
   analysisIdentity,
@@ -218,9 +219,13 @@ function renderAnalysisSection(section, result) {
     section.status === "supported";
   return `<details class="panel ai-analysis-section" id="ai-section-${section.id}" ${open ? "open" : ""}><summary><h3>${esc(AI_SECTIONS.find(([id]) => id === section.id)[1])}</h3><span class="badge">${section.status === "insufficient" ? "资料不足" : "综合假设 · 待核实"}</span></summary><div class="ai-section-body">${paragraphs(section.summary)}${paragraphs(section.implications)}<h4>替代解释／边界</h4>${paragraphs(section.alternative)}<div class="practice-box"><p>${esc(section.question)}</p></div>${references(section, result)}</div></details>`;
 }
+function perspectivesMarkup(r, result) {
+  if (!r.perspectives?.length) return "";
+  return `<section class="ai-perspectives"><h3 class="report-subtitle">不同理论，怎样一起理解这份资料</h3><div class="detail-grid">${r.perspectives.map((p) => `<details class="panel ai-theory-perspective" open><summary><h3>${esc(THEORY_LENSES.find((t) => t.id === p.theoryId).name)}</h3></summary><h4>自述线索</h4>${paragraphs(p.observation)}<h4>这个视角提供的理解</h4>${paragraphs(p.interpretation)}<h4>与其他资料相符或不同</h4>${paragraphs(p.fit)}<h4>不能据此判断</h4>${paragraphs(p.limits)}<h4>另一种解释</h4>${paragraphs(p.alternative)}<div class="practice-box"><p>${esc(p.question)}</p></div>${references(p, result)}</details>`).join("")}</div></section>`;
+}
 function renderResult(result, stale) {
   const r = result.report;
-  return `<div class="ai-generated ${stale ? "stale" : ""}"><div class="notice ai-stale-indicator" ${stale ? "" : "hidden"}><p>你的答卷或补充背景已修改。这份报告基于之前的资料，不能作为当前结果；请重新生成。</p></div><div class="ai-report-meta"><span>DeepSeek · ${esc(result.model)}</span><span>${new Date(result.generatedAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</span><span>提示词 ${esc(result.promptVersion)} · 知识库 ${esc(result.knowledgeVersion)}</span></div>${reviewSummary(result)}<article class="ai-portrait panel"><span class="eyebrow">YOUR INTEGRATED PORTRAIT</span><h2>把不同的你，放在同一张地图里。</h2>${paragraphs(r.overall.summary)}${references(r.overall, result)}</article><h3 class="report-subtitle">贯穿整份答卷的主题</h3><div class="ai-theme-grid">${r.themes.map((t, themeIndex) => `<article class="panel"><h3>${esc(t.title)}</h3>${paragraphs(t.claim)}<h4>其他可能的解释</h4>${t.alternatives.map((a) => `<p>${esc(a)}</p>`).join("")}<div class="practice-box"><strong>用真实经历核实</strong><p>${esc(t.question)}</p></div>${references(t, result)}<button type="button" class="text-button ai-challenge" data-ai-action="challenge" data-theme="${themeIndex}">这点不符合我／补充反例</button></article>`).join("")}</div>${formulationMarkup(r, result)}${result.inference?.withheldCycles ? `<div class="notice ai-scope-note"><p>未展示与当前经历缺少直接对应的循环。一次自述经历不足以推断其他反应的作用或长期重复机制。</p></div>` : ""}<nav class="ai-section-index" aria-label="综合分析内容索引">${AI_SECTIONS.map(([id, title]) => `<button type="button" data-ai-action="scroll" data-target="${id}">${esc(title)}</button>`).join("")}</nav><div class="ai-detail-toolbar"><span>按需要展开12项分析，优先呈现关系部分。</span><button type="button" class="text-button" data-ai-action="expand">展开全部</button><button type="button" class="text-button" data-ai-action="collapse">收起全部</button></div><div class="ai-integrated-sections">${r.sections.map((section) => renderAnalysisSection(section, result)).join("")}</div>${
+  return `<div class="ai-generated ${stale ? "stale" : ""}"><div class="notice ai-stale-indicator" ${stale ? "" : "hidden"}><p>你的答卷或补充背景已修改。这份报告基于之前的资料，不能作为当前结果；请重新生成。</p></div><div class="ai-report-meta"><span>DeepSeek · ${esc(result.model)}</span><span>${new Date(result.generatedAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</span><span>提示词 ${esc(result.promptVersion)} · 知识库 ${esc(result.knowledgeVersion)}</span></div>${reviewSummary(result)}<article class="ai-portrait panel"><span class="eyebrow">YOUR INTEGRATED PORTRAIT</span><h2>把不同的你，放在同一张地图里。</h2>${paragraphs(r.overall.summary)}${references(r.overall, result)}</article><h3 class="report-subtitle">贯穿整份答卷的主题</h3><div class="ai-theme-grid">${r.themes.map((t, themeIndex) => `<article class="panel"><h3>${esc(t.title)}</h3>${paragraphs(t.claim)}<h4>其他可能的解释</h4>${t.alternatives.map((a) => `<p>${esc(a)}</p>`).join("")}<div class="practice-box"><strong>用真实经历核实</strong><p>${esc(t.question)}</p></div>${references(t, result)}<button type="button" class="text-button ai-challenge" data-ai-action="challenge" data-theme="${themeIndex}">这点不符合我／补充反例</button></article>`).join("")}</div>${perspectivesMarkup(r, result)}${formulationMarkup(r, result)}${result.inference?.withheldCycles ? `<div class="notice ai-scope-note"><p>未展示与当前经历缺少直接对应的循环。一次自述经历不足以推断其他反应的作用或长期重复机制。</p></div>` : ""}<nav class="ai-section-index" aria-label="综合分析内容索引">${AI_SECTIONS.map(([id, title]) => `<button type="button" data-ai-action="scroll" data-target="${id}">${esc(title)}</button>`).join("")}</nav><div class="ai-detail-toolbar"><span>按需要展开12项分析，优先呈现关系部分。</span><button type="button" class="text-button" data-ai-action="expand">展开全部</button><button type="button" class="text-button" data-ai-action="collapse">收起全部</button></div><div class="ai-integrated-sections">${r.sections.map((section) => renderAnalysisSection(section, result)).join("")}</div>${
     r.cycles.length
       ? `<h3 class="report-subtitle">这次经历中可核实的反应顺序</h3><p class="muted">这是针对当前自述经历的假设，不代表实际重复频率或长期因果机制。</p>${r.cycles
           .map(
@@ -330,6 +335,18 @@ export function aiReportMarkdown(result) {
     );
     cite(t);
   }
+  for (const p of r.perspectives || []) {
+    lines.push(
+      "## 理论视角：" + THEORY_LENSES.find((t) => t.id === p.theoryId).name,
+      "自述：" + p.observation,
+      "理解：" + p.interpretation,
+      "相符与不同：" + p.fit,
+      "局限：" + p.limits,
+      "其他解释：" + p.alternative,
+      "核实：" + p.question,
+    );
+    cite(p);
+  }
   for (const f of r.formulations) {
     lines.push(
       "## 经历假设：" + f.title,
@@ -390,7 +407,7 @@ export function configureAI(config) {
   window.addEventListener("beforeprint", () =>
     document
       .querySelectorAll(
-        "details.ai-evidence, details.ai-analysis-section, details.ai-formulation",
+        "details.ai-evidence, details.ai-analysis-section, details.ai-formulation, details.ai-theory-perspective",
       )
       .forEach((el) => {
         if (el.dataset.wasOpen === undefined)
@@ -401,7 +418,7 @@ export function configureAI(config) {
   window.addEventListener("afterprint", () =>
     document
       .querySelectorAll(
-        "details.ai-evidence, details.ai-analysis-section, details.ai-formulation",
+        "details.ai-evidence, details.ai-analysis-section, details.ai-formulation, details.ai-theory-perspective",
       )
       .forEach((el) => {
         if (el.dataset.wasOpen === "false") el.open = false;

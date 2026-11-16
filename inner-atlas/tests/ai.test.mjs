@@ -52,7 +52,7 @@ test("AI sends full core data, recomputes scores, strips timestamps and keeps a 
   const value = input();
   value.session.forgetThisScore = 999;
   const p = prepareAnalysis(value);
-  assert.equal(p.packet.itemResponses.length, 142);
+  assert.equal(p.packet.itemResponses.length, 166);
   assert.equal(p.evidence.find((e) => e.id === "trait:E").value.mean, 3);
   assert.ok(!p.evidence.some((e) => e.id.startsWith("health:")));
   assert.ok(!("created" in value.session));
@@ -61,8 +61,8 @@ test("AI sends full core data, recomputes scores, strips timestamps and keeps a 
   assert.ok(analysisCoverage(fixtureSession()).ready);
 });
 test("knowledge is versioned, source-backed and synthesis prompt requires alternatives and cross-domain evidence", () => {
-  assert.equal(knowledge.entries.length, 33);
-  assert.equal(new Set(knowledge.entries.map((e) => e.id)).size, 33);
+  assert.equal(knowledge.entries.length, 35);
+  assert.equal(new Set(knowledge.entries.map((e) => e.id)).size, 35);
   assert.ok(knowledge.entries.every((e) => e.sourceIds.length && e.content));
   assert.match(systemPrompt, /不是逐题解说/);
   assert.match(systemPrompt, /不同 group/);
@@ -83,7 +83,7 @@ test("health requires explicit separate consent and disabled modules are never i
   const p = prepareAnalysis(unshared);
   assert.equal(p.packet.allow_health, false);
   assert.ok(p.disabledSections.includes("mental_health"));
-  assert.equal(p.packet.itemResponses.length, 142);
+  assert.equal(p.packet.itemResponses.length, 166);
   unshared.session.answers["phq-9"] = 1;
   assert.throws(
     () => prepareAnalysis(unshared),
@@ -94,7 +94,7 @@ test("health requires explicit separate consent and disabled modules are never i
   const hp = prepareAnalysis(shared);
   assert.equal(hp.packet.safety_signal, true);
   assert.ok(hp.evidence.some((e) => e.id === "health:phq"));
-  assert.equal(hp.packet.itemResponses.length, 178);
+  assert.equal(hp.packet.itemResponses.length, 202);
   const noPartner = prepareAnalysis(input({ partner: false }));
   assert.ok(noPartner.disabledSections.includes("romance"));
   assert.ok(
@@ -486,7 +486,7 @@ test("review can replace the full report, sees user counterexample, and only fin
         user.assessment_packet.context.counterexample,
         value.context.counterexample,
       );
-      assert.equal(user.assessment_packet.itemResponses.length, 142);
+      assert.equal(user.assessment_packet.itemResponses.length, 166);
       assert.ok(
         !user.assessment_packet.itemResponses.some((q) =>
           ["phq", "gad", "pcl"].includes(q.module),

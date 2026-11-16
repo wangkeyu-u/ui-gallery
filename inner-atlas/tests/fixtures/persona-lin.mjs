@@ -44,7 +44,7 @@ const raw = {
   gad: [1, 1, 1, 0, 0, 0, 1],
 };
 export function personaCase() {
-  const config = { ...DEFAULT_CONFIG, health: true };
+  const config = { ...DEFAULT_CONFIG, health: true, jung: false };
   const counts = {};
   const answers = Object.fromEntries(
     activeQuestions(config).map((q) => {

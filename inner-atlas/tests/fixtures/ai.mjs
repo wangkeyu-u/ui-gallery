@@ -48,6 +48,24 @@ export function fixtureReport(prepared) {
         "模拟上游综合报告：你对关系投入的期待、面对不确定时的感受和不同情境的选择，需要放在一起理解。这里依据不同领域的自我报告形成可核实的假设，不根据某一道题定义你。它们可能在某些时候相互影响，也可能只是并存；真实处境和你提供的反例能够帮助区分。这个文本仅用于自动化测试，不是真实 DeepSeek 生成的个人结论。",
       ...cite,
     },
+    perspectives: evidence.some((e) => e.id.startsWith("jung:"))
+      ? [
+          {
+            theoryId: "jung",
+            observation: "模拟：对一组原创描述的自我认同。",
+            interpretation: "只描述这些信息与判断偏好，未推算类型。",
+            fit: "与人格线索一起核对，但不是同一构念或独立验证。",
+            limits: "原创三题不证明能力、功能栈或临床结论。",
+            alternative: "近期角色和题意理解可能影响回答。",
+            question: "换一种场合还会这样描述吗？",
+            evidenceIds: [
+              evidence.find((e) => e.id.startsWith("jung:")).id,
+              first.id,
+            ],
+            knowledgeIds: ["kb-jung-exploration", "kb-theory-integration"],
+          },
+        ]
+      : [],
     themes: [
       {
         title: "跨领域主题：连接与自主",

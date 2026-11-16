@@ -7,6 +7,7 @@ import {
   VERSION,
   DEFAULT_CONFIG,
 } from "./data.js";
+import { JUNG_FUNCTIONS } from "./jung.js";
 export function validAnswer(q, value) {
   return Number.isInteger(value) && value >= q.min && value <= q.max;
 }
@@ -151,6 +152,20 @@ export function assess(answers, config = DEFAULT_CONFIG) {
       ];
     }),
   );
+  const jung = config.jung
+    ? Object.fromEntries(
+        Object.entries(JUNG_FUNCTIONS).map(([id, d]) => [
+          id,
+          {
+            ...scoreGroup(group("jung", id), answers),
+            id,
+            name: d.name,
+            focus: d.focus,
+            description: d.description,
+          },
+        ]),
+      )
+    : {};
   const screens = {};
   for (const id of ["phq", "gad", "pcl"]) {
     const enabled = id === "pcl" ? config.trauma : config.health;
@@ -299,6 +314,7 @@ export function assess(answers, config = DEFAULT_CONFIG) {
   return {
     version: VERSION,
     traits,
+    jung,
     attachments,
     custom,
     screens,
@@ -330,6 +346,11 @@ export function validateSession(raw) {
     );
   const config = {};
   for (const [key, value] of Object.entries(DEFAULT_CONFIG)) {
+    // Older v1 backups predate the optional Jung chapter: preserve their existing path.
+    if (key === "jung" && raw.config[key] === undefined) {
+      config.jung = false;
+      continue;
+    }
     if (typeof raw.config[key] !== "boolean")
       throw new Error("备份中的设置格式不正确。");
     config[key] = raw.config[key];

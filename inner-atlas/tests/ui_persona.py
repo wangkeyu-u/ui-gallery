@@ -21,6 +21,7 @@ with sync_playwright() as p:
  response=page.goto(BASE,wait_until='networkidle',timeout=30000)
  assert response.status==200
  page.get_by_role('link',name='开启自我探索').click()
+ if page.locator('input[name=jung]').count():page.locator('input[name=jung]').set_checked(fixture['case']['request']['session']['config'].get('jung',False))
  page.locator('input[name=health]').check();page.locator('input[name=remember]').check();page.locator('input[name=adult]').check()
  page.get_by_role('button',name='准备好了，开始').click()
  def choose(q,v,keyboard=False):

@@ -50,7 +50,7 @@ const raw = {
 };
 
 export function personaCase() {
-  const config = { ...DEFAULT_CONFIG, health: true };
+  const config = { ...DEFAULT_CONFIG, health: true, jung: false };
   const counts = {};
   const answers = Object.fromEntries(activeQuestions(config).map((q) => {
     const group = Object.hasOwn(raw, q.module) ? q.module : q.dimension;

@@ -25,22 +25,22 @@ const answersFor = (questions, value) =>
     ]),
   );
 const allConfig = { ...DEFAULT_CONFIG, health: true, trauma: true };
-test("178 unique questions match 11 declared chapter sizes; conditional paths are deterministic", () => {
-  assert.equal(QUESTIONS.length, 178);
-  assert.equal(new Set(QUESTIONS.map((q) => q.id)).size, 178);
-  assert.equal(MODULES.length, 11);
+test("202 unique questions match 12 declared chapter sizes; conditional paths are deterministic", () => {
+  assert.equal(QUESTIONS.length, 202);
+  assert.equal(new Set(QUESTIONS.map((q) => q.id)).size, 202);
+  assert.equal(MODULES.length, 12);
   for (const m of MODULES)
     assert.equal(
       QUESTIONS.filter((q) => q.module === m.id).length,
       m.count,
       m.id,
     );
-  assert.equal(activeQuestions(DEFAULT_CONFIG).length, 142);
+  assert.equal(activeQuestions(DEFAULT_CONFIG).length, 166);
   assert.equal(
     activeQuestions({ ...DEFAULT_CONFIG, health: true }).length,
-    158,
+    182,
   );
-  assert.equal(activeQuestions(allConfig).length, 178);
+  assert.equal(activeQuestions(allConfig).length, 202);
   assert.equal(
     activeQuestions({
       ...DEFAULT_CONFIG,
@@ -48,7 +48,7 @@ test("178 unique questions match 11 declared chapter sizes; conditional paths ar
       friend: false,
       family: false,
     }).length,
-    115,
+    139,
   );
 });
 test("IPIP reverse key matches the published 50-item sample, independently encoded", () => {

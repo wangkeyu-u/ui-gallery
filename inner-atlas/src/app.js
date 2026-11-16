@@ -9,6 +9,8 @@ import {
   activeQuestions,
 } from "./data.js";
 import { assess, validAnswer, validateSession } from "./engine.js";
+import { jungSection } from "./jung-ui.js";
+import { JUNG_BOUNDARY } from "./jung.js";
 import { SOURCES } from "./sources.js";
 import {
   renderAIPanel,
@@ -169,7 +171,7 @@ function home() {
 }
 function modules() {
   shell(
-    `<div class="page-intro"><span class="eyebrow">THE EXPLORATION</span><h1>一层一层，认识自己。</h1><p>完整题库 178 题 · 11 个章节。你可以选择适合自己的范围，跳过不想回答的问题。</p><a class="button primary" href="#/setup">定制我的探索 ${icon("arrow")}</a></div><div class="module-list">${MODULES.map((m, i) => `<article class="module-card"><span class="module-no">${number(i + 1)}</span><span class="tile-icon ${i % 2 ? "sand" : "sage"}">${icon(m.icon)}</span><div><h3>${m.name} ${m.sensitive ? '<span class="badge">自愿开启</span>' : ""}</h3><p>${m.description}</p><span class="caption">${m.source}</span></div><span class="count-badge">${m.count} 题</span></article>`).join("")}</div><div class="notice">${icon("info")}<p>采用公开量表结构，不代表这个组合测试已通过验证。项目译文、对象改编和原创题的限制，会随每项结果一起说明。</p></div>`,
+    `<div class="page-intro"><span class="eyebrow">THE EXPLORATION</span><h1>一层一层，认识自己。</h1><p>完整题库 ${QUESTIONS.length} 题 · ${MODULES.length} 个章节。你可以选择适合自己的范围，跳过不想回答的问题。</p><a class="button primary" href="#/setup">定制我的探索 ${icon("arrow")}</a></div><div class="module-list">${MODULES.map((m, i) => `<article class="module-card"><span class="module-no">${number(i + 1)}</span><span class="tile-icon ${i % 2 ? "sand" : "sage"}">${icon(m.icon)}</span><div><h3>${m.name} ${m.sensitive ? '<span class="badge">自愿开启</span>' : ""}</h3><p>${m.description}</p><span class="caption">${m.source}</span></div><span class="count-badge">${m.count} 题</span></article>`).join("")}</div><div class="notice">${icon("info")}<p>采用公开量表结构，不代表这个组合测试已通过验证。项目译文、对象改编和原创题的限制，会随每项结果一起说明。</p></div>`,
   );
 }
 function setup() {
@@ -183,7 +185,7 @@ function setup() {
       .map(([id, title, desc]) => toggle(id, title, desc, true))
       .join(
         "",
-      )}<h3 class="subheading">可选的心理健康部分</h3>${toggle("health", "近两周情绪与焦虑筛查", "PHQ-9 + GAD-7，包含自伤念头条目。可随时跳过；无法诊断或排除疾病。", false)}${toggle("trauma", "近一个月创伤相关体验", "PCL-5，围绕严重威胁性事件；无需叙述事件。本项目译文未验证，仅报原始分。", false)}<h3 class="subheading">进度与隐私</h3>${toggle("remember", "在这台设备保存进度", "默认仅存在当前页面内存。开启后会保存在此浏览器，使用共用设备时请慎选。", false)}</section><aside class="setup-summary panel"><span class="eyebrow">YOUR JOURNEY</span><span class="big-number" id="setup-count">142<span>题</span></span><p id="setup-time">预计 30–40 分钟</p><div class="summary-lines"><span>${icon("check")} 分章节完成，随时暂停</span><span>${icon("check")} 结果逐项解释，依据可查</span><span>${icon("check")} 无账号，无广告，无付费解锁</span></div><div class="notice small"><p>本网站适用于 18 岁及以上成人自我探索。中文为项目译文，未完成中国常模、等值性或临床验证；不适用于医疗诊断或选人决策。</p></div><label class="consent"><input type="checkbox" name="adult" required><span>我已满 18 岁，了解本次探索的用途与限制。</span></label><button class="button primary full" type="submit">准备好了，开始 ${icon("arrow")}</button><button class="text-button full" type="button" data-action="import">${icon("upload")} 导入以前的答题备份</button></aside></div></form>`,
+      )}<h3 class="subheading">可选的认知与判断探索</h3>${toggle("jung", "荣格八维探索", "24道原创题，观察信息与判断偏好；不计算MBTI或功能栈。", cfg.jung)}<h3 class="subheading">可选的心理健康部分</h3>${toggle("health", "近两周情绪与焦虑筛查", "PHQ-9 + GAD-7，包含自伤念头条目。可随时跳过；无法诊断或排除疾病。", false)}${toggle("trauma", "近一个月创伤相关体验", "PCL-5，围绕严重威胁性事件；无需叙述事件。本项目译文未验证，仅报原始分。", false)}<h3 class="subheading">进度与隐私</h3>${toggle("remember", "在这台设备保存进度", "默认仅存在当前页面内存。开启后会保存在此浏览器，使用共用设备时请慎选。", false)}</section><aside class="setup-summary panel"><span class="eyebrow">YOUR JOURNEY</span><span class="big-number" id="setup-count">${activeQuestions(cfg).length}<span>题</span></span><p id="setup-time">预计 33–46 分钟</p><div class="summary-lines"><span>${icon("check")} 分章节完成，随时暂停</span><span>${icon("check")} 结果逐项解释，依据可查</span><span>${icon("check")} 无账号，无广告，无付费解锁</span></div><div class="notice small"><p>本网站适用于 18 岁及以上成人自我探索。中文为项目译文，未完成中国常模、等值性或临床验证；不适用于医疗诊断或选人决策。</p></div><label class="consent"><input type="checkbox" name="adult" required><span>我已满 18 岁，了解本次探索的用途与限制。</span></label><button class="button primary full" type="submit">准备好了，开始 ${icon("arrow")}</button><button class="text-button full" type="button" data-action="import">${icon("upload")} 导入以前的答题备份</button></aside></div></form>`,
   );
 }
 function toggle(id, title, desc, checked) {
@@ -263,7 +265,8 @@ function demoSession() {
           ? { general: 3, partner: 3, friend: 2, family: 5 }[q.module]
           : { general: 4, partner: 5, friend: 2, family: 3 }[q.module];
       v = q.reverse ? 8 - target : target;
-    } else if (q.type === "trait") {
+    } else if (q.module === "jung") v = 3;
+    else if (q.type === "trait") {
       const target = {
         regulation: 3,
         rumination: 4,
@@ -455,6 +458,7 @@ function report() {
     synthesis: "AI 综合分析",
     overview: "本地总览",
     personality: "人格底色",
+    jung: "荣格与多理论",
     relationships: "亲密关系",
     emotion: "自我与情绪",
     health: "心理健康",
@@ -467,6 +471,7 @@ function report() {
     synthesis: renderAIPanel(s, demo),
     overview,
     personality: traitSection(r),
+    jung: jungSection(r, !!s.config.jung, demo),
     relationships: attachmentSection(r),
     emotion: `<section class="report-section" id="report-emotion">${sectionTitle("03 / INNER WORLD", "你与自己的关系", "原创探索题的均值，只帮助你观察体验；并非临床量表，也没有正常／异常分界。")}${customCards(r, "emotion")}</section>`,
     health: healthSection(r),
@@ -497,7 +502,7 @@ function sources() {
     (s) => sourceFilter === "全部" || s.group === sourceFilter,
   );
   shell(
-    `<div class="page-intro compact"><span class="eyebrow">THE EVIDENCE LIBRARY</span><h1>每一项解读，都有来处和边界。</h1><p>核验 32 条来源记录，部分属于同一套工具。优先开发者、原始研究、公开教材和公共卫生机构；3 本书仅查阅公开目录或简介。</p></div><div class="evidence-principles"><article class="panel"><span class="badge">01 / 保留</span><h3>能追溯的工具与计分</h3><p>保留题目出处、反向题、时间窗口和分量表。开放使用许可与测量有效性分别核验。</p></article><article class="panel"><span class="badge">02 / 去重</span><h3>不靠堆题制造“全面”</h3><p>ECR-R、DASS 等与现有模块重复，因此没有叠加。HEXACO 的公开施测条件不适合直接复制。</p></article><article class="panel"><span class="badge">03 / 不夸大</span><h3>有理论，不等于题目已验证</h3><p>原创题只做探索；项目译文未经等值性和临床检验。书籍目录用于组织主题，不冒充全文阅读。</p></article></div><div class="methodology panel"><h2>结果怎样算出来？</h2><div class="method-grid"><div><h4>IPIP-50</h4><p>每维度 10 题，1–5 计分。反向题用 6−答案，取完整维度均值。情绪稳定性按正向稳定性解释，不当作疾病指标。</p></div><div><h4>ECR-RS</h4><p>每个对象 9 题，1–7 计分。回避 = 前 6 题均值，其中 1–4 反向为 8−答案；焦虑 = 后 3 题均值。不跨关系合成一个类型。</p></div><div><h4>原创探索与情境</h4><p>8 个维度各 6 题；反向后取均值，无临床阈值。8 个情境仅复述选择并给反思提示，不给人格或疾病分数。</p></div><div><h4>健康与缺失值</h4><p>PHQ-9：0–27；GAD-7：0–21；PCL-5：0–80。任何分量表缺题都不算总分；跳过不等于零。自伤条目单独提示支持。</p></div></div><p class="caption">百分比条只是（均值−量尺下限）÷量尺跨度，不是百分位、患病概率或准确率。展示两位小数是计分格式，不代表测量精度。描述分界（如 2.75／3.25）为界面启发式，不是常模。</p><a href="./docs/RESEARCH.md" target="_blank" rel="noopener">阅读研究取舍记录</a><a href="./docs/INSTRUMENTS.md" target="_blank" rel="noopener">译文、授权与版本说明</a></div><div class="source-filters" aria-label="来源类别">${["全部", ...new Set(SOURCES.map((s) => s.group))].map((g) => `<button data-action="source-filter" data-filter="${g}" class="chip ${g === sourceFilter ? "active" : ""}">${g}</button>`).join("")}</div><div class="source-list">${rows.map((s, i) => `<article class="source-row ${s.id === selected ? "highlighted" : ""}" id="source-${s.id}"><span class="source-index">${number(SOURCES.indexOf(s) + 1)}</span><div><span class="caption">${s.group} · ${s.decision}</span><h3><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${s.title} ↗</a></h3><p>${s.note}</p><span class="caption">访问范围：${s.access} · 查核：2026-11-15</span></div></article>`).join("")}</div><div class="notice"><p>未采用网络“暗黑心理学”、读心术、面相或笔迹推断、以单一类型决定一生的解释，也不把社交媒体人格标签当作疾病诊断。</p></div>`,
+    `<div class="page-intro compact"><span class="eyebrow">THE EVIDENCE LIBRARY</span><h1>每一项解读，都有来处和边界。</h1><p>核验 ${SOURCES.length} 条来源记录，部分同属一个工具，并非独立研究总数。书籍阅读范围包括公开简介与6部书公开节选；荣格理论部分读取协会摘要，具体范围随来源列出。</p></div><div class="evidence-principles"><article class="panel"><span class="badge">01 / 保留</span><h3>能追溯的工具与计分</h3><p>保留题目出处、反向题、时间窗口和分量表。开放使用许可与测量有效性分别核验。</p></article><article class="panel"><span class="badge">02 / 去重</span><h3>不靠堆题制造“全面”</h3><p>ECR-R、DASS 等与现有模块重复，因此没有叠加。HEXACO 的公开施测条件不适合直接复制。</p></article><article class="panel"><span class="badge">03 / 不夸大</span><h3>有理论，不等于题目已验证</h3><p>原创题只做探索；项目译文未经等值性和临床检验。公开摘要与节选用于概念核对，不冒充全书阅读或题目效度证明。</p></article></div><div class="methodology panel"><h2>结果怎样算出来？</h2><div class="method-grid"><div><h4>IPIP-50</h4><p>每维度 10 题，1–5 计分。反向题用 6−答案，取完整维度均值。情绪稳定性按正向稳定性解释，不当作疾病指标。</p></div><div><h4>ECR-RS</h4><p>每个对象 9 题，1–7 计分。回避 = 前 6 题均值，其中 1–4 反向为 8−答案；焦虑 = 后 3 题均值。不跨关系合成一个类型。</p></div><div><h4>原创探索与情境</h4><p>8 个维度各 6 题；反向后取均值，无临床阈值。8 个情境仅复述选择并给反思提示，不给人格或疾病分数。</p></div><div><h4>健康与缺失值</h4><p>PHQ-9：0–27；GAD-7：0–21；PCL-5：0–80。任何分量表缺题都不算总分；跳过不等于零。自伤条目单独提示支持。</p></div></div><p class="caption">百分比条只是（均值−量尺下限）÷量尺跨度，不是百分位、患病概率或准确率。展示两位小数是计分格式，不代表测量精度。描述分界（如 2.75／3.25）为界面启发式，不是常模。</p><a href="./docs/RESEARCH.md" target="_blank" rel="noopener">阅读研究取舍记录</a><a href="./docs/INSTRUMENTS.md" target="_blank" rel="noopener">译文、授权与版本说明</a></div><div class="source-filters" aria-label="来源类别">${["全部", ...new Set(SOURCES.map((s) => s.group))].map((g) => `<button data-action="source-filter" data-filter="${g}" class="chip ${g === sourceFilter ? "active" : ""}">${g}</button>`).join("")}</div><div class="source-list">${rows.map((s, i) => `<article class="source-row ${s.id === selected ? "highlighted" : ""}" id="source-${s.id}"><span class="source-index">${number(SOURCES.indexOf(s) + 1)}</span><div><span class="caption">${s.group} · ${s.decision}</span><h3><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${s.title} ↗</a></h3><p>${s.note}</p><span class="caption">访问范围：${s.access} · 查核：2026-11-15</span></div></article>`).join("")}</div><div class="notice"><p>未采用网络“暗黑心理学”、读心术、面相或笔迹推断、以单一类型决定一生的解释，也不把社交媒体人格标签当作疾病诊断。</p></div>`,
   );
   if (selected)
     setTimeout(
@@ -579,6 +584,16 @@ function markdownReport() {
       d.text,
       d.complete ? `练习：${d.action}` : "",
       "",
+    );
+  lines.push("## 荣格八维探索", JUNG_BOUNDARY);
+  if (!s.config.jung) lines.push("未开启，不从其他分数补推。");
+  for (const d of Object.values(r.jung))
+    lines.push(
+      `### ${d.id} · ${d.name}`,
+      d.complete
+        ? `本组认同均值 ${d.mean.toFixed(2)} / 5`
+        : `未完成：${d.answered}/3`,
+      d.description,
     );
   lines.push("## 亲密关系");
   for (const d of Object.values(r.attachments))
@@ -683,7 +698,21 @@ document.addEventListener("click", (e) => {
         : "已关闭本机保存并删除浏览器中的副本，当前页面仍保留进度。",
     );
   } else if (a === "backup") backup();
-  else if (a === "export-report") markdownReport();
+  else if (a === "add-jung" && session) {
+    clearAIState();
+    session.config.jung = true;
+    session.finished = false;
+    const qs = activeQuestions(session.config);
+    session.index = qs.findIndex(
+      (q) => q.module === "jung" && !validAnswer(q, session.answers[q.id]),
+    );
+    if (session.index < 0)
+      session.index = qs.findIndex((q) => q.module === "jung");
+    demo = false;
+    persist();
+    go("/quiz");
+    toast("原有回答已保留，请补充八维探索；之后可重新综合。");
+  } else if (a === "export-report") markdownReport();
   else if (a === "print") {
     toast("打印包含完整报告各章节；请注意文件隐私。");
     window.print();

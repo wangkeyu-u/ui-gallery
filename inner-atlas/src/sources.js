@@ -399,4 +399,12 @@ export const SOURCES = [
     decision: "只用于核实方法与概念边界",
     access: "出版方公开PDF的索引文本：阅读相关段落；直连下载403，未读取全书",
   },
+  {
+    id: "jung-iaap", title: "IAAP：Jung《Psychological Types》卷6摘要", url: "https://iaap.org/resources/academic-resources/collected-works-abstracts/volume-6-psychological-types/",
+    group: "理论与研究边界", note: "核对两种态度与四种功能的历史框架；不采纳历史病理归因作为个人判断，原创题不继承效度。", decision: "作为探索视角", access: "阅读协会公开摘要中的类型与功能部分；未读取全书",
+  },
+  {
+    id: "mbti-bigfive-1989", title: "McCrae／Costa（1989）：MBTI与五因素模型", url: "https://scholars.duke.edu/publication/1458465",
+    group: "理论与研究边界", note: "研究摘要未支持清晰二分类型，部分指标与大五相关；相关不允许换算本项目八维，也不验证所有八功能版本。", decision: "用于限制类型化与理论混同", access: "Duke作者条目的公开研究摘要；未读取全文",
+  },
 ];

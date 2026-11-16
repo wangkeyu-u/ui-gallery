@@ -41,6 +41,8 @@ with sync_playwright() as p:
  assert posted['context']['example']=='我询问具体安排，对方解释后重新约定。'
  assert not any(q.startswith(('phq-','gad-','pcl-')) for q in posted['session']['answers'])
  assert page.locator('.ai-portrait').is_visible()
+ assert page.locator('.ai-theory-perspective').count()==1
+ assert '功能栈' in page.locator('.ai-theory-perspective').inner_text()
  assert page.locator('.ai-theme-grid img').count()==0
  assert '<img src=x' in page.locator('.ai-theme-grid').inner_text()
  assert 'internal reasoning' not in page.locator('#main').inner_text()
@@ -49,7 +51,7 @@ with sync_playwright() as p:
  d.value.save_as(str(OUT/'ai-report.md'));report=(OUT/'ai-report.md').read_text();assert '模拟上游综合报告' in report;assert '近期状态与专业评估方向' in report
  # Draft context and health-sharing changes also mark the previous synthesis stale.
  goal=page.locator('textarea[data-ai-context=goal]');original=goal.input_value();goal.fill(original+' 新的补充。');assert page.locator('.ai-stale-indicator').is_visible();goal.fill(original);assert page.locator('.ai-stale-indicator').is_hidden()
- page.locator('#ai-analysis-form input[name=health]').check();assert page.locator('.ai-stale-indicator').is_visible();preview=json.loads(page.locator('#ai-payload-preview').text_content());assert len(preview['session']['answers'])==178;page.locator('#ai-analysis-form input[name=health]').uncheck();assert page.locator('.ai-stale-indicator').is_hidden()
+ page.locator('#ai-analysis-form input[name=health]').check();assert page.locator('.ai-stale-indicator').is_visible();preview=json.loads(page.locator('#ai-payload-preview').text_content());assert len(preview['session']['answers'])==202;page.locator('#ai-analysis-form input[name=health]').uncheck();assert page.locator('.ai-stale-indicator').is_hidden()
  # The report starts with themes and opens details on demand.
  assert page.locator('.ai-review-summary').count()==1
  assert page.locator('details.ai-analysis-section[open]').count()==3

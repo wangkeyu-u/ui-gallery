@@ -7,6 +7,7 @@ export function analysisCoverage(session) {
     ...session.config,
     health: false,
     trauma: false,
+    jung: false,
   });
   const results = assess(session.answers, session.config);
   const answered = questions.filter((q) =>

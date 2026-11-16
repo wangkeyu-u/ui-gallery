@@ -10,6 +10,7 @@ import {
 import { assess, validAnswer, validateSession } from "../src/engine.js";
 import { SOURCES } from "../src/sources.js";
 import { AI_CONTEXT_IDS, AI_CONTEXT_FIELDS } from "../src/ai-context.js";
+import { THEORY_LENSES } from "../src/theories.js";
 import { inferencePolicy, verificationGuide } from "../src/ai-verification.js";
 import {
   AI_SECTIONS,
@@ -27,7 +28,7 @@ export const reviewPrompt = await readFile(
   new URL("../ai/review-prompt.md", import.meta.url),
   "utf8",
 );
-export const PROMPT_VERSION = "2026-11-16.2";
+export const PROMPT_VERSION = "2026-11-16.3";
 export const systemPrompt = await readFile(
   new URL("../ai/system-prompt.md", import.meta.url),
   "utf8",
@@ -105,6 +106,7 @@ export function prepareAnalysis(input) {
       ...session.config,
       health: false,
       trauma: false,
+      jung: false,
     }),
     done = core.filter((q) => validAnswer(q, session.answers[q.id])).length;
   const results = assess(session.answers, session.config);
@@ -131,6 +133,17 @@ export function prepareAnalysis(input) {
         range: [1, 5],
         items: d.total,
         validatedProjectTranslation: false,
+      });
+  for (const [id, d] of Object.entries(results.jung))
+    if (d.complete)
+      add("jung:" + id, "jung_exploration", "original", id + " · " + d.name, {
+        mean: d.mean,
+        range: [1, 5],
+        items: 3,
+        validated: false,
+        capacity: false,
+        interpretation:
+          "仅为三道原创描述的认同均值，不换算类型、功能栈、强弱或常模",
       });
   for (const [id, d] of Object.entries(results.attachments))
     for (const axis of ["anxiety", "avoidance"])
@@ -273,6 +286,17 @@ export function prepareAnalysis(input) {
     integration_brief: integrationBrief,
     inference_policy: inferencePolicy(context),
     verification_guide: verificationGuide(session),
+    theory_lenses: THEORY_LENSES,
+    jung_coverage: {
+      enabled: !!session.config.jung,
+      completeFunctions: Object.values(results.jung)
+        .filter((d) => d.complete)
+        .map((d) => d.id),
+      missingFunctions: Object.values(results.jung)
+        .filter((d) => !d.complete)
+        .map((d) => d.id),
+      noTypeConversion: true,
+    },
     assessment_frame: {
       purpose:
         "成人自我探索；不是标准化临床访谈、临床诊断或经过验证的综合测验。",
@@ -310,7 +334,7 @@ export function prepareAnalysis(input) {
       reverse: q.reverse === true,
       originalExploration:
         q.source === "original" ||
-        ["emotion", "relationship", "scenario"].includes(q.module),
+        ["emotion", "relationship", "scenario", "jung"].includes(q.module),
     })),
     context,
     requiredInsufficientSections: disabledSections,
@@ -334,6 +358,19 @@ export function buildMessages(prepared) {
       evidenceIds: ["必须替换为台账中至少两个不同group的id"],
       knowledgeIds: ["必须替换为知识库id"],
     },
+    perspectives: [
+      {
+        theoryId: "从theory_lenses中选择实际有资料支持的id",
+        observation: "具体自述线索",
+        interpretation: "该视角提供的有边界理解",
+        fit: "与另一领域哪些地方相符、哪些并不等同",
+        limits: "这个视角不能说明什么",
+        alternative: "具体不同解释",
+        question: "可核实的追问",
+        evidenceIds: [],
+        knowledgeIds: [],
+      },
+    ],
     themes: [
       {
         title: "主题名",
