@@ -7,8 +7,12 @@ from pathlib import Path
 import os,json,subprocess,time,random,shutil,hashlib
 BASE=os.environ.get('PERSONA_URL','http://127.0.0.1:4180').rstrip('/')
 OUT=Path(os.environ.get('PERSONA_OUT','/workspace/work/persona-blind-2026-11-16'));OUT.mkdir(parents=True,exist_ok=True)
-fixture=json.loads(subprocess.check_output(['node','--input-type=module','-e',"import {persona,personaCase} from './tests/fixtures/persona-lin.mjs';import {activeQuestions} from './src/data.js';const c=personaCase();console.log(JSON.stringify({persona,case:c,questions:activeQuestions(c.request.session.config)}));"],text=True))
-(OUT/'preregistered-persona.json').write_text(json.dumps(fixture,ensure_ascii=False,indent=2))
+FIXTURE=os.environ.get('PERSONA_FIXTURE','./tests/fixtures/persona-lin.mjs')
+fixture=json.loads(subprocess.check_output(['node','--input-type=module','-e',"const {persona,personaCase}=await import(process.env.PERSONA_FIXTURE||'./tests/fixtures/persona-lin.mjs');const {activeQuestions}=await import('./src/data.js');const c=personaCase();console.log(JSON.stringify({persona,case:c,questions:activeQuestions(c.request.session.config)}));"],text=True))
+preregistered=json.dumps(fixture,ensure_ascii=False,indent=2)
+(OUT/'preregistered-persona.json').write_text(preregistered)
+preregistered_hash=hashlib.sha256(preregistered.encode()).hexdigest()
+print(json.dumps({'event':'preregistered-before-provider','sha256':preregistered_hash,'fixture':FIXTURE}),flush=True)
 start=time.monotonic();trace=[];rng=random.Random(9716);errors=[]
 with sync_playwright() as p:
  browser=p.chromium.launch(executable_path=shutil.which('chromium'),headless=True,args=['--no-sandbox'])
@@ -47,8 +51,10 @@ with sync_playwright() as p:
  assert actual['answers']==fixture['case']['request']['session']['answers']
  (OUT/'interaction-trace.json').write_text(json.dumps(trace,ensure_ascii=False,indent=2))
  form=page.locator('#ai-analysis-form')
+ for key,value in fixture['case']['request']['context'].items():
+  form.locator(f'textarea[data-ai-context={key}]').fill(value)
  form.locator('input[name=health]').check();form.locator('input[name=consent]').check()
- print(json.dumps({'questionsCompleted':len(actual['answers']),'blindContext':True,'event':'starting-real-analysis','publicOrigin':BASE}),flush=True)
+ print(json.dumps({'questionsCompleted':len(actual['answers']),'personaBiographySent':False,'contextFields':list(fixture['case']['request']['context']),'event':'starting-real-analysis','publicOrigin':BASE}),flush=True)
  ai_start=time.monotonic()
  with page.expect_response(lambda r:r.request.method=='POST' and r.url.endswith('/api/analyze'),timeout=20000) as info:
   page.get_by_role('button',name='生成我的 AI 综合分析').click()
@@ -56,17 +62,22 @@ with sync_playwright() as p:
  data=response.json()
  (OUT/'real-report.json').write_text(json.dumps(data,ensure_ascii=False,indent=2))
  posted=json.loads(response.request.post_data)
- assert posted['context']=={} and posted['session']['answers']==actual['answers']
+ (OUT/'submitted-request.json').write_text(json.dumps(posted,ensure_ascii=False,indent=2))
+ assert posted['context']==fixture['case']['request']['context'] and posted['session']['answers']==actual['answers']
+ assert fixture['persona']['biography'] not in response.request.post_data
  assert 'authorization' not in response.request.headers
  assert not data.get('code'),data.get('message')
  page.locator('.ai-generated').wait_for(timeout=15000)
  assert page.locator('.ai-analysis-section').count()==12
+ with page.expect_download() as download:
+  page.get_by_role('button',name='下载 AI 综合报告',exact=True).click()
+ download.value.save_as(str(OUT/'real-report.md'))
  for width in [390,768,1440]:
   page.set_viewport_size({'width':width,'height':900})
   assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
   page.screenshot(path=str(OUT/f'persona-report-{width}.png'),full_page=True)
  assert not errors
- summary={'publicURL':BASE,'questions':len(actual['answers']),'skippedThenReturned':len(skips),'revisions':len(revisions),'blindContext':True,'personaBiographySent':False,'analysisSeconds':round(time.monotonic()-ai_start,1),'review':data.get('review'),'usage':data.get('usage'),'pageErrors':errors,'widths':[390,768,1440],'clinicalAccuracyEstablished':False}
+ summary={'publicURL':BASE,'questions':len(actual['answers']),'skippedThenReturned':len(skips),'revisions':len(revisions),'personaBiographySent':False,'contextFields':list(posted['context']),'preregisteredSHA256':preregistered_hash,'promptVersion':data.get('promptVersion'),'inference':data.get('inference'),'formulations':len(data['report'].get('formulations',[])),'analysisSeconds':round(time.monotonic()-ai_start,1),'review':data.get('review'),'usage':data.get('usage'),'pageErrors':errors,'widths':[390,768,1440],'clinicalAccuracyEstablished':False}
  (OUT/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2))
  print(json.dumps(summary,ensure_ascii=False),flush=True)
  browser.close()
