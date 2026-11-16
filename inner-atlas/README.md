@@ -2,7 +2,7 @@
 
 一个把人格、依恋、亲密关系、原创情境探索和可选心理健康筛查放进同一流程的中文网站，包含静态前端与可选的DeepSeek综合分析后端。
 
-**部署目标（尚未发布）：[wangkeyu-u.github.io/ui-gallery/inner-atlas](https://wangkeyu-u.github.io/ui-gallery/inner-atlas/)**
+**网站地址：[wangkeyu-u.github.io/ui-gallery/inner-atlas](https://wangkeyu-u.github.io/ui-gallery/inner-atlas/)**
 
 最多178题、11章。默认142题；恋人／朋友／照顾者可关闭，PHQ-9／GAD-7与PCL-5默认关闭。报告默认进入AI综合分析：整合整份答卷、关系差异、背景与反例；本地计分结果作为可查阅的依据。AI未配置时仍可查看普通结果。
 
@@ -39,7 +39,7 @@ npm run doctor  # 发布前检查后端配置，不输出密钥、不调用DeepS
 
 ## GitHub Pages
 
-计划将本项目放在`wangkeyu-u/ui-gallery`仓库下的独立`inner-atlas/`目录，通过该仓库现有GitHub Pages发布。当前GitHub集成对创建仓库、上传和Git推送均返回403，尚未写入远端，亦未改动原有画廊文件。
+本项目放在`wangkeyu-u/ui-gallery`仓库下的独立`inner-atlas/`目录，通过该仓库现有GitHub Pages发布。2026-11-16已通过GitHub文件接口恢复写入；原有画廊文件保持不变。DeepSeek后端仍需独立部署并配置密钥与访问口令，页面会显示实际就绪状态。
 
 本目录自带`.github/workflows/pages.yml`作为独立部署配置。将本目录提取为新仓库根目录后，推送main会先执行计分测试，再构建及部署；嵌套目录内的工作流不会在父仓库自动运行。新仓库在Settings → Pages → Source选择GitHub Actions，或使用`gh api --method POST repos/OWNER/REPO/pages -f build_type=workflow`启用。静态前端没有平台私有依赖；AI调用还需要独立Node后端。请勿把DeepSeek密钥放在Pages中，详见[AI接入与部署](docs/AI_ANALYSIS.md)。
 
