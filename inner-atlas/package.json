@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "imports": {
+    "#prompt-content": {
+      "workerd": "./api/prompt-content.worker.mjs",
+      "default": "./api/prompt-content.mjs"
+    }
+  },
   "description": "见己 · 本地优先的人格、关系与心理健康探索",
   "scripts": {
     "dev": "node server.mjs",

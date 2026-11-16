@@ -1,5 +1,6 @@
-import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
+import { systemPrompt, reviewPrompt } from "#prompt-content";
+import knowledge from "../ai/knowledge/psychology.v1.json" with { type: "json" };
 import {
   VERSION,
   MODULES,
@@ -18,21 +19,8 @@ import {
   AI_CONSENT_VERSION,
   AnalysisError,
 } from "../src/ai-contract.js";
-export const knowledge = JSON.parse(
-  await readFile(
-    new URL("../ai/knowledge/psychology.v1.json", import.meta.url),
-    "utf8",
-  ),
-);
-export const reviewPrompt = await readFile(
-  new URL("../ai/review-prompt.md", import.meta.url),
-  "utf8",
-);
+export { systemPrompt, reviewPrompt, knowledge };
 export const PROMPT_VERSION = "2026-11-16.5";
-export const systemPrompt = await readFile(
-  new URL("../ai/system-prompt.md", import.meta.url),
-  "utf8",
-);
 const sourceMap = new Map(SOURCES.map((s) => [s.id, s]));
 for (const entry of knowledge.entries)
   if (!entry.sourceIds.every((id) => sourceMap.has(id)))

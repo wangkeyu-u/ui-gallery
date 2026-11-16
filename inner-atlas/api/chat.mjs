@@ -1,13 +1,9 @@
-import { readFile } from "node:fs/promises";
 import { randomUUID } from "node:crypto";
+import { chatPrompt as prompt } from "#prompt-content";
 import { prepareAnalysis, knowledge } from "./analysis.mjs";
 import { validateAIReport, AnalysisError } from "../src/ai-contract.js";
 import { CHAT_LIMITS, validateChatReply } from "../src/chat-contract.js";
 import { DEEPSEEK_URL } from "./deepseek.mjs";
-const prompt = await readFile(
-  new URL("../ai/chat-prompt.md", import.meta.url),
-  "utf8",
-);
 export function prepareChat(input) {
   const reject = (code, message) => {
     throw new AnalysisError(code, message, 422);
