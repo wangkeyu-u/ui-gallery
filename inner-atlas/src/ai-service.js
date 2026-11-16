@@ -2,10 +2,24 @@ import { requestDeadline } from "./request-deadline.js";
 
 // Connection checks only read service metadata. They never send answers or access codes.
 export class ServiceCheckError extends Error {}
+const PAGES_ANALYSIS_ENDPOINT = "https://qrndhtvgsqf5.hostc.app/api/analyze";
+
+function defaultAnalysisPath(base) {
+  const projectPath = "/ui-gallery/inner-atlas";
+  if (
+    base.origin === "https://wangkeyu-u.github.io" &&
+    (base.pathname === projectPath ||
+      base.pathname.startsWith(projectPath + "/"))
+  )
+    return PAGES_ANALYSIS_ENDPOINT;
+  return "/api/analyze";
+}
+
 export function analysisEndpoint(value, baseUrl) {
   let url;
   try {
-    url = new URL(value || "/api/analyze", baseUrl);
+    const base = new URL(baseUrl);
+    url = new URL(value || defaultAnalysisPath(base), base);
   } catch {
     throw new ServiceCheckError("分析服务地址格式不正确。");
   }
@@ -61,7 +75,9 @@ export async function probeAnalysisService(
     try {
       status = await response.json();
     } catch {
-      throw new ServiceCheckError("此地址没有返回分析服务状态，请检查后端地址。");
+      throw new ServiceCheckError(
+        "此地址没有返回分析服务状态，请检查后端地址。",
+      );
     }
   } finally {
     deadline.clear();

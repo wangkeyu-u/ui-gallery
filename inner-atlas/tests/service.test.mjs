@@ -3,6 +3,21 @@ import assert from "node:assert/strict";
 import { analysisEndpoint, probeAnalysisService } from "../src/ai-service.js";
 import { configurationReport, serverConfiguration } from "../api/config.mjs";
 const base = "https://frontend.example/app/";
+test("the shared site uses its published AI backend and lets the user override it", () => {
+  const pages = "https://wangkeyu-u.github.io/ui-gallery/inner-atlas/#/setup";
+  assert.match(
+    analysisEndpoint("", pages),
+    /^https:\/\/[^/]+\.hostc\.app\/api\/analyze$/,
+  );
+  assert.equal(
+    analysisEndpoint("https://backend.example/api/analyze", pages),
+    "https://backend.example/api/analyze",
+  );
+  assert.equal(
+    analysisEndpoint("", "https://wangkeyu-u.github.io/ui-gallery/"),
+    "https://wangkeyu-u.github.io/api/analyze",
+  );
+});
 test("service URLs retain a reverse-proxy prefix and reject credentials, query secrets and unsafe protocols", () => {
   assert.equal(
     analysisEndpoint("", base),
