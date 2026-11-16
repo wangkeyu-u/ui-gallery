@@ -12,14 +12,15 @@ export function serverConfiguration(env = {}) {
   const apiKey = env.DEEPSEEK_API_KEY || "",
     access = env.ANALYSIS_ACCESS_TOKEN || "",
     model = env.DEEPSEEK_MODEL || "deepseek-flash",
-    review = !["0", "false"].includes(
-      (env.DEEPSEEK_REVIEW || "true").toLowerCase(),
-    );
+    reviewMode = (env.DEEPSEEK_REVIEW || "true").toLowerCase(),
+    repair = reviewMode === "repair",
+    review = !["0", "false", "repair"].includes(reviewMode);
   return {
     apiKey,
     access,
     model,
     review,
+    repair,
     configured:
       apiKey.trim().length > 0 &&
       access.trim().length >= 24 &&
@@ -49,8 +50,8 @@ export function configurationReport(env = {}) {
   const reviewSetting = (env.DEEPSEEK_REVIEW || "true").toLowerCase();
   checks.push({
     id: "review",
-    ok: ["true", "false", "0", "1"].includes(reviewSetting),
-    message: "复核模式 true／false／1／0",
+    ok: ["true", "false", "0", "1", "repair"].includes(reviewSetting),
+    message: "复核模式 true／false／repair",
   });
   const origins = (env.ALLOWED_ORIGINS || "")
     .split(",")

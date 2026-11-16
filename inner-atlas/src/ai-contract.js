@@ -45,13 +45,14 @@ export function validateAIReport(
     requirePortrait = false,
   } = {},
 ) {
-  const fail = (message, validationIssue) => {
+  const fail = (message, validationIssue, validationField) => {
     const error = new AnalysisError(
       "INVALID_MODEL_REPORT",
       "AI 返回的报告未通过证据和结构检查：" + message,
       502,
     );
     if (validationIssue) error.validationIssue = validationIssue;
+    if (validationField) error.validationField = validationField;
     throw error;
   };
   const text = (s, max = 3000) => {
@@ -86,13 +87,13 @@ export function validateAIReport(
       return id;
     });
   };
-  const cited = (x, multi = true, minimum = multi ? 2 : 1) => {
+  const cited = (x, field, multi = true, minimum = multi ? 2 : 1) => {
     const evidenceIds = refs(x.evidenceIds, "evidence", minimum);
     if (
       multi &&
       new Set(evidenceIds.map((id) => evidenceMap.get(id).group)).size < 2
     )
-      fail("综合结论需要不同领域的证据", "CROSS_DOMAIN_EVIDENCE");
+      fail("综合结论需要不同领域的证据", "CROSS_DOMAIN_EVIDENCE", field);
     return { evidenceIds, knowledgeIds: refs(x.knowledgeIds, "knowledge") };
   };
   if (!value || value.schemaVersion !== AI_CONTRACT_VERSION) fail("版本不匹配");
@@ -100,28 +101,32 @@ export function validateAIReport(
     schemaVersion: AI_CONTRACT_VERSION,
     overall: {
       summary: text(value.overall?.summary),
-      ...cited(value.overall || {}),
+      ...cited(value.overall || {}, "overall"),
     },
-    themes: list(value.themes, 2, 5, (t) => ({
+    themes: list(value.themes, 2, 5, (t, i) => ({
       title: text(t.title, 100),
       claim: text(t.claim, 1600),
       alternatives: list(t.alternatives, 1, 5, (s) => text(s, 700)),
       question: text(t.question, 500),
-      ...cited(t),
+      ...cited(t, `themes[${i}]`),
     })),
   };
   const portrait = value.overall?.portrait;
   if (requirePortrait && !portrait)
     fail("报告缺少整合后的整体人格画像", "MISSING_PORTRAIT");
   if (portrait) {
-    const citations = cited(portrait);
+    const citations = cited(portrait, "overall.portrait");
     if (
       new Set(citations.evidenceIds.map((id) => evidenceMap.get(id).group))
         .size < 3 ||
       !citations.evidenceIds.some((id) => id.startsWith("trait:")) ||
       !citations.evidenceIds.some((id) => id.startsWith("attachment:"))
     )
-      fail("整体画像需要人格、关系及第三个领域的直接资料", "PORTRAIT_EVIDENCE");
+      fail(
+        "整体画像需要人格、关系及第三个领域的直接资料",
+        "PORTRAIT_EVIDENCE",
+        "overall.portrait",
+      );
     report.overall.portrait = {
       headline: text(portrait.headline, 100),
       core: text(portrait.core, 1800),
@@ -153,7 +158,7 @@ export function validateAIReport(
         alternative: text(s.alternative, 900),
         question: text(s.question, 500),
         ...(s.status === "supported"
-          ? cited(s)
+          ? cited(s, `sections[id=${s.id}]`)
           : {
               evidenceIds: refs(s.evidenceIds, "evidence", 0),
               knowledgeIds: refs(s.knowledgeIds, "knowledge"),
@@ -175,7 +180,11 @@ export function validateAIReport(
       value.status === "supported" &&
       !value.evidenceIds.some((id) => id.startsWith(prefix))
     )
-      fail("章节缺少对应领域的直接证据", "DIRECT_DOMAIN_EVIDENCE");
+      fail(
+        "章节缺少对应领域的直接证据",
+        "DIRECT_DOMAIN_EVIDENCE",
+        `sections[id=${section}]`,
+      );
   }
   report.sections.sort(
     (a, b) =>
@@ -191,7 +200,7 @@ export function validateAIReport(
   Object.defineProperty(report, "_omittedCycleCount", {
     value: rawCycles.length - scopedCycles.length,
   });
-  report.cycles = list(scopedCycles, 0, 3, (c) => ({
+  report.cycles = list(scopedCycles, 0, 3, (c, i) => ({
     title: text(c.title, 100),
     trigger: text(c.trigger, 700),
     meaning: text(c.meaning, 700),
@@ -200,9 +209,9 @@ export function validateAIReport(
     longTerm: text(c.longTerm, 700),
     alternative: text(c.alternative, 700),
     check: text(c.check, 700),
-    ...cited(c),
+    ...cited(c, `cycles[${i}]`),
   }));
-  report.formulations = list(value.formulations ?? [], 0, 2, (f) => ({
+  report.formulations = list(value.formulations ?? [], 0, 2, (f, i) => ({
     title: text(f.title, 100),
     observation: text(f.observation, 1400),
     hypothesis: text(f.hypothesis, 1400),
@@ -212,7 +221,7 @@ export function validateAIReport(
     alternatives: list(f.alternatives, 2, 5, (s) => text(s, 700)),
     question: text(f.question, 700),
     wouldChangeMind: text(f.wouldChangeMind, 900),
-    ...cited(f),
+    ...cited(f, `formulations[${i}]`),
   }));
   if (!episodeReady && (report.formulations.length || report.cycles.length))
     fail(
@@ -242,7 +251,7 @@ export function validateAIReport(
     }
   report.perspectives = list(value.perspectives ?? [], 0, 3, (p) => {
     if (!THEORY_LENSES.some((t) => t.id === p.theoryId)) fail("未知的理论视角");
-    const c = cited(p);
+    const c = cited(p, `perspectives[theoryId=${p.theoryId}]`);
     const required = {
       jung: "jung:",
       traits: "trait:",
@@ -279,19 +288,19 @@ export function validateAIReport(
     !report.perspectives.some((p) => p.theoryId === "jung")
   )
     fail("完整八维资料需有明确的荣格交叉解读", "THEORY_EVIDENCE");
-  report.contradictions = list(value.contradictions, 0, 4, (c) => ({
+  report.contradictions = list(value.contradictions, 0, 4, (c, i) => ({
     observation: text(c.observation, 1000),
     explanations: list(c.explanations, 2, 3, (s) => text(s, 800)),
     question: text(c.question, 700),
-    ...cited(c),
+    ...cited(c, `contradictions[${i}]`),
   }));
-  report.priorities = list(value.priorities, 2, 3, (p) => ({
+  report.priorities = list(value.priorities, 2, 3, (p, i) => ({
     title: text(p.title, 100),
     why: text(p.why, 800),
     step: text(p.step, 1000),
     observe: text(p.observe, 700),
     timeframe: text(p.timeframe, 100),
-    ...cited(p, false, 2),
+    ...cited(p, `priorities[${i}]`, false, 2),
   }));
   report.followUpQuestions = list(value.followUpQuestions, 3, 6, (s) =>
     text(s, 500),

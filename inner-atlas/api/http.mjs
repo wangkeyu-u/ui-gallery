@@ -63,7 +63,7 @@ export function createApp({
       .map((s) => s.trim())
       .filter(Boolean),
   );
-  const { access, apiKey, model, review, configured } =
+  const { access, apiKey, model, review, repair, configured } =
     serverConfiguration(env);
   const publicAnalysis = env.PUBLIC_ANALYSIS === "true";
   const { enabled: collectionEnabled, ownerToken } =
@@ -314,6 +314,7 @@ export function createApp({
           apiKey,
           model,
           review,
+          repair,
           fetchImpl,
           signal: controller.signal,
         });

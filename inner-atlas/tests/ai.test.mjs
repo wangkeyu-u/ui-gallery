@@ -547,6 +547,44 @@ test("invalid or unsupported review is rejected, without falling back to the dra
   );
   assert.equal(calls, 2);
 });
+test("repair points out same-domain citations and only returns a fully validated report", async () => {
+  const value = input(),
+    p = prepareAnalysis(value);
+  const sameDomain = fixtureReport(p);
+  sameDomain.sections.find(({ id }) => id === "romance").evidenceIds = [
+    "attachment:partner:anxiety",
+    "attachment:partner:avoidance",
+  ];
+  for (const shouldRepair of [false, true]) {
+    let calls = 0;
+    const result = await generateAnalysis(value, {
+      apiKey: "test",
+      review: false,
+      repair: true,
+      fetchImpl: async (url, init) => {
+        calls++;
+        if (calls === 1)
+          return fakeResponse(shouldRepair ? sameDomain : fixtureReport(p));
+        const messages = JSON.parse(init.body).messages;
+        const { validation_feedback } = JSON.parse(messages[1].content);
+        assert.equal(validation_feedback.field, "sections[id=romance]");
+        assert.equal(validation_feedback.issue, "CROSS_DOMAIN_EVIDENCE");
+        assert.ok(
+          validation_feedback.citationAudit.some((line) =>
+            line.includes("个领域"),
+          ),
+        );
+        return fakeResponse(fixtureReport(p));
+      },
+    });
+    assert.equal(calls, shouldRepair ? 2 : 1);
+    assert.equal(
+      result.review.status,
+      shouldRepair ? "repaired" : "not_requested",
+    );
+  }
+});
+
 test("single-pass remains explicit and malformed citation lists have controlled errors", async () => {
   let calls = 0;
   const value = input(),

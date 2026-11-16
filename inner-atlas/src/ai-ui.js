@@ -229,6 +229,8 @@ function reviewSummary(result) {
   const review = result.review;
   if (!review || review.status === "not_requested")
     return '<span class="ai-review-label">单轮综合</span>';
+  if (review.status === "repaired")
+    return '<span class="ai-review-label">自动修正后通过证据与格式校验</span>';
   return `<details class="ai-review-summary"><summary>完成整合与一次 AI 复核</summary><p>复核会检查反例、关系对象、资料对应和重复表达。${review.status === "revised" ? `本次调整：${review.revisionCategories.map((code) => esc(reviewLabels[code] || code)).join("、")}。` : "第二轮未要求实质改写。"}AI复核不是独立临床审核，仍可能有遗漏或误解。</p></details>`;
 }
 function renderResult(result, stale) {

@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import {
   prepareAnalysis,
   buildMessages,
+  buildRepairMessages,
   buildReviewMessages,
   knowledge,
   PROMPT_VERSION,
@@ -27,6 +28,7 @@ export async function generateAnalysis(
     apiKey,
     model = "deepseek-flash",
     review = true,
+    repair = false,
     fetchImpl = fetch,
     signal,
     timeoutMs = 360000,
@@ -130,7 +132,7 @@ export async function generateAnalysis(
     try {
       return JSON.parse(content);
     } catch {
-      if (stage === "synthesis" && review) {
+      if (stage === "synthesis" && (review || repair)) {
         // The already scheduled second pass must produce a complete, valid report.
         // Never append braces, invent missing fields, or show this text to the user.
         draftFormatIssue = "JSON_SYNTAX";
@@ -163,10 +165,14 @@ export async function generateAnalysis(
         typeof candidate?.overall?.summary === "string" &&
         Array.isArray(candidate?.sections) &&
         candidate.sections.length === 12;
-      if (!review || !editableDraft) throw error;
+      if ((!review && !repair) || !editableDraft) throw error;
+      const evidenceGroups = new Map(
+        prepared.evidence.map(({ id, group }) => [id, group]),
+      );
       validationFeedback = {
         issue: error.validationIssue || "REPORT_CONTRACT",
         message: error.message,
+        field: error.validationField,
         mustRevise: true,
         citationAudit: [
           ["overall", candidate.overall],
@@ -197,6 +203,23 @@ export async function generateAnalysis(
             issues.push(
               path + ".evidenceIds不足；需要真实跨领域依据，不能凑引用。",
             );
+          if (
+            item?.status !== "insufficient" &&
+            !path.startsWith("priorities[") &&
+            item?.evidenceIds?.length >= 2 &&
+            Array.isArray(item.evidenceIds)
+          ) {
+            const groups = new Set(
+              item.evidenceIds
+                .map((id) => evidenceGroups.get(id))
+                .filter(Boolean),
+            );
+            const minimum = path === "overall.portrait" ? 3 : 2;
+            if (groups.size < minimum)
+              issues.push(
+                `${path}.evidenceIds 需要 ${minimum} 个领域，目前是 ${[...groups].join("、") || "无有效领域"}。`,
+              );
+          }
           return issues;
         }),
       };
@@ -206,7 +229,14 @@ export async function generateAnalysis(
     revisionCategories: [],
     passes: 1,
   };
-  if (review) {
+  if (repair && validationFeedback) {
+    const fixed = await call(
+      buildRepairMessages(prepared, candidate, validationFeedback),
+      "repair",
+    );
+    report = validateAIReport(fixed, validation);
+    reviewInfo = { status: "repaired", revisionCategories: [], passes: 2 };
+  } else if (review) {
     const result = await call(
       buildReviewMessages(prepared, report || candidate, validationFeedback),
       "review",
