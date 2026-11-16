@@ -1,3 +1,4 @@
+import { normalizeCollection } from "./collection-contract.js";
 import {
   QUESTIONS,
   TRAITS,
@@ -364,6 +365,9 @@ export function validateSession(raw) {
   }
   return {
     version: VERSION,
+    ...(raw.collection
+      ? { collection: normalizeCollection(raw.collection) }
+      : {}),
     config,
     answers,
     index: Number.isInteger(raw.index)

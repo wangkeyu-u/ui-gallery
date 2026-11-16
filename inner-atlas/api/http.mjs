@@ -1,10 +1,19 @@
+import {
+  createSubmissionStore,
+  answerCSV,
+  authenticateArchiveReport,
+} from "./submissions.mjs";
 import { createServer } from "node:http";
 import { readFile, realpath } from "node:fs/promises";
 import { resolve, extname, sep } from "node:path";
 import { createHash, timingSafeEqual } from "node:crypto";
 import { generateChat, prepareChat } from "./chat.mjs";
 import { generateAnalysis } from "./deepseek.mjs";
-import { serverConfiguration, DEEPSEEK_MODELS } from "./config.mjs";
+import {
+  serverConfiguration,
+  collectionConfiguration,
+  DEEPSEEK_MODELS,
+} from "./config.mjs";
 import { AnalysisError } from "../src/ai-contract.js";
 import { prepareAnalysis } from "./analysis.mjs";
 const types = {
@@ -57,6 +66,12 @@ export function createApp({
   const { access, apiKey, model, review, configured } =
     serverConfiguration(env);
   const publicAnalysis = env.PUBLIC_ANALYSIS === "true";
+  const { enabled: collectionEnabled, ownerToken } =
+    collectionConfiguration(env);
+  const submissions = createSubmissionStore(
+    env.SUBMISSIONS_DIR || resolve("private-data"),
+    { reportKey: ownerToken },
+  );
   const maxHourly = Math.max(
     1,
     Math.min(100, Number(env.AI_REQUESTS_PER_HOUR) || 6),
@@ -101,7 +116,10 @@ export function createApp({
         res.setHeader("Vary", "Origin");
       }
       if (req.method === "OPTIONS") {
-        res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        res.setHeader(
+          "Access-Control-Allow-Methods",
+          "GET, POST, DELETE, OPTIONS",
+        );
         res.setHeader(
           "Access-Control-Allow-Headers",
           "Content-Type, Authorization, X-Analysis-Keepalive",
@@ -109,6 +127,104 @@ export function createApp({
         res.writeHead(204);
         res.end();
         return;
+      }
+      if (path === "/api/submissions/status" && req.method === "GET")
+        return json(200, { enabled: collectionEnabled });
+      if (
+        path.startsWith("/api/submissions") ||
+        path.startsWith("/api/owner/")
+      ) {
+        if (!collectionEnabled)
+          return json(503, {
+            code: "COLLECTION_DISABLED",
+            message: "本站未开启集中保存。",
+          });
+        const isOwner = path.startsWith("/api/owner/");
+        if (
+          isOwner &&
+          !timingSafeEqual(
+            hash(req.headers.authorization || ""),
+            hash("Bearer " + ownerToken),
+          )
+        )
+          return json(401, {
+            code: "OWNER_REQUIRED",
+            message: "需要创建者查看密钥。",
+          });
+        try {
+          if (
+            req.method === "POST" &&
+            !/^application\/json(?:;|$)/i.test(
+              req.headers["content-type"] || "",
+            )
+          )
+            return json(415, {
+              code: "JSON_REQUIRED",
+              message: "仅接受JSON请求。",
+            });
+          if (path === "/api/submissions" && req.method === "POST")
+            return json(
+              200,
+              await submissions.save(await readJSON(req, 393216)),
+            );
+          if (path === "/api/submissions/revoke" && req.method === "POST") {
+            const body = await readJSON(req);
+            if (
+              typeof body.editToken !== "string" ||
+              body.editToken.length !== 64
+            )
+              throw new AnalysisError(
+                "INVALID_RECEIPT",
+                "撤回凭据不完整。",
+                422,
+              );
+            await submissions.remove(body.id, body.editToken);
+            return json(200, { removed: true });
+          }
+          if (isOwner && req.method === "GET") {
+            if (path === "/api/owner/submissions")
+              return json(200, { records: await submissions.list() });
+            if (path === "/api/owner/export")
+              return json(200, {
+                schemaVersion: "1.0",
+                exportedAt: new Date().toISOString(),
+                records: await submissions.all(),
+              });
+            const match =
+              /^\/api\/owner\/submissions\/([^/]+)(?:\/(answers.csv))?$/.exec(
+                path,
+              );
+            if (match) {
+              const record = await submissions.get(match[1]);
+              if (match[2]) {
+                res.writeHead(200, {
+                  "Content-Type": "text/csv; charset=utf-8",
+                  "Cache-Control": "no-store",
+                  "Content-Disposition": "attachment; filename=answers.csv",
+                });
+                res.end(answerCSV(record));
+                return;
+              }
+              return json(200, record);
+            }
+          }
+          if (isOwner && req.method === "DELETE") {
+            const match = /^\/api\/owner\/submissions\/([^/]+)$/.exec(path);
+            if (match) {
+              await submissions.remove(match[1]);
+              return json(200, { removed: true });
+            }
+          }
+          return json(404, { code: "NOT_FOUND", message: "接口不存在。" });
+        } catch (error) {
+          return json(error instanceof AnalysisError ? error.status : 500, {
+            code: error instanceof AnalysisError ? error.code : "SAVE_FAILED",
+            message:
+              error instanceof AnalysisError
+                ? error.message
+                : "保存暂未成功，请重试或下载本机备份。",
+          });
+        }
       }
       if (path === "/api/status" && req.method === "GET")
         return json(200, {
@@ -194,13 +310,17 @@ export function createApp({
         }
         if (isChat) usedChat++;
         else used++;
-        const result = await (isChat ? generateChat : generateAnalysis)(input, {
+        const output = await (isChat ? generateChat : generateAnalysis)(input, {
           apiKey,
           model,
           review,
           fetchImpl,
           signal: controller.signal,
         });
+        const result =
+          !isChat && collectionEnabled
+            ? authenticateArchiveReport(output, ownerToken)
+            : output;
         if (!res.destroyed) {
           if (res.headersSent) res.end(JSON.stringify(result));
           else json(200, result);

@@ -22,3 +22,16 @@ jobs:
       - run: git diff --exit-code -- preview-gallery.html
       - run: npm test
       - run: npm run test:copy
+
+  inner-atlas:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: inner-atlas
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run build

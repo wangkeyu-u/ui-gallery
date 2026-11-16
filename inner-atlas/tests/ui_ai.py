@@ -6,7 +6,7 @@ BASE=os.environ.get('AI_PREVIEW_URL','http://127.0.0.1:4175').rstrip('/')
 OUT=Path(tempfile.mkdtemp(prefix='inner-atlas-ai-ui-'))
 session=json.loads(subprocess.check_output(['node','--input-type=module','-e',"import {fixtureSession} from './tests/fixtures/ai.mjs'; console.log(JSON.stringify(fixtureSession({health:true,trauma:true,remember:true})))"],text=True))
 with sync_playwright() as p:
- browser=p.chromium.launch(executable_path=shutil.which('chromium'),headless=True,args=['--no-sandbox'])
+ browser=p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('chromium'),headless=True,args=['--no-sandbox'])
  page=browser.new_page(viewport={'width':1440,'height':1000},accept_downloads=True)
  errors=[];requests=[]
  page.on('pageerror',lambda e:errors.append(str(e)))
@@ -42,8 +42,9 @@ with sync_playwright() as p:
  assert not any(q.startswith(('phq-','gad-','pcl-')) for q in posted['session']['answers'])
  assert page.locator('.ai-portrait').is_visible()
  assert page.locator('.ai-portrait-core').is_visible()
- assert '贯穿其中的主线' in page.locator('.ai-portrait').inner_text()
+ assert '贯穿主线' in page.locator('.reader-insights').inner_text()
  assert page.locator('.ai-theory-perspective').count()==1
+ page.locator('.ai-theory-perspective > summary').click()
  assert '功能栈' in page.locator('.ai-theory-perspective').inner_text()
  assert page.locator('.ai-theme-grid img').count()==0
  assert '<img src=x' in page.locator('.ai-theme-grid').inner_text()
@@ -52,6 +53,7 @@ with sync_playwright() as p:
  with page.expect_download() as d:page.get_by_role('button',name='下载 AI 综合报告',exact=True).click()
  d.value.save_as(str(OUT/'ai-report.md'));report=(OUT/'ai-report.md').read_text();assert '模拟上游综合报告' in report;assert '近期状态与专业评估方向' in report
  # Draft context and health-sharing changes also mark the previous synthesis stale.
+ page.locator('details.ai-reanalysis > summary').click()
  goal=page.locator('textarea[data-ai-context=goal]');original=goal.input_value();goal.fill(original+' 新的补充。');assert page.locator('.ai-stale-indicator').is_visible();goal.fill(original);assert page.locator('.ai-stale-indicator').is_hidden()
  page.locator('#ai-analysis-form input[name=health]').check();assert page.locator('.ai-stale-indicator').is_visible();preview=json.loads(page.locator('#ai-payload-preview').text_content());assert len(preview['session']['answers'])==202;page.locator('#ai-analysis-form input[name=health]').uncheck();assert page.locator('.ai-stale-indicator').is_hidden()
  # The report starts with themes and opens details on demand.
@@ -59,7 +61,9 @@ with sync_playwright() as p:
  assert page.locator('details.ai-analysis-section[open]').count()==3
  page.get_by_role('button',name='展开全部',exact=True).click();assert page.locator('details.ai-analysis-section[open]').count()==12
  page.get_by_role('button',name='收起全部',exact=True).click();assert page.locator('details.ai-analysis-section[open]').count()==0
- page.locator('[data-ai-action=scroll][data-target=romance]').click();assert page.locator('#ai-section-romance').get_attribute('open') is not None
+ page.locator('[data-reader-target=ai-reader-relations]').click();assert page.locator('#ai-reader-relations').evaluate('(el) => el === document.activeElement')
+ page.locator('#ai-section-romance > summary').click()
+ assert page.locator('#ai-section-romance').get_attribute('open') is not None
  # Correction fills a concrete theme reference, marks the old report stale and never resubmits by itself.
  counter=page.locator('textarea[data-ai-context=counterexample]');original_counter=counter.input_value()
  page.get_by_role('button',name='这点不符合我／补充反例').first.click()
@@ -78,6 +82,7 @@ with sync_playwright() as p:
  # Missing experience data withholds functional explanations, while explicit episode details unlock a checkable card.
  assert page.locator('.ai-depth-boundary').is_visible()
  assert page.locator('.ai-formulation').count()==0
+ page.locator('details.ai-reanalysis > summary').click() if page.locator('details.ai-reanalysis').get_attribute('open') is None else None
  page.locator('textarea[data-ai-context=example]').fill('对方晚回复，我发消息确认约定，随后重新协商。')
  page.locator('textarea[data-ai-context=meaning]').fill('我担心安排临时变动，也在意对方是否记得约定。')
  page.locator('textarea[data-ai-context=strategy]').fill('我想核实安排，收到回复后暂时放心，但仍需商量。')

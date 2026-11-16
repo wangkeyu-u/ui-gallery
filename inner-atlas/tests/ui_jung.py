@@ -6,7 +6,7 @@ BASE=os.environ.get('AI_PREVIEW_URL','http://127.0.0.1:4188').rstrip('/')
 OUT=Path(tempfile.mkdtemp(prefix='inner-atlas-jung-ui-'))
 fixture=json.loads(subprocess.check_output(['node','--input-type=module','-e',"import {fixtureSession} from './tests/fixtures/ai.mjs';const s=fixtureSession({jung:false,remember:true});delete s.config.jung;console.log(JSON.stringify(s));"],text=True))
 with sync_playwright() as p:
- browser=p.chromium.launch(executable_path=shutil.which('chromium'),headless=True,args=['--no-sandbox'])
+ browser=p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('chromium'),headless=True,args=['--no-sandbox'])
  page=browser.new_page(viewport={'width':390,'height':844},accept_downloads=True)
  errors=[];posts=[]
  page.on('pageerror',lambda e:errors.append(str(e)))
@@ -43,7 +43,7 @@ with sync_playwright() as p:
  assert page.locator('.ai-analysis-section').count()==12
  with page.expect_download() as d:page.get_by_role('button',name='下载 AI 综合报告',exact=True).click()
  d.value.save_as(str(OUT/'jung-ai.md'));assert '理论视角：荣格功能视角' in (OUT/'jung-ai.md').read_text()
- page.locator('.ai-theory-perspective > summary').click()
+ if page.locator('.ai-theory-perspective').get_attribute('open') is not None:page.locator('.ai-theory-perspective > summary').click()
  page.evaluate("window.dispatchEvent(new Event('beforeprint'))");assert page.locator('.ai-theory-perspective').get_attribute('open') is not None
  page.evaluate("window.dispatchEvent(new Event('afterprint'))");assert page.locator('.ai-theory-perspective').get_attribute('open') is None
  for width in [360,390,768,1440]:

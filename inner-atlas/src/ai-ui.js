@@ -1,3 +1,4 @@
+import { renderReportReader, configureReader } from "./report-reader.js";
 import {
   renderChat,
   configureChat,
@@ -170,11 +171,20 @@ function isStale(session) {
     state.sourceContext !== contextIdentity()
   );
 }
+export function currentAIArchive(session, isDemo = false) {
+  const result = currentAIResult(session, isDemo);
+  return result
+    ? {
+        assessment: makeAnalysisRequest(session, state.context, state.health),
+        result,
+      }
+    : null;
+}
 export function currentAIResult(session, isDemo) {
   if (!session || isDemo || isStale(session)) return null;
   return state.result;
 }
-function references(item, result) {
+export function references(item, result) {
   return `<details class="ai-evidence"><summary>查看支持资料与依据</summary><ul>${item.evidenceIds
     .map((id) => {
       const e = result.evidence.find((e) => e.id === id);
@@ -220,55 +230,9 @@ function reviewSummary(result) {
     return '<span class="ai-review-label">单轮综合</span>';
   return `<details class="ai-review-summary"><summary>完成整合与一次 AI 复核</summary><p>复核会检查反例、关系对象、资料对应和重复表达。${review.status === "revised" ? `本次调整：${review.revisionCategories.map((code) => esc(reviewLabels[code] || code)).join("、")}。` : "第二轮未要求实质改写。"}AI复核不是独立临床审核，仍可能有遗漏或误解。</p></details>`;
 }
-function renderAnalysisSection(section, result) {
-  const open =
-    ["romance", "friendship", "family"].includes(section.id) &&
-    section.status === "supported";
-  return `<details class="panel ai-analysis-section" id="ai-section-${section.id}" ${open ? "open" : ""}><summary><h3>${esc(AI_SECTIONS.find(([id]) => id === section.id)[1])}</h3><span class="badge">${section.status === "insufficient" ? "资料不足" : "综合假设 · 待核实"}</span></summary><div class="ai-section-body">${paragraphs(section.summary)}${paragraphs(section.implications)}<h4>替代解释／边界</h4>${paragraphs(section.alternative)}<div class="practice-box"><p>${esc(section.question)}</p></div>${references(section, result)}</div></details>`;
-}
-function perspectivesMarkup(r, result) {
-  if (!r.perspectives?.length) return "";
-  return `<section class="ai-perspectives"><h3 class="report-subtitle">不同理论，怎样一起理解这份资料</h3><div class="detail-grid">${r.perspectives.map((p) => `<details class="panel ai-theory-perspective" open><summary><h3>${esc(THEORY_LENSES.find((t) => t.id === p.theoryId).name)}</h3></summary><h4>自述线索</h4>${paragraphs(p.observation)}<h4>这个视角提供的理解</h4>${paragraphs(p.interpretation)}<h4>与其他资料相符或不同</h4>${paragraphs(p.fit)}<h4>不能据此判断</h4>${paragraphs(p.limits)}<h4>另一种解释</h4>${paragraphs(p.alternative)}<div class="practice-box"><p>${esc(p.question)}</p></div>${references(p, result)}</details>`).join("")}</div></section>`;
-}
-function portraitMarkup(r, result) {
-  const p = r.overall.portrait;
-  if (!p)
-    return `<article class="ai-portrait panel"><span class="eyebrow">YOUR INTEGRATED PORTRAIT</span><h2>把不同的你，放在同一张地图里。</h2>${paragraphs(r.overall.summary)}${references(r.overall, result)}</article>`;
-  return `<article class="ai-portrait panel"><span class="eyebrow">你的整体画像 · 综合判断</span><h2>${esc(p.headline)}</h2><div class="ai-portrait-core">${paragraphs(p.core)}</div>${[
-    ["贯穿其中的主线", p.centralTension],
-    ["你如何进入不同关系", p.relationshipSignature],
-    ["同一倾向的优势与代价", p.strengthAndCost],
-    ["哪些情况会让你不同", p.whereItChanges],
-    ["这个判断仍待核实的地方", p.stillUnknown],
-  ]
-    .map(([title, value]) => `<h3>${title}</h3>${paragraphs(value)}`)
-    .join("")}${references(p, result)}</article>`;
-}
 function renderResult(result, stale) {
   const r = result.report;
-  return `<div class="ai-generated ${stale ? "stale" : ""}"><div class="notice ai-stale-indicator" ${stale ? "" : "hidden"}><p>你的答卷或补充背景已修改。这份报告基于之前的资料，不能作为当前结果；请重新生成。</p></div><div class="ai-report-meta"><span>DeepSeek · ${esc(result.model)}</span><span>${new Date(result.generatedAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</span><span>提示词 ${esc(result.promptVersion)} · 知识库 ${esc(result.knowledgeVersion)}</span></div>${reviewSummary(result)}<button type="button" class="button primary" data-chat-action="open" ${stale ? "disabled" : ""}>继续问 AI</button>${portraitMarkup(r, result)}<h3 class="report-subtitle">贯穿整份答卷的主题</h3><div class="ai-theme-grid">${r.themes.map((t, themeIndex) => `<article class="panel"><h3>${esc(t.title)}</h3>${paragraphs(t.claim)}<h4>其他可能的解释</h4>${t.alternatives.map((a) => `<p>${esc(a)}</p>`).join("")}<div class="practice-box"><strong>用真实经历核实</strong><p>${esc(t.question)}</p></div>${references(t, result)}<button type="button" class="text-button ai-challenge" data-ai-action="challenge" data-theme="${themeIndex}">这点不符合我／补充反例</button></article>`).join("")}</div>${perspectivesMarkup(r, result)}${formulationMarkup(r, result)}${result.inference?.withheldCycles ? `<div class="notice ai-scope-note"><p>未展示与当前经历缺少直接对应的循环。一次自述经历不足以推断其他反应的作用或长期重复机制。</p></div>` : ""}<nav class="ai-section-index" aria-label="综合分析内容索引">${AI_SECTIONS.map(([id, title]) => `<button type="button" data-ai-action="scroll" data-target="${id}">${esc(title)}</button>`).join("")}</nav><div class="ai-detail-toolbar"><span>按需要展开12项分析，优先呈现关系部分。</span><button type="button" class="text-button" data-ai-action="expand">展开全部</button><button type="button" class="text-button" data-ai-action="collapse">收起全部</button></div><div class="ai-integrated-sections">${r.sections.map((section) => renderAnalysisSection(section, result)).join("")}</div>${
-    r.cycles.length
-      ? `<h3 class="report-subtitle">这次经历中可核实的反应顺序</h3><p class="muted">这是针对当前自述经历的假设，不代表实际重复频率或长期因果机制。</p>${r.cycles
-          .map(
-            (c) =>
-              `<article class="panel ai-cycle"><h3>${esc(c.title)}</h3><ol>${[
-                ["可能的触发", c.trigger],
-                ["可能的理解", c.meaning],
-                ["保护自己的方式", c.protection],
-                ["短期作用", c.shortTerm],
-                ["可能的长期代价", c.longTerm],
-              ]
-                .map(
-                  ([title, text]) =>
-                    `<li><strong>${title}</strong><p>${esc(text)}</p></li>`,
-                )
-                .join(
-                  "",
-                )}</ol><h4>另一种解释</h4><p>${esc(c.alternative)}</p><div class="practice-box"><strong>如何核实</strong><p>${esc(c.check)}</p></div>${references(c, result)}</article>`,
-          )
-          .join("")}`
-      : ""
-  }${r.contradictions.length ? `<h3 class="report-subtitle">那些没有被抹平的矛盾</h3><div class="detail-grid">${r.contradictions.map((c) => `<article class="panel"><h3>${esc(c.observation)}</h3>${c.explanations.map((e) => `<p>${esc(e)}</p>`).join("")}<div class="practice-box"><p>${esc(c.question)}</p></div>${references(c, result)}</article>`).join("")}</div>` : ""}<h3 class="report-subtitle">从哪里开始改变</h3><div class="action-grid">${r.priorities.map((p) => `<article class="panel"><span class="eyebrow">${esc(p.timeframe)}</span><h3>${esc(p.title)}</h3><p>${esc(p.why)}</p><h4>具体一步</h4><p>${esc(p.step)}</p><h4>观察什么</h4><p>${esc(p.observe)}</p>${references(p, result)}</article>`).join("")}</div><div class="ai-followup-grid"><section class="panel"><h3>下一次，值得继续追问</h3><ol>${r.followUpQuestions.map((q) => `<li>${esc(q)}</li>`).join("")}</ol></section><section class="panel"><h3>目前还不能替你确定</h3><ul>${r.uncertainties.map((q) => `<li>${esc(q)}</li>`).join("")}</ul></section></div><div class="notice"><p>AI 综合的是你提供的自我报告，不是观察到的全部人生。连贯、有说服力的文字仍可能有误；不用于诊断或排除心理疾病。引用检查验证资料存在与结构，不证明每项解释在语义或临床上正确。</p></div><div class="ai-controls"><button class="button ghost" data-ai-action="export">下载 AI 综合报告</button></div>${renderChat(result, stale || state.busy)}</div>`;
+  return `<div class="ai-generated ${stale ? "stale" : ""}"><div class="notice ai-stale-indicator" ${stale ? "" : "hidden"}><p>你的答卷或补充背景已修改。这份报告不能作为当前结果，请重新综合。</p></div><div class="reader-report-bar"><span>${new Date(result.generatedAt).toLocaleDateString("zh-CN", { timeZone: "Asia/Shanghai" })} · 本次自我探索</span><button type="button" class="button primary" data-chat-action="open" ${stale ? "disabled" : ""}>继续问 AI</button></div>${renderReportReader(result, { references, formulations: formulationMarkup(r, result) })}${result.inference?.withheldCycles ? '<div class="notice ai-scope-note"><p>与当前经历缺少直接对应的循环未展示；一次经历不足以证明其他行为的长期机制。</p></div>' : ""}<div class="ai-detail-toolbar"><span>详细解读按模块展开</span><button type="button" class="text-button" data-ai-action="expand">展开全部</button><button type="button" class="text-button" data-ai-action="collapse">收起全部</button></div><details class="reader-disclosure reader-generation"><summary>报告的生成信息</summary><p>DeepSeek · ${esc(result.model)} · 提示词 ${esc(result.promptVersion)} · 知识库 ${esc(result.knowledgeVersion)}</p>${reviewSummary(result)}</details><div class="ai-controls"><button type="button" class="button ghost" data-ai-action="export">下载 AI 综合报告</button></div>${renderChat(result, stale || state.busy)}</div>`;
 }
 function formulationMarkup(report, result) {
   if (!report.formulations.length)
@@ -286,12 +250,12 @@ export function renderAIPanel(session, isDemo = false) {
     guide = verificationGuide(session),
     result = state.result,
     stale = result && isStale(session);
-  return `<section class="report-section ai-report-section ${result ? "" : "ai-no-report"}"><div class="section-heading"><div><span class="eyebrow">DEEPSEEK / INTEGRATED UNDERSTANDING</span><h2>从整份答卷，理解它们怎样联系。</h2><p>比较人格、关系与情境，分清自述、待验证的解释和仍不知道的部分。</p></div></div>${isDemo ? '<div class="notice"><p>当前是虚构示例答卷。这里展示综合分析的流程和覆盖范围；未调用 DeepSeek，不展示伪造的 AI 结果。完成你的答卷后即可提交综合分析。</p></div>' : ""}${result ? renderResult(result, stale) : ""}<div class="ai-controls panel">${renderAIReadiness(!isDemo)}<div class="ai-coverage"><span>基础回答 ${coverage.answered} / ${coverage.total}</span><span>完整人格维度 ${coverage.traits} / 5</span><span>完整探索维度 ${coverage.explorations} / 8</span><span>情境 ${coverage.scenarios} / 8</span></div>${!coverage.ready ? '<div class="notice"><p>为避免用少数回答拼出一个人，综合分析需要基础题完成至少70%、3个人格维度、总体依恋、4个探索维度及3个情境。你可以先补充答题。</p></div>' : ""}<form id="ai-analysis-form"><h3>${result ? "补充背景，重新核实这份理解" : "给综合分析一点真实背景（可选）"}</h3><div class="notice ai-depth-status" id="ai-depth-status" role="status"><p>${esc(depthMessage())}</p></div><p class="muted">不需要姓名或联系方式。不要填写他人的身份信息；不必叙述不愿回忆的经历。</p>${AI_CONTEXT_FIELDS.map(
+  return `<section class="report-section ai-report-section ${result ? "ai-has-report" : "ai-no-report"}"><div class="section-heading"><div><span class="eyebrow">DEEPSEEK / INTEGRATED UNDERSTANDING</span><h2>${result ? "你的综合报告" : "从整份答卷，理解它们怎样联系。"}</h2><p>${result ? "从整体画像读起，按你关心的关系和主题继续展开。" : "比较人格、关系与情境，分清自述、待验证的解释和仍不知道的部分。"}</p></div></div>${isDemo ? '<div class="notice"><p>当前是虚构示例答卷。这里展示综合分析的流程和覆盖范围；未调用 DeepSeek，不展示伪造的 AI 结果。完成你的答卷后即可提交综合分析。</p></div>' : ""}${result ? renderResult(result, stale) : ""}${result ? '<details class="ai-reanalysis panel"><summary>补充背景或调整授权，重新综合</summary>' : ""}<div class="ai-controls panel">${renderAIReadiness(!isDemo)}<div class="ai-coverage"><span>基础回答 ${coverage.answered} / ${coverage.total}</span><span>完整人格维度 ${coverage.traits} / 5</span><span>完整探索维度 ${coverage.explorations} / 8</span><span>情境 ${coverage.scenarios} / 8</span></div>${!coverage.ready ? '<div class="notice"><p>为避免用少数回答拼出一个人，综合分析需要基础题完成至少70%、3个人格维度、总体依恋、4个探索维度及3个情境。你可以先补充答题。</p></div>' : ""}<form id="ai-analysis-form"><h3>${result ? "补充背景，重新核实这份理解" : "给综合分析一点真实背景（可选）"}</h3><div class="notice ai-depth-status" id="ai-depth-status" role="status"><p>${esc(depthMessage())}</p></div><p class="muted">不需要姓名或联系方式。不要填写他人的身份信息；不必叙述不愿回忆的经历。</p>${AI_CONTEXT_FIELDS.map(
     ([id, label, placeholder]) =>
       `<label class="ai-field">${esc(guide.questions.find((q) => q.id === id)?.question || label)}<textarea data-ai-context="${id}" maxlength="1000" rows="3" placeholder="${placeholder}">${esc(state.context[id])}</textarea></label>`,
   ).join(
     "",
-  )}<details class="ai-connection"><summary>分析服务与访问设置</summary><label class="ai-field">分析服务地址<input type="url" name="endpoint" value="${esc(state.endpoint)}" placeholder="同站点部署可留空；外部服务填 https://…/api/analyze"><small>GitHub Pages 需连接独立分析服务。此地址只在本页内存中保存。</small></label><label class="ai-field">站点分析口令<input type="password" name="accessCode" value="${esc(state.code)}" autocomplete="off" placeholder="由站点维护者提供，不是 DeepSeek API Key"><small>不要在网页中输入 DeepSeek 密钥；口令仅保存在当前页面内存。</small></label></details><label class="ai-check"><input type="checkbox" name="health" ${state.health ? "checked" : ""}><span>同时分享我已作答的心理健康部分（可选）<small>未勾选时，PHQ-9、GAD-7、PCL-5 的答案与分数不会随 AI 请求发送；对应章节会说明资料不足。你自行填写的背景仍会按预览提交。更改选项只影响下一次请求，不能撤回已发送的资料。</small></span></label><details class="ai-transfer-preview"><summary>发送前，查看将提交的全部资料</summary><p class="muted">接收方：<span id="ai-recipient">${esc(state.endpoint || "本站 /api/analyze")} → DeepSeek 官方 API</span>。包括所选题目回答、重新计分用设置及你填写的背景；不含保存时间、姓名、访问口令或其他浏览器数据。</p><pre id="ai-payload-preview">${esc(JSON.stringify(makeAnalysisRequest(session, state.context, state.health), null, 2))}</pre></details><label class="ai-check"><input type="checkbox" name="consent" ${state.consent ? "checked" : ""} required><span>我已满18岁，理解这是探索而非诊断，并同意将上述资料发送至分析服务及 DeepSeek 处理。<small>网站后端不主动保存答卷或报告正文；托管商与 DeepSeek 可能按各自政策处理请求（<a href="https://cdn.deepseek.com/policies/zh-CN/deepseek-open-platform-privacy-policy.html" target="_blank" rel="noopener noreferrer">DeepSeek 开放平台隐私政策</a>）。AI报告仅保留在本页内存，刷新后请重新生成或使用已下载副本。</small></span></label>${state.error ? `<p class="ai-error" role="alert">${esc(state.error)}</p>` : ""}<div class="ai-submit-row"><button type="submit" class="button primary" ${state.busy || !coverage.ready || isDemo || service.state !== "ready" ? "disabled" : ""}>${state.busy ? "DeepSeek 正在综合与复核…" : result ? "根据当前答卷重新综合" : "生成我的 AI 综合分析"}</button>${state.busy ? '<button type="button" class="button ghost" data-ai-action="cancel">取消等待</button>' : '<a class="text-button" href="#/review">回看／补充回答</a>'}</div>${state.busy ? '<p class="ai-progress" role="status">正在整合跨领域资料、复核反例与关系差异，再检查引用，可能需要几分钟。请勿重复提交。</p>' : ""}</form></div></section>`;
+  )}<details class="ai-connection"><summary>分析服务与访问设置</summary><label class="ai-field">分析服务地址<input type="url" name="endpoint" value="${esc(state.endpoint)}" placeholder="同站点部署可留空；外部服务填 https://…/api/analyze"><small>GitHub Pages 需连接独立分析服务。此地址只在本页内存中保存。</small></label><label class="ai-field">站点分析口令<input type="password" name="accessCode" value="${esc(state.code)}" autocomplete="off" placeholder="由站点维护者提供，不是 DeepSeek API Key"><small>不要在网页中输入 DeepSeek 密钥；口令仅保存在当前页面内存。</small></label></details><label class="ai-check"><input type="checkbox" name="health" ${state.health ? "checked" : ""}><span>同时分享我已作答的心理健康部分（可选）<small>未勾选时，PHQ-9、GAD-7、PCL-5 的答案与分数不会随 AI 请求发送；对应章节会说明资料不足。你自行填写的背景仍会按预览提交。更改选项只影响下一次请求，不能撤回已发送的资料。</small></span></label><details class="ai-transfer-preview"><summary>发送前，查看将提交的全部资料</summary><p class="muted">接收方：<span id="ai-recipient">${esc(state.endpoint || "本站 /api/analyze")} → DeepSeek 官方 API</span>。包括所选题目回答、重新计分用设置及你填写的背景；不含保存时间、姓名、访问口令或其他浏览器数据。</p><pre id="ai-payload-preview">${esc(JSON.stringify(makeAnalysisRequest(session, state.context, state.health), null, 2))}</pre></details><label class="ai-check"><input type="checkbox" name="consent" ${state.consent ? "checked" : ""} required><span>我已满18岁，理解这是探索而非诊断，并同意将上述资料发送至分析服务及 DeepSeek 处理。<small>未选择提交给创建者时，网站后端不保存答卷或报告正文；已选择时会按授权保存给创建者查看。托管商与 DeepSeek 可能按各自政策处理请求（<a href="https://cdn.deepseek.com/policies/zh-CN/deepseek-open-platform-privacy-policy.html" target="_blank" rel="noopener noreferrer">DeepSeek 开放平台隐私政策</a>）。AI报告仅保留在本页内存，刷新后请重新生成或使用已下载副本。</small></span></label>${state.error ? `<p class="ai-error" role="alert">${esc(state.error)}</p>` : ""}<div class="ai-submit-row"><button type="submit" class="button primary" ${state.busy || !coverage.ready || isDemo || service.state !== "ready" ? "disabled" : ""}>${state.busy ? "DeepSeek 正在综合与复核…" : result ? "根据当前答卷重新综合" : "生成我的 AI 综合分析"}</button>${state.busy ? '<button type="button" class="button ghost" data-ai-action="cancel">取消等待</button>' : '<a class="text-button" href="#/review">回看／补充回答</a>'}</div>${state.busy ? '<p class="ai-progress" role="status">正在整合跨领域资料、复核反例与关系差异，再检查引用，可能需要几分钟。请勿重复提交。</p>' : ""}</form></div>${result ? "</details>" : ""}</section>`;
 }
 function updatePreview() {
   syncChatUI();
@@ -439,6 +403,7 @@ export function aiReportMarkdown(result) {
 }
 export function configureAI(config) {
   hooks = config;
+  configureReader();
   configureChat({
     getMemory: () => {
       const session = hooks.getSession();
@@ -457,7 +422,7 @@ export function configureAI(config) {
   window.addEventListener("beforeprint", () =>
     document
       .querySelectorAll(
-        "details.ai-evidence, details.ai-analysis-section, details.ai-formulation, details.ai-theory-perspective, details.ai-chat-panel",
+        "details.ai-evidence, details.ai-analysis-section, details.ai-formulation, details.ai-theory-perspective, details.ai-chat-panel, details.reader-disclosure",
       )
       .forEach((el) => {
         if (el.dataset.wasOpen === undefined)
@@ -468,7 +433,7 @@ export function configureAI(config) {
   window.addEventListener("afterprint", () =>
     document
       .querySelectorAll(
-        "details.ai-evidence, details.ai-analysis-section, details.ai-formulation, details.ai-theory-perspective, details.ai-chat-panel",
+        "details.ai-evidence, details.ai-analysis-section, details.ai-formulation, details.ai-theory-perspective, details.ai-chat-panel, details.reader-disclosure",
       )
       .forEach((el) => {
         if (el.dataset.wasOpen === "false") el.open = false;
@@ -502,19 +467,6 @@ export function configureAI(config) {
     if (!button) return;
     const action = button.dataset.aiAction;
     if (action === "check-service") checkService();
-    if (action === "scroll") {
-      const section = document.getElementById(
-        "ai-section-" + button.dataset.target,
-      );
-      if (section) {
-        section.open = true;
-        section.scrollIntoView({
-          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
-            ? "instant"
-            : "smooth",
-        });
-      }
-    }
     if (action === "expand" || action === "collapse")
       document
         .querySelectorAll("details.ai-analysis-section")
@@ -535,6 +487,8 @@ export function configureAI(config) {
       const input = document.querySelector(
         'textarea[data-ai-context="counterexample"]',
       );
+      const editor = document.querySelector("details.ai-reanalysis");
+      if (editor) editor.open = true;
       if (input) {
         input.value = state.context.counterexample;
         input.focus({ preventScroll: true });
@@ -664,6 +618,7 @@ export function configureAI(config) {
       state.sourceKey = key;
       state.sourceContext = draftKey;
       state.consent = false;
+      window.dispatchEvent(new Event("inner-atlas:report-ready"));
       hooks.toast("综合报告已生成。请结合真实经历核实，也可以下载保存。");
     } catch (error) {
       if (id === generation)

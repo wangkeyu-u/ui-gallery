@@ -1,3 +1,12 @@
+import { configureOwner, renderOwner } from "./owner-ui.js";
+import {
+  configureCollection,
+  collectionSetupMarkup,
+  collectionStatusMarkup,
+  scheduleSubmission,
+  resetCollectionClient,
+} from "./collection-ui.js";
+import { newCollection } from "./collection-contract.js";
 import {
   VERSION,
   OPTIONS,
@@ -18,6 +27,7 @@ import {
   configureAI,
   clearAIState,
   currentAIResult,
+  currentAIArchive,
   aiReportMarkdown,
 } from "./ai-ui.js";
 const app = document.querySelector("#app"),
@@ -77,6 +87,7 @@ function toast(text) {
 }
 function persist() {
   if (!session) return;
+  scheduleSubmission();
   try {
     if (session.config.remember) {
       localStorage.setItem(KEY, JSON.stringify(session));
@@ -185,7 +196,7 @@ function setup() {
       .map(([id, title, desc]) => toggle(id, title, desc, true))
       .join(
         "",
-      )}<h3 class="subheading">可选的认知与判断探索</h3>${toggle("jung", "荣格八维探索", "24道原创题，观察信息与判断偏好；不计算MBTI或功能栈。", cfg.jung)}<h3 class="subheading">可选的心理健康部分</h3>${toggle("health", "近两周情绪与焦虑筛查", "PHQ-9 + GAD-7，包含自伤念头条目。可随时跳过；无法诊断或排除疾病。", false)}${toggle("trauma", "近一个月创伤相关体验", "PCL-5，围绕严重威胁性事件；无需叙述事件。本项目译文未验证，仅报原始分。", false)}<h3 class="subheading">进度与隐私</h3>${toggle("remember", "在这台设备保存进度", "默认仅存在当前页面内存。开启后会保存在此浏览器，使用共用设备时请慎选。", false)}</section><aside class="setup-summary panel"><span class="eyebrow">YOUR JOURNEY</span><span class="big-number" id="setup-count">${activeQuestions(cfg).length}<span>题</span></span><p id="setup-time">预计 33–46 分钟</p><div class="summary-lines"><span>${icon("check")} 分章节完成，随时暂停</span><span>${icon("check")} 结果逐项解释，依据可查</span><span>${icon("check")} 无账号，无广告，无付费解锁</span></div><div class="notice small"><p>本网站适用于 18 岁及以上成人自我探索。中文为项目译文，未完成中国常模、等值性或临床验证；不适用于医疗诊断或选人决策。</p></div><label class="consent"><input type="checkbox" name="adult" required><span>我已满 18 岁，了解本次探索的用途与限制。</span></label><button class="button primary full" type="submit">准备好了，开始 ${icon("arrow")}</button><button class="text-button full" type="button" data-action="import">${icon("upload")} 导入以前的答题备份</button></aside></div></form>`,
+      )}<h3 class="subheading">可选的认知与判断探索</h3>${toggle("jung", "荣格八维探索", "24道原创题，观察信息与判断偏好；不计算MBTI或功能栈。", cfg.jung)}<h3 class="subheading">可选的心理健康部分</h3>${toggle("health", "近两周情绪与焦虑筛查", "PHQ-9 + GAD-7，包含自伤念头条目。可随时跳过；无法诊断或排除疾病。", false)}${toggle("trauma", "近一个月创伤相关体验", "PCL-5，围绕严重威胁性事件；无需叙述事件。本项目译文未验证，仅报原始分。", false)}${collectionSetupMarkup()}<h3 class="subheading">进度与隐私</h3>${toggle("remember", "在这台设备保存进度", "默认仅存在当前页面内存。开启后会保存在此浏览器，使用共用设备时请慎选。", false)}</section><aside class="setup-summary panel"><span class="eyebrow">YOUR JOURNEY</span><span class="big-number" id="setup-count">${activeQuestions(cfg).length}<span>题</span></span><p id="setup-time">预计 33–46 分钟</p><div class="summary-lines"><span>${icon("check")} 分章节完成，随时暂停</span><span>${icon("check")} 结果逐项解释，依据可查</span><span>${icon("check")} 无账号，无广告，无付费解锁</span></div><div class="notice small"><p>本网站适用于 18 岁及以上成人自我探索。中文为项目译文，未完成中国常模、等值性或临床验证；不适用于医疗诊断或选人决策。</p></div><label class="consent"><input type="checkbox" name="adult" required><span>我已满 18 岁，了解本次探索的用途与限制。</span></label><button class="button primary full" type="submit">准备好了，开始 ${icon("arrow")}</button><button class="text-button full" type="button" data-action="import">${icon("upload")} 导入以前的答题备份</button></aside></div></form>`,
   );
 }
 function toggle(id, title, desc, checked) {
@@ -492,7 +503,7 @@ function report() {
       )
       .join(
         "",
-      )}</div><div class="report-end"><p>一个分数无法概括你；你也可以对这份报告保留不同意见。</p><a href="#/sources">了解计分与解释的边界 ${icon("arrow")}</a></div>`,
+      )}</div>${demo ? "" : `<div data-collection-slot>${collectionStatusMarkup()}</div>`}<div class="report-end"><p>一个分数无法概括你；你也可以对这份报告保留不同意见。</p><a href="#/sources">了解计分与解释的边界 ${icon("arrow")}</a></div>`,
     { wide: true },
   );
 }
@@ -515,12 +526,13 @@ function sources() {
 }
 function privacy() {
   shell(
-    `<div class="page-intro compact"><span class="eyebrow">YOUR ANSWERS ARE YOURS</span><h1>关于你的数据，清清楚楚。</h1><p>本地计分无需联网提交；DeepSeek 综合分析由你主动开启并确认发送范围。无广告和第三方统计脚本。</p></div><div class="privacy-grid"><section class="panel"><h2>${icon("lock")} 答案放在哪里？</h2><p>默认只存在当前页面的内存中，刷新或关闭后会丢失。只有勾选“在这台设备保存进度”，答题与设置才会写入浏览器 localStorage。</p><p>这不是加密保险箱。同一浏览器的使用者、同源的其他网站项目、能读取设备的程序或浏览器扩展可能访问它；共用设备建议关闭保存，并在结束后清除。</p><h3>什么会经过网络？</h3><p>GitHub Pages 提供网站文件，可能记录普通访问日志，例如 IP 地址；普通本地计分不会上传答案。点击“生成 AI 综合分析”并授权后，选定范围的回答与背景会发送给你设置的分析服务，再由它调用 DeepSeek 官方 API。健康部分需要额外勾选才发送。点击来源链接会访问相应外部网站。</p><h3>报告怎么生成？</h3><p>量表分数由固定规则计算；AI 综合报告由 DeepSeek 结合整份答卷、背景、提示词和策划知识库生成。后端检查引用是否存在及报告结构，但不能保证每条解释准确。每次发送前可展开查看全部请求资料。</p></section><section class="panel"><h2>由你控制</h2><p>答题备份 JSON 含原始回答和设置；AI报告、普通报告和打印件均可能含敏感结果。AI背景、报告与分析口令只保存在当前页面内存，不写入本机答题备份。后端不主动保存正文；托管商与DeepSeek仍可能按各自政策处理请求，不能由本网站承诺零留存。下载副本由你自行管理。</p><div class="privacy-actions"><button class="button ghost" data-action="backup">${icon("download")} 下载当前答题备份</button><button class="button ghost" data-action="import">${icon("upload")} 导入备份</button><button class="button danger" data-action="erase">清除当前页面与已保存的答题数据</button></div><p class="caption">清除不会删除你已经下载的文件或打印件。你需要在设备中自行删除这些副本。</p><h3>用途与版本</h3><p>适用 18 岁及以上成人自我探索。此版本未经临床验证，不用于诊断、治疗、人员招聘、司法或其他高风险决策。</p><a href="#/sources">阅读完整依据与限制 ${icon("arrow")}</a></section></div>`,
+    `<div class="page-intro compact"><span class="eyebrow">YOUR ANSWERS ARE YOURS</span><h1>关于你的数据，清清楚楚。</h1><p>本地计分无需联网提交；DeepSeek 综合分析由你主动开启并确认发送范围。无广告和第三方统计脚本。</p></div><div class="privacy-grid"><section class="panel"><h2>${icon("lock")} 答案放在哪里？</h2><p>默认只存在当前页面的内存中，刷新或关闭后会丢失。只有勾选“在这台设备保存进度”，答题与设置才会写入浏览器 localStorage。</p><p>这不是加密保险箱。同一浏览器的使用者、同源的其他网站项目、能读取设备的程序或浏览器扩展可能访问它；共用设备建议关闭保存，并在结束后清除。</p><h3>什么会经过网络？</h3><p>GitHub Pages 提供网站文件，可能记录普通访问日志，例如 IP 地址；未选择提交给创建者时，普通本地计分不上传答案；选择同意提交后，作答进度与总结会自动保存到创建者服务器。点击“生成 AI 综合分析”并授权后，选定范围的回答与背景会发送给你设置的分析服务，再由它调用 DeepSeek 官方 API。健康部分需要额外勾选才发送。点击来源链接会访问相应外部网站。</p><h3>报告怎么生成？</h3><p>量表分数由固定规则计算；AI 综合报告由 DeepSeek 结合整份答卷、背景、提示词和策划知识库生成。后端检查引用是否存在及报告结构，但不能保证每条解释准确。每次发送前可展开查看全部请求资料。</p></section><section class="panel"><h2>由你控制</h2><p>答题备份 JSON 含原始回答和设置；AI报告、普通报告和打印件均可能含敏感结果。AI背景、报告与分析口令只保存在当前页面内存，不写入本机答题备份。未选择提交给创建者时，后端不保存正文；选择后，已同意范围的答卷、背景和总结会保存给创建者查看。托管商与DeepSeek仍可能按各自政策处理请求，不能由本网站承诺零留存。下载副本由你自行管理。</p><div class="privacy-actions"><button class="button ghost" data-action="backup">${icon("download")} 下载当前答题备份</button><button class="button ghost" data-action="import">${icon("upload")} 导入备份</button><button class="button danger" data-action="erase">清除当前页面与已保存的答题数据</button></div><p class="caption">清除本机不会删除已提交给创建者的记录；如需撤回，请先在下方停止共享。清除也不会删除你已经下载的文件或打印件。你需要在设备中自行删除这些副本。</p><h3>用途与版本</h3><p>适用 18 岁及以上成人自我探索。此版本未经临床验证，不用于诊断、治疗、人员招聘、司法或其他高风险决策。</p><a href="#/sources">阅读完整依据与限制 ${icon("arrow")}</a></section></div><div data-collection-slot="active-only">${collectionStatusMarkup({ allowNew: false })}</div>`,
   );
 }
 function render() {
   const path = route();
-  if (path === "/") home();
+  if (path === "/owner") renderOwner();
+  else if (path === "/") home();
   else if (path === "/modules") modules();
   else if (path === "/setup") setup();
   else if (path === "/quiz") quiz();
@@ -549,9 +561,10 @@ function backup() {
     toast("当前没有答题进度。");
     return;
   }
+  const { collection, ...portableSession } = session;
   download(
     "见己-私密答题备份.json",
-    JSON.stringify(session, null, 2),
+    JSON.stringify(portableSession, null, 2),
     "application/json",
   );
   toast("已下载含原始回答的备份，请妥善保存。");
@@ -720,9 +733,13 @@ document.addEventListener("click", (e) => {
   else if (a === "erase")
     dialog(
       "清除答题数据？",
-      "<p>将删除当前页面与这个浏览器中本网站保存的回答、报告进度和设置。已下载的文件需要你自行删除。</p>",
+      "<p>将删除当前页面与这个浏览器中本网站保存的回答、报告进度和设置。已下载的文件需要你自行删除。</p>" +
+        (session?.collection
+          ? "<p>这不会删除服务器记录。需要撤回时，请在隐私页先停止共享。</p>"
+          : ""),
       () => {
         clearAIState();
+        resetCollectionClient();
         session = null;
         demo = false;
         try {
@@ -799,12 +816,15 @@ document.addEventListener("change", async (e) => {
       return;
     }
     try {
-      const next = validateSession(JSON.parse(await file.text()));
+      const raw = JSON.parse(await file.text());
+      if (raw && typeof raw === "object") delete raw.collection;
+      const next = validateSession(raw);
       dialog(
         "导入答题备份？",
         "<p>将替换当前页面中的答题进度。导入文件可能含敏感回答；保存方式沿用文件中的本机保存设置。建议先下载当前进度。</p>",
         () => {
           clearAIState();
+          resetCollectionClient();
           session = next;
           demo = false;
           persist();
@@ -836,7 +856,15 @@ document.addEventListener("submit", (e) => {
       index: 0,
       finished: false,
       created: new Date().toISOString(),
+      ...(form.elements.collect?.checked
+        ? {
+            collection: newCollection(
+              form.elements.participantLabel?.value || "",
+            ),
+          }
+        : {}),
     };
+    resetCollectionClient();
     demo = false;
     persist();
     go("/quiz");
@@ -888,5 +916,13 @@ configureAI({
   render,
   toast,
   download,
+});
+configureOwner({ shell, toast });
+configureCollection({
+  getSession: () => session,
+  getAnalysis: () => currentAIArchive(session, demo),
+  persist,
+  render,
+  toast,
 });
 render();

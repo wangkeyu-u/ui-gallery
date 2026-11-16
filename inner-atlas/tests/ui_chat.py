@@ -6,7 +6,7 @@ BASE=os.environ.get('AI_PREVIEW_URL','http://127.0.0.1:4190').rstrip('/')
 OUT=Path(tempfile.mkdtemp(prefix='inner-atlas-chat-ui-'))
 session=json.loads(subprocess.check_output(['node','--input-type=module','-e',"import {fixtureSession} from './tests/fixtures/ai.mjs';console.log(JSON.stringify(fixtureSession({health:true,remember:true})));"],text=True))
 with sync_playwright() as p:
- browser=p.chromium.launch(executable_path=shutil.which('chromium'),headless=True,args=['--no-sandbox'])
+ browser=p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('chromium'),headless=True,args=['--no-sandbox'])
  page=browser.new_page(viewport={'width':390,'height':844},accept_downloads=True)
  errors=[];posts=[]
  page.on('pageerror',lambda e:errors.append(str(e)))
@@ -36,6 +36,7 @@ with sync_playwright() as p:
  for width in [360,390,768,1440]:
   page.set_viewport_size({'width':width,'height':844});assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
  question=page.locator('#ai-chat-form textarea');question.fill('新的问题')
+ page.locator('details.ai-reanalysis > summary').click()
  goal=page.locator('textarea[data-ai-context=goal]');goal.fill('新目标');assert page.locator('.ai-chat-stale').is_visible();assert page.get_by_role('button',name='发送追问',exact=True).is_disabled();goal.fill('');assert page.get_by_role('button',name='发送追问',exact=True).is_enabled()
  form=page.locator('#ai-analysis-form');form.locator('input[name=health]').check();assert page.get_by_role('button',name='发送追问',exact=True).is_disabled();form.locator('input[name=health]').uncheck()
  answers_before=page.evaluate('JSON.parse(localStorage.getItem("inner-atlas.v1.session")).answers')

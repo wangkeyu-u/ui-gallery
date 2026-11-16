@@ -28,7 +28,7 @@ export const reviewPrompt = await readFile(
   new URL("../ai/review-prompt.md", import.meta.url),
   "utf8",
 );
-export const PROMPT_VERSION = "2026-11-16.4";
+export const PROMPT_VERSION = "2026-11-16.5";
 export const systemPrompt = await readFile(
   new URL("../ai/system-prompt.md", import.meta.url),
   "utf8",

@@ -1,4 +1,13 @@
 export const DEEPSEEK_MODELS = ["deepseek-flash", "deepseek-v4-pro"];
+export function collectionConfiguration(env = {}) {
+  const requested = env.COLLECT_SUBMISSIONS === "true";
+  const ownerToken = (env.OWNER_ACCESS_TOKEN || "").trim();
+  const privateKey =
+    ownerToken.length >= 32 &&
+    ownerToken !== (env.ANALYSIS_ACCESS_TOKEN || "").trim() &&
+    ownerToken !== (env.DEEPSEEK_API_KEY || "").trim();
+  return { requested, enabled: requested && privateKey, ownerToken };
+}
 export function serverConfiguration(env = {}) {
   const apiKey = env.DEEPSEEK_API_KEY || "",
     access = env.ANALYSIS_ACCESS_TOKEN || "",
@@ -79,6 +88,14 @@ export function configurationReport(env = {}) {
     ok: Number.isInteger(chatHourly) && chatHourly >= 1 && chatHourly <= 100,
     message: "每小时追问尝试额度为1–100的整数",
   });
+  const collection = collectionConfiguration(env);
+  if (collection.requested) {
+    checks.push({
+      id: "owner_access",
+      ok: collection.enabled,
+      message: "归档需要至少32字符且独立于分析口令与模型密钥的创建者密钥",
+    });
+  }
   return {
     configured: config.configured,
     ready: checks.every((c) => c.ok),
