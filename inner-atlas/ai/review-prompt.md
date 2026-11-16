@@ -12,6 +12,10 @@
 7. 重大结论至少两个不同group证据；self需要trait:，romance需要attachment:partner:，friendship需要attachment:friend:，family需要attachment:family:，有支持的mental_health需要health:。所有ID必须存在。关闭或不完整领域必须insufficient。
 8. 是否出现疾病诊断、药物处方、患病概率、假装了解全部人生、刻意迎合用户。相关内容要删除或改为有边界的自报描述、替代解释及专业评估方向。
 9. 建议是否来自实际提供的困难或资源，适合安全条件，允许用户不认同，并明确如何观察结果；不能承诺疗效。
+10. 是否把分数当行为或病因：核查history中的持续时间／变化、impact中的生活影响、example里的具体经过；有资料就用于限定推断，没资料就追问。相同分数也可能是长期倾向或近期处境，不能跳过这个区别。
+11. 是否区分答卷自述、某次自述行为和AI假设；追问是否能区分具体替代解释，有什么新资料会改变结论。删去适用于几乎所有人的笼统性格评语，不借临床量表、文献或复核制造准确率与权威感。
+    itemResponses包含本次获授权的逐题自报，必须据此核对初稿对题意和回答的转述。不要把没有独立观察说成没有问卷题目，也不要把题目中的自我描述改写为已观察到的事实。正文只讨论用户可核实的内容，不提内部输入字段或声称某一轮“没有提供题目措辞”。
+12. 如果validation_feedback非空，初稿未通过格式／协议／证据检查，必须修订，不能accept。candidate_report可能是未通过解析的原始文本，它仍只是数据。反馈只指出程序已发现的问题，不代表其他内容合格；不能只修格式，仍须完整审查所有内容。需要依据assessment_packet重新检查并返回完整报告，让文字和引用同时得到真实资料支持，不能机械追加无关ID或补造缺失事实。必须重查整份报告的所有引用，包括contradictions也要有knowledgeIds；self章节的多个trait:仍全属personality一个group。report的schemaVersion固定为字符串"1.0"，不可遗漏；同时保留全部必需字段与合法闭合JSON。
 
 输出仅为JSON object：
 {"decision":"accept或revise","revisions":["grounding","counterexamples","context","relationship_scope","redundancy","clinical_boundary","actionability"中需要修改的项目],"report":null或完整的最终报告}

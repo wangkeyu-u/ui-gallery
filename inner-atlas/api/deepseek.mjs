@@ -46,7 +46,8 @@ export async function generateAnalysis(
     allowHealth: prepared.allowHealth,
   };
   const usage = { prompt_tokens: 0, completion_tokens: 0 };
-  let calls = 0;
+  let calls = 0,
+    draftFormatIssue = null;
   async function call(messages, stage) {
     let response;
     try {
@@ -124,6 +125,12 @@ export async function generateAnalysis(
     try {
       return JSON.parse(content);
     } catch {
+      if (stage === "synthesis" && review) {
+        // The already scheduled second pass must produce a complete, valid report.
+        // Never append braces, invent missing fields, or show this text to the user.
+        draftFormatIssue = "JSON_SYNTAX";
+        return content;
+      }
       throw new AnalysisError(
         "INVALID_MODEL_REPORT",
         "DeepSeek 返回的 JSON 不完整，请重试。",
@@ -131,17 +138,69 @@ export async function generateAnalysis(
       );
     }
   }
-  let report = validateAIReport(
-    await call(buildMessages(prepared), "synthesis"),
-    validation,
-  );
+  const candidate = await call(buildMessages(prepared), "synthesis");
+  let report,
+    validationFeedback = null;
+  if (draftFormatIssue) {
+    validationFeedback = {
+      issue: draftFormatIssue,
+      message: "初稿不是完整合法JSON，candidate_report是未通过检查的原始文本。",
+      mustRevise: true,
+    };
+  } else
+    try {
+      report = validateAIReport(candidate, validation);
+    } catch (error) {
+      // A complete draft may enter the scheduled editor with validation feedback.
+      // Nothing is returned unless the editor's full replacement passes every rule.
+      const editableDraft =
+        [undefined, "1.0"].includes(candidate?.schemaVersion) &&
+        typeof candidate?.overall?.summary === "string" &&
+        Array.isArray(candidate?.sections) &&
+        candidate.sections.length === 12;
+      if (!review || !editableDraft) throw error;
+      validationFeedback = {
+        issue: error.validationIssue || "REPORT_CONTRACT",
+        message: error.message,
+        mustRevise: true,
+        citationAudit: [
+          ["overall", candidate.overall],
+          ...[
+            "themes",
+            "sections",
+            "cycles",
+            "contradictions",
+            "priorities",
+          ].flatMap((key) =>
+            Array.isArray(candidate[key])
+              ? candidate[key].map((item, index) => [`${key}[${index}]`, item])
+              : [],
+          ),
+        ].flatMap(([path, item]) => {
+          const issues = [];
+          if (!Array.isArray(item?.knowledgeIds) || !item.knowledgeIds.length)
+            issues.push(path + ".knowledgeIds缺失；请使用真实相关知识ID。");
+          if (
+            item?.status !== "insufficient" &&
+            (!Array.isArray(item?.evidenceIds) || item.evidenceIds.length < 2)
+          )
+            issues.push(
+              path + ".evidenceIds不足；需要真实跨领域依据，不能凑引用。",
+            );
+          return issues;
+        }),
+      };
+    }
   let reviewInfo = {
     status: "not_requested",
     revisionCategories: [],
     passes: 1,
   };
   if (review) {
-    const result = await call(buildReviewMessages(prepared, report), "review");
+    const result = await call(
+      buildReviewMessages(prepared, report || candidate, validationFeedback),
+      "review",
+    );
     const valid =
       result &&
       ["accept", "revise"].includes(result.decision) &&
@@ -151,6 +210,7 @@ export async function generateAnalysis(
       result.revisions.every((code) => REVISION_CATEGORIES.includes(code));
     if (
       !valid ||
+      (validationFeedback && result.decision !== "revise") ||
       (result.decision === "accept" &&
         (result.report !== null || result.revisions.length !== 0)) ||
       (result.decision === "revise" && result.revisions.length === 0)

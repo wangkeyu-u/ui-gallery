@@ -1,8 +1,8 @@
 """End-to-end UI test with a simulated DeepSeek upstream. No real API call or real personal data."""
 from playwright.sync_api import sync_playwright
 from pathlib import Path
-import json,subprocess,tempfile,shutil
-BASE='http://127.0.0.1:4175'
+import json,subprocess,tempfile,shutil,os
+BASE=os.environ.get('AI_PREVIEW_URL','http://127.0.0.1:4175').rstrip('/')
 OUT=Path(tempfile.mkdtemp(prefix='inner-atlas-ai-ui-'))
 session=json.loads(subprocess.check_output(['node','--input-type=module','-e',"import {fixtureSession} from './tests/fixtures/ai.mjs'; console.log(JSON.stringify(fixtureSession({health:true,trauma:true,remember:true})))"],text=True))
 with sync_playwright() as p:
@@ -18,6 +18,9 @@ with sync_playwright() as p:
  assert page.get_by_role('button',name='生成我的 AI 综合分析').is_enabled()
  assert not [r for r in requests if r.method=='POST']
  form.locator('textarea[data-ai-context=goal]').fill('想理解恋人和朋友关系的不同反应。')
+ form.locator('textarea[data-ai-context=history]').fill('最近三周出现，以前通常没有。')
+ form.locator('textarea[data-ai-context=impact]').fill('两次影响工作安排。')
+ form.locator('textarea[data-ai-context=example]').fill('我询问具体安排，对方解释后重新约定。')
  form.locator('textarea[data-ai-context=counterexample]').fill('有些时候我可以直接表达，不需要反复确认。')
  form.locator('details.ai-connection summary').click()
  form.locator('input[name=accessCode]').fill('ui-test-access-code-1234567890')
@@ -33,6 +36,9 @@ with sync_playwright() as p:
  assert page.locator('.ai-analysis-section').count()==12
  posts=[r for r in requests if r.method=='POST'];assert len(posts)==1
  posted=json.loads(posts[0].post_data);assert posted['consent']['health'] is False
+ assert posted['context']['history']=='最近三周出现，以前通常没有。'
+ assert posted['context']['impact']=='两次影响工作安排。'
+ assert posted['context']['example']=='我询问具体安排，对方解释后重新约定。'
  assert not any(q.startswith(('phq-','gad-','pcl-')) for q in posted['session']['answers'])
  assert page.locator('.ai-portrait').is_visible()
  assert page.locator('.ai-theme-grid img').count()==0

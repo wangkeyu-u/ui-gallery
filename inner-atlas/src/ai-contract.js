@@ -42,12 +42,14 @@ export function validateAIReport(
     allowHealth = false,
   } = {},
 ) {
-  const fail = (message) => {
-    throw new AnalysisError(
+  const fail = (message, validationIssue) => {
+    const error = new AnalysisError(
       "INVALID_MODEL_REPORT",
       "AI 返回的报告未通过证据和结构检查：" + message,
       502,
     );
+    if (validationIssue) error.validationIssue = validationIssue;
+    throw error;
   };
   const text = (s, max = 3000) => {
     if (typeof s !== "string" || !s.trim() || s.length > max)
@@ -81,7 +83,7 @@ export function validateAIReport(
       multi &&
       new Set(evidenceIds.map((id) => evidenceMap.get(id).group)).size < 2
     )
-      fail("综合结论需要不同领域的证据");
+      fail("综合结论需要不同领域的证据", "CROSS_DOMAIN_EVIDENCE");
     return { evidenceIds, knowledgeIds: refs(x.knowledgeIds, "knowledge") };
   };
   if (!value || value.schemaVersion !== AI_CONTRACT_VERSION) fail("版本不匹配");
@@ -141,7 +143,7 @@ export function validateAIReport(
       value.status === "supported" &&
       !value.evidenceIds.some((id) => id.startsWith(prefix))
     )
-      fail("章节缺少对应领域的直接证据");
+      fail("章节缺少对应领域的直接证据", "DIRECT_DOMAIN_EVIDENCE");
   }
   report.sections.sort(
     (a, b) =>

@@ -7,6 +7,7 @@ import {
   buildMessages,
   knowledge,
   systemPrompt,
+  buildReviewMessages,
 } from "../api/analysis.mjs";
 import { generateAnalysis, DEEPSEEK_URL } from "../api/deepseek.mjs";
 import { createApp } from "../api/http.mjs";
@@ -60,8 +61,8 @@ test("AI sends full core data, recomputes scores, strips timestamps and keeps a 
   assert.ok(analysisCoverage(fixtureSession()).ready);
 });
 test("knowledge is versioned, source-backed and synthesis prompt requires alternatives and cross-domain evidence", () => {
-  assert.equal(knowledge.entries.length, 24);
-  assert.equal(new Set(knowledge.entries.map((e) => e.id)).size, 24);
+  assert.equal(knowledge.entries.length, 27);
+  assert.equal(new Set(knowledge.entries.map((e) => e.id)).size, 27);
   assert.ok(knowledge.entries.every((e) => e.sourceIds.length && e.content));
   assert.match(systemPrompt, /不是逐题解说/);
   assert.match(systemPrompt, /不同 group/);
@@ -128,6 +129,44 @@ test("explicit consent, coverage, enabled questions and context length are enfor
   assert.throws(
     () => prepareAnalysis({ ...input(), model: "untrusted-model" }),
     (e) => e.code === "INVALID_REQUEST",
+  );
+});
+test("duration, function and concrete self-reported behavior reach both passes without becoming clinical scores", () => {
+  const context = {
+    history: "最近三周出现，以前通常没有。",
+    impact: "两次影响工作安排。",
+    example: "我发消息询问，对方解释后我们重新约定。",
+  };
+  const request = makeAnalysisRequest(fixtureSession(), context, false);
+  const p = prepareAnalysis(request);
+  for (const [id, text] of Object.entries(context)) {
+    assert.equal(p.evidence.find((e) => e.id === "context:" + id).value, text);
+    assert.ok(p.packet.assessment_frame.availableContext.includes(id));
+    assert.equal(
+      p.evidence.find((e) => e.id === "context:" + id).kind,
+      "self_report",
+    );
+  }
+  assert.ok(
+    p.packet.assessment_frame.missingContext.includes("counterexample"),
+  );
+  assert.deepEqual(
+    JSON.parse(buildReviewMessages(p, fixtureReport(p))[1].content)
+      .assessment_packet.context,
+    context,
+  );
+  assert.ok(p.disabledSections.includes("mental_health"));
+  assert.ok(!p.evidence.some((e) => e.id.startsWith("health:")));
+  const bad = structuredClone(request);
+  bad.context.history = { duration: "三周" };
+  assert.throws(
+    () => prepareAnalysis(bad),
+    (e) => e.code === "INVALID_CONTEXT",
+  );
+  bad.context = { diagnosis: "由我指定的诊断" };
+  assert.throws(
+    () => prepareAnalysis(bad),
+    (e) => e.code === "INVALID_CONTEXT",
   );
 });
 test("user instructions stay in data, not in system messages", () => {
@@ -200,7 +239,6 @@ test("empty, truncated, malformed or fabricated provider output is rejected with
   for (const response of [
     fakeResponse("   "),
     fakeResponse("{}", "length"),
-    fakeResponse("{ broken"),
     fakeResponse({ schemaVersion: "bad" }),
     new Response("sensitive provider error", { status: 401 }),
   ]) {
@@ -226,6 +264,68 @@ test("empty, truncated, malformed or fabricated provider output is rejected with
     (e) => e.code === "AI_NOT_CONFIGURED",
   );
   assert.equal(used, false);
+});
+test("the scheduled editor repairs draft JSON or citation scope, but never accepts an invalid draft or adds a third call", async () => {
+  const p = prepareAnalysis(input());
+  const sameGroup = fixtureReport(p);
+  sameGroup.sections.find((s) => s.id === "self").evidenceIds = [
+    "trait:E",
+    "trait:C",
+  ];
+  const missingVersion = fixtureReport(p);
+  delete missingVersion.schemaVersion;
+  const missingKnowledge = fixtureReport(p);
+  delete missingKnowledge.contradictions[0].knowledgeIds;
+  for (const candidate of [
+    "{ broken",
+    sameGroup,
+    missingVersion,
+    missingKnowledge,
+  ]) {
+    let calls = 0;
+    const result = await generateAnalysis(input(), {
+      apiKey: "test",
+      fetchImpl: async (url, init) => {
+        calls++;
+        if (calls === 1) return fakeResponse(candidate);
+        const u = JSON.parse(JSON.parse(init.body).messages[1].content);
+        assert.equal(u.validation_feedback.mustRevise, true);
+        return fakeResponse({
+          decision: "revise",
+          revisions: ["grounding"],
+          report: fixtureReport(p),
+        });
+      },
+    });
+    assert.equal(calls, 2);
+    assert.equal(result.review.status, "revised");
+    let rejectedCalls = 0;
+    await assert.rejects(
+      generateAnalysis(input(), {
+        apiKey: "test",
+        fetchImpl: async () =>
+          fakeResponse(
+            ++rejectedCalls === 1
+              ? candidate
+              : { decision: "accept", revisions: [], report: null },
+          ),
+      }),
+      (e) => e.code === "INVALID_REVIEW",
+    );
+    assert.equal(rejectedCalls, 2);
+  }
+  let singleCalls = 0;
+  await assert.rejects(
+    generateAnalysis(input(), {
+      apiKey: "test",
+      review: false,
+      fetchImpl: async () => {
+        singleCalls++;
+        return fakeResponse("{ broken");
+      },
+    }),
+  );
+  assert.equal(singleCalls, 1);
 });
 async function withServer(fn, overrides = {}) {
   const app = createApp({
@@ -386,7 +486,12 @@ test("review can replace the full report, sees user counterexample, and only fin
         user.assessment_packet.context.counterexample,
         value.context.counterexample,
       );
-      assert.ok(!("itemResponses" in user.assessment_packet));
+      assert.equal(user.assessment_packet.itemResponses.length, 142);
+      assert.ok(
+        !user.assessment_packet.itemResponses.some((q) =>
+          ["phq", "gad", "pcl"].includes(q.module),
+        ),
+      );
       assert.ok(user.candidate_report);
       const revised = fixtureReport(prepared);
       revised.overall.summary =

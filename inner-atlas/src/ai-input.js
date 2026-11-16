@@ -1,6 +1,7 @@
 import { activeQuestions, QUESTIONS } from "./data.js";
 import { assess, validAnswer } from "./engine.js";
 import { AI_CONSENT_VERSION } from "./ai-contract.js";
+import { AI_CONTEXT_IDS } from "./ai-context.js";
 export function analysisCoverage(session) {
   const questions = activeQuestions({
     ...session.config,
@@ -53,7 +54,7 @@ export function makeAnalysisRequest(session, context, health) {
     context: Object.fromEntries(
       Object.entries(context).filter(
         ([key, value]) =>
-          ["goal", "recent", "counterexample"].includes(key) &&
+          AI_CONTEXT_IDS.includes(key) &&
           typeof value === "string" &&
           value.trim(),
       ),

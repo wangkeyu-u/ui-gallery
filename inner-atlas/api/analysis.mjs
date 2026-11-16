@@ -9,6 +9,7 @@ import {
 } from "../src/data.js";
 import { assess, validAnswer, validateSession } from "../src/engine.js";
 import { SOURCES } from "../src/sources.js";
+import { AI_CONTEXT_IDS, AI_CONTEXT_FIELDS } from "../src/ai-context.js";
 import {
   AI_SECTIONS,
   AI_CONTRACT_VERSION,
@@ -25,7 +26,7 @@ export const reviewPrompt = await readFile(
   new URL("../ai/review-prompt.md", import.meta.url),
   "utf8",
 );
-export const PROMPT_VERSION = "2026-11-15.2";
+export const PROMPT_VERSION = "2026-11-16.1";
 export const systemPrompt = await readFile(
   new URL("../ai/system-prompt.md", import.meta.url),
   "utf8",
@@ -74,7 +75,7 @@ export function prepareAnalysis(input) {
     reject("INVALID_CONTEXT", "补充信息格式不正确。");
   for (const [id, value] of Object.entries(input.context || {})) {
     if (
-      !["goal", "recent", "counterexample"].includes(id) ||
+      !AI_CONTEXT_IDS.includes(id) ||
       typeof value !== "string" ||
       value.length > 1000
     )
@@ -182,11 +183,7 @@ export function prepareAnalysis(input) {
       "context:" + id,
       "self_context",
       "self_report",
-      {
-        goal: "用户想进一步理解的事",
-        recent: "近期处境",
-        counterexample: "不符合通常表现的例外",
-      }[id],
+      AI_CONTEXT_FIELDS.find(([key]) => key === id)[1],
       value,
     );
   const disabledSections = [];
@@ -273,6 +270,23 @@ export function prepareAnalysis(input) {
     limitations: results.limits,
     evidence,
     integration_brief: integrationBrief,
+    assessment_frame: {
+      purpose:
+        "成人自我探索；不是标准化临床访谈、临床诊断或经过验证的综合测验。",
+      informationSource:
+        "单次、同一人的自我报告；问卷、情境和背景不等于独立观察。",
+      availableContext: AI_CONTEXT_IDS.filter((id) => context[id]),
+      missingContext: ["history", "impact", "example", "counterexample"].filter(
+        (id) => !context[id],
+      ),
+      interpretationRules: [
+        "先看覆盖、缺失及质量提示。没有经验证的作答效度量表，不能判定说谎、装病或量化可信度。",
+        "原始均值只描述本次回答。没有适用的项目常模、测量误差或重测数据，不能给百分位、显著差异或人格准确率。",
+        "分开题目中的自我描述、具体经历中的自述行为与AI假设；有具体行为才可描述那一次行为，不能外推全部关系。",
+        "历史、持续时间、生活影响缺失时明确追问，不用分数填补；已提供时用于限定推断，而非诊断。",
+        "优先选择能区分两种解释的追问，明确什么新资料会改变当前结论。",
+      ],
+    },
     itemResponses: activeQuestions(session.config).map((q) => ({
       id: q.id,
       module: q.module,
@@ -395,9 +409,12 @@ export function buildMessages(prepared) {
   ];
 }
 
-export function buildReviewMessages(prepared, candidate) {
+export function buildReviewMessages(
+  prepared,
+  candidate,
+  validationFeedback = null,
+) {
   const analysisInput = JSON.parse(buildMessages(prepared)[1].content);
-  const { itemResponses, ...reviewPacket } = prepared.packet;
   return [
     { role: "system", content: reviewPrompt },
     {
@@ -406,8 +423,9 @@ export function buildReviewMessages(prepared, candidate) {
         mode: "review",
         output_contract: analysisInput.output_contract,
         knowledge_base: analysisInput.knowledge_base,
-        assessment_packet: reviewPacket,
+        assessment_packet: prepared.packet,
         candidate_report: candidate,
+        validation_feedback: validationFeedback,
       }),
     },
   ];

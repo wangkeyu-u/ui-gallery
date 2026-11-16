@@ -12,8 +12,8 @@
 - 8个原创探索维度、8个原创情境，不冒充验证量表。
 - 可选PHQ-9、GAD-7；可选PCL-5只记录原始总分。
 - 跳题、章节导航、回看修改、暂停、可选本机保存、JSON备份导入导出、Markdown报告、打印／另存PDF。
-- 32条来源记录与工具取舍，明确哪些是原始研究、机构信息、开放教材、书籍目录或候选工具。
-- DeepSeek综合画像、跨领域主题、12章分析、待验证循环、矛盾反例和行动；整合与复核两套提示词及24条策划知识摘要已包含。默认生成初稿后再作一次AI复核；这不是临床审核。
+- 38条来源记录（原32条基础资料加6条评估方法资料）与工具取舍，明确哪些是原始研究、机构信息、开放教材、书籍目录或候选工具。
+- DeepSeek综合画像、跨领域主题、12章分析、待验证循环、矛盾反例和行动；整合与复核两套提示词及27条策划知识摘要已包含。默认生成初稿后再作一次AI复核；这不是临床审核。
 - 默认本地计分；主动授权才调用AI，健康题单独选择分享。无广告或第三方统计脚本。
 - 开始答题前及报告页可查看分析服务状态，未配置时暂停AI提交；检测只读元数据。
 
@@ -54,7 +54,7 @@ npm run doctor  # 发布前检查后端配置，不输出密钥、不调用DeepS
 - `src/app.js`：路由、答题、报告、隐私和导出。
 - `src/sources.js`：可追溯来源及采纳／排除说明。
 - `tests/engine.test.mjs`：计分和敏感边界回归检查。
-- `ai/system-prompt.md`、`ai/review-prompt.md`、`ai/knowledge/psychology.v1.json`：综合提示词与有来源的24条知识摘要。
+- `ai/system-prompt.md`、`ai/review-prompt.md`、`ai/knowledge/psychology.v1.json`：综合提示词与有来源的27条知识摘要。
 - `api/`：DeepSeek服务端调用与验证，密钥不进入前端。
 - `docs/AI_ANALYSIS.md`：完整设计、配置与部署步骤。
 - `scripts/doctor.mjs`：后端配置检查，可用 `npm run doctor -- --json` 输出不含秘密的检查结果。
@@ -62,3 +62,9 @@ npm run doctor  # 发布前检查后端配置，不输出密钥、不调用DeepS
 - `docs/QA.md`：验证记录。
 
 项目代码MIT；量表内容保留原作者归属及使用条件，见[工具与许可](docs/INSTRUMENTS.md)。
+
+## 评估方法
+
+综合分析增加持续时间、生活影响、具体互动和反例背景；区分自述事实与AI假设。专业工具方法对照、具体实现和验证缺口见[综合评估方法](docs/ASSESSMENT_METHOD.md)。
+
+服务端密钥只使用Git忽略的`.env`或托管平台的秘密变量；不会放入前端或GitHub。真实模型检查与发现见[记录](docs/LIVE_EVALUATION.md)。`npm run eval:live`会调用付费API，不属于自动测试。
