@@ -6,7 +6,11 @@ import {
   knowledge,
   PROMPT_VERSION,
 } from "./analysis.mjs";
-import { validateAIReport, AnalysisError } from "../src/ai-contract.js";
+import {
+  validateAIReport,
+  AnalysisError,
+  AI_CONTRACT_VERSION,
+} from "../src/ai-contract.js";
 export const DEEPSEEK_URL = "https://api.deepseek.com/chat/completions";
 const REVISION_CATEGORIES = [
   "grounding",
@@ -25,7 +29,7 @@ export async function generateAnalysis(
     review = true,
     fetchImpl = fetch,
     signal,
-    timeoutMs = 240000,
+    timeoutMs = 360000,
   } = {},
 ) {
   if (!apiKey)
@@ -154,7 +158,7 @@ export async function generateAnalysis(
       // A complete draft may enter the scheduled editor with validation feedback.
       // Nothing is returned unless the editor's full replacement passes every rule.
       const editableDraft =
-        [undefined, "1.0"].includes(candidate?.schemaVersion) &&
+        [undefined, AI_CONTRACT_VERSION].includes(candidate?.schemaVersion) &&
         typeof candidate?.overall?.summary === "string" &&
         Array.isArray(candidate?.sections) &&
         candidate.sections.length === 12;
@@ -167,6 +171,7 @@ export async function generateAnalysis(
           ["overall", candidate.overall],
           ...[
             "themes",
+            "formulations",
             "sections",
             "cycles",
             "contradictions",
@@ -238,6 +243,10 @@ export async function generateAnalysis(
     inputHash: prepared.inputHash,
     safetySignal: prepared.packet.safety_signal,
     allowHealth: prepared.allowHealth,
+    inference: {
+      level: prepared.packet.inference_policy.level,
+      withheldCycles: report._omittedCycleCount || 0,
+    },
     report,
     review: reviewInfo,
     evidence: prepared.evidence,

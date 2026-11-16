@@ -10,6 +10,7 @@ import { createApp } from "../api/http.mjs";
 import { serverConfiguration } from "../api/config.mjs";
 import { prepareAnalysis } from "../api/analysis.mjs";
 import { qualitativeCases } from "../tests/fixtures/qualitative.mjs";
+import { depthCases } from "../tests/fixtures/depth-cases.mjs";
 
 try {
   loadEnvFile(".env");
@@ -74,7 +75,9 @@ const app = createApp({ env: process.env, fetchImpl });
 app.listen(0, "127.0.0.1");
 await once(app, "listening");
 const results = [];
-const cases = qualitativeCases().filter(
+const cases = (
+  process.env.LIVE_EVAL_SUITE === "depth" ? depthCases() : qualitativeCases()
+).filter(
   (c) =>
     !process.env.LIVE_EVAL_CASE ||
     process.env.LIVE_EVAL_CASE.split(",").includes(c.id),

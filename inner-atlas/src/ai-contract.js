@@ -1,3 +1,4 @@
+import { hasConcreteEpisode } from "./ai-context.js";
 // Shared, public output contract. Server recomputes inputs and validates every reference.
 export const AI_CONTRACT_VERSION = "1.0";
 export const AI_CONSENT_VERSION = "2026-11-15-v1";
@@ -67,6 +68,12 @@ export function validateAIReport(
     }
   };
   const evidenceMap = new Map(evidence.map((e) => [e.id, e]));
+  const episodeIds = ["context:example", "context:meaning", "context:strategy"];
+  const episodeReady = hasConcreteEpisode(
+    Object.fromEntries(
+      episodeIds.map((id) => [id.slice(8), evidenceMap.get(id)?.value]),
+    ),
+  );
   const knowledgeMap = new Map(knowledge.map((k) => [k.id, k]));
   const refs = (v, kind, min = 1) => {
     if (Array.isArray(v) && new Set(v).size !== v.length) fail("引用ID重复");
@@ -77,8 +84,8 @@ export function validateAIReport(
       return id;
     });
   };
-  const cited = (x, multi = true) => {
-    const evidenceIds = refs(x.evidenceIds, "evidence", multi ? 2 : 1);
+  const cited = (x, multi = true, minimum = multi ? 2 : 1) => {
+    const evidenceIds = refs(x.evidenceIds, "evidence", minimum);
     if (
       multi &&
       new Set(evidenceIds.map((id) => evidenceMap.get(id).group)).size < 2
@@ -96,7 +103,7 @@ export function validateAIReport(
     themes: list(value.themes, 2, 5, (t) => ({
       title: text(t.title, 100),
       claim: text(t.claim, 1600),
-      alternatives: list(t.alternatives, 1, 3, (s) => text(s, 700)),
+      alternatives: list(t.alternatives, 1, 5, (s) => text(s, 700)),
       question: text(t.question, 500),
       ...cited(t),
     })),
@@ -150,7 +157,16 @@ export function validateAIReport(
       AI_SECTIONS.findIndex(([id]) => id === a.id) -
       AI_SECTIONS.findIndex(([id]) => id === b.id),
   );
-  report.cycles = list(value.cycles, 0, 3, (c) => ({
+  const rawCycles = Array.isArray(value.cycles) ? value.cycles : [];
+  const scopedCycles = episodeReady
+    ? rawCycles.filter((c) =>
+        episodeIds.every((id) => c?.evidenceIds?.includes(id)),
+      )
+    : [];
+  Object.defineProperty(report, "_omittedCycleCount", {
+    value: rawCycles.length - scopedCycles.length,
+  });
+  report.cycles = list(scopedCycles, 0, 3, (c) => ({
     title: text(c.title, 100),
     trigger: text(c.trigger, 700),
     meaning: text(c.meaning, 700),
@@ -161,6 +177,44 @@ export function validateAIReport(
     check: text(c.check, 700),
     ...cited(c),
   }));
+  report.formulations = list(value.formulations ?? [], 0, 2, (f) => ({
+    title: text(f.title, 100),
+    observation: text(f.observation, 1400),
+    hypothesis: text(f.hypothesis, 1400),
+    possibleFunction: text(f.possibleFunction, 900),
+    possibleCost: text(f.possibleCost, 900),
+    counterpoints: list(f.counterpoints, 1, 3, (s) => text(s, 700)),
+    alternatives: list(f.alternatives, 2, 5, (s) => text(s, 700)),
+    question: text(f.question, 700),
+    wouldChangeMind: text(f.wouldChangeMind, 900),
+    ...cited(f),
+  }));
+  if (!episodeReady && (report.formulations.length || report.cycles.length))
+    fail(
+      "缺少具体经历、当时理解或行动目的，不能生成机制假设或功能循环",
+      "INFERENCE_SCOPE",
+    );
+  for (const f of report.formulations)
+    if (!episodeIds.every((id) => f.evidenceIds.includes(id)))
+      fail(
+        "经历假设必须引用事件、当时理解和行动目的三项直接自述",
+        "EPISODE_EVIDENCE",
+      );
+  for (const f of report.formulations)
+    for (const alternative of f.alternatives) {
+      if (
+        !/(可能|也许|假设|如果|待核实|不确定|尚不清楚|尚无法)/.test(
+          alternative,
+        ) ||
+        /(?:^|[。；])你(?:过去|以前|曾经|小时候|童年).{0,10}(?:遇到过|经历过|遭受过|受过|被忽视|被抛弃|被虐待)/.test(
+          alternative,
+        )
+      )
+        fail(
+          "经历假设的替代解释必须明确是待核实可能，不能把未提供的过去经历写为事实",
+          "ALTERNATIVE_UNCERTAINTY",
+        );
+    }
   report.contradictions = list(value.contradictions, 0, 4, (c) => ({
     observation: text(c.observation, 1000),
     explanations: list(c.explanations, 2, 3, (s) => text(s, 800)),
@@ -173,12 +227,44 @@ export function validateAIReport(
     step: text(p.step, 1000),
     observe: text(p.observe, 700),
     timeframe: text(p.timeframe, 100),
-    ...cited(p),
+    ...cited(p, false, 2),
   }));
   report.followUpQuestions = list(value.followUpQuestions, 3, 6, (s) =>
     text(s, 500),
   );
   report.uncertainties = list(value.uncertainties, 3, 6, (s) => text(s, 900));
+  {
+    // Main prose stays descriptive; scoped functional hypotheses belong in their explicit cards.
+    // Limited guard for observed failures, not a semantic truth test.
+    const assertions = [
+      ["overall.summary", report.overall.summary],
+      ...report.themes.map((t, i) => [`themes[${i}].claim`, t.claim]),
+      ...report.sections.flatMap((s) => [
+        [`sections.${s.id}.summary`, s.summary],
+        [`sections.${s.id}.implications`, s.implications],
+      ]),
+    ];
+    const unsupported = [
+      /(?:短期|暂时|当下|一时)[^，。；\n]{0,24}(?:安心|松一口气|控制感|降低不安|缓解焦虑|减少焦虑)/,
+      /(?:靠|用|通过).{0,10}(?:尽责|高标准|表现|可靠).{0,12}(?:换取|维持|获得).{0,10}(?:爱|认可|价值|安全感)/,
+    ];
+    for (const [path, narrative] of assertions)
+      for (const re of unsupported) {
+        const m = re.exec(narrative);
+        if (!m) continue;
+        const prefix = narrative.slice(Math.max(0, m.index - 45), m.index);
+        if (
+          /(?:不(?:能|必|应|足以)|无法|不知道|尚不清楚|尚未|没有(?:依据|资料|证据)|并非|不是|不代表).{0,28}$/.test(
+            prefix,
+          )
+        )
+          continue;
+        fail(
+          `正文应描述自述与模式，却在${path}推测未报告的短期作用或价值交换机制`,
+          "UNSUPPORTED_FUNCTION",
+        );
+      }
+  }
   // Reject clear diagnostic declarations, invented clinical scores and prescriptions. This is a limited guard, not clinical validation.
   const narrative = JSON.stringify(report);
   const banned = [

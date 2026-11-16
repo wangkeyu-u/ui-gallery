@@ -30,7 +30,29 @@ export const AI_CONTEXT_FIELDS = [
     "选一次具体互动：发生了什么，你做了什么？",
     "分别写可观察的经过、自己的理解和行动、对方实际回应；不要猜测对方内心，也不需要身份信息。",
   ],
+  [
+    "meaning",
+    "在那一次经历里，你当时怎样理解它？",
+    "尽量写当时冒出的想法、感受和你在意的事；可以写“不知道”。不需要寻找隐藏原因。",
+  ],
+  [
+    "strategy",
+    "你当时的行动想达到什么，后来实际发生了什么？",
+    "把当时希望得到的结果、真实行动与实际后果分开。没有想清楚目的也可以照实说。",
+  ],
 ];
 export const AI_CONTEXT_IDS = AI_CONTEXT_FIELDS.map(([id]) => id);
 export const emptyAIContext = () =>
   Object.fromEntries(AI_CONTEXT_IDS.map((id) => [id, ""]));
+export const EPISODE_CONTEXT_IDS = ["example", "meaning", "strategy"];
+export function hasEpisodeDetail(value) {
+  return (
+    typeof value === "string" &&
+    !!value.trim() &&
+    !/^(不知道|不清楚|不确定|无|没有|不想说|跳过|不记得|记不清|unknown|idk)[。.!！?？\s]*$/i.test(
+      value.trim(),
+    )
+  );
+}
+export const hasConcreteEpisode = (context = {}) =>
+  EPISODE_CONTEXT_IDS.every((id) => hasEpisodeDetail(context[id]));

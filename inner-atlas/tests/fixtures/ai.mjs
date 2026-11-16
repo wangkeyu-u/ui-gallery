@@ -1,5 +1,6 @@
 import { VERSION, DEFAULT_CONFIG, activeQuestions } from "../../src/data.js";
 import { AI_SECTIONS, AI_CONTRACT_VERSION } from "../../src/ai-contract.js";
+import { hasConcreteEpisode } from "../../src/ai-context.js";
 export function fixtureSession(overrides = {}) {
   const config = { ...DEFAULT_CONFIG, ...overrides };
   return {
@@ -27,6 +28,15 @@ export function fixtureReport(prepared) {
   const evidenceIds = [first.id, second.id],
     knowledgeIds = ["kb-person-situation", "kb-uncertainty"];
   const cite = { evidenceIds, knowledgeIds };
+  const episodeIds = ["context:example", "context:meaning", "context:strategy"];
+  const episodeReady = hasConcreteEpisode(
+    Object.fromEntries(
+      episodeIds.map((id) => [
+        id.slice(8),
+        evidence.find((e) => e.id === id)?.value,
+      ]),
+    ),
+  );
   const disabled =
     prepared.disabledSections ||
     prepared.packet.requiredInsufficientSections ||
@@ -81,19 +91,43 @@ export function fixtureReport(prepared) {
             return { evidenceIds: [direct.id, other.id], knowledgeIds };
           })()),
     })),
-    cycles: [
-      {
-        title: "模拟的待验证循环",
-        trigger: "可能遇到回应不明确的情境。",
-        meaning: "可能暂时无法确定这对关系意味着什么。",
-        protection: "可能先自己整理，或寻找更多确认。",
-        shortTerm: "可能获得一点控制感。",
-        longTerm: "若长期重复，也可能消耗注意力。",
-        alternative: "对方的实际安排和环境限制也可能影响回应。",
-        check: "记录一次真实经过，核实顺序是否符合。",
-        ...cite,
-      },
-    ],
+    formulations: episodeReady
+      ? [
+          {
+            title: "模拟：一次经历的可修改解释",
+            observation:
+              "这是用户描述的一次事件、当时理解与行动目的，不是独立观察。",
+            hypothesis: "模拟解释仅限这一次经历，还需要对照不同条件下的例外。",
+            possibleFunction:
+              "只把用户自述的希望结果当作目的线索，不假装了解潜意识。",
+            possibleCost: "实际后果仍需继续观察。",
+            counterpoints: ["一次经历不能证明长期模式。"],
+            alternatives: [
+              "可能主要与当时的安排有关。",
+              "也可能与题目理解或近期状态有关。",
+            ],
+            question: "换一个真实情境，还会出现相同反应吗？",
+            wouldChangeMind: "如果同一条件下稳定出现相反反应，应修订这一解释。",
+            evidenceIds: [...episodeIds, first.id],
+            knowledgeIds,
+          },
+        ]
+      : [],
+    cycles: episodeReady
+      ? [
+          {
+            title: "模拟的待验证循环",
+            trigger: "可能遇到回应不明确的情境。",
+            meaning: "可能暂时无法确定这对关系意味着什么。",
+            protection: "可能先自己整理，或寻找更多确认。",
+            shortTerm: "可能获得一点控制感。",
+            longTerm: "若长期重复，也可能消耗注意力。",
+            alternative: "对方的实际安排和环境限制也可能影响回应。",
+            check: "记录一次真实经过，核实顺序是否符合。",
+            ...cite,
+          },
+        ]
+      : [],
     contradictions: [
       {
         observation: "不同场景可能表现不同",

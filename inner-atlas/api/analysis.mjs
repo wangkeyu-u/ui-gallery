@@ -10,6 +10,7 @@ import {
 import { assess, validAnswer, validateSession } from "../src/engine.js";
 import { SOURCES } from "../src/sources.js";
 import { AI_CONTEXT_IDS, AI_CONTEXT_FIELDS } from "../src/ai-context.js";
+import { inferencePolicy, verificationGuide } from "../src/ai-verification.js";
 import {
   AI_SECTIONS,
   AI_CONTRACT_VERSION,
@@ -26,7 +27,7 @@ export const reviewPrompt = await readFile(
   new URL("../ai/review-prompt.md", import.meta.url),
   "utf8",
 );
-export const PROMPT_VERSION = "2026-11-16.1";
+export const PROMPT_VERSION = "2026-11-16.2";
 export const systemPrompt = await readFile(
   new URL("../ai/system-prompt.md", import.meta.url),
   "utf8",
@@ -270,15 +271,22 @@ export function prepareAnalysis(input) {
     limitations: results.limits,
     evidence,
     integration_brief: integrationBrief,
+    inference_policy: inferencePolicy(context),
+    verification_guide: verificationGuide(session),
     assessment_frame: {
       purpose:
         "成人自我探索；不是标准化临床访谈、临床诊断或经过验证的综合测验。",
       informationSource:
         "单次、同一人的自我报告；问卷、情境和背景不等于独立观察。",
       availableContext: AI_CONTEXT_IDS.filter((id) => context[id]),
-      missingContext: ["history", "impact", "example", "counterexample"].filter(
-        (id) => !context[id],
-      ),
+      missingContext: [
+        "history",
+        "impact",
+        "example",
+        "meaning",
+        "strategy",
+        "counterexample",
+      ].filter((id) => !context[id]),
       interpretationRules: [
         "先看覆盖、缺失及质量提示。没有经验证的作答效度量表，不能判定说谎、装病或量化可信度。",
         "原始均值只描述本次回答。没有适用的项目常模、测量误差或重测数据，不能给百分位、显著差异或人格准确率。",
@@ -348,20 +356,47 @@ export function buildMessages(prepared) {
       evidenceIds: [],
       knowledgeIds: [],
     })),
-    cycles: [
-      {
-        title: "循环名",
-        trigger: "可能情境",
-        meaning: "可能解释",
-        protection: "可能应对",
-        shortTerm: "短期功能",
-        longTerm: "可能代价",
-        alternative: "其他解释",
-        check: "核实方式",
-        evidenceIds: [],
-        knowledgeIds: [],
-      },
-    ],
+    formulations:
+      prepared.packet.inference_policy.level === "episode_hypotheses"
+        ? [
+            {
+              title: "只针对这一次经历的待验证理解",
+              observation: "事件、想法与行动分别来自哪些具体自述",
+              hypothesis: "显式标明这只是解释假设，限定适用范围",
+              possibleFunction:
+                "结合用户自述目的，说明该行动当时可能起什么作用",
+              possibleCost: "仅陈述已报告结果或明确待核实的可能代价",
+              counterpoints: ["真实反例或尚未提供反例的缺口"],
+              alternatives: ["一种具体不同的解释", "另一种具体不同的解释"],
+              question: "区分解释的追问",
+              wouldChangeMind: "出现什么具体资料会让当前解释需要修改",
+              evidenceIds: [
+                "context:example",
+                "context:meaning",
+                "context:strategy",
+                "另一个真实不同group的证据ID",
+              ],
+              knowledgeIds: ["真实相关知识ID"],
+            },
+          ]
+        : [],
+    cycles:
+      prepared.packet.inference_policy.level === "episode_hypotheses"
+        ? [
+            {
+              title: "循环名",
+              trigger: "可能情境",
+              meaning: "可能解释",
+              protection: "可能应对",
+              shortTerm: "短期功能",
+              longTerm: "可能代价",
+              alternative: "其他解释",
+              check: "核实方式",
+              evidenceIds: [],
+              knowledgeIds: [],
+            },
+          ]
+        : [],
     contradictions: [
       {
         observation: "有证据的张力",

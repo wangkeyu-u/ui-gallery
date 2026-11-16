@@ -71,6 +71,27 @@ with sync_playwright() as p:
   assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth'),width
  page.set_viewport_size({'width':1440,'height':1000})
  page.screenshot(path=str(OUT/'mock-comprehensive-desktop.png'),full_page=True)
+ # Missing experience data withholds functional explanations, while explicit episode details unlock a checkable card.
+ assert page.locator('.ai-depth-boundary').is_visible()
+ assert page.locator('.ai-formulation').count()==0
+ page.locator('textarea[data-ai-context=example]').fill('对方晚回复，我发消息确认约定，随后重新协商。')
+ page.locator('textarea[data-ai-context=meaning]').fill('我担心安排临时变动，也在意对方是否记得约定。')
+ page.locator('textarea[data-ai-context=strategy]').fill('我想核实安排，收到回复后暂时放心，但仍需商量。')
+ assert '已补充事件' in page.locator('#ai-depth-status').inner_text()
+ assert page.locator('.ai-stale-indicator').is_visible()
+ page.locator('#ai-analysis-form input[name=consent]').check()
+ page.get_by_role('button',name='根据当前答卷重新综合',exact=True).click()
+ page.locator('.ai-formulation').wait_for()
+ assert '什么会改变当前判断' in page.locator('.ai-formulation').inner_text()
+ assert page.locator('.ai-depth-boundary').count()==0
+ assert page.locator('.ai-scope-note').is_visible()
+ page.locator('.ai-formulation > summary').click()
+ page.evaluate("window.dispatchEvent(new Event('beforeprint'))");assert page.locator('.ai-formulation').get_attribute('open') is not None
+ page.evaluate("window.dispatchEvent(new Event('afterprint'))");assert page.locator('.ai-formulation').get_attribute('open') is None
+ with page.expect_download() as d:page.get_by_role('button',name='下载 AI 综合报告',exact=True).click()
+ d.value.save_as(str(OUT/'episode-report.md'));assert '会改变判断的信息' in (OUT/'episode-report.md').read_text()
+ for width in [360,390,768,1440]:
+  page.set_viewport_size({'width':width,'height':844});assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth')
  # Returned report becomes stale after an answer edit, rather than being reused against the changed questionnaire.
  page.goto(BASE+'/#/review');page.get_by_role('button',name='人格第1题，已回答',exact=True).click()
  page.locator('#question-title').wait_for();page.keyboard.press('5')
@@ -90,5 +111,5 @@ with sync_playwright() as p:
  page.goto(BASE+'/#/privacy');page.get_by_role('button',name='清除当前页面与已保存的答题数据').click();page.get_by_role('button',name='清除数据',exact=True).click();page.wait_for_url('**/#/')
  page.goto(BASE+'/#/report');assert page.locator('.ai-generated').count()==0
  assert not errors,errors
- print(json.dumps({'mock_upstream':True,'real_deepseek_calls':0,'sections':12,'post_requests':len(posts),'separate_health_consent':'passed','literal_model_html':'passed','stale_report':'passed','chapter_disclosure':'passed','theme_correction':'passed','connection_preflight':'passed','viewport_widths':[360,390,768,1440],'errors':errors,'artifacts':str(OUT)},ensure_ascii=False))
+ print(json.dumps({'mock_upstream':True,'real_deepseek_calls':0,'sections':12,'post_requests':len([r for r in requests if r.method=='POST']),'separate_health_consent':'passed','literal_model_html':'passed','stale_report':'passed','chapter_disclosure':'passed','theme_correction':'passed','connection_preflight':'passed','episode_inference_boundary':'passed','viewport_widths':[360,390,768,1440],'errors':errors,'artifacts':str(OUT)},ensure_ascii=False))
  browser.close()

@@ -341,4 +341,62 @@ export const SOURCES = [
     decision: "质量审查依据",
     access: "官方词典公开条目读取",
   },
+  {
+    id: "book-persons-excerpt",
+    title:
+      "Persons：The Case Formulation Approach to Cognitive-Behavior Therapy，第1章节选",
+    url: "https://www.cms.guilford.com/excerpts/persons.pdf?t=1",
+    group: "书籍公开章节与推断边界",
+    note: "核对概念化是持续检验与修订的假设。只借鉴核实结构，不实施书中治疗方案。",
+    decision: "只用于核实方法与概念边界",
+    access: "出版方公开PDF的索引文本：阅读相关段落；直连下载403，未读取全书",
+  },
+  {
+    id: "book-kuyken-excerpt",
+    title:
+      "Kuyken／Padesky／Dudley：Collaborative Case Conceptualization，第1章节选",
+    url: "https://www.cms.guilford.com/excerpts/kuyken.pdf?t=1",
+    group: "书籍公开章节与推断边界",
+    note: "核对协作核实、由描述逐步走向解释、保留优势；不把理论套成个人经历。",
+    decision: "只用于核实方法与概念边界",
+    access: "出版方公开PDF的索引文本：阅读相关段落；直连下载403，未读取全书",
+  },
+  {
+    id: "book-gross-mindset-excerpt",
+    title:
+      "Gross／Ford 编：Handbook of Emotion Regulation，第3版，第10章 Mindset Regulation",
+    url: "https://www.guilford.com/excerpts/gross_ch10.pdf?t=1",
+    group: "书籍公开章节与推断边界",
+    note: "阅读事件意义与情绪的概念段落；先询问当事人的理解，不从分数补写其想法。",
+    decision: "只用于核实方法与概念边界",
+    access: "出版方公开PDF的索引文本：阅读相关段落；直连下载403，未读取全书",
+  },
+  {
+    id: "book-ryan-excerpt",
+    title: "Ryan／Deci：Self-Determination Theory，第1章节选",
+    url: "https://www.guilford.com/excerpts/ryan.pdf?t=1",
+    group: "书籍公开章节与推断边界",
+    note: "核对自主、胜任、联结与社会处境；自主不等于独自解决一切，不推断某人必定缺失某需要。",
+    decision: "只用于核实方法与概念边界",
+    access: "出版方公开PDF的索引文本：阅读相关段落；直连下载403，未读取全书",
+  },
+  {
+    id: "book-attachment-reg-excerpt",
+    title: "Mikulincer／Shaver：Attachment in Adulthood，第2版，第7章节选",
+    url: "https://www.guilford.com/excerpts/mikulincer2.pdf?t=1",
+    group: "书籍公开章节与推断边界",
+    note: "阅读依恋与情绪调节理论段落；研究中的一般关系不能证明个人行为功能或其童年成因。",
+    decision: "只用于核实方法与概念边界",
+    access: "出版方公开PDF的索引文本：阅读相关段落；直连下载403，未读取全书",
+  },
+  {
+    id: "book-mcadams-agent-excerpt",
+    title:
+      "McAdams：The Art and Science of Personality Development，Becoming an Agent 节选",
+    url: "https://www.guilford.com/excerpts/mcadams3.pdf?t=1",
+    group: "书籍公开章节与推断边界",
+    note: "阅读社会行为表现与动机目标的区别；想达到什么需要询问，不能只从特质反推。",
+    decision: "只用于核实方法与概念边界",
+    access: "出版方公开PDF的索引文本：阅读相关段落；直连下载403，未读取全书",
+  },
 ];

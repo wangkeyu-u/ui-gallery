@@ -61,8 +61,8 @@ test("AI sends full core data, recomputes scores, strips timestamps and keeps a 
   assert.ok(analysisCoverage(fixtureSession()).ready);
 });
 test("knowledge is versioned, source-backed and synthesis prompt requires alternatives and cross-domain evidence", () => {
-  assert.equal(knowledge.entries.length, 27);
-  assert.equal(new Set(knowledge.entries.map((e) => e.id)).size, 27);
+  assert.equal(knowledge.entries.length, 33);
+  assert.equal(new Set(knowledge.entries.map((e) => e.id)).size, 33);
   assert.ok(knowledge.entries.every((e) => e.sourceIds.length && e.content));
   assert.match(systemPrompt, /不是逐题解说/);
   assert.match(systemPrompt, /不同 group/);
