@@ -1,3 +1,4 @@
+import { requestDeadline } from "./request-deadline.js";
 import {
   CHAT_LIMITS,
   chatEndpoint,
@@ -157,7 +158,7 @@ export function configureChat(config) {
     state.pending = question;
     state.error = "";
     state.controller = new AbortController();
-    const controller = state.controller;
+    const deadline = requestDeadline(195000, state.controller.signal);
     const body = {
       assessment: memory.assessment,
       report: memory.result.report,
@@ -178,10 +179,7 @@ export function configureChat(config) {
           ...(memory.code ? { Authorization: "Bearer " + memory.code } : {}),
         },
         body: JSON.stringify(body),
-        signal: AbortSignal.any([
-          controller.signal,
-          AbortSignal.timeout(195000),
-        ]),
+        signal: deadline.signal,
         cache: "no-store",
         credentials: "omit",
         referrerPolicy: "no-referrer",
@@ -222,6 +220,7 @@ export function configureChat(config) {
           ? "等待已取消或超时，本次未加入对话；可稍后重试。"
           : error.message;
     } finally {
+      deadline.clear();
       if (id === epoch) {
         state.busy = false;
         state.pending = "";

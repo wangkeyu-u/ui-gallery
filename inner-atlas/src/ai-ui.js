@@ -1,3 +1,4 @@
+import { requestDeadline } from "./request-deadline.js";
 import { renderReportReader, configureReader } from "./report-reader.js";
 import {
   renderChat,
@@ -555,6 +556,7 @@ export function configureAI(config) {
     state.busy = true;
     state.error = "";
     state.controller = new AbortController();
+    const deadline = requestDeadline(375000, state.controller.signal);
     hooks.render();
     try {
       const response = await fetch(endpoint, {
@@ -565,10 +567,7 @@ export function configureAI(config) {
           "X-Analysis-Keepalive": "1",
         },
         body: JSON.stringify(request),
-        signal: AbortSignal.any([
-          state.controller.signal,
-          AbortSignal.timeout(375000),
-        ]),
+        signal: deadline.signal,
         cache: "no-store",
         credentials: "omit",
         referrerPolicy: "no-referrer",
@@ -627,6 +626,7 @@ export function configureAI(config) {
             ? "请求已取消或超时，未生成有效报告。"
             : error.message;
     } finally {
+      deadline.clear();
       if (id === generation) {
         state.busy = false;
         state.controller = null;

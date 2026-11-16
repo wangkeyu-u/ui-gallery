@@ -1,4 +1,5 @@
 import { newCollection } from "./collection-contract.js";
+import { requestDeadline } from "./request-deadline.js";
 const esc = (s) =>
   String(s ?? "").replace(
     /[&<>"']/g,
@@ -87,12 +88,13 @@ async function flush() {
   busy = true;
   status("正在保存…");
   controller = new AbortController();
+  const deadline = requestDeadline(20000, controller.signal);
   try {
     const r = await fetch(api("/submissions"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(20000)]),
+      signal: deadline.signal,
       cache: "no-store",
       credentials: "omit",
     });
@@ -115,9 +117,10 @@ async function flush() {
       );
     } else status("正在保存最新修改…");
   } catch (e) {
-    if (e.name !== "AbortError")
+    if (!controller.signal.aborted)
       status("尚未保存：" + (e.message || "网络暂不可用"), true);
   } finally {
+    deadline.clear();
     busy = false;
     controller = null;
     document
@@ -136,10 +139,11 @@ export function resetCollectionClient() {
 }
 export function configureCollection(config) {
   hooks = config;
+  const deadline = requestDeadline(8000);
   fetch(api("/submissions/status"), {
     cache: "no-store",
     credentials: "omit",
-    signal: AbortSignal.timeout(8000),
+    signal: deadline.signal,
   })
     .then((r) => (r.ok ? r.json() : null))
     .then((data) => {
@@ -157,7 +161,8 @@ export function configureCollection(config) {
         scheduleSubmission();
       }
     })
-    .catch(() => {});
+    .catch(() => {})
+    .finally(deadline.clear);
   document.addEventListener("click", async (e) => {
     const b = e.target.closest("[data-collection-action]");
     if (!b) return;
@@ -187,6 +192,7 @@ export function configureCollection(config) {
       controller?.abort();
       clearTimeout(timer);
       latest = null;
+      const deadline = requestDeadline(20000);
       try {
         const r = await fetch(api("/submissions/revoke"), {
           method: "POST",
@@ -194,7 +200,7 @@ export function configureCollection(config) {
           body: JSON.stringify({ id: c.id, editToken: c.editToken }),
           cache: "no-store",
           credentials: "omit",
-          signal: AbortSignal.timeout(20000),
+          signal: deadline.signal,
         });
         if (!r.ok) throw Error();
         delete s.collection;
@@ -205,6 +211,7 @@ export function configureCollection(config) {
       } catch {
         status("撤回未成功，请稍后重试。", true);
       } finally {
+        deadline.clear();
         b.disabled = false;
       }
     }

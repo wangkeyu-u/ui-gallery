@@ -6,6 +6,8 @@ OUT=Path(os.environ.get('UI_ARTIFACT_DIR',tempfile.mkdtemp(prefix='inner-atlas-u
 with sync_playwright() as p:
  browser=p.chromium.launch(executable_path=os.environ.get('CHROMIUM_PATH') or shutil.which('chromium') or shutil.which('google-chrome'),headless=True,args=['--no-sandbox'])
  context=browser.new_context(viewport={'width':1365,'height':960},accept_downloads=True)
+ # Model older mobile browsers where the optional abort helpers must not block startup.
+ context.add_init_script("Object.defineProperty(AbortSignal,'timeout',{value:undefined}); Object.defineProperty(AbortSignal,'any',{value:undefined});")
  page=context.new_page();errors=[];network=[]
  page.on('pageerror',lambda e:errors.append(str(e)))
  page.on('request',lambda r:network.append((r.method,r.url)))

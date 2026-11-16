@@ -1,3 +1,5 @@
+import { requestDeadline } from "./request-deadline.js";
+
 // Connection checks only read service metadata. They never send answers or access codes.
 export class ServiceCheckError extends Error {}
 export function analysisEndpoint(value, baseUrl) {
@@ -33,33 +35,36 @@ export async function probeAnalysisService(
   const endpoint = analysisEndpoint(value, baseUrl),
     statusUrl = new URL(endpoint);
   statusUrl.pathname = statusUrl.pathname.replace(/\/analyze$/, "/status");
-  let response;
-  try {
-    response = await fetchImpl(statusUrl.href, {
-      method: "GET",
-      cache: "no-store",
-      credentials: "omit",
-      referrerPolicy: "no-referrer",
-      signal: signal
-        ? AbortSignal.any([signal, AbortSignal.timeout(timeoutMs)])
-        : AbortSignal.timeout(timeoutMs),
-    });
-  } catch {
-    throw new ServiceCheckError(
-      "暂时无法读取分析服务状态，请检查地址、网络与跨域配置后重试。",
-    );
-  }
-  if (!response.ok)
-    throw new ServiceCheckError(
-      response.status === 404
-        ? "此地址没有分析服务。GitHub Pages 需先填写独立后端的 /api/analyze 地址。"
-        : "分析服务暂时不可用，请稍后重试。",
-    );
+  const deadline = requestDeadline(timeoutMs, signal);
   let status;
   try {
-    status = await response.json();
-  } catch {
-    throw new ServiceCheckError("此地址没有返回分析服务状态，请检查后端地址。");
+    let response;
+    try {
+      response = await fetchImpl(statusUrl.href, {
+        method: "GET",
+        cache: "no-store",
+        credentials: "omit",
+        referrerPolicy: "no-referrer",
+        signal: deadline.signal,
+      });
+    } catch {
+      throw new ServiceCheckError(
+        "暂时无法读取分析服务状态，请检查地址、网络与跨域配置后重试。",
+      );
+    }
+    if (!response.ok)
+      throw new ServiceCheckError(
+        response.status === 404
+          ? "此地址没有分析服务。GitHub Pages 需先填写独立后端的 /api/analyze 地址。"
+          : "分析服务暂时不可用，请稍后重试。",
+      );
+    try {
+      status = await response.json();
+    } catch {
+      throw new ServiceCheckError("此地址没有返回分析服务状态，请检查后端地址。");
+    }
+  } finally {
+    deadline.clear();
   }
   if (
     status?.provider !== "DeepSeek" ||
