@@ -42,6 +42,7 @@ export function validateAIReport(
     knowledge = [],
     disabledSections = [],
     allowHealth = false,
+    requirePortrait = false,
   } = {},
 ) {
   const fail = (message, validationIssue) => {
@@ -109,6 +110,29 @@ export function validateAIReport(
       ...cited(t),
     })),
   };
+  const portrait = value.overall?.portrait;
+  if (requirePortrait && !portrait)
+    fail("报告缺少整合后的整体人格画像", "MISSING_PORTRAIT");
+  if (portrait) {
+    const citations = cited(portrait);
+    if (
+      new Set(citations.evidenceIds.map((id) => evidenceMap.get(id).group))
+        .size < 3 ||
+      !citations.evidenceIds.some((id) => id.startsWith("trait:")) ||
+      !citations.evidenceIds.some((id) => id.startsWith("attachment:"))
+    )
+      fail("整体画像需要人格、关系及第三个领域的直接资料", "PORTRAIT_EVIDENCE");
+    report.overall.portrait = {
+      headline: text(portrait.headline, 100),
+      core: text(portrait.core, 1800),
+      centralTension: text(portrait.centralTension, 1200),
+      relationshipSignature: text(portrait.relationshipSignature, 1400),
+      strengthAndCost: text(portrait.strengthAndCost, 1200),
+      whereItChanges: text(portrait.whereItChanges, 1000),
+      stillUnknown: text(portrait.stillUnknown, 900),
+      ...citations,
+    };
+  }
   report.sections = list(
     value.sections,
     AI_SECTIONS.length,
@@ -278,6 +302,9 @@ export function validateAIReport(
     // Limited guard for observed failures, not a semantic truth test.
     const assertions = [
       ["overall.summary", report.overall.summary],
+      ...Object.entries(report.overall.portrait || {})
+        .filter(([, v]) => typeof v === "string")
+        .map(([key, v]) => ["overall.portrait." + key, v]),
       ...report.themes.map((t, i) => [`themes[${i}].claim`, t.claim]),
       ...report.sections.flatMap((s) => [
         [`sections.${s.id}.summary`, s.summary],

@@ -41,6 +41,8 @@ with sync_playwright() as p:
  assert posted['context']['example']=='我询问具体安排，对方解释后重新约定。'
  assert not any(q.startswith(('phq-','gad-','pcl-')) for q in posted['session']['answers'])
  assert page.locator('.ai-portrait').is_visible()
+ assert page.locator('.ai-portrait-core').is_visible()
+ assert '贯穿其中的主线' in page.locator('.ai-portrait').inner_text()
  assert page.locator('.ai-theory-perspective').count()==1
  assert '功能栈' in page.locator('.ai-theory-perspective').inner_text()
  assert page.locator('.ai-theme-grid img').count()==0

@@ -28,7 +28,7 @@ export const reviewPrompt = await readFile(
   new URL("../ai/review-prompt.md", import.meta.url),
   "utf8",
 );
-export const PROMPT_VERSION = "2026-11-16.3";
+export const PROMPT_VERSION = "2026-11-16.4";
 export const systemPrompt = await readFile(
   new URL("../ai/system-prompt.md", import.meta.url),
   "utf8",
@@ -355,6 +355,19 @@ export function buildMessages(prepared) {
     schemaVersion: AI_CONTRACT_VERSION,
     overall: {
       summary: "写一份连贯的整体画像",
+      portrait: {
+        headline: "用一句自然语言概括这个人，不命名固定类型",
+        core: "直接回答你更像怎样的人，将多个领域整合成连贯的人格工作判断，不罗列分数或理论名称",
+        centralTension:
+          "贯穿不同表现的一条结构性张力；无自述目的就不编隐藏动机",
+        relationshipSignature:
+          "这条主线如何在已施测的恋人、朋友、照顾者关系中表现不同",
+        strengthAndCost: "同一倾向如何提供资源，也可能带来具体代价",
+        whereItChanges: "什么真实反例或处境限定这个判断",
+        stillUnknown: "这个整体判断尚不能确定的关键点",
+        evidenceIds: ["至少三个真实不同group，包含trait:与attachment:"],
+        knowledgeIds: ["真实相关知识ID"],
+      },
       evidenceIds: ["必须替换为台账中至少两个不同group的id"],
       knowledgeIds: ["必须替换为知识库id"],
     },

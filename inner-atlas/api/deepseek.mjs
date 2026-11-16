@@ -44,6 +44,7 @@ export async function generateAnalysis(
     deadline = AbortSignal.timeout(timeoutMs),
     sharedSignal = signal ? AbortSignal.any([signal, deadline]) : deadline;
   const validation = {
+    requirePortrait: true,
     evidence: prepared.evidence,
     knowledge: knowledge.entries,
     disabledSections: prepared.disabledSections,
@@ -169,6 +170,9 @@ export async function generateAnalysis(
         mustRevise: true,
         citationAudit: [
           ["overall", candidate.overall],
+          ...(candidate.overall?.portrait
+            ? [["overall.portrait", candidate.overall.portrait]]
+            : []),
           ...[
             "themes",
             "perspectives",

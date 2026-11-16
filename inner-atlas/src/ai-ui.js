@@ -223,9 +223,23 @@ function perspectivesMarkup(r, result) {
   if (!r.perspectives?.length) return "";
   return `<section class="ai-perspectives"><h3 class="report-subtitle">不同理论，怎样一起理解这份资料</h3><div class="detail-grid">${r.perspectives.map((p) => `<details class="panel ai-theory-perspective" open><summary><h3>${esc(THEORY_LENSES.find((t) => t.id === p.theoryId).name)}</h3></summary><h4>自述线索</h4>${paragraphs(p.observation)}<h4>这个视角提供的理解</h4>${paragraphs(p.interpretation)}<h4>与其他资料相符或不同</h4>${paragraphs(p.fit)}<h4>不能据此判断</h4>${paragraphs(p.limits)}<h4>另一种解释</h4>${paragraphs(p.alternative)}<div class="practice-box"><p>${esc(p.question)}</p></div>${references(p, result)}</details>`).join("")}</div></section>`;
 }
+function portraitMarkup(r, result) {
+  const p = r.overall.portrait;
+  if (!p)
+    return `<article class="ai-portrait panel"><span class="eyebrow">YOUR INTEGRATED PORTRAIT</span><h2>把不同的你，放在同一张地图里。</h2>${paragraphs(r.overall.summary)}${references(r.overall, result)}</article>`;
+  return `<article class="ai-portrait panel"><span class="eyebrow">你的整体画像 · 综合判断</span><h2>${esc(p.headline)}</h2><div class="ai-portrait-core">${paragraphs(p.core)}</div>${[
+    ["贯穿其中的主线", p.centralTension],
+    ["你如何进入不同关系", p.relationshipSignature],
+    ["同一倾向的优势与代价", p.strengthAndCost],
+    ["哪些情况会让你不同", p.whereItChanges],
+    ["这个判断仍待核实的地方", p.stillUnknown],
+  ]
+    .map(([title, value]) => `<h3>${title}</h3>${paragraphs(value)}`)
+    .join("")}${references(p, result)}</article>`;
+}
 function renderResult(result, stale) {
   const r = result.report;
-  return `<div class="ai-generated ${stale ? "stale" : ""}"><div class="notice ai-stale-indicator" ${stale ? "" : "hidden"}><p>你的答卷或补充背景已修改。这份报告基于之前的资料，不能作为当前结果；请重新生成。</p></div><div class="ai-report-meta"><span>DeepSeek · ${esc(result.model)}</span><span>${new Date(result.generatedAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</span><span>提示词 ${esc(result.promptVersion)} · 知识库 ${esc(result.knowledgeVersion)}</span></div>${reviewSummary(result)}<article class="ai-portrait panel"><span class="eyebrow">YOUR INTEGRATED PORTRAIT</span><h2>把不同的你，放在同一张地图里。</h2>${paragraphs(r.overall.summary)}${references(r.overall, result)}</article><h3 class="report-subtitle">贯穿整份答卷的主题</h3><div class="ai-theme-grid">${r.themes.map((t, themeIndex) => `<article class="panel"><h3>${esc(t.title)}</h3>${paragraphs(t.claim)}<h4>其他可能的解释</h4>${t.alternatives.map((a) => `<p>${esc(a)}</p>`).join("")}<div class="practice-box"><strong>用真实经历核实</strong><p>${esc(t.question)}</p></div>${references(t, result)}<button type="button" class="text-button ai-challenge" data-ai-action="challenge" data-theme="${themeIndex}">这点不符合我／补充反例</button></article>`).join("")}</div>${perspectivesMarkup(r, result)}${formulationMarkup(r, result)}${result.inference?.withheldCycles ? `<div class="notice ai-scope-note"><p>未展示与当前经历缺少直接对应的循环。一次自述经历不足以推断其他反应的作用或长期重复机制。</p></div>` : ""}<nav class="ai-section-index" aria-label="综合分析内容索引">${AI_SECTIONS.map(([id, title]) => `<button type="button" data-ai-action="scroll" data-target="${id}">${esc(title)}</button>`).join("")}</nav><div class="ai-detail-toolbar"><span>按需要展开12项分析，优先呈现关系部分。</span><button type="button" class="text-button" data-ai-action="expand">展开全部</button><button type="button" class="text-button" data-ai-action="collapse">收起全部</button></div><div class="ai-integrated-sections">${r.sections.map((section) => renderAnalysisSection(section, result)).join("")}</div>${
+  return `<div class="ai-generated ${stale ? "stale" : ""}"><div class="notice ai-stale-indicator" ${stale ? "" : "hidden"}><p>你的答卷或补充背景已修改。这份报告基于之前的资料，不能作为当前结果；请重新生成。</p></div><div class="ai-report-meta"><span>DeepSeek · ${esc(result.model)}</span><span>${new Date(result.generatedAt).toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</span><span>提示词 ${esc(result.promptVersion)} · 知识库 ${esc(result.knowledgeVersion)}</span></div>${reviewSummary(result)}${portraitMarkup(r, result)}<h3 class="report-subtitle">贯穿整份答卷的主题</h3><div class="ai-theme-grid">${r.themes.map((t, themeIndex) => `<article class="panel"><h3>${esc(t.title)}</h3>${paragraphs(t.claim)}<h4>其他可能的解释</h4>${t.alternatives.map((a) => `<p>${esc(a)}</p>`).join("")}<div class="practice-box"><strong>用真实经历核实</strong><p>${esc(t.question)}</p></div>${references(t, result)}<button type="button" class="text-button ai-challenge" data-ai-action="challenge" data-theme="${themeIndex}">这点不符合我／补充反例</button></article>`).join("")}</div>${perspectivesMarkup(r, result)}${formulationMarkup(r, result)}${result.inference?.withheldCycles ? `<div class="notice ai-scope-note"><p>未展示与当前经历缺少直接对应的循环。一次自述经历不足以推断其他反应的作用或长期重复机制。</p></div>` : ""}<nav class="ai-section-index" aria-label="综合分析内容索引">${AI_SECTIONS.map(([id, title]) => `<button type="button" data-ai-action="scroll" data-target="${id}">${esc(title)}</button>`).join("")}</nav><div class="ai-detail-toolbar"><span>按需要展开12项分析，优先呈现关系部分。</span><button type="button" class="text-button" data-ai-action="expand">展开全部</button><button type="button" class="text-button" data-ai-action="collapse">收起全部</button></div><div class="ai-integrated-sections">${r.sections.map((section) => renderAnalysisSection(section, result)).join("")}</div>${
     r.cycles.length
       ? `<h3 class="report-subtitle">这次经历中可核实的反应顺序</h3><p class="muted">这是针对当前自述经历的假设，不代表实际重复频率或长期因果机制。</p>${r.cycles
           .map(
@@ -321,6 +335,19 @@ export function aiReportMarkdown(result) {
     lines.push(
       "本次包含综合生成与一次AI复核；复核不能证明结论真实或具有临床效度。",
     );
+  if (r.overall.portrait) {
+    const p = r.overall.portrait;
+    lines.push(
+      "## 你的整体画像：" + p.headline,
+      p.core,
+      "贯穿主线：" + p.centralTension,
+      "关系方式：" + p.relationshipSignature,
+      "优势与代价：" + p.strengthAndCost,
+      "变化条件：" + p.whereItChanges,
+      "仍待核实：" + p.stillUnknown,
+    );
+    cite(p);
+  }
   cite(r.overall);
   if (result.inference?.withheldCycles)
     lines.push(

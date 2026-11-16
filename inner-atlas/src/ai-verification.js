@@ -8,7 +8,7 @@ export function inferencePolicy(context = {}) {
     level: missing.length ? "patterns_only" : "episode_hypotheses",
     missingEpisodeFields: missing,
     scope: missing.length
-      ? "仅描述答卷中的共现、对象差异和待核实问题；不把行为功能、核心恐惧或保护机制写成个人结论。"
+      ? "可以综合形成关于人格倾向与关系方式的整体工作判断；不把未提供的行为功能、核心恐惧或保护机制写成个人结论。"
       : "可以提出只针对这一次自述经历的功能假设，必须保留不同解释、反例与可改变判断的信息；不是原因证明。",
     developmentalOrigins:
       "不从分数或单次经历反推童年、创伤、潜意识、父母动机或终身人格成因。",

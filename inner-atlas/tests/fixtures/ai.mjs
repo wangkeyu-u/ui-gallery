@@ -44,6 +44,27 @@ export function fixtureReport(prepared) {
   return {
     schemaVersion: AI_CONTRACT_VERSION,
     overall: {
+      portrait: {
+        headline: "模拟：在投入与保留之间寻找合适距离的人",
+        core: "模拟上游综合报告：把自我要求、关系中的投入和不同对象的差异连起来，可以提出一个待核实的整体画像：你愿意建立连接，也会随对象与处境调整表达。这只是测试文本，不是对真实个人的判断。",
+        centralTension:
+          "模拟的整合主线：参与关系与保留选择可能同时存在，需要具体经历核对。",
+        relationshipSignature:
+          "根据各对象的已完成资料分别核对，不用一种关系概括所有关系。",
+        strengthAndCost:
+          "同一种投入倾向可能提供资源，也可能需要调整节奏，实际代价未知。",
+        whereItChanges: "真实反例与不同处境能够限定这一画像。",
+        stillUnknown: "形成原因、对方体验和现实频率仍不能确定。",
+        evidenceIds: [
+          first.id,
+          second.id,
+          evidence.find((e) => e.id.startsWith("attachment:")).id,
+          ...(!evidence.some((e) => e.id.startsWith("jung:"))
+            ? [evidence.find((e) => e.id.startsWith("explore:")).id]
+            : []),
+        ].filter((id, i, a) => a.indexOf(id) === i),
+        knowledgeIds,
+      },
       summary:
         "模拟上游综合报告：你对关系投入的期待、面对不确定时的感受和不同情境的选择，需要放在一起理解。这里依据不同领域的自我报告形成可核实的假设，不根据某一道题定义你。它们可能在某些时候相互影响，也可能只是并存；真实处境和你提供的反例能够帮助区分。这个文本仅用于自动化测试，不是真实 DeepSeek 生成的个人结论。",
       ...cite,

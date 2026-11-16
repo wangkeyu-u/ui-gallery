@@ -110,3 +110,38 @@ test("direct type declarations are rejected even when citations and structure ar
   unmeasured.overall.summary = "你的Ne较强，说明你总能想到新的方向。";
   assert.throws(() => check(unmeasured, off), /未施测八维/);
 });
+
+test("provider output must contain an integrated portrait while historical display remains readable", () => {
+  const p = prepare();
+  const r = fixtureReport(p);
+  delete r.overall.portrait;
+  assert.throws(
+    () =>
+      validateAIReport(r, {
+        evidence: p.evidence,
+        knowledge: knowledge.entries,
+        disabledSections: p.disabledSections,
+        requirePortrait: true,
+      }),
+    /整体人格画像/,
+  );
+  assert.doesNotThrow(() => check(r, p));
+});
+test("a portrait needs personality, a relationship and a third domain rather than two rephrased scores", () => {
+  const p = prepare();
+  const r = fixtureReport(p);
+  r.overall.portrait.evidenceIds = [
+    "trait:E",
+    "trait:O",
+    "attachment:general:anxiety",
+  ];
+  assert.throws(() => check(r, p), /第三个领域/);
+  r.overall.portrait.evidenceIds = [
+    "trait:E",
+    "attachment:general:anxiety",
+    "explore:empathy",
+  ];
+  assert.doesNotThrow(() => check(r, p));
+  r.overall.portrait.core = "你通过高标准换取被爱。";
+  assert.throws(() => check(r, p), /正文应描述/);
+});
