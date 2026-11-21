@@ -3,15 +3,25 @@
 const fs = require('fs');
 const path = require('path');
 
-const TEMPLATE = path.join(__dirname, '..', 'gallery.template.html');
-const DATA = path.join(__dirname, '..', 'preview-data.json');
-const OUT = path.join(__dirname, '..', 'preview-gallery.html');
+function buildGalleryHtml(tpl, data) {
+  // HTML parses script end tags and comments before JavaScript string literals.
+  const json = JSON.stringify(data).replace(/[<\u2028\u2029]/g,
+    character => '\\u' + character.charCodeAt(0).toString(16).padStart(4, '0'));
+  if (!tpl.includes('/*ITEMS*/')) throw new Error('模板缺少 /*ITEMS*/ 占位符');
+  // A callback keeps prompt text such as $& and $` literal during replacement.
+  return tpl.replace('/*ITEMS*/', () => json);
+}
 
-const tpl = fs.readFileSync(TEMPLATE, 'utf8');
+if (require.main === module) {
+  const TEMPLATE = path.join(__dirname, '..', 'gallery.template.html');
+  const DATA = path.join(__dirname, '..', 'preview-data.json');
+  const OUT = path.join(__dirname, '..', 'preview-gallery.html');
 
-const data = JSON.parse(fs.readFileSync(DATA, 'utf8'));
-const json = JSON.stringify(data); // 紧凑，避免画廊体积过大
-if (!tpl.includes('/*ITEMS*/')) { console.error('模板缺少 /*ITEMS*/ 占位符'); process.exit(1); }
-const html = tpl.replace('/*ITEMS*/', json);
-fs.writeFileSync(OUT, html);
-console.log('gallery written:', OUT, '| items:', data.length, '| bytes:', html.length);
+  const tpl = fs.readFileSync(TEMPLATE, 'utf8');
+  const data = JSON.parse(fs.readFileSync(DATA, 'utf8'));
+  const html = buildGalleryHtml(tpl, data);
+  fs.writeFileSync(OUT, html);
+  console.log('gallery written:', OUT, '| items:', data.length, '| bytes:', html.length);
+}
+
+module.exports = { buildGalleryHtml };
