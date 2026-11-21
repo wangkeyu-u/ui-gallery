@@ -1,6 +1,7 @@
 process.chdir(require('path').resolve(__dirname, '..'));
 const { chromium } = require('playwright');
 const path = require('path');
+const items = JSON.parse(require('fs').readFileSync('preview-data.json', 'utf8'));
 
 (async () => {
   const browser = await chromium.launch({
@@ -38,6 +39,8 @@ const path = require('path');
 
   // 3) select first 3 cards
   const ids = await page.$$eval('.item', els => els.slice(0, 3).map(e => e.getAttribute('data-id')));
+  const expectedClipboard = items.filter(item => ids.includes(item.id))
+    .map(item => item.name + ' — ' + item.link).join('\n');
   for (const id of ids) {
     await page.$eval(`.item[data-id="${id}"]`, e => e.dispatchEvent(new MouseEvent('click', { bubbles: true })));
     await page.waitForTimeout(120);
@@ -61,6 +64,7 @@ const path = require('path');
     clipboard = await page.evaluate(() => (window.__clip || '(empty)'));
   } catch (e) { clipboard = 'ERR ' + e.message; }
   console.log('5) 复制已选 -> 行数:', String(clipboard).split('\n').length, '| 预览:', String(clipboard).slice(0, 70).replace(/\n/g, ' '));
+  if (clipboard !== expectedClipboard) console.error('复制已选内容与源数据不一致');
 
   // 6) reload -> selection persists
   await page.reload({ waitUntil: 'domcontentloaded' });
@@ -125,7 +129,7 @@ const path = require('path');
   await browser.close();
   const ok = total === 230 && secInfo.length === 2 && broken.length === 0
     && selectedCount === 3 && stored && JSON.parse(stored).length === 3
-    && String(clipboard).split('\n').length === 3 && afterReload === 3
+    && clipboard === expectedClipboard && afterReload === 3
     && reactN > 0 && reactN < total && projN === 53
     && hasOptgroups.fwOptgroups > 0 && hasOptgroups.themeOptgroups > 0
     && afterClear === 0 && errors.length === 0;
